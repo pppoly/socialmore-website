@@ -105,7 +105,7 @@ const { t, dictionary, currentLocale } = useI18n();
 
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('${heroMainVisual}')`
+    `linear-gradient(135deg, rgba(244, 252, 255, 0.92), rgba(255, 247, 236, 0.7)), url('${heroMainVisual}')`
 }));
 
 const heroOverlayStyle = computed(() => ({
@@ -149,7 +149,7 @@ const formatDate = (dateStr) => {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  opacity: 0.4;
+  opacity: 0.25;
   pointer-events: none;
 }
 
