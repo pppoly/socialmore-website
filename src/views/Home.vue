@@ -1,0 +1,281 @@
+<template>
+  <div>
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">SOCIAL + SaaS</p>
+          <h1>{{ t('home.hero.title') }}</h1>
+          <p class="subtitle">{{ t('home.hero.subtitle') }}</p>
+          <div class="cta-row">
+            <RouterLink to="/services" class="btn btn-primary">{{ t('home.hero.primaryCta') }}</RouterLink>
+            <RouterLink to="/contact" class="btn btn-secondary">{{ t('home.hero.secondaryCta') }}</RouterLink>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div class="pill">Community</div>
+              <div class="status">Live</div>
+            </div>
+            <div class="stats">
+              <div class="stat" v-for="item in heroStats" :key="item.label">
+                <span class="label">{{ item.label }}</span>
+                <strong>{{ item.value }}</strong>
+                <small>{{ item.note }}</small>
+              </div>
+            </div>
+            <div class="chart">
+              <span v-for="n in 6" :key="n" :style="{ height: 15 + n * 10 + 'px' }"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">{{ currentHome.valuesTitle }}</h2>
+          <p class="section-description">
+            {{ currentHome.valuesDescription }}
+          </p>
+        </div>
+        <div class="card-grid value-grid">
+          <article v-for="value in currentHome.values" :key="value.title" class="card value-card">
+            <div class="icon-circle"></div>
+            <h3>{{ value.title }}</h3>
+            <p>{{ value.description }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">{{ currentHome.highlightsTitle }}</h2>
+          <p class="section-description">
+            {{ currentHome.highlightsDescription }}
+          </p>
+        </div>
+        <div class="card-grid">
+          <article v-for="item in currentHome.productHighlights" :key="item.title" class="card highlight-card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+            <button class="text-link">{{ t('buttons.learnMore') }} →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news-teaser">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">{{ currentHome.newsTitle }}</h2>
+          <p class="section-description">{{ currentHome.newsDescription }}</p>
+        </div>
+        <div class="card-grid">
+          <article v-for="item in latestNews" :key="item.id" class="card news-card">
+            <p class="news-date">{{ formatDate(item.date) }}</p>
+            <h3>{{ item.title[currentLocale] }}</h3>
+            <p>{{ item.summary[currentLocale] }}</p>
+            <RouterLink to="/news" class="text-link">{{ t('buttons.readMore') }} →</RouterLink>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import { useI18n } from '../composables/useI18n';
+import { newsItems } from '../data/news';
+
+const { t, dictionary, currentLocale } = useI18n();
+
+const heroStats = computed(() => [
+  { label: currentLocale.value === 'ja' ? '登録コミュニティ' : 'Communities', value: '128', note: currentLocale.value === 'ja' ? '各地域で展開' : 'active cities' },
+  { label: currentLocale.value === 'ja' ? '外国人メンバー' : 'Members', value: '12k', note: currentLocale.value === 'ja' ? '月間アクティブ' : 'monthly active' },
+  { label: currentLocale.value === 'ja' ? '企業パートナー' : 'Partners', value: '54', note: currentLocale.value === 'ja' ? '導入済み' : 'deployments' }
+]);
+
+const currentHome = computed(() => dictionary.value.home);
+const latestNews = computed(() => newsItems.slice(0, 3));
+
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return currentLocale.value === 'ja'
+    ? `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
+    : date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+};
+</script>
+
+<style scoped>
+.hero {
+  padding-top: 5rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--color-muted);
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-card {
+  width: min(360px, 100%);
+  background: #0d1c2e;
+  color: #fff;
+  border-radius: 28px;
+  padding: 1.5rem;
+  box-shadow: 0 30px 60px rgba(13, 28, 46, 0.45);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.status {
+  color: #9deaf2;
+  font-weight: 600;
+}
+
+.stats {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 0.75rem 1rem;
+}
+
+.stat .label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.7rem;
+  margin-top: 0.35rem;
+}
+
+.stat small {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.chart span {
+  flex: 1;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(37, 183, 176, 0.8));
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.value-grid .value-card {
+  text-align: left;
+}
+
+.value-card .icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 18px;
+  background-image: var(--gradient-primary);
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: linear-gradient(180deg, #f2fbff, #ffffff);
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.text-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.news-teaser {
+  background: #0d1c2e;
+  color: #fff;
+}
+
+.news-teaser .card {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .cta-row {
+    flex-direction: column;
+  }
+}
+</style>
