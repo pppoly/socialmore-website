@@ -2,7 +2,7 @@
   <header class="app-header">
     <div class="header-inner">
       <RouterLink to="/" class="logo">
-        <div class="logo-mark" aria-hidden="true">
+        <div class="logo-mark" :style="logoMarkStyle" aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
         <div class="logo-text">
@@ -70,6 +70,11 @@ import { useI18n } from '../composables/useI18n';
 
 const { t, currentLocale, setLocale } = useI18n();
 const isMenuOpen = ref(false);
+const brandSymbolUrl = new URL('../assets/brand/brand-logo-symbol.svg', import.meta.url).href;
+
+const logoMarkStyle = computed(() => ({
+  backgroundImage: `radial-gradient(circle at 20% 20%, rgba(246, 195, 67, 0.8), rgba(15, 138, 215, 0.85)), url('${brandSymbolUrl}')`
+}));
 
 const navLinks = computed(() => {
   const localeWatch = currentLocale.value;
@@ -128,8 +133,6 @@ const switchLanguage = (locale) => {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background-image: radial-gradient(circle at 20% 20%, #f6c343, #25b7b0),
-    url('/src/assets/brand/brand-logo-symbol.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: screen;

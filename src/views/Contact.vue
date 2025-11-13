@@ -98,10 +98,10 @@ const validateEmail = (value) => /.+@.+\..+/.test(value);
 <style scoped>
 .contact-page {
   background-image: linear-gradient(180deg, rgba(11, 28, 46, 0.85), rgba(15, 138, 215, 0.2)),
-    url('/src/assets/backgrounds/bg-section-dark.jpg');
+    url('../assets/backgrounds/bg-section-dark.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  /* bg-section-dark.jpg: 夜景＋星点のテクスチャを配置予定。 */
+  /* bg-section-dark.svg: 夜景＋星点のテクスチャ。 */
 }
 
 .contact-grid {
@@ -113,7 +113,7 @@ const validateEmail = (value) => /.+@.+\..+/.test(value);
 .contact-info {
   position: relative;
   background-image: linear-gradient(135deg, rgba(15, 138, 215, 0.12), rgba(246, 195, 67, 0.3)),
-    url('/src/assets/icons/icon-contact.svg');
+    url('../assets/icons/icon-contact.svg');
   background-repeat: no-repeat;
   background-size: cover, 180px;
   background-position: center, calc(100% - 24px) 24px;

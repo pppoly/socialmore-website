@@ -60,20 +60,28 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
+import iconMembership from '../assets/icons/icon-membership.svg';
+import iconCommunity from '../assets/icons/icon-community.svg';
+import iconAi from '../assets/icons/icon-ai.svg';
 
 const { t, dictionary } = useI18n();
 const services = computed(() => dictionary.value.services);
 const iconHighlights = computed(() => services.value.iconHighlights ?? []);
 
 const iconPaths = {
-  membership: "url('/src/assets/icons/icon-membership.svg')",
-  community: "url('/src/assets/icons/icon-community.svg')",
-  ai: "url('/src/assets/icons/icon-ai.svg')"
+  membership: iconMembership,
+  community: iconCommunity,
+  ai: iconAi
 };
 
-const getIconStyle = (iconKey) => ({
-  '--icon-src': iconPaths[iconKey] || 'none'
-});
+const fallbackIcon = iconMembership;
+
+const getIconStyle = (iconKey) => {
+  const source = iconPaths[iconKey] ?? fallbackIcon;
+  return {
+    '--icon-src': `url('${source}')`
+  };
+};
 </script>
 
 <style scoped>

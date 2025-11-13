@@ -1,0 +1,18 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="office" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef4e6" />
+      <stop offset="100%" stop-color="#e0f5ff" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" rx="40" fill="url(#office)" />
+  <g fill="#ffffff" opacity="0.7">
+    <rect x="120" y="180" width="140" height="200" rx="18" />
+    <rect x="300" y="140" width="160" height="240" rx="18" />
+    <rect x="500" y="160" width="160" height="220" rx="18" />
+    <rect x="690" y="200" width="110" height="180" rx="18" />
+  </g>
+  <circle cx="220" cy="420" r="35" fill="#FFB38A" opacity="0.6" />
+  <circle cx="420" cy="420" r="45" fill="#F6C343" opacity="0.6" />
+  <circle cx="600" cy="430" r="38" fill="#25B7B0" opacity="0.6" />
+</svg>

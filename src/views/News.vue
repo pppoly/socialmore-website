@@ -11,7 +11,7 @@
       <div class="card-grid">
         <article v-for="item in newsItems" :key="item.id" class="card news-card">
           <div class="news-card-thumb" :style="coverForItem(item)" aria-hidden="true"></div>
-          <!-- news-default.jpg: デフォルトのニュース画像。記事個別の画像があれば item.cover に設定します。 -->
+          <!-- news-default.svg: デフォルトのニュース画像。記事個別の画像があれば item.cover に設定します。 -->
           <p class="news-date">{{ formatDate(item.date) }}</p>
           <h3>{{ item.title[currentLocale] }}</h3>
           <p>{{ item.summary[currentLocale] }}</p>
@@ -25,9 +25,9 @@
 <script setup>
 import { useI18n } from '../composables/useI18n';
 import { newsItems } from '../data/news';
+import newsDefaultCover from '../assets/news/news-default.svg';
 
 const { t, currentLocale } = useI18n();
-const newsDefaultCover = '/src/assets/news/news-default.jpg';
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -57,7 +57,7 @@ const coverForItem = (item) => {
   border-radius: 18px;
   margin: 0 auto 1rem;
   background: rgba(15, 138, 215, 0.08);
-  background-image: url('/src/assets/icons/icon-news.svg');
+  background-image: url('../assets/icons/icon-news.svg');
   background-size: 36px;
   background-repeat: no-repeat;
   background-position: center;

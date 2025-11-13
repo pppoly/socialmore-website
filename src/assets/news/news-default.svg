@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="newsCover" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F8AD7" />
+      <stop offset="50%" stop-color="#1CC4C2" />
+      <stop offset="100%" stop-color="#F6C343" />
+    </linearGradient>
+    <linearGradient id="beam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#newsCover)" />
+  <path d="M0 420 Q240 360 480 420 T960 420 T1200 420 V630 H0 Z" fill="#041326" opacity="0.15" />
+  <rect x="200" y="120" width="800" height="80" rx="40" fill="url(#beam)" opacity="0.3" />
+  <rect x="320" y="240" width="560" height="80" rx="40" fill="url(#beam)" opacity="0.25" />
+  <circle cx="220" cy="170" r="16" fill="#fff" opacity="0.8" />
+  <circle cx="500" cy="270" r="12" fill="#fff" opacity="0.6" />
+  <circle cx="840" cy="190" r="18" fill="#fff" opacity="0.7" />
+</svg>
