@@ -2,6 +2,7 @@
   <section class="section contact-page">
     <div class="container contact-grid">
       <div class="contact-info card">
+        <!-- icon-contact.svg: コンタクトカード右上に浮かせる信封アイコン。 -->
         <p class="eyebrow">Reach us</p>
         <h1 class="section-title">{{ t('contact.title') }}</h1>
         <p>{{ t('contact.intro') }}</p>
@@ -95,6 +96,14 @@ const validateEmail = (value) => /.+@.+\..+/.test(value);
 </script>
 
 <style scoped>
+.contact-page {
+  background-image: linear-gradient(180deg, rgba(11, 28, 46, 0.85), rgba(15, 138, 215, 0.2)),
+    url('/src/assets/backgrounds/bg-section-dark.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* bg-section-dark.jpg: 夜景＋星点のテクスチャを配置予定。 */
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -102,7 +111,12 @@ const validateEmail = (value) => /.+@.+\..+/.test(value);
 }
 
 .contact-info {
-  background: linear-gradient(135deg, rgba(15, 138, 215, 0.1), rgba(246, 195, 67, 0.25));
+  position: relative;
+  background-image: linear-gradient(135deg, rgba(15, 138, 215, 0.12), rgba(246, 195, 67, 0.3)),
+    url('/src/assets/icons/icon-contact.svg');
+  background-repeat: no-repeat;
+  background-size: cover, 180px;
+  background-position: center, calc(100% - 24px) 24px;
 }
 
 .contact-form {

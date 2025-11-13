@@ -5,6 +5,16 @@
         <p class="eyebrow">Platform</p>
         <h1 class="section-title">{{ t('services.title') }}</h1>
       </div>
+      <section class="service-icon-grid">
+        <!-- icon-membership.svg: 会員管理SaaSの象徴となるダッシュボードアイコン。 -->
+        <!-- icon-community.svg: コミュニティ／外国人支援を表す会話バブルアイコン。 -->
+        <!-- icon-ai.svg: 企業向けAIスキルアップのチップ＋矢印アイコン。 -->
+        <article v-for="item in iconHighlights" :key="item.title" class="icon-feature-card">
+          <div class="icon-badge" :style="getIconStyle(item.iconKey)" role="img" :aria-label="item.title"></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </article>
+      </section>
       <section class="service-section">
         <h2>{{ t('services.communityTitle') }}</h2>
         <div class="card-grid">
@@ -53,6 +63,17 @@ import { useI18n } from '../composables/useI18n';
 
 const { t, dictionary } = useI18n();
 const services = computed(() => dictionary.value.services);
+const iconHighlights = computed(() => services.value.iconHighlights ?? []);
+
+const iconPaths = {
+  membership: "url('/src/assets/icons/icon-membership.svg')",
+  community: "url('/src/assets/icons/icon-community.svg')",
+  ai: "url('/src/assets/icons/icon-ai.svg')"
+};
+
+const getIconStyle = (iconKey) => ({
+  '--icon-src': iconPaths[iconKey] || 'none'
+});
 </script>
 
 <style scoped>
@@ -60,6 +81,43 @@ const services = computed(() => dictionary.value.services);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+
+.service-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.icon-feature-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 45px rgba(15, 138, 215, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.icon-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(37, 183, 176, 0.15), rgba(15, 138, 215, 0.15));
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-badge::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  background-image: var(--icon-src, none);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+  /* icon SVG は後日アップロードされ、ここで使用されます。 */
 }
 
 .service-section h2,

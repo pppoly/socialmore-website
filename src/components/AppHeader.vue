@@ -128,7 +128,12 @@ const switchLanguage = (locale) => {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: radial-gradient(circle at 20% 20%, #f6c343, #25b7b0);
+  background-image: radial-gradient(circle at 20% 20%, #f6c343, #25b7b0),
+    url('/src/assets/brand/brand-logo-symbol.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  /* brand-logo-symbol.svg: ブランドのシンボルマークを後から差し替えるためのプレースホルダー。 */
   display: flex;
   align-items: center;
   justify-content: center;

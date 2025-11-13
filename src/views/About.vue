@@ -27,6 +27,20 @@
           </li>
         </ol>
       </section>
+      <section class="about-card photo-gallery">
+        <h2>{{ t('about.galleryTitle') }}</h2>
+        <p>{{ t('about.galleryDescription') }}</p>
+        <div class="photo-grid">
+          <figure
+            v-for="photo in aboutContent.galleryPhotos"
+            :key="photo.file"
+            class="photo-frame"
+            :style="getPhotoStyle(photo.file)"
+          >
+            <figcaption>{{ photo.caption }}</figcaption>
+          </figure>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -37,6 +51,11 @@ import { useI18n } from '../composables/useI18n';
 
 const { t, dictionary } = useI18n();
 const aboutContent = computed(() => dictionary.value.about);
+
+const getPhotoStyle = (fileName) => ({
+  backgroundImage:
+    `linear-gradient(135deg, rgba(11, 28, 46, 0.35), rgba(37, 183, 176, 0.15)), url('/src/assets/photos/${fileName}')`
+});
 </script>
 
 <style scoped>
@@ -82,5 +101,34 @@ const aboutContent = computed(() => dictionary.value.about);
 
 .mini-card {
   min-height: 180px;
+}
+
+.photo-gallery p {
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.photo-frame {
+  border-radius: 24px;
+  min-height: 220px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  box-shadow: 0 20px 40px rgba(11, 28, 46, 0.25);
+  /* photo-office-01.jpg / photo-event-01.jpg / photo-team-portrait.jpg: 後日アップロード予定のカルチャーフォト。 */
+}
+
+.photo-frame figcaption {
+  font-size: 0.9rem;
+  line-height: 1.3;
 }
 </style>
