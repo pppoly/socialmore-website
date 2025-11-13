@@ -105,7 +105,7 @@ const { t, dictionary, currentLocale } = useI18n();
 
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('${heroMainVisual}')`
+    `linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.35)), url('${heroMainVisual}')`
 }));
 
 const heroOverlayStyle = computed(() => ({
