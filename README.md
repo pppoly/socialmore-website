@@ -29,6 +29,29 @@ Preview the production build locally:
 npm run preview
 ```
 
+## GitHub Pages deployment
+
+This project is configured to build into the `docs` folder for GitHub Pages.
+
+- Build locally with:
+
+  ```bash
+  npm install
+  npm run build
+  ```
+
+  This will output the production build into `docs/`.
+
+- In the GitHub repository settings:
+  - Go to **Settings → Pages**.
+  - Set the source to:  
+    Branch: `main`  
+    Folder: `/docs`.
+
+The site will then be available at:
+
+https://pppoly.github.io/socialmore-website/
+
 ## Project Structure
 ```
 src/
