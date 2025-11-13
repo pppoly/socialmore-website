@@ -2,9 +2,7 @@
   <header class="app-header">
     <div class="header-inner">
       <RouterLink to="/" class="logo">
-        <div class="logo-mark" :style="logoMarkStyle" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
+        <img :src="headerLogo" alt="SOCIALMORE Logo" class="header-logo" />
         <div class="logo-text">
           <span class="jp">創翔モア</span>
           <span class="en">SOCIALMORE</span>
@@ -66,16 +64,11 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import headerLogo from '@/assets/brand/logo.png';
 import { useI18n } from '../composables/useI18n';
 
 const { t, currentLocale, setLocale } = useI18n();
 const isMenuOpen = ref(false);
-const brandSymbolUrl = new URL('../assets/brand/brand-logo-symbol.svg', import.meta.url).href;
-
-const logoMarkStyle = computed(() => ({
-  backgroundImage: `radial-gradient(circle at 20% 20%, rgba(246, 195, 67, 0.8), rgba(15, 138, 215, 0.85)), url('${brandSymbolUrl}')`
-}));
-
 const navLinks = computed(() => {
   const localeWatch = currentLocale.value;
   void localeWatch;
@@ -129,27 +122,10 @@ const switchLanguage = (locale) => {
   color: var(--color-dark);
 }
 
-.logo-mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-blend-mode: screen;
-  /* brand-logo-symbol.svg: ブランドのシンボルマークを後から差し替えるためのプレースホルダー。 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  padding: 4px;
-}
-
-.logo-mark span {
-  width: 6px;
-  flex: 1;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+.header-logo {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .logo-text {
