@@ -1,0 +1,33 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Thin gradient line for CTA accent -->
+    <linearGradient id="cta-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F68FF"/>
+      <stop offset="50%" stop-color="#02C3C7"/>
+      <stop offset="100%" stop-color="#F2C94C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Motion line -->
+  <path
+    d="M4 40 C 20 28, 32 24, 44 24"
+    fill="none"
+    stroke="url(#cta-grad)"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+
+  <!-- Arrow head -->
+  <path
+    d="M40 18 L52 24 L40 30"
+    fill="none"
+    stroke="url(#cta-grad)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+</svg>
