@@ -43,5 +43,8 @@ src/
 ## Internationalization
 All key UI texts, navigation, and CTA labels are pulled from `src/composables/useI18n.js`. The global language switcher in the header toggles between Japanese and English and updates all routes instantly.
 
+## Troubleshooting
+A blank white page usually means a JavaScript runtime error prevented Vue from mounting. Open the browser developer tools console to inspect the error message; it typically points to the missing import, router mismatch, or asset path that needs to be fixed.
+
 ## Contact
 This project is a demo. The contact form performs client-side validation and displays a confirmation message but does not send data to a backend.
