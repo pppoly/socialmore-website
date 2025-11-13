@@ -6,7 +6,7 @@ import News from '../views/News.vue';
 import Contact from '../views/Contact.vue';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior() {
     return { top: 0 };
   },
