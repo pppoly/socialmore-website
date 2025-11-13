@@ -6,5 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     outDir: 'docs',   // ✅ 用 docs 当输出目录
+    // Inline static assets to avoid generating extra binary files (e.g. hero JPG) in docs/
+    assetsInlineLimit: 5 * 1024 * 1024,
   },
 });
