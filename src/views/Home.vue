@@ -1,6 +1,9 @@
 <template>
   <div>
-    <section class="section hero">
+    <section class="section hero" :style="heroBackgroundStyle">
+      <!-- hero-main.jpg: 後で運営側がアップロードするメインビジュアル（東京の街並み＋ブランドグラデーション）。 -->
+      <div class="hero-overlay-shapes" :style="heroOverlayStyle" aria-hidden="true"></div>
+      <!-- hero-overlay-shapes.svg: ロゴをモチーフにした抽象ライン。透明背景でヒーローセクションに重ねる。 -->
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">SOCIAL + SaaS</p>
@@ -76,6 +79,8 @@
         </div>
         <div class="card-grid">
           <article v-for="item in latestNews" :key="item.id" class="card news-card">
+            <div class="news-thumb" :style="newsCoverStyle" aria-hidden="true"></div>
+            <!-- news-default.jpg: デフォルトのニュースサムネイル。必要に応じて各記事個別の画像に差し替えます。 -->
             <p class="news-date">{{ formatDate(item.date) }}</p>
             <h3>{{ item.title[currentLocale] }}</h3>
             <p>{{ item.summary[currentLocale] }}</p>
@@ -94,6 +99,23 @@ import { useI18n } from '../composables/useI18n';
 import { newsItems } from '../data/news';
 
 const { t, dictionary, currentLocale } = useI18n();
+
+const heroMainPath = '/src/assets/hero/hero-main.jpg';
+const heroOverlayShapesPath = '/src/assets/hero/hero-overlay-shapes.svg';
+const newsDefaultCover = '/src/assets/news/news-default.jpg';
+
+const heroBackgroundStyle = computed(() => ({
+  backgroundImage:
+    `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('${heroMainPath}')`
+}));
+
+const heroOverlayStyle = computed(() => ({
+  backgroundImage: `url('${heroOverlayShapesPath}')`
+}));
+
+const newsCoverStyle = computed(() => ({
+  backgroundImage: `linear-gradient(135deg, rgba(15, 138, 215, 0.15), rgba(246, 195, 67, 0.15)), url('${newsDefaultCover}')`
+}));
 
 const heroStats = computed(() => [
   { label: currentLocale.value === 'ja' ? '登録コミュニティ' : 'Communities', value: '128', note: currentLocale.value === 'ja' ? '各地域で展開' : 'active cities' },
@@ -114,7 +136,22 @@ const formatDate = (dateStr) => {
 
 <style scoped>
 .hero {
+  position: relative;
   padding-top: 5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero-overlay-shapes {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -122,6 +159,8 @@ const formatDate = (dateStr) => {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-copy h1 {
@@ -238,7 +277,13 @@ const formatDate = (dateStr) => {
 }
 
 .highlight {
-  background: linear-gradient(180deg, #f2fbff, #ffffff);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 251, 255, 0.85)),
+    url('/src/assets/backgrounds/bg-section-light.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 32px;
+  padding: 3rem 0;
+  /* bg-section-light.jpg: 紙質感のテクスチャ。デザイナーが後日アップロード予定。 */
 }
 
 .highlight-card {
@@ -264,6 +309,15 @@ const formatDate = (dateStr) => {
 .news-teaser .card {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
+
+.news-thumb {
+  width: 100%;
+  padding-top: 56%;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1rem;
 }
 
 .news-date {

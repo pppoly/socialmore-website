@@ -84,12 +84,45 @@ export const messages = {
         { year: '2022', text: '東京都三鷹市で創業。多文化共生イベントからサービス開発を開始。' },
         { year: '2023', text: 'コミュニティ向けSaaS β版を提供。複数自治体とのPoCを実施。' },
         { year: '2024', text: '企業向け外国人材サポートモジュールをリリースし、提携社数が拡大。' }
+      ],
+      galleryTitle: '現場の様子',
+      galleryDescription: 'オフィスやイベントの写真を通して、SOCIALMOREの雰囲気を伝える予定です。',
+      galleryPhotos: [
+        {
+          file: 'photo-office-01.jpg',
+          caption: 'photo-office-01.jpg｜オフィスでの協働風景'
+        },
+        {
+          file: 'photo-event-01.jpg',
+          caption: 'photo-event-01.jpg｜コミュニティイベントの模様'
+        },
+        {
+          file: 'photo-team-portrait.jpg',
+          caption: 'photo-team-portrait.jpg｜チーム集合写真'
+        }
       ]
     },
     services: {
       title: 'サービス',
       communityTitle: 'コミュニティ向け',
       companyTitle: '企業向け',
+      iconHighlights: [
+        {
+          title: '会員管理SaaS',
+          description: '会費決済や会員証を一元管理し、主要ダッシュボードに表示する基幹モジュール。',
+          iconKey: 'membership'
+        },
+        {
+          title: 'コミュニティ／外国人支援',
+          description: '地域の相談窓口やイベント連携を象徴する会話バブル型のアイコンを使用。',
+          iconKey: 'community'
+        },
+        {
+          title: '企業向けAIスキルアップ',
+          description: '研修・学習の進捗を示すAIチップ＋矢印のアイコンで人材育成を表現。',
+          iconKey: 'ai'
+        }
+      ],
       communityCards: [
         {
           title: '会員管理クラウド',
@@ -247,12 +280,45 @@ export const messages = {
         { year: '2022', text: 'Founded in Mitaka, Tokyo after hosting multicultural community experiments.' },
         { year: '2023', text: 'Launched the beta SaaS for community organizers and completed municipal pilots.' },
         { year: '2024', text: 'Released enterprise modules for employers supporting international talent.' }
+      ],
+      galleryTitle: 'Scenes from our work',
+      galleryDescription: 'Photos will showcase the office, training, and community events run by SOCIALMORE.',
+      galleryPhotos: [
+        {
+          file: 'photo-office-01.jpg',
+          caption: 'photo-office-01.jpg | Collaborating in our Tokyo workspace'
+        },
+        {
+          file: 'photo-event-01.jpg',
+          caption: 'photo-event-01.jpg | Community outreach event snapshot'
+        },
+        {
+          file: 'photo-team-portrait.jpg',
+          caption: 'photo-team-portrait.jpg | Core team portrait'
+        }
       ]
     },
     services: {
       title: 'Products & Services',
       communityTitle: 'For community organizers',
       companyTitle: 'For companies & employers',
+      iconHighlights: [
+        {
+          title: 'Membership SaaS',
+          description: 'Core dashboard module that manages dues, IDs, and member analytics in one place.',
+          iconKey: 'membership'
+        },
+        {
+          title: 'Community & foreign resident support',
+          description: 'Represents multilingual help desks and community care flows with dialogue bubbles.',
+          iconKey: 'community'
+        },
+        {
+          title: 'Corporate AI skill-up',
+          description: 'Highlights AI training programs for employers with a chip + upward arrow motif.',
+          iconKey: 'ai'
+        }
+      ],
       communityCards: [
         {
           title: 'Membership cloud',
