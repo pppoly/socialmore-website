@@ -2,7 +2,11 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-  // Required so assets resolve correctly when the site is deployed to GitHub Pages.
+  // base ensures assets work when the site is served from the /socialmore-website/ sub-path on GitHub Pages.
   base: '/socialmore-website/',
   plugins: [vue()],
+  build: {
+    // GitHub Pages serves from docs/ on the main branch, so build output must live there.
+    outDir: 'docs',
+  },
 });
