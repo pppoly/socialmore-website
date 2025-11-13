@@ -5,4 +5,4 @@
 - **bg-grid-soft.svg**：柔和网格线，可叠加在浅色背景上强调科技感。
 - **bg-dots-warm.svg**：暖色调散点纹理，可在社区故事或活动区块使用。
 
-以上文件会在不同 section 的 CSS 背景中被引用，请保持体积小、支持重复平铺。
+以上文件会在不同 section 的 CSS 背景中被引用，请保持体积小、支持重复平铺。为了保持页面可视化，`bg-section-light.svg` 与 `bg-section-dark.svg` 已提供一个基于渐变与图案的占位版本，可随时替换。

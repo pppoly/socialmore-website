@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="section hero" :style="heroBackgroundStyle">
-      <!-- hero-main.jpg: 後で運営側がアップロードするメインビジュアル（東京の街並み＋ブランドグラデーション）。 -->
+      <!-- hero-main.svg: 現在は開発用のビジュアル。最終素材が届いたら差し替えてください。 -->
       <div class="hero-overlay-shapes" :style="heroOverlayStyle" aria-hidden="true"></div>
       <!-- hero-overlay-shapes.svg: ロゴをモチーフにした抽象ライン。透明背景でヒーローセクションに重ねる。 -->
       <div class="container hero-grid">
@@ -80,7 +80,7 @@
         <div class="card-grid">
           <article v-for="item in latestNews" :key="item.id" class="card news-card">
             <div class="news-thumb" :style="newsCoverStyle" aria-hidden="true"></div>
-            <!-- news-default.jpg: デフォルトのニュースサムネイル。必要に応じて各記事個別の画像に差し替えます。 -->
+            <!-- news-default.svg: デフォルトのニュースサムネイル。必要に応じて各記事個別の画像に差し替えます。 -->
             <p class="news-date">{{ formatDate(item.date) }}</p>
             <h3>{{ item.title[currentLocale] }}</h3>
             <p>{{ item.summary[currentLocale] }}</p>
@@ -96,21 +96,20 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
+import heroMainVisual from '../assets/hero/hero-main.svg';
+import heroOverlayShapes from '../assets/hero/hero-overlay-shapes.svg';
+import newsDefaultCover from '../assets/news/news-default.svg';
 import { newsItems } from '../data/news';
 
 const { t, dictionary, currentLocale } = useI18n();
 
-const heroMainPath = '/src/assets/hero/hero-main.jpg';
-const heroOverlayShapesPath = '/src/assets/hero/hero-overlay-shapes.svg';
-const newsDefaultCover = '/src/assets/news/news-default.jpg';
-
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('${heroMainPath}')`
+    `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)), url('${heroMainVisual}')`
 }));
 
 const heroOverlayStyle = computed(() => ({
-  backgroundImage: `url('${heroOverlayShapesPath}')`
+  backgroundImage: `url('${heroOverlayShapes}')`
 }));
 
 const newsCoverStyle = computed(() => ({
@@ -278,12 +277,12 @@ const formatDate = (dateStr) => {
 
 .highlight {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 251, 255, 0.85)),
-    url('/src/assets/backgrounds/bg-section-light.jpg');
+    url('../assets/backgrounds/bg-section-light.svg');
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 32px;
   padding: 3rem 0;
-  /* bg-section-light.jpg: 紙質感のテクスチャ。デザイナーが後日アップロード予定。 */
+  /* bg-section-light.svg: 紙質感のテクスチャ。 */
 }
 
 .highlight-card {

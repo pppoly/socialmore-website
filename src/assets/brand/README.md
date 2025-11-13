@@ -8,4 +8,4 @@
 - **brand-logo-monochrome.svg**：单色版本（白或深蓝），用于深色背景和印刷物。
 - **brand-gradient-wave.svg**：以 Logo 曲线为元素的抽象波浪，可在 hero overlay 或背景中重复铺满。
 
-> 以上文件将由设计/运营在交付最终视觉素材后上传到本目录。
+> 以上文件将由设计/运营在交付最终视觉素材后上传到本目录。当前仓库附带了一个 `brand-logo-symbol.svg` 的渐变占位版本，方便开发和预览。

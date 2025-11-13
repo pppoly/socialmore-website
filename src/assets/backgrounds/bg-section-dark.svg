@@ -1,0 +1,22 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="night" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0B2742" />
+      <stop offset="100%" stop-color="#050E1C" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#night)" />
+  <g fill="#25B7B0" opacity="0.35">
+    <circle cx="120" cy="80" r="3" />
+    <circle cx="260" cy="140" r="2" />
+    <circle cx="420" cy="60" r="2" />
+    <circle cx="580" cy="120" r="2" />
+    <circle cx="700" cy="80" r="3" />
+    <circle cx="200" cy="260" r="2" />
+    <circle cx="360" cy="320" r="2" />
+    <circle cx="520" cy="260" r="2" />
+    <circle cx="640" cy="320" r="2" />
+    <circle cx="720" cy="220" r="2" />
+  </g>
+  <path d="M0 420 Q200 360 400 420 T800 420 V600 H0 Z" fill="#0F8AD7" opacity="0.25" />
+</svg>

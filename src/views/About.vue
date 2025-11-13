@@ -48,14 +48,27 @@
 <script setup>
 import { computed } from 'vue';
 import { useI18n } from '../composables/useI18n';
+import photoOffice from '../assets/photos/photo-office-01.svg';
+import photoEvent from '../assets/photos/photo-event-01.svg';
+import photoTeam from '../assets/photos/photo-team-portrait.svg';
 
 const { t, dictionary } = useI18n();
 const aboutContent = computed(() => dictionary.value.about);
 
-const getPhotoStyle = (fileName) => ({
-  backgroundImage:
-    `linear-gradient(135deg, rgba(11, 28, 46, 0.35), rgba(37, 183, 176, 0.15)), url('/src/assets/photos/${fileName}')`
-});
+const photoSources = {
+  'photo-office-01.jpg': photoOffice,
+  'photo-event-01.jpg': photoEvent,
+  'photo-team-portrait.jpg': photoTeam
+};
+
+const defaultPhoto = photoOffice;
+
+const getPhotoStyle = (fileName) => {
+  const resolved = photoSources[fileName] ?? defaultPhoto;
+  return {
+    backgroundImage: `linear-gradient(135deg, rgba(11, 28, 46, 0.35), rgba(37, 183, 176, 0.15)), url('${resolved}')`
+  };
+};
 </script>
 
 <style scoped>
@@ -124,7 +137,7 @@ const getPhotoStyle = (fileName) => ({
   align-items: flex-end;
   padding: 1rem;
   box-shadow: 0 20px 40px rgba(11, 28, 46, 0.25);
-  /* photo-office-01.jpg / photo-event-01.jpg / photo-team-portrait.jpg: 後日アップロード予定のカルチャーフォト。 */
+  /* photo-*.svg: 現在はプレースホルダー。実写素材に差し替える場合は file 名を更新してください。 */
 }
 
 .photo-frame figcaption {

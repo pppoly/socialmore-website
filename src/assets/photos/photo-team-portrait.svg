@@ -1,0 +1,17 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="team" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2F3FF" />
+      <stop offset="100%" stop-color="#FFE8D2" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" rx="40" fill="url(#team)" />
+  <g fill="#fff" opacity="0.85">
+    <circle cx="180" cy="360" r="70" />
+    <circle cx="330" cy="330" r="80" />
+    <circle cx="480" cy="360" r="90" />
+    <circle cx="640" cy="330" r="80" />
+    <circle cx="790" cy="360" r="70" />
+  </g>
+  <rect x="120" y="180" width="660" height="60" rx="30" fill="#fff" opacity="0.4" />
+</svg>

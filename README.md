@@ -40,6 +40,13 @@ src/
   views/         # page-level components
 ```
 
+## Design Assets
+
+The `src/assets` directory now ships with lightweight SVG placeholders (hero visuals, icons, news cover, photo frames, etc.). They
+keep the UI fully rendered during development and production builds. When final photography or brand files are ready, simply
+replace the corresponding SVG in the matching subfolder—the Vue components import assets via bundler-friendly URLs, so no further
+code changes are required.
+
 ## Internationalization
 All key UI texts, navigation, and CTA labels are pulled from `src/composables/useI18n.js`. The global language switcher in the header toggles between Japanese and English and updates all routes instantly.
 
