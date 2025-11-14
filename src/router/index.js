@@ -4,6 +4,8 @@ import About from '../views/About.vue';
 import Services from '../views/Services.vue';
 import News from '../views/News.vue';
 import Contact from '../views/Contact.vue';
+import PrivacyPolicy from '../views/PrivacyPolicy.vue';
+import TermsOfUse from '../views/TermsOfUse.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +17,9 @@ const router = createRouter({
     { path: '/about', name: 'about', component: About },
     { path: '/services', name: 'services', component: Services },
     { path: '/news', name: 'news', component: News },
-    { path: '/contact', name: 'contact', component: Contact }
+    { path: '/contact', name: 'contact', component: Contact },
+    { path: '/privacy', name: 'privacy', component: PrivacyPolicy },
+    { path: '/terms', name: 'terms', component: TermsOfUse }
   ]
 });
 
