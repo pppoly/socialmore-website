@@ -3,7 +3,7 @@
     <div class="container contact-grid">
       <div class="contact-info card">
         <!-- icon-contact.svg: コンタクトカード右上に浮かせる信封アイコン。 -->
-        <p class="eyebrow">Reach us</p>
+        <p class="eyebrow">{{ t('contact.eyebrow') }}</p>
         <h1 class="section-title">{{ t('contact.title') }}</h1>
         <p>{{ t('contact.intro') }}</p>
         <div class="info-block">
@@ -50,10 +50,11 @@
 import { reactive, ref, computed, watch } from 'vue';
 import { useI18n } from '../composables/useI18n';
 
-const { t, dictionary, currentLocale } = useI18n();
+const { t, dictionary } = useI18n();
 const contact = computed(() => dictionary.value.contact);
 const contactInfo = computed(() => contact.value.info);
 const inquiryOptions = computed(() => contact.value.inquiryOptions);
+const validationMessages = computed(() => contact.value.form.validation);
 
 const form = reactive({
   name: '',
@@ -73,14 +74,10 @@ watch(inquiryOptions, (options) => {
 });
 
 const submitForm = () => {
-  const isJa = currentLocale.value === 'ja';
-  errors.name = form.name ? '' : isJa ? '必須項目です' : 'Required field';
-  errors.email = validateEmail(form.email)
-    ? ''
-    : isJa
-      ? '正しいメールアドレスを入力してください'
-      : 'Please enter a valid email';
-  errors.message = form.message ? '' : isJa ? '必須項目です' : 'Required field';
+  const validation = validationMessages.value;
+  errors.name = form.name ? '' : validation.required;
+  errors.email = validateEmail(form.email) ? '' : validation.email;
+  errors.message = form.message ? '' : validation.required;
 
   if (!errors.name && !errors.email && !errors.message) {
     successMessage.value = contact.value.form.success;
