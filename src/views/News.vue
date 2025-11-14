@@ -4,7 +4,7 @@
       <div class="section-heading">
         <div class="heading-icon" aria-hidden="true"></div>
         <!-- icon-news.svg: ニュース一覧のラッパーで使用する通知ベル／メガホンのアイコン。 -->
-        <p class="eyebrow">Updates</p>
+        <p class="eyebrow">{{ t('news.eyebrow') }}</p>
         <h1 class="section-title">{{ t('news.title') }}</h1>
         <p class="section-description">{{ t('news.intro') }}</p>
       </div>

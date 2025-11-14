@@ -2,7 +2,7 @@
   <div class="section">
     <div class="container services-page">
       <div class="section-heading">
-        <p class="eyebrow">Platform</p>
+        <p class="eyebrow">{{ t('services.eyebrow') }}</p>
         <h1 class="section-title">{{ t('services.title') }}</h1>
       </div>
       <section class="service-icon-grid">

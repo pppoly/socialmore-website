@@ -1,8 +1,10 @@
 <template>
   <header class="app-header">
     <div class="header-inner">
-      <RouterLink to="/" class="logo">
-        <img :src="headerLogo" alt="SOCIALMORE Logo" class="header-logo" />
+      <RouterLink to="/" class="logo" aria-label="SOCIALMORE home">
+        <span class="logo-mark">
+          <img :src="headerLogo" alt="SOCIALMORE logomark" />
+        </span>
         <div class="logo-text">
           <span class="jp">創翔モア</span>
           <span class="en">SOCIALMORE</span>
@@ -64,7 +66,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import headerLogo from '../assets/brand/brand-logo-primary.svg';
+import headerLogo from '../assets/brand/brand-logo-symbol.svg';
 import { useI18n } from '../composables/useI18n';
 
 const { t, currentLocale, setLocale } = useI18n();
@@ -122,9 +124,21 @@ const switchLanguage = (locale) => {
   color: var(--color-dark);
 }
 
-.header-logo {
-  height: 32px;
-  width: auto;
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(37, 183, 176, 0.15), rgba(15, 138, 215, 0.25));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 24px rgba(15, 138, 215, 0.18);
+  border: 1px solid rgba(15, 138, 215, 0.2);
+}
+
+.logo-mark img {
+  width: 26px;
+  height: auto;
   display: block;
 }
 
@@ -142,7 +156,7 @@ const switchLanguage = (locale) => {
 .logo-text .en {
   letter-spacing: 0.15em;
   font-size: 0.7rem;
-  color: var(--color-muted);
+  color: var(--color-muted-strong, var(--color-muted));
 }
 
 .desktop-nav {
