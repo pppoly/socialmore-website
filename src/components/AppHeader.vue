@@ -37,9 +37,6 @@
             中文
           </button>
         </div>
-        <RouterLink to="/contact" class="contact-pill">
-          {{ t('buttons.contactUs') }}
-        </RouterLink>
       </nav>
       <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle navigation">
         <span :class="{ open: isMenuOpen }"></span>
@@ -65,9 +62,6 @@
             中文
           </button>
         </div>
-        <RouterLink to="/contact" class="contact-pill" @click="closeMenu">
-          {{ t('buttons.contactUs') }}
-        </RouterLink>
       </div>
     </transition>
   </header>
@@ -211,15 +205,6 @@ const switchLanguage = (locale) => {
   background: #fff;
   color: var(--color-primary);
   box-shadow: 0 6px 12px rgba(15, 138, 215, 0.18);
-}
-
-.contact-pill {
-  padding: 0.45rem 1.25rem;
-  border-radius: 999px;
-  background-image: var(--gradient-primary);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(37, 183, 176, 0.35);
 }
 
 .menu-toggle {

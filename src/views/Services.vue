@@ -11,7 +11,9 @@
         <!-- icon-community.svg: コミュニティ／外国人支援を表す会話バブルアイコン。 -->
         <!-- icon-ai.svg: 企業向けAIスキルアップのチップ＋矢印アイコン。 -->
         <article v-for="item in iconHighlights" :key="item.title" class="icon-feature-card">
-          <div class="icon-badge" :style="getIconStyle(item.iconKey)" role="img" :aria-label="item.title"></div>
+          <div class="icon-badge" aria-hidden="true">
+            <img :src="getIconSource(item.iconKey)" :alt="item.title" />
+          </div>
           <h3>{{ item.title }}</h3>
           <p>{{ item.description }}</p>
         </article>
@@ -20,7 +22,9 @@
         <h2>{{ t('services.communityTitle') }}</h2>
         <div class="card-grid">
           <article v-for="card in services.communityCards" :key="card.title" class="card service-card">
-            <div class="icon-circle"></div>
+            <div class="icon-circle" aria-hidden="true">
+              <img :src="getIconSource(card.iconKey)" alt="" />
+            </div>
             <h3>{{ card.title }}</h3>
             <ul>
               <li v-for="feature in card.bullets" :key="feature">{{ feature }}</li>
@@ -32,7 +36,9 @@
         <h2>{{ t('services.companyTitle') }}</h2>
         <div class="card-grid">
           <article v-for="card in services.companyCards" :key="card.title" class="card service-card">
-            <div class="icon-circle warm"></div>
+            <div class="icon-circle warm" aria-hidden="true">
+              <img :src="getIconSource(card.iconKey)" alt="" />
+            </div>
             <h3>{{ card.title }}</h3>
             <ul>
               <li v-for="feature in card.bullets" :key="feature">{{ feature }}</li>
@@ -49,9 +55,9 @@
             <ul>
               <li v-for="feature in plan.bullets" :key="feature">{{ feature }}</li>
             </ul>
-            <RouterLink to="/contact" class="btn btn-primary">{{ t('buttons.contactUs') }}</RouterLink>
           </article>
         </div>
+        <p v-if="services.planNote" class="plan-note">{{ services.planNote }}</p>
       </section>
     </div>
   </div>
@@ -59,11 +65,16 @@
 
 <script setup>
 import { computed } from 'vue';
-import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
 import iconMembership from '../assets/icons/icon-membership.svg';
 import iconCommunity from '../assets/icons/icon-community.svg';
 import iconAi from '../assets/icons/icon-ai.svg';
+import iconEventTools from '../assets/icons/icon-event-tools.svg';
+import iconFinanceLedger from '../assets/icons/icon-finance-ledger.svg';
+import iconCommunicationChat from '../assets/icons/icon-communication-chat.svg';
+import iconCollaboration from '../assets/icons/icon-collaboration.svg';
+import iconInsightRadar from '../assets/icons/icon-insight-radar.svg';
+import iconProgramSupport from '../assets/icons/icon-program-support.svg';
 
 const { t, dictionary } = useI18n();
 const services = computed(() => dictionary.value.services);
@@ -72,17 +83,17 @@ const iconHighlights = computed(() => services.value.iconHighlights ?? []);
 const iconPaths = {
   membership: iconMembership,
   community: iconCommunity,
-  ai: iconAi
+  ai: iconAi,
+  eventTools: iconEventTools,
+  finance: iconFinanceLedger,
+  communication: iconCommunicationChat,
+  collaboration: iconCollaboration,
+  insight: iconInsightRadar,
+  program: iconProgramSupport
 };
 
 const fallbackIcon = iconMembership;
-
-const getIconStyle = (iconKey) => {
-  const source = iconPaths[iconKey] ?? fallbackIcon;
-  return {
-    '--icon-src': `url('${source}')`
-  };
-};
+const getIconSource = (iconKey) => iconPaths[iconKey] ?? fallbackIcon;
 </script>
 
 <style scoped>
@@ -113,20 +124,15 @@ const getIconStyle = (iconKey) => {
   height: 72px;
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(37, 183, 176, 0.15), rgba(15, 138, 215, 0.15));
-  position: relative;
-  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
 
-.icon-badge::after {
-  content: '';
-  position: absolute;
-  inset: 18px;
-  background-image: var(--icon-src, none);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.85;
-  /* icon SVG は後日アップロードされ、ここで使用されます。 */
+.icon-badge img {
+  width: 100%;
+  height: 100%;
 }
 
 .service-section h2,
@@ -145,15 +151,23 @@ const getIconStyle = (iconKey) => {
 }
 
 .icon-circle {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   border-radius: 18px;
   background: linear-gradient(135deg, #25b7b0, #0f8ad7);
   margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon-circle.warm {
   background: linear-gradient(135deg, #f6c343, #ff8f52);
+}
+
+.icon-circle img {
+  width: 34px;
+  height: 34px;
 }
 
 .plan-section {
@@ -168,7 +182,9 @@ const getIconStyle = (iconKey) => {
   gap: 0.75rem;
 }
 
-.plan-card .btn {
-  align-self: flex-start;
+.plan-note {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
 }
 </style>

@@ -44,15 +44,14 @@ export const messages = {
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: 'β版準備中',
-          title: 'コミュニティと伴走しながら最終調整を進めています',
-          description: '実際のイベント現場で検証し、主催者が本当に必要とするワークフローを磨いています。',
+          title: 'リリースまでの3ステップ',
+          description: '現場のコミュニティと共創しながら、段階的にアクセスを広げています。',
           steps: [
-            { title: '現場ヒアリング', body: '主催者や参加者の声を直接聞き、課題と要件を整理。' },
-            { title: 'プロトタイプ設計', body: '多言語フォームや通知の流れを軽量に設計し、素早く検証。' },
-            { title: '伴走テスト', body: '地域コミュニティと小さくテストし、週次で改善を繰り返し。' },
-            { title: '公開準備', body: 'オンボーディングやサポート体制を整え、順次アクセスを開放。' }
+            { title: 'プランニング', body: '課題と必須フローを整理し、最小構成で設計。' },
+            { title: '共創テスト', body: '実際のイベントで伴走し、毎週アップデート。' },
+            { title: 'Public β', body: 'オンボーディングとサポートを整え、順次招待。' }
           ],
-          note: '初期ユーザーとして検証に参加いただけるコミュニティを募集中です。'
+          note: '早期アクセスに興味のあるコミュニティはお気軽にご連絡ください。'
         }
       },
       valuesTitle: '私たちが注力する3つの領域',
@@ -61,15 +60,18 @@ export const messages = {
       values: [
         {
           title: 'コミュニティ主催者支援',
-          description: '在日コミュニティの主催者が、煩雑なフォームや調整に追われず活動できるよう伴走します。'
+          description: '在日コミュニティの主催者が、煩雑なフォームや調整に追われず活動できるよう伴走します。',
+          iconKey: 'support'
         },
         {
           title: 'イベント運営インフラ',
-          description: '募集・通知・決済・当日の動線までを一体化した、軽量で信頼できる基盤を提供します。'
+          description: '募集・通知・決済・当日の動線までを一体化した、軽量で信頼できる基盤を提供します。',
+          iconKey: 'infra'
         },
         {
           title: '多文化コミュニティ連携',
-          description: '外国人労働者、留学生、多文化住民のネットワークを活かし、企業や自治体との協働をつなぎます。'
+          description: '外国人労働者、留学生、多文化住民のネットワークを活かし、企業や自治体との協働をつなぎます。',
+          iconKey: 'connection'
         }
       ],
       highlightsTitle: 'コミュニティイベントを楽にする機能',
@@ -159,28 +161,34 @@ export const messages = {
       communityCards: [
         {
           title: 'イベント運営ツール',
+          iconKey: 'eventTools',
           bullets: ['多言語の募集フォーム', '参加枠・リマインド管理', 'チェックインとレポート']
         },
         {
           title: '費用と決済',
+          iconKey: 'finance',
           bullets: ['オンライン決済と簡易精算', '入出金の整理', '領収書の自動送付']
         },
         {
           title: 'コミュニケーション',
+          iconKey: 'communication',
           bullets: ['多言語テンプレート', '参加者への一斉連絡', '協力先との共有ノート']
         }
       ],
       companyCards: [
         {
           title: 'コミュニティ協働',
+          iconKey: 'collaboration',
           bullets: ['実証イベントや体験企画', '多文化交流の設計', '現場スタッフの伴走']
         },
         {
           title: '現場インサイト',
+          iconKey: 'insight',
           bullets: ['コミュニティからのフィードバック', '参加者データの要約', '課題と機会の共有']
         },
         {
           title: 'プログラム支援',
+          iconKey: 'program',
           bullets: ['技能講座や生活情報会', '自治体・企業との共同企画', '評価・改善レポート']
         }
       ],
@@ -201,12 +209,18 @@ export const messages = {
           description: '大規模プロジェクト・自治体連携向け',
           bullets: ['API連携', 'SSO / IAM連携', '24時間サポート']
         }
-      ]
+      ],
+      planNote: '※上記は一例です。詳細はお問い合わせください。'
     },
     news: {
-      eyebrow: '最新情報',
-      title: 'ニュース',
-      intro: 'リリース情報や連携事例、現場レポートをお届けします。'
+      eyebrow: 'SOCIALMORE blog',
+      title: 'SOCIALMOREブログ',
+      intro: '会社設立やサービスアップデート、現場のストーリーを綴る社内ブログです。',
+      detail: {
+        back: 'ニュース一覧に戻る',
+        notFoundTitle: 'ニュースが見つかりませんでした',
+        notFoundCopy: 'URLをご確認いただき、再度アクセスしてください。'
+      }
     },
     contact: {
       eyebrow: 'お問い合わせ',
@@ -230,30 +244,29 @@ export const messages = {
       info: {
         company: 'SOCIALMORE（株式会社創翔モア）',
         location: '東京都三鷹市',
-        email: 'info@socialmore.jp',
+        email: 'info@socialmore.co.jp',
         encouragement: 'どなたからのご相談も歓迎しています。内容に合わせて伴走方法をご提案します。'
       }
     },
     footer: {
       company: {
         name: 'SOCIALMORE（株式会社創翔モア）',
-        address: '東京都三鷹市を拠点に、全国のコミュニティを支援しています。',
-        registration: '法人番号などの登録情報はお問い合わせに応じて開示いたします。'
+        address: '181-0013 東京都三鷹市下連雀3-27-1 三協ビル2階'
       },
       contact: {
         title: 'お問い合わせ',
         emailLabel: 'メール',
-        email: 'info@socialmore.jp',
+        email: 'info@socialmore.co.jp',
         phoneLabel: '電話',
-        phone: '050-0000-0000',
-        hours: '平日 10:00-18:00（祝日を除く）'
+        phone: '080-6567-1105',
+        hours: '平日 10:00-18:00'
       },
       links: {
         title: 'リーガル',
         privacy: 'プライバシーポリシー',
         terms: '利用規約'
       },
-      copyright: '© 2024 SOCIALMORE Inc. All rights reserved.'
+      copyright: '© 2025 SOCIALMORE Inc.'
     },
     legal: {
       privacy: {
@@ -316,7 +329,7 @@ export const messages = {
           },
           {
             title: '8. お問い合わせ',
-            body: ['プライバシーに関するご質問は info@socialmore.jp までお寄せください。']
+            body: ['プライバシーに関するご質問は info@socialmore.co.jp までお寄せください。']
           }
         ]
       },
@@ -359,7 +372,7 @@ export const messages = {
           },
           {
             title: '8. 連絡先',
-            body: ['本規約に関するお問い合わせは info@socialmore.jp までご連絡ください。']
+            body: ['本規約に関するお問い合わせは info@socialmore.co.jp までご連絡ください。']
           }
         ]
       }
@@ -388,15 +401,14 @@ export const messages = {
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: 'Pre-launch',
-          title: 'Finalizing with community partners',
-          description: 'We are stress-testing every workflow in real pilots before opening broader access.',
+          title: 'Three steps to launch',
+          description: 'We widen access stage by stage with the communities building alongside us.',
           steps: [
-            { title: 'Field interviews', body: 'Listen to organizers and residents to map the most urgent needs.' },
-            { title: 'Prototype design', body: 'Rapidly validate lightweight flows for sign-ups, alerts, and payments.' },
-            { title: 'Guided pilots', body: 'Co-run small trials with partner communities and iterate every week.' },
-            { title: 'Launch prep', body: 'Document onboarding and support so early adopters can succeed from day one.' }
+            { title: 'Planning', body: 'Map the essential workflows and design the leanest experience.' },
+            { title: 'Co-creation pilots', body: 'Run real events together and ship weekly improvements.' },
+            { title: 'Public beta', body: 'Stand up onboarding & support, then invite teams in waves.' }
           ],
-          note: 'Let us know if you would like to join the early access list.'
+          note: 'Raise your hand if you want to join the early access list.'
         }
       },
       valuesTitle: 'Three priorities we focus on',
@@ -404,15 +416,18 @@ export const messages = {
       values: [
         {
           title: 'Support for organizers',
-          description: 'Help on-the-ground hosts run activities in Japan without drowning in forms, chats, or coordination work.'
+          description: 'Help on-the-ground hosts run activities in Japan without drowning in forms, chats, or coordination work.',
+          iconKey: 'support'
         },
         {
           title: 'Event infrastructure',
-          description: 'A lightweight stack that unifies sign-ups, notifications, payments, and onsite flows.'
+          description: 'A lightweight stack that unifies sign-ups, notifications, payments, and onsite flows.',
+          iconKey: 'infra'
         },
         {
           title: 'Multicultural connections',
-          description: 'Link foreign workers, students, and residents with Japanese enterprises for real collaboration opportunities.'
+          description: 'Link foreign workers, students, and residents with Japanese enterprises for real collaboration opportunities.',
+          iconKey: 'connection'
         }
       ],
       highlightsTitle: 'Key features that make events easier',
@@ -502,28 +517,34 @@ export const messages = {
       communityCards: [
         {
           title: 'Event tools',
+          iconKey: 'eventTools',
           bullets: ['Multilingual signup pages', 'Capacity & reminder management', 'Check-in plus summaries']
         },
         {
           title: 'Payments & costs',
+          iconKey: 'finance',
           bullets: ['Online fee collection', 'Simple reconciliation', 'Automatic receipts']
         },
         {
           title: 'Communication',
+          iconKey: 'communication',
           bullets: ['Templates across languages', 'Bulk updates to participants', 'Shared notes with partners']
         }
       ],
       companyCards: [
         {
           title: 'Community collaboration',
+          iconKey: 'collaboration',
           bullets: ['Co-create cultural exchanges', 'Onsite experience programs', 'Field facilitation support']
         },
         {
           title: 'Insight from the field',
+          iconKey: 'insight',
           bullets: ['Feedback from multicultural events', 'Participant data highlights', 'Shared challenges & opportunities']
         },
         {
           title: 'Program support',
+          iconKey: 'program',
           bullets: ['Skill sessions and life info workshops', 'Joint projects with cities & firms', 'Evaluation and improvement reports']
         }
       ],
@@ -532,12 +553,18 @@ export const messages = {
         { name: 'Starter', description: 'For pilots and small teams', bullets: ['Up to 500 members', '3 events per month', 'Email support'] },
         { name: 'Partner', description: 'For ongoing operations', bullets: ['Unlimited events', 'Multi-location & multilingual care', 'Dedicated CS manager'] },
         { name: 'Enterprise', description: 'For large programs', bullets: ['API integrations', 'SSO / IAM', '24/7 support'] }
-      ]
+      ],
+      planNote: 'Plans are illustrative. Contact us for a tailored scope.'
     },
     news: {
-      eyebrow: 'Updates',
-      title: 'News',
-      intro: 'Platform releases, partnership pilots, and stories from the field.'
+      eyebrow: 'SOCIALMORE Blog',
+      title: 'SOCIALMORE Blog',
+      intro: 'Stories about our incorporation, releases, and community collaborations.',
+      detail: {
+        back: 'Back to news',
+        notFoundTitle: 'Article not found',
+        notFoundCopy: 'Please check the link or return to the news list.'
+      }
     },
     contact: {
       eyebrow: 'Contact',
@@ -561,30 +588,29 @@ export const messages = {
       info: {
         company: 'SOCIALMORE Inc.',
         location: 'Mitaka, Tokyo',
-        email: 'info@socialmore.jp',
+        email: 'info@socialmore.co.jp',
         encouragement: 'We welcome conversations from organizers, companies, municipalities, and individuals alike.'
       }
     },
-    footer: {
-      company: {
-        name: 'SOCIALMORE Inc.',
-        address: 'Based in Mitaka, Tokyo and supporting communities across Japan.',
-        registration: 'Company registration details are available upon request.'
-      },
-      contact: {
-        title: 'Contact',
-        emailLabel: 'Email',
-        email: 'info@socialmore.jp',
-        phoneLabel: 'Phone',
-        phone: '+81-50-0000-0000',
-        hours: 'Weekdays 10:00-18:00 JST'
-      },
+      footer: {
+        company: {
+          name: 'SOCIALMORE Inc.',
+          address: '3-27-1 Sankyo Bldg 2F, Shimorenjaku, Mitaka, Tokyo 181-0013'
+        },
+        contact: {
+          title: 'Contact',
+          emailLabel: 'Email',
+          email: 'info@socialmore.co.jp',
+          phoneLabel: 'Phone',
+          phone: '080-6567-1105',
+          hours: 'Weekdays 10:00-18:00 JST'
+        },
       links: {
         title: 'Legal',
         privacy: 'Privacy policy',
         terms: 'Terms of use'
       },
-      copyright: '© 2024 SOCIALMORE Inc. All rights reserved.'
+      copyright: '© 2025 SOCIALMORE Inc.'
     },
     legal: {
       privacy: {
@@ -635,7 +661,7 @@ export const messages = {
           },
           {
             title: '8. Contact',
-            body: ['Please contact info@socialmore.jp for privacy-related questions.']
+            body: ['Please contact info@socialmore.co.jp for privacy-related questions.']
           }
         ]
       },
@@ -675,7 +701,7 @@ export const messages = {
           },
           {
             title: '8. Contact',
-            body: ['Please reach out to info@socialmore.jp regarding these terms.']
+            body: ['Please reach out to info@socialmore.co.jp regarding these terms.']
           }
         ]
       }
@@ -704,15 +730,14 @@ export const messages = {
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: '公测筹备',
-          title: '与社群伙伴一起完成最后调校',
-          description: '我们在真实活动现场检验流程，确保未来开放时所有体验都扎实可靠。',
+          title: '上线三步走',
+          description: '与社群伙伴一起分阶段开放，让每一批用户都获得充分支持。',
           steps: [
-            { title: '实地访谈', body: '直接聆听主办方与参与者的需求，梳理最紧要的问题。' },
-            { title: '原型设计', body: '快速验证报名、通知、支付等轻量流程，确认可行性。' },
-            { title: '陪跑试点', body: '与合作社群开展小规模试行，每周迭代优化。' },
-            { title: '上线准备', body: '完善导引与支援机制，逐步开放早鸟与公测名额。' }
+            { title: '规划', body: '梳理问题与核心流程，只构建必要功能。' },
+            { title: '共创试点', body: '在真实活动中陪跑，并以周为单位优化。' },
+            { title: 'Public β', body: '完善导入与支援机制，按批次邀请。' }
           ],
-          note: '若想加入体验或成为早期合作社群，欢迎与我们联系。'
+          note: '欢迎想加入早期体验的社群来信，我们会尽快联系。'
         }
       },
       valuesTitle: '我们专注于三件事情',
@@ -720,15 +745,18 @@ export const messages = {
       values: [
         {
           title: '社群主理人支援',
-          description: '帮助在日社群主办方轻松开展活动，减少繁琐的表格、沟通与对接。'
+          description: '帮助在日社群主办方轻松开展活动，减少繁琐的表格、沟通与对接。',
+          iconKey: 'support'
         },
         {
           title: '活动运营基础设施',
-          description: '提供「报名・通知・支付・会场协力」的一体化基础设施。'
+          description: '提供「报名・通知・支付・会场协力」的一体化基础设施。',
+          iconKey: 'infra'
         },
         {
           title: '多文化社区连结',
-          description: '连结外国劳工、留学生与跨文化居民，为企业与机构带来真实可信的合作网络。'
+          description: '连结外国劳工、留学生与跨文化居民，为企业与机构带来真实可信的合作网络。',
+          iconKey: 'connection'
         }
       ],
       highlightsTitle: '让社群活动变得轻松的关键功能',
@@ -794,28 +822,34 @@ export const messages = {
       communityCards: [
         {
           title: '活动运营工具（Event Tools）',
+          iconKey: 'eventTools',
           bullets: ['报名、通知、签到、数据管理一次完成', '多语言界面降低沟通负担', '活动模板可快速复用']
         },
         {
           title: '费用与支付（Payment）',
+          iconKey: 'finance',
           bullets: ['支持线上收费与简单结算', '自动整理收支与凭证', '减少手动对账时间']
         },
         {
           title: '沟通与协作（Communication）',
+          iconKey: 'communication',
           bullets: ['多语言沟通与提醒', '参与者与志愿者同步', '合作方共享关键资讯']
         }
       ],
       companyCards: [
         {
           title: '社区协作（Community Collaboration）',
+          iconKey: 'collaboration',
           bullets: ['文化交流与体验项目', '真实社群现场活动', '主办端与企业端双向沟通']
         },
         {
           title: '现场信息洞察（Insight）',
+          iconKey: 'insight',
           bullets: ['来自多文化活动的反馈', '参与者画像与需求摘要', '协助制定沟通策略']
         },
         {
           title: '合作项目支持（Programs）',
+          iconKey: 'program',
           bullets: ['与企业／自治体共同策划讲座或体验', '技能与生活信息课程', '评估与后续改进建议']
         }
       ],
@@ -824,12 +858,18 @@ export const messages = {
         { name: '入门计划', description: '适合试点与小型团队', bullets: ['最多 500 名成员', '每月 3 场活动', '邮件支持'] },
         { name: '伙伴计划', description: '适合持续运营与多据点协作', bullets: ['不限活动数量', '多地点与多语言支持', '专属成功经理'] },
         { name: '企业计划', description: '面向大型项目或机构', bullets: ['API 集成', 'SSO / IAM', '24/7 支持'] }
-      ]
+      ],
+      planNote: '以上为示例方案，欢迎来信取得客制化内容。'
     },
     news: {
-      eyebrow: '新闻',
-      title: '新闻与更新',
-      intro: '关注平台版本更新、合作项目与社群故事。'
+      eyebrow: 'SOCIALMORE 博客',
+      title: 'SOCIALMORE 博客',
+      intro: '记录公司成立、产品更新与社群故事的博客。',
+      detail: {
+        back: '返回新闻列表',
+        notFoundTitle: '找不到相关新闻',
+        notFoundCopy: '请确认连结是否正确，或返回新闻列表。'
+      }
     },
     contact: {
       eyebrow: '联系我们',
@@ -853,30 +893,29 @@ export const messages = {
       info: {
         company: 'SOCIALMORE（创翔莫尔株式会社）',
         location: '日本东京三鹰',
-        email: 'info@socialmore.jp',
+        email: 'info@socialmore.co.jp',
         encouragement: '欢迎自治体、企业、社群伙伴与个人来信，我们会尽快回复。'
       }
     },
     footer: {
       company: {
         name: 'SOCIALMORE（创翔莫尔株式会社）',
-        address: '在日本东京三鹰开展业务，持续支持各地社群。',
-        registration: '如有需要，可提供公司的登记与注册信息。'
+        address: '〒181-0013 东京都三鹰市下连雀3-27-1 三协大楼2层'
       },
       contact: {
         title: '联系 SOCIALMORE',
         emailLabel: '邮箱',
-        email: 'info@socialmore.jp',
+        email: 'info@socialmore.co.jp',
         phoneLabel: '电话',
-        phone: '+81-50-0000-0000',
-        hours: '服务时间：工作日 10:00-18:00（日本时间）'
+        phone: '080-6567-1105',
+        hours: '工作日 10:00-18:00（日本时间）'
       },
       links: {
         title: '法律信息',
         privacy: '隐私政策',
         terms: '使用条款'
       },
-      copyright: '© 2024 SOCIALMORE Inc. 保留所有权利。'
+      copyright: '© 2025 SOCIALMORE Inc. 保留所有权利。'
     },
     legal: {
       privacy: {
@@ -915,7 +954,7 @@ export const messages = {
           },
           {
             title: '8. 联系方式',
-            body: ['关于隐私问题，请寄信至 info@socialmore.jp。']
+            body: ['关于隐私问题，请寄信至 info@socialmore.co.jp。']
           }
         ]
       },
@@ -951,7 +990,7 @@ export const messages = {
           },
           {
             title: '8. 联系方式',
-            body: ['条款相关问题请联络 info@socialmore.jp。']
+            body: ['条款相关问题请联络 info@socialmore.co.jp。']
           }
         ]
       }

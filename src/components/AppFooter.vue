@@ -5,7 +5,6 @@
         <div class="footer-column">
           <h4>{{ company.name }}</h4>
           <p>{{ company.address }}</p>
-          <p>{{ company.registration }}</p>
         </div>
         <div class="footer-column">
           <h5>{{ contact.title }}</h5>

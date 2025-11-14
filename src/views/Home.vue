@@ -14,6 +14,9 @@
               <span>{{ t('home.hero.primaryCta') }}</span>
               <img :src="heroCtaArrow" alt="" aria-hidden="true" />
             </RouterLink>
+            <RouterLink to="/contact" class="btn btn-secondary">
+              {{ t('buttons.contactUs') }}
+            </RouterLink>
           </div>
         </div>
         <div class="hero-visual">
@@ -21,15 +24,18 @@
             <p class="panel-eyebrow">{{ heroPanel.eyebrow }}</p>
             <h3>{{ heroPanel.title }}</h3>
             <p class="panel-description">{{ heroPanel.description }}</p>
-            <ul class="panel-steps">
-              <li v-for="(step, index) in heroPanel.steps" :key="`${step.title}-${index}`">
-                <div class="step-index">{{ String(index + 1).padStart(2, '0') }}</div>
-                <div class="step-body">
-                  <strong>{{ step.title }}</strong>
-                  <p>{{ step.body }}</p>
+            <div class="panel-timeline">
+              <div class="timeline-item" v-for="(step, index) in heroPanel.steps" :key="`${step.title}-${index}`">
+                <div class="timeline-marker">
+                  <span>{{ String(index + 1).padStart(2, '0') }}</span>
+                  <div v-if="index < heroPanel.steps.length - 1" class="timeline-connector"></div>
                 </div>
-              </li>
-            </ul>
+                <div class="timeline-copy">
+                  <p class="timeline-phase">{{ step.title }}</p>
+                  <p class="timeline-text">{{ step.body }}</p>
+                </div>
+              </div>
+            </div>
             <p v-if="heroPanel.note" class="panel-note">{{ heroPanel.note }}</p>
           </div>
         </div>
@@ -46,7 +52,9 @@
         </div>
         <div class="card-grid value-grid">
           <article v-for="value in currentHome.values" :key="value.title" class="card value-card">
-            <div class="icon-circle"></div>
+            <div class="value-icon" aria-hidden="true">
+              <img :src="getValueIcon(value.iconKey)" alt="" />
+            </div>
             <h3>{{ value.title }}</h3>
             <p>{{ value.description }}</p>
           </article>
@@ -113,14 +121,24 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
+import heroMainPhoto from '../assets/hero/hero-main.jpg';
 import heroMainVisual from '../assets/hero/hero-main.svg';
 import heroOverlayShapes from '../assets/hero/hero-overlay-shapes.svg';
 import heroCtaArrow from '../assets/hero/hero-cta-arrow.svg';
 import newsDefaultCover from '../assets/news/news-default.svg';
+import valueIconSupport from '../assets/icons/icon-support-hand.svg';
+import valueIconInfra from '../assets/icons/icon-infra-flow.svg';
+import valueIconConnection from '../assets/icons/icon-connection-bubbles.svg';
 import { newsItems } from '../data/news';
 
 const { t, dictionary, currentLocale } = useI18n();
 const heroContent = computed(() => dictionary.value.home.hero);
+const valueIconMap = {
+  support: valueIconSupport,
+  infra: valueIconInfra,
+  connection: valueIconConnection
+};
+const getValueIcon = (key) => valueIconMap[key] ?? valueIconSupport;
 const heroPanel = computed(() => {
   const panel = heroContent.value.panel ?? {};
   const steps = Array.isArray(panel.steps) ? panel.steps : [];
@@ -133,10 +151,9 @@ const heroPanel = computed(() => {
   };
 });
 
-const heroPhotoUrl = `${import.meta.env.BASE_URL}hero/hero-main.jpg`;
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    `linear-gradient(135deg, rgba(11, 28, 46, 0.92), rgba(15, 138, 215, 0.35)), url('${heroPhotoUrl}'), url('${heroMainVisual}')`
+    `linear-gradient(135deg, rgba(11, 28, 46, 0.92), rgba(15, 138, 215, 0.35)), url('${heroMainPhoto}'), url('${heroMainVisual}')`
 }));
 
 const heroOverlayStyle = computed(() => ({
@@ -236,13 +253,14 @@ const formatDate = (dateStr) => {
 }
 
 .hero-panel {
-  width: min(380px, 100%);
-  background: rgba(4, 12, 24, 0.85);
+  width: min(360px, 100%);
+  background: rgba(4, 12, 24, 0.82);
   color: #fff;
   border-radius: 28px;
-  padding: 1.75rem;
+  padding: 1.35rem 1.5rem;
   box-shadow: 0 30px 60px rgba(3, 12, 23, 0.65);
   backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .panel-eyebrow {
@@ -255,45 +273,65 @@ const formatDate = (dateStr) => {
 
 .panel-description {
   color: rgba(255, 255, 255, 0.78);
-  margin-bottom: 1.25rem;
-  line-height: 1.6;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
-.panel-steps {
-  list-style: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
+.panel-timeline {
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
-.panel-steps li {
+.timeline-item {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.85rem;
   align-items: flex-start;
 }
 
-.step-index {
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.12);
+.timeline-marker {
+  width: 40px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timeline-marker span {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(37, 183, 176, 0.25));
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-.step-body strong {
-  display: block;
-  margin-bottom: 0.2rem;
+.timeline-connector {
+  flex: 1;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
 }
 
-.step-body p {
+.timeline-copy {
+  flex: 1;
+}
+
+.timeline-phase {
   margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.timeline-text {
+  margin: 0.25rem 0 0;
   color: rgba(255, 255, 255, 0.75);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 0.92rem;
 }
 
 .panel-note {
@@ -327,12 +365,20 @@ const formatDate = (dateStr) => {
   text-align: left;
 }
 
-.value-card .icon-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 18px;
-  background-image: var(--gradient-primary);
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(37, 183, 176, 0.12), rgba(15, 138, 215, 0.18));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+}
+
+.value-icon img {
+  width: 36px;
+  height: 36px;
 }
 
 .highlight {
