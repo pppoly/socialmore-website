@@ -41,16 +41,18 @@ export const messages = {
         subtitle:
           'SOCIALMOREは、簡単に使えるテクノロジーツールでイベント主催の負担を軽くし、コミュニケーションを滑らかにし、必要なリソースにつながりやすくします。コミュニティから始まり、多様な在日コミュニティと日本の企業・機関を結び、持続的な協働エコシステムを築きます。',
         primaryCta: 'サービスを知る',
-        secondaryCta: 'お問い合わせ',
         eyebrow: 'SOCIAL + SaaS',
-        dashboard: {
-          focusTag: 'コミュニティ',
-          statusLabel: '稼働中',
-          stats: [
-            { label: '連携コミュニティ', value: '128', note: '各地域で展開' },
-            { label: 'アクティブメンバー', value: '12k', note: '月間' },
-            { label: '企業・機関', value: '54', note: '協働中' }
-          ]
+        panel: {
+          eyebrow: 'β版準備中',
+          title: 'コミュニティと伴走しながら最終調整を進めています',
+          description: '実際のイベント現場で検証し、主催者が本当に必要とするワークフローを磨いています。',
+          steps: [
+            { title: '現場ヒアリング', body: '主催者や参加者の声を直接聞き、課題と要件を整理。' },
+            { title: 'プロトタイプ設計', body: '多言語フォームや通知の流れを軽量に設計し、素早く検証。' },
+            { title: '伴走テスト', body: '地域コミュニティと小さくテストし、週次で改善を繰り返し。' },
+            { title: '公開準備', body: 'オンボーディングやサポート体制を整え、順次アクセスを開放。' }
+          ],
+          note: '初期ユーザーとして検証に参加いただけるコミュニティを募集中です。'
         }
       },
       valuesTitle: '私たちが注力する3つの領域',
@@ -383,16 +385,18 @@ export const messages = {
         subtitle:
           'SOCIALMORE combines simple tools and real field support so community organizers worry less about forms, coordination, and logistics. We start from the communities on the ground, then bridge them with Japanese companies and institutions to build a sustainable ecosystem.',
         primaryCta: 'Explore our services',
-        secondaryCta: 'Get in touch',
         eyebrow: 'SOCIAL + SaaS',
-        dashboard: {
-          focusTag: 'Community',
-          statusLabel: 'Live',
-          stats: [
-            { label: 'Partner communities', value: '128', note: 'across Japan' },
-            { label: 'Active members', value: '12k', note: 'monthly' },
-            { label: 'Partners', value: '54', note: 'companies & orgs' }
-          ]
+        panel: {
+          eyebrow: 'Pre-launch',
+          title: 'Finalizing with community partners',
+          description: 'We are stress-testing every workflow in real pilots before opening broader access.',
+          steps: [
+            { title: 'Field interviews', body: 'Listen to organizers and residents to map the most urgent needs.' },
+            { title: 'Prototype design', body: 'Rapidly validate lightweight flows for sign-ups, alerts, and payments.' },
+            { title: 'Guided pilots', body: 'Co-run small trials with partner communities and iterate every week.' },
+            { title: 'Launch prep', body: 'Document onboarding and support so early adopters can succeed from day one.' }
+          ],
+          note: 'Let us know if you would like to join the early access list.'
         }
       },
       valuesTitle: 'Three priorities we focus on',
@@ -697,16 +701,18 @@ export const messages = {
         subtitle:
           'SOCIALMORE 通过简单易用的技术工具，让活动主办更省心、沟通更顺畅、资源更容易找到。从社群出发，连结在日多元社区与日本企业、机构，形成可持续的活动与合作生态。',
         primaryCta: '了解我们的服务',
-        secondaryCta: '联系我们',
         eyebrow: 'SOCIAL + SaaS',
-        dashboard: {
-          focusTag: '社群',
-          statusLabel: '运行中',
-          stats: [
-            { label: '合作社群', value: '128', note: '覆盖多地' },
-            { label: '活跃成员', value: '12k', note: '月活' },
-            { label: '合作伙伴', value: '54', note: '企业与机构' }
-          ]
+        panel: {
+          eyebrow: '公测筹备',
+          title: '与社群伙伴一起完成最后调校',
+          description: '我们在真实活动现场检验流程，确保未来开放时所有体验都扎实可靠。',
+          steps: [
+            { title: '实地访谈', body: '直接聆听主办方与参与者的需求，梳理最紧要的问题。' },
+            { title: '原型设计', body: '快速验证报名、通知、支付等轻量流程，确认可行性。' },
+            { title: '陪跑试点', body: '与合作社群开展小规模试行，每周迭代优化。' },
+            { title: '上线准备', body: '完善导引与支援机制，逐步开放早鸟与公测名额。' }
+          ],
+          note: '若想加入体验或成为早期合作社群，欢迎与我们联系。'
         }
       },
       valuesTitle: '我们专注于三件事情',

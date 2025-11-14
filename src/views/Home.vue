@@ -14,25 +14,23 @@
               <span>{{ t('home.hero.primaryCta') }}</span>
               <img :src="heroCtaArrow" alt="" aria-hidden="true" />
             </RouterLink>
-            <RouterLink to="/contact" class="btn btn-secondary">{{ t('home.hero.secondaryCta') }}</RouterLink>
           </div>
         </div>
         <div class="hero-visual">
-          <div class="dashboard-card">
-            <div class="card-header">
-              <div class="pill">{{ heroDashboard.focusTag }}</div>
-              <div class="status">{{ heroDashboard.statusLabel }}</div>
-            </div>
-            <div class="stats">
-              <div class="stat" v-for="item in heroStats" :key="item.label">
-                <span class="label">{{ item.label }}</span>
-                <strong>{{ item.value }}</strong>
-                <small>{{ item.note }}</small>
-              </div>
-            </div>
-            <div class="chart">
-              <span v-for="n in 6" :key="n" :style="{ height: 15 + n * 10 + 'px' }"></span>
-            </div>
+          <div class="hero-panel">
+            <p class="panel-eyebrow">{{ heroPanel.eyebrow }}</p>
+            <h3>{{ heroPanel.title }}</h3>
+            <p class="panel-description">{{ heroPanel.description }}</p>
+            <ul class="panel-steps">
+              <li v-for="(step, index) in heroPanel.steps" :key="`${step.title}-${index}`">
+                <div class="step-index">{{ String(index + 1).padStart(2, '0') }}</div>
+                <div class="step-body">
+                  <strong>{{ step.title }}</strong>
+                  <p>{{ step.body }}</p>
+                </div>
+              </li>
+            </ul>
+            <p v-if="heroPanel.note" class="panel-note">{{ heroPanel.note }}</p>
           </div>
         </div>
       </div>
@@ -123,7 +121,17 @@ import { newsItems } from '../data/news';
 
 const { t, dictionary, currentLocale } = useI18n();
 const heroContent = computed(() => dictionary.value.home.hero);
-const heroDashboard = computed(() => heroContent.value.dashboard ?? { focusTag: '', statusLabel: '', stats: [] });
+const heroPanel = computed(() => {
+  const panel = heroContent.value.panel ?? {};
+  const steps = Array.isArray(panel.steps) ? panel.steps : [];
+  return {
+    eyebrow: panel.eyebrow ?? '',
+    title: panel.title ?? '',
+    description: panel.description ?? '',
+    note: panel.note ?? '',
+    steps
+  };
+});
 
 const heroPhotoUrl = `${import.meta.env.BASE_URL}hero/hero-main.jpg`;
 const heroBackgroundStyle = computed(() => ({
@@ -138,8 +146,6 @@ const heroOverlayStyle = computed(() => ({
 const newsCoverStyle = computed(() => ({
   backgroundImage: `linear-gradient(135deg, rgba(15, 138, 215, 0.15), rgba(246, 195, 67, 0.15)), url('${newsDefaultCover}')`
 }));
-
-const heroStats = computed(() => heroDashboard.value?.stats ?? []);
 
 const currentHome = computed(() => dictionary.value.home);
 const homeNow = computed(() => currentHome.value.now ?? { title: '', description: '', projects: [] });
@@ -229,82 +235,81 @@ const formatDate = (dateStr) => {
   z-index: 1;
 }
 
-.dashboard-card {
-  width: min(360px, 100%);
-  background: rgba(4, 12, 24, 0.82);
+.hero-panel {
+  width: min(380px, 100%);
+  background: rgba(4, 12, 24, 0.85);
   color: #fff;
   border-radius: 28px;
-  padding: 1.5rem;
+  padding: 1.75rem;
   box-shadow: 0 30px 60px rgba(3, 12, 23, 0.65);
   backdrop-filter: blur(12px);
 }
 
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.pill {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
+.panel-eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.status {
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
-.stats {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.stat {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 18px;
-  padding: 0.75rem 1rem;
-}
-
-.stat .label {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.stat strong {
-  display: block;
-  font-size: 1.7rem;
-  margin-top: 0.35rem;
-}
-
-.stat small {
+  letter-spacing: 0.35em;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.5rem;
 }
 
-.chart {
+.panel-description {
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.panel-steps {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
   display: flex;
-  align-items: flex-end;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.chart span {
-  flex: 1;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(37, 183, 176, 0.8));
+.panel-steps li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.step-index {
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.step-body strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.step-body p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.panel-note {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .cta-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background-image: linear-gradient(120deg, #0f8ad7, #25b7b0, #ffc65a);
   box-shadow: 0 18px 35px rgba(37, 183, 176, 0.35);
+  text-align: center;
 }
 
 .cta-primary img {
