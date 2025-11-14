@@ -40,17 +40,7 @@ This project is configured to build into the `docs` folder for GitHub Pages.
   npm run build
   ```
 
-  This will output the production build into `docs/`.
-
-- In the GitHub repository settings:
-  - Go to **Settings → Pages**.
-  - Set the source to:  
-    Branch: `main`  
-    Folder: `/docs`.
-
-The site will then be available at:
-
-https://pppoly.github.io/socialmore-website/
+  This will output the production build into `docs/`, ready to be copied into the Docker/Nginx image or any static host root (e.g., Cloud Run with this repo's Dockerfile).
 
 ## Project Structure
 ```
