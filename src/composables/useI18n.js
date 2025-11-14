@@ -30,7 +30,17 @@ export const messages = {
         subtitle:
           'コミュニティイベントと会員管理SaaSを一体化し、在日外国人が安心して働き暮らせる仕組みを提供します。自治体・企業・コミュニティの協働を促進します。',
         primaryCta: 'サービスを見る',
-        secondaryCta: 'お問い合わせ'
+        secondaryCta: 'お問い合わせ',
+        eyebrow: 'SOCIAL + SaaS',
+        dashboard: {
+          focusTag: 'コミュニティ',
+          statusLabel: '稼働中',
+          stats: [
+            { label: '登録コミュニティ', value: '128', note: '各地域で展開' },
+            { label: '外国人メンバー', value: '12k', note: '月間アクティブ' },
+            { label: '企業パートナー', value: '54', note: '導入済み' }
+          ]
+        }
       },
       valuesTitle: '注力している領域',
       valuesDescription: 'SaaSとコミュニティ運営を組み合わせ、外国人と地域の信頼を育む3つの柱。',
@@ -68,6 +78,7 @@ export const messages = {
       newsDescription: 'サービスのアップデートやイベントレポートをお届けします。'
     },
     about: {
+      eyebrow: 'SOCIALMORE',
       title: '会社紹介',
       visionTitle: 'ビジョン',
       visionText:
@@ -103,6 +114,7 @@ export const messages = {
       ]
     },
     services: {
+      eyebrow: 'プラットフォーム',
       title: 'サービス',
       communityTitle: 'コミュニティ向け',
       companyTitle: '企業向け',
@@ -171,10 +183,12 @@ export const messages = {
       ]
     },
     news: {
+      eyebrow: '最新情報',
       title: 'ニュース',
       intro: '最新のリリース情報やコミュニティ連携事例をチェックしてください。'
     },
     contact: {
+      eyebrow: 'お問い合わせ',
       title: 'お問い合わせ',
       intro: '導入やパートナーシップに関するご相談を受け付けています。',
       form: {
@@ -184,7 +198,11 @@ export const messages = {
         inquiryType: 'お問い合わせ種別',
         message: 'メッセージ',
         submit: '送信する',
-        success: 'お問い合わせありがとうございました。（このフォームはデモであり、実際には送信されません。）'
+        success: 'お問い合わせありがとうございました。（このフォームはデモであり、実際には送信されません。）',
+        validation: {
+          required: '必須項目です',
+          email: '正しいメールアドレスを入力してください'
+        }
       },
       inquiryOptions: [
         'コミュニティSaaSについて',
@@ -226,7 +244,17 @@ export const messages = {
         subtitle:
           'We unify community engagement and SaaS tools so foreign workers in Japan can live and work confidently while cities, NPOs, and companies collaborate seamlessly.',
         primaryCta: 'View Services',
-        secondaryCta: 'Contact us'
+        secondaryCta: 'Contact us',
+        eyebrow: 'SOCIAL + SaaS',
+        dashboard: {
+          focusTag: 'Community',
+          statusLabel: 'Live',
+          stats: [
+            { label: 'Communities', value: '128', note: 'active cities' },
+            { label: 'Members', value: '12k', note: 'monthly active' },
+            { label: 'Partners', value: '54', note: 'deployments' }
+          ]
+        }
       },
       valuesTitle: 'Focus areas',
       valuesDescription: 'Three pillars that combine SaaS workflows with community trust building.',
@@ -264,6 +292,7 @@ export const messages = {
       newsDescription: 'Updates on the platform, partnerships, and community stories.'
     },
     about: {
+      eyebrow: 'SOCIALMORE',
       title: 'About Us',
       visionTitle: 'Vision',
       visionText:
@@ -299,6 +328,7 @@ export const messages = {
       ]
     },
     services: {
+      eyebrow: 'Platform',
       title: 'Products & Services',
       communityTitle: 'For community organizers',
       companyTitle: 'For companies & employers',
@@ -367,10 +397,12 @@ export const messages = {
       ]
     },
     news: {
+      eyebrow: 'Updates',
       title: 'News',
       intro: 'Catch up on platform releases, pilots, and partner collaborations.'
     },
     contact: {
+      eyebrow: 'Reach us',
       title: 'Contact',
       intro: 'We welcome conversations about adoption, partnerships, and collaboration.',
       form: {
@@ -380,7 +412,11 @@ export const messages = {
         inquiryType: 'Type of inquiry',
         message: 'Message',
         submit: 'Send message',
-        success: 'Thank you for your inquiry. (This form is a demo and does not actually send emails.)'
+        success: 'Thank you for your inquiry. (This form is a demo and does not actually send emails.)',
+        validation: {
+          required: 'Required field',
+          email: 'Please enter a valid email'
+        }
       },
       inquiryOptions: [
         'Community SaaS',

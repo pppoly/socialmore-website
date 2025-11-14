@@ -7,11 +7,17 @@
   line-height: 1.5;
   font-weight: 400;
 
-  --gradient-primary: linear-gradient(120deg, #0f8ad7, #25b7b0, #f6c343);
+  --color-brand-start: #25b7b0;
+  --color-brand-end: #0f8ad7;
+  --color-accent: #ffc65a;
   --color-primary: #0f8ad7;
   --color-dark: #0c1f33;
   --color-muted: #5c6c7c;
-  --card-bg: #ffffff;
+  --color-muted-strong: #2c3543;
+  --color-surface: #f5f7fb;
+  --color-surface-alt: #ffffff;
+  --gradient-primary: linear-gradient(120deg, var(--color-brand-end), var(--color-brand-start));
+  --card-bg: var(--color-surface-alt);
   --shadow-soft: 0 12px 30px rgba(15, 138, 215, 0.12);
 }
 
@@ -22,7 +28,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #f5f7fb;
+  background-color: var(--color-surface);
+  color: var(--color-dark);
 }
 
 img {
@@ -46,6 +53,14 @@ main {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.78rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
 }
 
 .card-grid {

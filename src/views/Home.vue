@@ -6,19 +6,22 @@
       <!-- hero-overlay-shapes.svg: ロゴをモチーフにした抽象ライン。透明背景でヒーローセクションに重ねる。 -->
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">SOCIAL + SaaS</p>
+          <p class="eyebrow">{{ heroContent.eyebrow }}</p>
           <h1>{{ t('home.hero.title') }}</h1>
           <p class="subtitle">{{ t('home.hero.subtitle') }}</p>
           <div class="cta-row">
-            <RouterLink to="/services" class="btn btn-primary">{{ t('home.hero.primaryCta') }}</RouterLink>
+            <RouterLink to="/services" class="btn btn-primary cta-primary">
+              <span>{{ t('home.hero.primaryCta') }}</span>
+              <img :src="heroCtaArrow" alt="" aria-hidden="true" />
+            </RouterLink>
             <RouterLink to="/contact" class="btn btn-secondary">{{ t('home.hero.secondaryCta') }}</RouterLink>
           </div>
         </div>
         <div class="hero-visual">
           <div class="dashboard-card">
             <div class="card-header">
-              <div class="pill">Community</div>
-              <div class="status">Live</div>
+              <div class="pill">{{ heroDashboard.focusTag }}</div>
+              <div class="status">{{ heroDashboard.statusLabel }}</div>
             </div>
             <div class="stats">
               <div class="stat" v-for="item in heroStats" :key="item.label">
@@ -96,16 +99,20 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
-import heroMainVisual from '../assets/hero/hero-main.jpg';
+import heroMainVisual from '../assets/hero/hero-main.svg';
 import heroOverlayShapes from '../assets/hero/hero-overlay-shapes.svg';
+import heroCtaArrow from '../assets/hero/hero-cta-arrow.svg';
 import newsDefaultCover from '../assets/news/news-default.svg';
 import { newsItems } from '../data/news';
 
 const { t, dictionary, currentLocale } = useI18n();
+const heroContent = computed(() => dictionary.value.home.hero);
+const heroDashboard = computed(() => heroContent.value.dashboard ?? { focusTag: '', statusLabel: '', stats: [] });
 
+const heroPhotoUrl = `${import.meta.env.BASE_URL}hero/hero-main.jpg`;
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    `linear-gradient(135deg, rgba(244, 252, 255, 0.92), rgba(255, 247, 236, 0.7)), url('${heroMainVisual}')`
+    `linear-gradient(135deg, rgba(11, 28, 46, 0.92), rgba(15, 138, 215, 0.35)), url('${heroPhotoUrl}'), url('${heroMainVisual}')`
 }));
 
 const heroOverlayStyle = computed(() => ({
@@ -116,11 +123,7 @@ const newsCoverStyle = computed(() => ({
   backgroundImage: `linear-gradient(135deg, rgba(15, 138, 215, 0.15), rgba(246, 195, 67, 0.15)), url('${newsDefaultCover}')`
 }));
 
-const heroStats = computed(() => [
-  { label: currentLocale.value === 'ja' ? '登録コミュニティ' : 'Communities', value: '128', note: currentLocale.value === 'ja' ? '各地域で展開' : 'active cities' },
-  { label: currentLocale.value === 'ja' ? '外国人メンバー' : 'Members', value: '12k', note: currentLocale.value === 'ja' ? '月間アクティブ' : 'monthly active' },
-  { label: currentLocale.value === 'ja' ? '企業パートナー' : 'Partners', value: '54', note: currentLocale.value === 'ja' ? '導入済み' : 'deployments' }
-]);
+const heroStats = computed(() => heroDashboard.value?.stats ?? []);
 
 const currentHome = computed(() => dictionary.value.home);
 const latestNews = computed(() => newsItems.slice(0, 3));
@@ -141,6 +144,15 @@ const formatDate = (dateStr) => {
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  color: #fff;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(11, 28, 46, 0.75), rgba(15, 138, 215, 0.35));
+  z-index: 0;
 }
 
 .hero-overlay-shapes {
@@ -148,8 +160,9 @@ const formatDate = (dateStr) => {
   inset: 0;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  opacity: 0.25;
+  background-size: min(1200px, 90%);
+  opacity: 0.35;
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
@@ -162,21 +175,27 @@ const formatDate = (dateStr) => {
   z-index: 1;
 }
 
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
 .hero-copy h1 {
   font-size: clamp(2.4rem, 4vw, 3rem);
   margin-bottom: 1rem;
 }
 
 .subtitle {
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 2rem;
 }
 
-.eyebrow {
+.hero .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.4em;
   font-size: 0.8rem;
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .cta-row {
@@ -188,15 +207,18 @@ const formatDate = (dateStr) => {
 .hero-visual {
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-card {
   width: min(360px, 100%);
-  background: #0d1c2e;
+  background: rgba(4, 12, 24, 0.82);
   color: #fff;
   border-radius: 28px;
   padding: 1.5rem;
-  box-shadow: 0 30px 60px rgba(13, 28, 46, 0.45);
+  box-shadow: 0 30px 60px rgba(3, 12, 23, 0.65);
+  backdrop-filter: blur(12px);
 }
 
 .card-header {
@@ -207,14 +229,16 @@ const formatDate = (dateStr) => {
 }
 
 .pill {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
   font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .status {
-  color: #9deaf2;
+  color: var(--color-accent);
   font-weight: 600;
 }
 
@@ -255,6 +279,19 @@ const formatDate = (dateStr) => {
   flex: 1;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(37, 183, 176, 0.8));
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-image: linear-gradient(120deg, #0f8ad7, #25b7b0, #ffc65a);
+  box-shadow: 0 18px 35px rgba(37, 183, 176, 0.35);
+}
+
+.cta-primary img {
+  width: 20px;
+  height: auto;
 }
 
 .section-heading {
@@ -329,6 +366,10 @@ const formatDate = (dateStr) => {
 @media (max-width: 600px) {
   .cta-row {
     flex-direction: column;
+  }
+
+  .hero {
+    padding-top: 4rem;
   }
 }
 </style>

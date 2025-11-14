@@ -2,7 +2,7 @@
   <div class="section">
     <div class="container about-page">
       <div class="section-heading">
-        <p class="eyebrow">SOCIALMORE</p>
+        <p class="eyebrow">{{ t('about.eyebrow') }}</p>
         <h1 class="section-title">{{ t('about.title') }}</h1>
       </div>
       <section class="about-card vision">
