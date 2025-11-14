@@ -1,5 +1,10 @@
 import { reactive, computed } from 'vue';
 
+const SUPPORTED_LOCALES = ['ja', 'en', 'zh'];
+const DEFAULT_LOCALE = 'ja';
+const STORAGE_KEY = 'sm_locale';
+const FALLBACK_LOCALES = ['ja', 'en'];
+
 const getValueByPath = (obj, path) => {
   return path.split('.').reduce((acc, key) => {
     if (acc && typeof acc === 'object' && key in acc) {
@@ -440,30 +445,68 @@ export const messages = {
   }
 };
 
+messages.zh = JSON.parse(JSON.stringify(messages.ja));
+
+const readStoredLocale = () => {
+  if (typeof window === 'undefined') {
+    return DEFAULT_LOCALE;
+  }
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved && SUPPORTED_LOCALES.includes(saved)) {
+      return saved;
+    }
+  } catch (error) {
+    // ignore storage errors
+  }
+  return DEFAULT_LOCALE;
+};
+
+const persistLocale = (locale) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  try {
+    window.localStorage.setItem(STORAGE_KEY, locale);
+  } catch (error) {
+    // ignore storage errors
+  }
+};
+
+const updateDocumentLang = (locale) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('lang', locale);
+  }
+};
+
 const state = reactive({
-  locale: 'ja'
+  locale: readStoredLocale()
 });
+
+updateDocumentLang(state.locale);
 
 export function useI18n() {
   const currentLocale = computed(() => state.locale);
-  const dictionary = computed(() => messages[state.locale]);
+  const dictionary = computed(() => messages[state.locale] ?? messages[DEFAULT_LOCALE]);
 
   const setLocale = (locale) => {
-    if (messages[locale]) {
-      state.locale = locale;
-      if (typeof document !== 'undefined') {
-        document.documentElement.setAttribute('lang', locale);
-      }
+    if (!SUPPORTED_LOCALES.includes(locale)) {
+      return;
     }
+    state.locale = locale;
+    persistLocale(locale);
+    updateDocumentLang(locale);
   };
 
   const t = (path) => {
-    const val = getValueByPath(messages[state.locale], path);
-    if (val !== undefined) {
-      return val;
+    const localesToTry = [state.locale, ...FALLBACK_LOCALES.filter((loc) => loc !== state.locale)];
+    for (const locale of localesToTry) {
+      const value = getValueByPath(messages[locale], path);
+      if (value !== undefined) {
+        return value;
+      }
     }
-    const fallback = getValueByPath(messages.en, path);
-    return fallback ?? path;
+    return path;
   };
 
   return {

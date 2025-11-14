@@ -27,7 +27,14 @@
             :class="{ active: currentLocale === 'en' }"
             @click="() => switchLanguage('en')"
           >
-            EN
+            English
+          </button>
+          <button
+            class="lang-btn"
+            :class="{ active: currentLocale === 'zh' }"
+            @click="() => switchLanguage('zh')"
+          >
+            中文
           </button>
         </div>
         <RouterLink to="/contact" class="contact-pill">
@@ -52,7 +59,10 @@
             日本語
           </button>
           <button class="lang-btn" :class="{ active: currentLocale === 'en' }" @click="() => switchLanguage('en')">
-            EN
+            English
+          </button>
+          <button class="lang-btn" :class="{ active: currentLocale === 'zh' }" @click="() => switchLanguage('zh')">
+            中文
           </button>
         </div>
         <RouterLink to="/contact" class="contact-pill" @click="closeMenu">
