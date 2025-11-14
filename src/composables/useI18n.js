@@ -2,12 +2,8 @@ import { reactive, computed } from 'vue';
 
 export const supportedLocales = [
   { code: 'ja', label: '日本語' },
-  { code: 'zh', label: '简体中文' },
   { code: 'en', label: 'English' },
-  { code: 'vi', label: 'Tiếng Việt' },
-  { code: 'my', label: 'မြန်မာ' },
-  { code: 'id', label: 'Bahasa Indonesia' },
-  { code: 'fil', label: 'Filipino' }
+  { code: 'zh', label: '简体中文' }
 ];
 
 const SUPPORTED_LOCALES = supportedLocales.map((locale) => locale.code);
@@ -25,525 +21,878 @@ const getValueByPath = (obj, path) => {
 };
 
 export const messages = {
-
-
-/* --------------------------------------------------------
-   JAPANESE (ja) — MASTER VERSION (DO NOT MODIFY)
--------------------------------------------------------- */
-ja: {
-  home: {
-    hero: {
-      title: "在日コミュニティ主催者を支える、やさしいテックサービス",
-      subtitle: "SOCIALMORE は、コミュニティ主催者がイベントを開きやすくするための、軽量で実用的なテクノロジーサービスです。企画、募集、決済、多言語コミュニケーション、会場協力など、運営の負担を減らし、活動が続くための土台を整えます。活動を重ねることで、多文化コミュニティとの確かなネットワークが育ち、企業や自治体との協働にもつながります。",
-      primaryCta: "サービスを見る",
-      secondaryCta: "お問い合わせ"
+  ja: {
+    nav: {
+      home: 'ホーム',
+      about: '会社紹介',
+      services: 'サービス',
+      news: 'ニュース',
+      contact: 'お問い合わせ'
     },
-    focus: {
-      title: "私たちが取り組んでいること",
-      community: "在日コミュニティ主催者が、日々の活動を無理なく続けられるよう、募集・運営・会計・連絡をまとめて支える仕組みを提供します。",
-      eventInfra: "イベント運営で最も負担の大きい「受付・決済・告知・会場探し」を軽量化し、主催者がコンテンツと参加者に集中できる環境を整えます。",
-      multiCulture: "外国人労働者や留学生を中心とした多文化コミュニティとつながり、現場の声を丁寧に拾いながら、日本社会との協働を生み出します。"
+    buttons: {
+      viewServices: 'サービスを見る',
+      contactUs: 'お問い合わせ',
+      learnMore: '詳しく見る',
+      readMore: '続きを読む'
     },
-    highlights: {
-      title: "主催者を支えるための実用的な機能",
-      items: [
-        "イベント募集と管理：多言語フォーム、人数管理、自動集計など、募集の手間を削減します。",
-        "オンライン決済と簡易会計：参加費の回収・照合をスムーズにし、小規模イベントでも安心して運営できます。",
-        "多言語コミュニケーション：日本語・中国語・英語ほか、多文化コミュニティに対応した連絡手段を提供します。",
-        "運営リソース協力：会場、協力者、ゲスト、地域のつながりなど、コミュニティ運営に必要なリソースをご紹介できます。"
+    home: {
+      hero: {
+        title: '外国人と地域をつなぐ、やさしいテックプラットフォーム',
+        subtitle:
+          'コミュニティイベントと会員管理SaaSを一体化し、在日外国人が安心して働き暮らせる仕組みを提供します。自治体・企業・コミュニティの協働を促進します。',
+        primaryCta: 'サービスを見る',
+        secondaryCta: 'お問い合わせ',
+        eyebrow: 'SOCIAL + SaaS',
+        dashboard: {
+          focusTag: 'コミュニティ',
+          statusLabel: '稼働中',
+          stats: [
+            { label: '登録コミュニティ', value: '128', note: '各地域で展開' },
+            { label: '外国人メンバー', value: '12k', note: '月間アクティブ' },
+            { label: '企業パートナー', value: '54', note: '導入済み' }
+          ]
+        }
+      },
+      valuesTitle: '注力している領域',
+      valuesDescription: 'SaaSとコミュニティ運営を組み合わせ、外国人と地域の信頼を育む3つの柱。',
+      values: [
+        {
+          title: 'コミュニティとイベント',
+          description: '地域のコミュニティが複数言語でイベントを開催し、外国人住民が参加しやすい場をつくります。'
+        },
+        {
+          title: '会員管理SaaS',
+          description: 'クラウド上でメンバーシップと決済を管理し、通知やレポートを自動化します。'
+        },
+        {
+          title: '外国人労働者支援',
+          description: 'キャリア相談やスキルアップ講座で、日本での生活と仕事を総合的にサポートします。'
+        }
+      ],
+      highlightsTitle: 'プロダクトハイライト',
+      highlightsDescription: '自治体・コミュニティ・企業のワークフローを1つの画面で見渡せる最新モジュール。',
+      productHighlights: [
+        {
+          title: 'シンプルなイベント管理',
+          body: 'ドラッグ＆ドロップで日程を作成し、QRチェックインやリアルタイム参加状況を表示。'
+        },
+        {
+          title: 'オンライン決済と会費',
+          body: '会費やイベント料金を多言語のUIでオンライン収納。領収書の自動送信も実装。'
+        },
+        {
+          title: '多言語サポート',
+          body: '日本語・英語・ベトナム語などを含むコミュニケーションテンプレートを提供。'
+        }
+      ],
+      newsTitle: '最新ニュース',
+      newsDescription: 'サービスのアップデートやイベントレポートをお届けします。'
+    },
+    about: {
+      eyebrow: 'SOCIALMORE',
+      title: '会社紹介',
+      visionTitle: 'ビジョン',
+      visionText:
+        'テクノロジーを通じて、在日外国人が安心して働き、暮らし、地域とつながる社会をつくります。',
+      missionTitle: 'ミッションと価値観',
+      values: [
+        { title: '信頼', body: '透明性のあるデータ運用と伴走型サポートで、関係者すべてに信頼される存在に。' },
+        { title: '包摂', body: '言語や文化の違いを越えたコミュニケーションの橋渡しをします。' },
+        { title: '地域連携', body: '自治体・NPO・企業がシームレスに協働できる仕組みを構築します。' },
+        { title: '学び', body: '利用者の声を機能改善に反映し、進化し続けるサービスを届けます。' }
+      ],
+      timelineTitle: 'マイルストーン',
+      timeline: [
+        { year: '2022', text: '東京都三鷹市で創業。多文化共生イベントからサービス開発を開始。' },
+        { year: '2023', text: 'コミュニティ向けSaaS β版を提供。複数自治体とのPoCを実施。' },
+        { year: '2024', text: '企業向け外国人材サポートモジュールをリリースし、提携社数が拡大。' }
+      ],
+      galleryTitle: '現場の様子',
+      galleryDescription: 'オフィスやイベントの写真を通して、SOCIALMOREの雰囲気を伝えます。',
+      galleryPhotos: [
+        {
+          file: 'photo-office-01.jpg',
+          caption: 'photo-office-01.jpg｜オフィスでの協働風景'
+        },
+        {
+          file: 'photo-event-01.jpg',
+          caption: 'photo-event-01.jpg｜コミュニティイベントの模様'
+        },
+        {
+          file: 'photo-team-portrait.jpg',
+          caption: 'photo-team-portrait.jpg｜チーム集合写真'
+        }
       ]
     },
-    now: {
-      title: "現在進行中の取り組み",
-      items: [
-        "三鷹エリアを中心に、地域コミュニティと共同でシステムを検証中",
-        "外国人コミュニティの生活・学習支援イベントを運営",
-        "企業・自治体との多文化協働の可能性を探るプロジェクトを開始",
-        "主催者向けの運営ツール・リソース協力機能を改善中"
+    services: {
+      eyebrow: 'プラットフォーム',
+      title: 'サービス',
+      communityTitle: 'コミュニティ向け',
+      companyTitle: '企業向け',
+      iconHighlights: [
+        {
+          title: '会員管理SaaS',
+          description: '会費決済や会員証を一元管理し、主要ダッシュボードに表示する基幹モジュール。',
+          iconKey: 'membership'
+        },
+        {
+          title: 'コミュニティ／外国人支援',
+          description: '地域の相談窓口やイベント連携を象徴する会話バブル型のアイコンを使用。',
+          iconKey: 'community'
+        },
+        {
+          title: '企業向けAIスキルアップ',
+          description: '研修・学習の進捗を示すAIチップ＋矢印のアイコンで人材育成を表現。',
+          iconKey: 'ai'
+        }
+      ],
+      communityCards: [
+        {
+          title: '会員管理クラウド',
+          bullets: ['会員データベース', '自動決済リマインド', '活動レポート作成']
+        },
+        {
+          title: 'イベント＆RSVP',
+          bullets: ['多言語イベントページ', 'QRチェックイン', 'キャンセル待ち管理']
+        },
+        {
+          title: 'コミュニケーションハブ',
+          bullets: ['テンプレートメッセージ', '自動翻訳メモ', '地域情報の共有']
+        }
+      ],
+      companyCards: [
+        {
+          title: 'スキルトレーニング',
+          bullets: ['日本語＆ビジネスマナー研修', 'メンター紹介', 'オンライン教材']
+        },
+        {
+          title: '人材マッチング',
+          bullets: ['スキルタグ検索', '求人投稿管理', '面談スケジューラー']
+        },
+        {
+          title: 'オンボーディングサポート',
+          bullets: ['生活情報ガイド', '社員向けカルチャー講座', 'FAQチャットボット']
+        }
+      ],
+      plansTitle: 'プラン例',
+      plans: [
+        {
+          name: 'スターター',
+          description: '小規模団体や新規導入向け',
+          bullets: ['最大500名の会員', 'イベント作成3本まで', 'メールサポート']
+        },
+        {
+          name: 'プロ',
+          description: '継続活用を想定した人気プラン',
+          bullets: ['無制限イベント', '多拠点管理', '専任カスタマーサクセス']
+        },
+        {
+          name: 'エンタープライズ',
+          description: '大規模自治体・企業向け',
+          bullets: ['API連携', 'SSO対応', '24時間サポート']
+        }
       ]
+    },
+    news: {
+      eyebrow: '最新情報',
+      title: 'ニュース',
+      intro: '最新のリリース情報やコミュニティ連携事例をチェックしてください。'
+    },
+    contact: {
+      eyebrow: 'お問い合わせ',
+      title: 'お問い合わせ',
+      intro: '導入やパートナーシップに関するご相談を受け付けています。',
+      form: {
+        name: 'お名前',
+        email: 'メールアドレス',
+        organization: '所属（任意）',
+        inquiryType: 'お問い合わせ種別',
+        message: 'メッセージ',
+        submit: '送信する',
+        success: 'お問い合わせありがとうございました。（このフォームはデモであり、実際には送信されません。）',
+        validation: {
+          required: '必須項目です',
+          email: '正しいメールアドレスを入力してください'
+        }
+      },
+      inquiryOptions: ['コミュニティSaaSについて', '企業向け研修・採用支援', 'パートナーシップ', 'その他'],
+      info: {
+        company: '株式会社創翔モア SOCIALMORE',
+        location: '東京都三鷹市',
+        email: 'info@socialmore.jp',
+        encouragement: '自治体・企業・コミュニティ・個人の皆さまからのお問い合わせをお待ちしています。'
+      }
+    },
+    footer: {
+      company: {
+        name: 'SOCIALMORE（株式会社創翔モア）',
+        address: '東京都三鷹市を拠点に事業を展開しています。',
+        registration: '法人番号などの登録情報はお問い合わせに応じて開示いたします。'
+      },
+      contact: {
+        title: 'お問い合わせ',
+        emailLabel: 'メール',
+        email: 'info@socialmore.jp',
+        phoneLabel: '電話',
+        phone: '050-0000-0000',
+        hours: '平日 10:00-18:00（祝日を除く）'
+      },
+      links: {
+        title: 'リーガル',
+        privacy: 'プライバシーポリシー',
+        terms: '利用規約'
+      },
+      copyright: '© 2024 SOCIALMORE Inc. All rights reserved.'
+    },
+    legal: {
+      privacy: {
+        title: 'プライバシーポリシー',
+        updated: '最終更新日：2024年4月1日',
+        intro:
+          'SOCIALMORE（以下、「当社」）は、サービスを安全かつ継続的に提供するために、個人情報の適切な管理に努めます。本ポリシーは、当社が取得する情報の種類と利用方法について説明するものです。',
+        sections: [
+          {
+            title: '1. 収集する情報',
+            body: [
+              '当社はサービスの提供、改善、および安全な運営のために必要な範囲で個人情報を収集します。',
+              '主に次の情報が含まれます。'
+            ],
+            bullets: [
+              'アカウント登録情報（氏名、メールアドレス、所属団体、希望言語など）',
+              '利用状況データ（アクセスログ、ブラウザ種別、デバイス情報、閲覧履歴など）',
+              'お問い合わせ内容やサポート履歴',
+              '決済に必要な情報（決済代行事業者を通じて取得し、クレジットカード番号等は保存しません）'
+            ]
+          },
+          {
+            title: '2. 利用目的',
+            body: ['収集した情報は、サービス提供、本人確認、不正防止、機能改善、重要なお知らせやサポート連絡のために利用します。']
+          },
+          {
+            title: '3. 第三者提供・委託',
+            body: [
+              '当社は、決済処理、インフラ運用、分析ツールなど信頼できる業務委託先と必要な範囲で情報を共有することがあります。',
+              '委託先は契約に基づき、当社の指示範囲でのみ情報を取り扱います。'
+            ]
+          },
+          {
+            title: '4. 保管と安全管理',
+            body: [
+              'データは日本国内または適切な保護水準が認められた地域のサーバーに保管されます。',
+              'アクセス制御、暗号化、監査ログ等の安全管理措置を講じ、紛失・漏えいの防止に努めます。'
+            ]
+          },
+          {
+            title: '5. 利用者の権利',
+            body: [
+              'ご本人からの請求に応じ、法令の範囲で保有個人データの開示、訂正、削除等に対応します。',
+              'これらの手続きを希望される場合は下記お問い合わせ窓口までご連絡ください。'
+            ]
+          },
+          {
+            title: '6. クッキー等',
+            body: [
+              '当社サイトでは、言語設定の保持や利用状況の把握のためにクッキーや類似技術を使用することがあります。',
+              'ブラウザの設定でクッキーを無効化できますが、一部機能に制限が生じる場合があります。'
+            ]
+          },
+          {
+            title: '7. ポリシーの更新',
+            body: [
+              '本ポリシーの内容は、法令の改正やサービス変更に伴い改訂されることがあります。',
+              '重要な変更がある場合は、本ページで周知するとともに適切な方法で通知します。'
+            ]
+          },
+          {
+            title: '8. お問い合わせ',
+            body: ['プライバシーに関するご質問は info@socialmore.jp までお寄せください。']
+          }
+        ]
+      },
+      terms: {
+        title: '利用規約',
+        updated: '最終更新日：2024年4月1日',
+        intro: '本利用規約（以下、「本規約」）は、当社が提供するウェブサイトおよび関連サービスの利用条件を定めるものです。利用者は本規約に同意した上でサービスをご利用ください。',
+        sections: [
+          { title: '1. 適用範囲', body: ['本規約は、当社が提供するすべてのオンラインサービスに適用されます。'] },
+          {
+            title: '2. アカウント管理',
+            body: [
+              '利用者は登録情報を最新かつ正確に保つ責任を負います。',
+              'アカウントの不正利用が疑われる場合は速やかに当社へ連絡してください。'
+            ]
+          },
+          {
+            title: '3. 禁止事項',
+            body: [
+              '法令違反、ハラスメント、知的財産権侵害、不正アクセスなど、他者や当社の権利を侵害する行為は禁止します。'
+            ]
+          },
+          {
+            title: '4. サービス変更・停止',
+            body: ['当社は事前の予告なく、サービス内容の変更、一時停止、提供終了を行うことがあります。']
+          },
+          {
+            title: '5. 免責事項',
+            body: [
+              '当社は、サービスが常に無停止で提供されること、特定の目的への適合性などを保証しません。',
+              '利用者が被った損害について、当社の故意または重過失がない限り責任を負いません。',
+              'やむを得ず責任を負う場合も、直接かつ通常の損害に限り、過去12か月間に利用者が支払った金額を上限とします。'
+            ]
+          },
+          {
+            title: '6. 知的財産',
+            body: ['本サービスに関するすべての知的財産権は当社または正当な権利者に帰属します。']
+          },
+          {
+            title: '7. 準拠法と管轄',
+            body: ['本規約は日本法を準拠法とし、紛争が生じた場合は東京地方裁判所を第一審の専属管轄裁判所とします。']
+          },
+          {
+            title: '8. 連絡先',
+            body: ['本規約に関するお問い合わせは info@socialmore.jp までご連絡ください。']
+          }
+        ]
+      }
     }
   },
-  about: {
-    title: "SOCIALMORE について",
-    body: "SOCIALMORE（株式会社創翔モア）は、東京・三鷹を拠点とするテックカンパニーです。私たちは長年、コミュニティイベントを自ら企画・運営してきた経験から、主催者が抱える課題や負担を深く理解してきました。テクノロジーは、運営の手間を減らすための道具であり、目的ではありません。主催者が安心して活動を続け、コミュニティが成長していくための「土台」をつくることを大切にしています。",
-    vision: "多文化が共に暮らし、学び、つながる社会を、コミュニティの現場から支えていく。",
-    values: [
-      "現場主義：実際のコミュニティ現場で必要とされることから発想する。",
-      "軽量なテクノロジー：複雑さを増やさず、運営負担を減らすための技術だけを磨く。",
-      "多文化協働：在日外国人コミュニティと日本社会の橋渡しを目指す。",
-      "長期的な伴走：コミュニティが続く限り、私たちもそばで支える。"
-    ]
-  },
-  services: {
-    platformTitle: "私たちのサービス",
-    organizers: {
-      title: "主催者の負担を軽くし、活動を続けやすくするために",
-      cards: [
-        "イベント運営ツール：募集・連絡・受付・データ管理を一つにまとめ、運営を効率化します。",
-        "決済・会計サポート：参加費のオンライン決済と簡易会計で、煩雑な対面回収を軽減します。",
-        "コミュニケーション：多言語対応の連絡手段により、参加者との意思疎通をスムーズにします。"
+  en: {
+    nav: {
+      home: 'Home',
+      about: 'About',
+      services: 'Services',
+      news: 'News',
+      contact: 'Contact'
+    },
+    buttons: {
+      viewServices: 'View services',
+      contactUs: 'Contact us',
+      learnMore: 'Learn more',
+      readMore: 'Read more'
+    },
+    home: {
+      hero: {
+        title: 'A friendly tech platform connecting foreign residents and local communities',
+        subtitle:
+          'We unify community engagement and SaaS tools so foreign workers in Japan can live and work confidently while cities, NPOs, and companies collaborate seamlessly.',
+        primaryCta: 'View services',
+        secondaryCta: 'Contact us',
+        eyebrow: 'SOCIAL + SaaS',
+        dashboard: {
+          focusTag: 'Community',
+          statusLabel: 'Live',
+          stats: [
+            { label: 'Communities', value: '128', note: 'active cities' },
+            { label: 'Members', value: '12k', note: 'monthly active' },
+            { label: 'Partners', value: '54', note: 'deployments' }
+          ]
+        }
+      },
+      valuesTitle: 'Focus areas',
+      valuesDescription: 'Three pillars that blend SaaS workflows with community trust building.',
+      values: [
+        {
+          title: 'Community and events',
+          description: 'Local organizers host multilingual events so foreign residents can join with confidence.'
+        },
+        {
+          title: 'Membership SaaS',
+          description: 'Manage members and payments in the cloud with automated notifications and reports.'
+        },
+        {
+          title: 'Support for workers',
+          description: 'Career coaching and skill programs help foreign professionals thrive in Japan.'
+        }
+      ],
+      highlightsTitle: 'Product highlights',
+      highlightsDescription: 'Modern modules that let cities, communities, and companies share the same view.',
+      productHighlights: [
+        {
+          title: 'Simple event operations',
+          body: 'Drag-and-drop scheduling, QR check-in, and real-time attendance tracking.'
+        },
+        {
+          title: 'Online payments',
+          body: 'Collect dues and event fees in multiple languages with automatic receipts.'
+        },
+        {
+          title: 'Multilingual support',
+          body: 'Templates that cover Japanese, English, Vietnamese, and more community languages.'
+        }
+      ],
+      newsTitle: 'Latest news',
+      newsDescription: 'Updates about the platform, partnerships, and field projects.'
+    },
+    about: {
+      eyebrow: 'SOCIALMORE',
+      title: 'About us',
+      visionTitle: 'Vision',
+      visionText: 'Through technology we help foreign residents work, live, and stay connected to local communities.',
+      missionTitle: 'Mission & values',
+      values: [
+        { title: 'Trust', body: 'Operate transparently with data and long-term support for every stakeholder.' },
+        { title: 'Inclusion', body: 'Bridge languages and cultures so conversations stay open and respectful.' },
+        { title: 'Local partnerships', body: 'Enable cities, NPOs, and companies to collaborate seamlessly.' },
+        { title: 'Learning', body: 'Listen to community feedback and keep improving the service.' }
+      ],
+      timelineTitle: 'Milestones',
+      timeline: [
+        { year: '2022', text: 'Founded in Mitaka, Tokyo and started with multicultural events.' },
+        { year: '2023', text: 'Released the beta SaaS for communities and ran PoC projects with cities.' },
+        { year: '2024', text: 'Launched corporate support modules for foreign talent and expanded partnerships.' }
+      ],
+      galleryTitle: 'Field snapshots',
+      galleryDescription: 'A glimpse of our office, events, and team moments.',
+      galleryPhotos: [
+        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg | Collaboration in the office' },
+        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg | Community event scene' },
+        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg | Team portrait' }
       ]
     },
-    companies: {
-      title: "多文化コミュニティとの協働をサポート",
-      cards: [
-        "コミュニティ連携：実際のコミュニティと協働して文化交流・ワークショップ・体験イベントを企画できます。",
-        "現場のインサイト：多文化コミュニティの課題やニーズを、活動を通じて把握できます。",
-        "協働プログラム：企業・自治体と共同でイベント・研修・支援プロジェクトを設計できます。"
+    services: {
+      eyebrow: 'Platform',
+      title: 'Products & services',
+      communityTitle: 'For community organizers',
+      companyTitle: 'For companies',
+      iconHighlights: [
+        {
+          title: 'Membership SaaS',
+          description: 'Core dashboard for dues, passes, and consolidated member records.',
+          iconKey: 'membership'
+        },
+        {
+          title: 'Community support',
+          description: 'Icon set inspired by help desks and neighborhood meetups.',
+          iconKey: 'community'
+        },
+        {
+          title: 'AI skill programs',
+          description: 'Chip-and-arrow icon showing career upskilling journeys.',
+          iconKey: 'ai'
+        }
+      ],
+      communityCards: [
+        {
+          title: 'Membership cloud',
+          bullets: ['Member database', 'Automated payment reminders', 'Activity reports']
+        },
+        {
+          title: 'Events & RSVP',
+          bullets: ['Multilingual event pages', 'QR check-in', 'Waitlist tools']
+        },
+        {
+          title: 'Communication hub',
+          bullets: ['Template messages', 'Notes with translation', 'Local updates']
+        }
+      ],
+      companyCards: [
+        {
+          title: 'Skill training',
+          bullets: ['Japanese & business etiquette', 'Mentor network', 'Online lessons']
+        },
+        {
+          title: 'Talent matching',
+          bullets: ['Skill tags', 'Job posting management', 'Interview scheduling']
+        },
+        {
+          title: 'Onboarding support',
+          bullets: ['Life guide', 'Culture briefings', 'FAQ chatbot']
+        }
+      ],
+      plansTitle: 'Sample plans',
+      plans: [
+        { name: 'Starter', description: 'For small teams', bullets: ['Up to 500 members', '3 events', 'Email support'] },
+        { name: 'Pro', description: 'Most popular', bullets: ['Unlimited events', 'Multi-site admin', 'Dedicated CS'] },
+        { name: 'Enterprise', description: 'For large orgs', bullets: ['API access', 'SSO', '24/7 support'] }
       ]
+    },
+    news: {
+      eyebrow: 'Updates',
+      title: 'News',
+      intro: 'Platform releases, pilots, and stories from the field.'
+    },
+    contact: {
+      eyebrow: 'Get in touch',
+      title: 'Contact',
+      intro: 'We welcome chats about adoption, pilots, and partnerships.',
+      form: {
+        name: 'Name',
+        email: 'Email',
+        organization: 'Organization (optional)',
+        inquiryType: 'Inquiry type',
+        message: 'Message',
+        submit: 'Send message',
+        success: 'Thank you for reaching out. (This form is a demo and does not actually send emails.)',
+        validation: {
+          required: 'This field is required',
+          email: 'Please enter a valid email'
+        }
+      },
+      inquiryOptions: ['Community SaaS', 'Corporate training & hiring', 'Partnership', 'Other'],
+      info: {
+        company: 'SOCIALMORE Inc.',
+        location: 'Mitaka, Tokyo, Japan',
+        email: 'info@socialmore.jp',
+        encouragement: 'Cities, companies, community leaders, and individuals are all welcome to reach out.'
+      }
+    },
+    footer: {
+      company: {
+        name: 'SOCIALMORE Inc.',
+        address: 'Based in Mitaka, Tokyo, Japan.',
+        registration: 'Registration details are available upon request.'
+      },
+      contact: {
+        title: 'Contact',
+        emailLabel: 'Email',
+        email: 'info@socialmore.jp',
+        phoneLabel: 'Phone',
+        phone: '+81-50-0000-0000',
+        hours: 'Weekdays 10:00-18:00 JST'
+      },
+      links: {
+        title: 'Legal',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Use'
+      },
+      copyright: '© 2024 SOCIALMORE Inc. All rights reserved.'
+    },
+    legal: {
+      privacy: {
+        title: 'Privacy Policy',
+        updated: 'Last updated: April 1, 2024',
+        intro:
+          'SOCIALMORE (“we”) is committed to protecting personal data so we can deliver a safe and reliable service. This policy explains what data we collect and how we use it.',
+        sections: [
+          {
+            title: '1. Information we collect',
+            body: ['We only collect the information needed to provide, secure, and improve the service.'],
+            bullets: [
+              'Account details such as name, email, organization, preferred language',
+              'Usage data (access logs, browser type, device info, pages viewed)',
+              'Inquiry and support history',
+              'Payment information handled by trusted payment processors (we do not store card numbers)'
+            ]
+          },
+          {
+            title: '2. Purpose of use',
+            body: ['We use the data for service delivery, identity verification, fraud prevention, improvements, and important notices.']
+          },
+          {
+            title: '3. Third-party sharing',
+            body: [
+              'We may share limited data with vetted service providers such as payment processors, hosting, and analytics partners.',
+              'Vendors are contractually obligated to handle data only within the agreed scope.'
+            ]
+          },
+          {
+            title: '4. Storage & security',
+            body: [
+              'Data is stored in Japan or regions with adequate protection.',
+              'We apply access controls, encryption, and monitoring to prevent loss or leaks.'
+            ]
+          },
+          {
+            title: '5. User rights',
+            body: [
+              'You may request disclosure, correction, or deletion of your data as permitted by law.',
+              'Contact us via the address below for such requests.'
+            ]
+          },
+          {
+            title: '6. Cookies',
+            body: [
+              'We use cookies to remember language choices and understand usage patterns.',
+              'You can disable cookies in your browser, but some features may not work.'
+            ]
+          },
+          {
+            title: '7. Updates',
+            body: ['We will update this policy when laws or services change and notify users of material updates.']
+          },
+          {
+            title: '8. Contact',
+            body: ['Questions about privacy? Email info@socialmore.jp.']
+          }
+        ]
+      },
+      terms: {
+        title: 'Terms of Use',
+        updated: 'Last updated: April 1, 2024',
+        intro:
+          'These Terms govern your use of the SOCIALMORE website and related services. Please read them carefully before using the service.',
+        sections: [
+          { title: '1. Scope', body: ['The Terms apply to all online services provided by SOCIALMORE.'] },
+          {
+            title: '2. Accounts',
+            body: [
+              'You are responsible for keeping registration details accurate.',
+              'Notify us promptly if you suspect unauthorized use.'
+            ]
+          },
+          {
+            title: '3. Prohibited actions',
+            body: ['No illegal, harassing, infringing, or unauthorized access activities.']
+          },
+          {
+            title: '4. Service changes',
+            body: ['We may change, suspend, or terminate the service without prior notice.']
+          },
+          {
+            title: '5. Disclaimer',
+            body: [
+              'The service is provided “as is” without guarantees of uninterrupted availability.',
+              'We are not liable for damages unless caused by our intentional or grossly negligent acts.',
+              'If liability arises, it is limited to the amount you paid in the past 12 months for the service.'
+            ]
+          },
+          {
+            title: '6. Intellectual property',
+            body: ['All IP related to the service belongs to SOCIALMORE or its licensors.']
+          },
+          {
+            title: '7. Governing law',
+            body: ['Japanese law governs these Terms. The Tokyo District Court has exclusive jurisdiction.']
+          },
+          {
+            title: '8. Contact',
+            body: ['Reach us at info@socialmore.jp for questions about these Terms.']
+          }
+        ]
+      }
     }
   },
-  contact: {
-    title: "お気軽にご相談ください",
-    body: "コミュニティ運営やイベント支援、企業・自治体との協働、多文化コミュニティとのつながりづくりなど、小さな相談でも歓迎いたします。内容に応じて最適な担当者が対応します。"
-  },
-  news: {
-    body: "コミュニティ連携の事例、プロジェクトの進捗、リリース情報などを発信していきます。"
+  zh: {
+    nav: {
+      home: '首页',
+      about: '关于我们',
+      services: '服务',
+      news: '新闻',
+      contact: '联系'
+    },
+    buttons: {
+      viewServices: '查看服务',
+      contactUs: '联系我们',
+      learnMore: '了解更多',
+      readMore: '阅读更多'
+    },
+    home: {
+      hero: {
+        title: '连接在日社群与地方伙伴的友好科技平台',
+        subtitle: 'SOCIALMORE 将社群活动与 SaaS 工具结合，让在日外国人更安心地工作与生活，同时帮助自治体、企业与社区顺畅协作。',
+        primaryCta: '查看服务',
+        secondaryCta: '立即联系',
+        eyebrow: 'SOCIAL + SaaS',
+        dashboard: {
+          focusTag: '社群',
+          statusLabel: '运行中',
+          stats: [
+            { label: '合作社群', value: '128', note: '覆盖多地' },
+            { label: '活跃成员', value: '12k', note: '月活' },
+            { label: '合作伙伴', value: '54', note: '企业与机构' }
+          ]
+        }
+      },
+      valuesTitle: '重点方向',
+      valuesDescription: '结合 SaaS 与社群陪伴的三大支柱。',
+      values: [
+        { title: '社群与活动', description: '帮助各地社群多语言运营活动，让参与者轻松加入。' },
+        { title: '会员管理 SaaS', description: '在云端管理成员与费用，自动发送通知和报表。' },
+        { title: '外国人支持', description: '提供职业咨询与技能课程，协助在日生活与成长。' }
+      ],
+      highlightsTitle: '产品亮点',
+      highlightsDescription: '让自治体、企业、社群共享同一视角的轻量模块。',
+      productHighlights: [
+        { title: '活动管理', body: '拖拽式排期、QR 签到、实时参与统计。' },
+        { title: '在线支付', body: '多语言界面收取费用并自动寄送收据。' },
+        { title: '多语言沟通', body: '涵盖中日英等语言的沟通模板，快速回应。' }
+      ],
+      newsTitle: '最新动态',
+      newsDescription: '平台更新、合作案例与现场故事。'
+    },
+    about: {
+      eyebrow: 'SOCIALMORE',
+      title: '关于我们',
+      visionTitle: '愿景',
+      visionText: '以科技为桥梁，让在日外国人与地方社会安心共生。',
+      missionTitle: '使命与价值观',
+      values: [
+        { title: '信任', body: '以透明的数据与长期陪伴获得伙伴信赖。' },
+        { title: '包容', body: '跨越语言文化差异，搭建顺畅沟通。' },
+        { title: '区域协作', body: '帮助自治体、NPO 与企业无缝合作。' },
+        { title: '持续学习', body: '倾听现场声音，持续优化服务。' }
+      ],
+      timelineTitle: '发展历程',
+      timeline: [
+        { year: '2022', text: '在东京三鹰成立，从多文化活动起步。' },
+        { year: '2023', text: '推出社区版 SaaS β，展开多地验证。' },
+        { year: '2024', text: '上线企业端模块，拓展协作伙伴。' }
+      ],
+      galleryTitle: '现场一瞥',
+      galleryDescription: '透过办公室与活动照片，感受 SOCIALMORE 的氛围。',
+      galleryPhotos: [
+        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg｜办公室协作' },
+        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg｜社群活动' },
+        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg｜团队合影' }
+      ]
+    },
+    services: {
+      eyebrow: '平台服务',
+      title: '产品与方案',
+      communityTitle: '面向社群主理人',
+      companyTitle: '面向企业与机构',
+      iconHighlights: [
+        { title: '会员管理 SaaS', description: '将会员、费用与通行证整合在一个面板。', iconKey: 'membership' },
+        { title: '社群支援', description: '象征社区咨询与活动合作的对话气泡图示。', iconKey: 'community' },
+        { title: 'AI 技能成长', description: '芯片与箭头图示，代表学习与进阶。', iconKey: 'ai' }
+      ],
+      communityCards: [
+        { title: '会员云', bullets: ['成员数据库', '自动缴费提醒', '运营报告'] },
+        { title: '活动 & 报名', bullets: ['多语言活动页', 'QR 签到', '候补名单管理'] },
+        { title: '沟通枢纽', bullets: ['模板讯息', '自动翻译备注', '在地资讯分享'] }
+      ],
+      companyCards: [
+        { title: '技能培训', bullets: ['日语与商务礼仪', '导师配对', '线上教材'] },
+        { title: '人才对接', bullets: ['技能标签搜索', '职位发布管理', '面谈排程'] },
+        { title: '入职支持', bullets: ['生活资讯手册', '文化培训', 'FAQ 聊天机器人'] }
+      ],
+      plansTitle: '方案示例',
+      plans: [
+        { name: '入门版', description: '适合小型团队', bullets: ['最多 500 名成员', '最多 3 场活动', '邮件支持'] },
+        { name: '专业版', description: '常用首选方案', bullets: ['不限活动数量', '多据点管理', '专属成功经理'] },
+        { name: '企业版', description: '大型机构', bullets: ['API 整合', 'SSO 单点登录', '24/7 支持'] }
+      ]
+    },
+    news: {
+      eyebrow: '新闻',
+      title: '新闻与更新',
+      intro: '关注平台版本更新、合作项目与社群故事。'
+    },
+    contact: {
+      eyebrow: '联系我们',
+      title: '联系',
+      intro: '欢迎就导入、合作或社群支援等议题与我们交流。',
+      form: {
+        name: '姓名',
+        email: '邮箱',
+        organization: '组织 / 团体（选填）',
+        inquiryType: '咨询类型',
+        message: '留言',
+        submit: '提交',
+        success: '感谢您的联系。（本表单仅为示范，并不会真正发送邮件。）',
+        validation: {
+          required: '此栏必填',
+          email: '请输入有效的邮箱地址'
+        }
+      },
+      inquiryOptions: ['关于社区 SaaS', '企业培训 / 招聘', '合作提案', '其他'],
+      info: {
+        company: 'SOCIALMORE（创翔莫尔株式会社）',
+        location: '日本东京三鹰',
+        email: 'info@socialmore.jp',
+        encouragement: '欢迎自治体、企业、社群伙伴与个人来信。'
+      }
+    },
+    footer: {
+      company: {
+        name: 'SOCIALMORE（创翔莫尔株式会社）',
+        address: '在日本东京三鹰开展业务。',
+        registration: '如有需要，可提供公司的登记与注册信息。'
+      },
+      contact: {
+        title: '联系 SOCIALMORE',
+        emailLabel: '邮箱',
+        email: 'info@socialmore.jp',
+        phoneLabel: '电话',
+        phone: '+81-50-0000-0000',
+        hours: '服务时间：工作日 10:00-18:00（日本时间）'
+      },
+      links: {
+        title: '法律信息',
+        privacy: '隐私政策',
+        terms: '使用条款'
+      },
+      copyright: '© 2024 SOCIALMORE Inc. 保留所有权利。'
+    },
+    legal: {
+      privacy: {
+        title: '隐私政策',
+        updated: '最后更新：2024年4月1日',
+        intro: 'SOCIALMORE（以下简称“本公司”）致力于以安全、持续的方式提供服务，并妥善管理用户信息。本政策说明我们收集的信息类型与使用方式。',
+        sections: [
+          {
+            title: '1. 收集的信息',
+            body: ['我们仅收集提供、改进及保障服务所需的数据，主要包含：'],
+            bullets: ['账户注册信息（姓名、邮箱、所属组织、偏好语言等）', '使用数据（访问日志、浏览器与设备信息、浏览记录）', '咨询内容与支持记录', '通过可信支付服务获取的付款信息（不保存信用卡号码）']
+          },
+          {
+            title: '2. 使用目的',
+            body: ['用于提供服务、身份验证、防止滥用、功能改进以及发布重要通知与支持联系。']
+          },
+          {
+            title: '3. 第三方共享',
+            body: ['我们可能与可信赖的合作伙伴（如支付、基础设施、分析服务）在必要范围内共享信息，合作方仅能在合约约定范围内使用。']
+          },
+          {
+            title: '4. 存储与安全',
+            body: ['数据存储在日本或具备充分保护水准的地区服务器，并采用存取控制、加密、稽核记录等措施，防止遗失或泄漏。']
+          },
+          {
+            title: '5. 用户权利',
+            body: ['您可在法令允许范围内申请查阅、修正或删除个人数据，请联系本政策底部的窗口。']
+          },
+          {
+            title: '6. Cookies',
+            body: ['本站可能使用 Cookies 以记忆语言偏好并了解使用状况，您可在浏览器中停用，但部分功能可能受限。']
+          },
+          {
+            title: '7. 政策更新',
+            body: ['若因法令或服务调整需要更新本政策，我们会在本页面公告并适时通知用户。']
+          },
+          {
+            title: '8. 联系方式',
+            body: ['关于隐私问题，请寄信至 info@socialmore.jp。']
+          }
+        ]
+      },
+      terms: {
+        title: '使用条款',
+        updated: '最后更新：2024年4月1日',
+        intro: '本条款规范您使用 SOCIALMORE 网站与相关服务的条件，请在使用前仔细阅读。',
+        sections: [
+          { title: '1. 适用范围', body: ['适用于 SOCIALMORE 提供的所有线上服务。'] },
+          {
+            title: '2. 帐号管理',
+            body: ['用户须维持注册资讯的准确性，如发现未经授权的使用请立即联络我们。']
+          },
+          {
+            title: '3. 禁止行为',
+            body: ['禁止任何违法、骚扰、侵权或未经授权存取等行为。']
+          },
+          {
+            title: '4. 服务变更',
+            body: ['我们可能在未事先通知的情况下调整、暂停或终止服务。']
+          },
+          {
+            title: '5. 免责声明',
+            body: ['本服务按“现状”提供，不保证不中断或满足特定目的；除非因故意或重大过失，否则本公司不对损失承担责任，必要时赔偿金额以过去12个月支付的费用为上限。']
+          },
+          {
+            title: '6. 知识产权',
+            body: ['与本服务相关的所有知识产权归本公司或合法权利人所有。']
+          },
+          {
+            title: '7. 准据法与管辖',
+            body: ['本条款受日本法律管辖，若产生争议，以东京地方裁判所为第一审专属管辖法院。']
+          },
+          {
+            title: '8. 联系方式',
+            body: ['条款相关问题请联络 info@socialmore.jp。']
+          }
+        ]
+      }
+    }
   }
-},
-
-
-/* --------------------------------------------------------
-   CHINESE (zh) — MASTER VERSION (DO NOT MODIFY)
--------------------------------------------------------- */
-zh: {
-  home: {
-    hero: {
-      title: "为在日社群主理人提供支持的轻量科技服务",
-      subtitle: "SOCIALMORE 通过简单实用的技术工具，让社群主理人更轻松地举办活动。从策划、报名、费用、沟通，到场地协作，我们帮助降低运营成本，让社群可以长期持续。活动不断累积，多文化社群网络自然形成，也更容易与企业和机构展开合作。",
-      primaryCta: "查看服务",
-      secondaryCta: "联系我们"
-    },
-    focus: {
-      title: "我们专注的方向",
-      community: "支持社群主理人降低运营负担，让活动可持续推进。提供募集、管理、沟通与基础结算的一体化工具。",
-      eventInfra: "简化活动中最繁琐的部分——报名、收费、通知、场地协作，让主理人能更专注内容与参与者。",
-      multiCulture: "通过长期的活动运营，与多文化社群建立稳定连接，特别是外国劳动者与留学群体，为他们与日本社会之间搭建真实的桥梁。"
-    },
-    highlights: {
-      title: "让活动变轻松的关键功能",
-      items: [
-        "活动募集与管理：多语言报名表、人数管理与自动汇总。",
-        "在线支付与简单结算：轻松收取活动费用并自动记录。",
-        "多语言沟通：支持中、日、英等语言，更适合多文化社区。",
-        "运营资源协作：提供场地、合作方、嘉宾等活动资源对接。"
-      ]
-    },
-    now: {
-      title: "我们正在推进的项目",
-      items: [
-        "在三鹰与本地社群共同测试系统",
-        "支持多文化社群的生活与学习类活动",
-        "探索与企业、自治体的合作项目",
-        "持续改进主理人工具与资源协作模块"
-      ]
-    }
-  },
-  about: {
-    title: "关于 SOCIALMORE",
-    body: "SOCIALMORE（株式会社創翔モア）是一家位于东京三鹰的科技公司。我们长期实践社区活动，对主理人面临的挑战与负担有深刻理解。技术是减少运营成本的工具，而非目的。我们致力于为社区创造一个可持续发展的运营基础。",
-    vision: "从社群现场出发，支持多元文化共同生活、学习与交流的社会。",
-    values: [
-      "真实现场：从社区真实需求出发。",
-      "轻量科技：技术只服务于减负，不增加复杂度。",
-      "多文化协作：连接多文化社群与日本社会。",
-      "长期陪伴：只要社区在，我们就在。"
-    ]
-  },
-  services: {
-    platformTitle: "我们的服务",
-    organizers: {
-      title: "减少主理人负担，让活动更容易持续",
-      cards: [
-        "活动工具：募集、沟通、签到、数据管理一体化完成。",
-        "支付与结算：简单在线收费和记录，减轻对账难度。",
-        "沟通工具：多语言沟通，让参与者交流更顺畅。"
-      ]
-    },
-    companies: {
-      title: "支持与多文化社群的合作",
-      cards: [
-        "社群协作：与真实社区共同打造文化交流、体验活动。",
-        "现场洞察：了解多文化社群的真实需求与挑战。",
-        "协作项目：与企业、自治体共同设计活动、培训、支持方案。"
-      ]
-    }
-  },
-  contact: {
-    title: "欢迎与我们联系",
-    body: "无论是社群运营、活动支持、合作项目，还是多文化社群相关的任何问题，都欢迎咨询。我们会根据内容安排合适的负责人。"
-  },
-  news: {
-    body: "发布社区合作案例、项目进展和更新资讯。"
-  }
-},
-
-
-/* --------------------------------------------------------
-   The following languages MAY be optimized by Codex,
-   but must strictly follow JA + ZH meaning & tone.
--------------------------------------------------------- */
-
-en: {
-  home: {
-    hero: {
-      title: "A gentle tech service that backs community organizers in Japan",
-      subtitle: "SOCIALMORE is a lightweight, practical technology service that helps organizers host events with ease. By simplifying planning, recruitment, payments, multilingual communication, and venue coordination, we reduce operational load and build the foundation for ongoing activities. As gatherings continue, dependable networks with multicultural communities grow and open new doors for collaboration with companies and local governments.",
-      primaryCta: "View services",
-      secondaryCta: "Contact us"
-    },
-    focus: {
-      title: "What we focus on",
-      community: "We provide an all-in-one system that supports recruitment, operations, accounting, and communication so community organizers can keep their daily work sustainable.",
-      eventInfra: "We streamline the heaviest parts of event management—registration, payments, promotion, and venue search—so organizers can focus on their content and participants.",
-      multiCulture: "We stay connected with multicultural communities, especially foreign workers and students, and carefully listen to on-the-ground voices to spark collaboration with Japanese society."
-    },
-    highlights: {
-      title: "Practical features that support organizers",
-      items: [
-        "Event recruitment & management: Multilingual forms, attendee tracking, and auto summaries cut down repetitive work.",
-        "Online payments & simple bookkeeping: Smoothly collect and reconcile fees so even small events can run with confidence.",
-        "Multilingual communication: Provide contact channels for Japanese, Chinese, English, and other community languages.",
-        "Operational resource support: We can introduce venues, collaborators, guests, and local ties essential for community activities."
-      ]
-    },
-    now: {
-      title: "What we are working on now",
-      items: [
-        "Co-testing the system with local communities centered in Mitaka",
-        "Operating lifestyle and learning support events for foreign communities",
-        "Launching projects that explore multicultural collaboration with companies and municipalities",
-        "Improving organizer tools and resource-sharing capabilities"
-      ]
-    }
-  },
-  about: {
-    title: "About SOCIALMORE",
-    body: "SOCIALMORE (Sosho More Inc.) is a tech company based in Mitaka, Tokyo. Years of planning and running community events ourselves helped us deeply understand the burdens organizers face. Technology is a tool to reduce that effort, not the goal itself. We care about building a stable foundation so organizers can continue their activities with peace of mind and communities can keep growing.",
-    vision: "From the community frontlines, we support a society where multiple cultures live, learn, and connect together.",
-    values: [
-      "Field-first: Ideas come from what communities truly need on-site.",
-      "Lightweight technology: We polish only the tools that lessen operational load without adding complexity.",
-      "Multicultural collaboration: We aim to bridge foreign communities in Japan with wider society.",
-      "Long-term partnership: As long as a community continues, we will stay by its side."
-    ]
-  },
-  services: {
-    platformTitle: "Our services",
-    organizers: {
-      title: "Lighten the load so organizers can keep going",
-      cards: [
-        "Event operations tools: Combine recruitment, messaging, reception, and data management to streamline work.",
-        "Payments & accounting support: Online fee collection and light bookkeeping reduce tedious in-person handling.",
-        "Communication: Multilingual contact methods keep conversations with participants smooth."
-      ]
-    },
-    companies: {
-      title: "Support for collaborating with multicultural communities",
-      cards: [
-        "Community partnerships: Co-design cultural exchanges, workshops, and experience events with real communities.",
-        "On-the-ground insights: Understand the needs and challenges of multicultural groups through ongoing activity.",
-        "Collaboration programs: Design events, training, and support projects together with companies and municipalities."
-      ]
-    }
-  },
-  contact: {
-    title: "Talk with us",
-    body: "We welcome any inquiry—community operations, event support, collaboration with companies or municipalities, or ways to connect with multicultural communities. The most suitable member will respond based on your needs."
-  },
-  news: {
-    body: "We share community case studies, project updates, and release information."
-  }
-},
-
-vi: {
-  home: {
-    hero: {
-      title: "Dịch vụ công nghệ nhẹ nhàng dành cho người tổ chức cộng đồng tại Nhật Bản",
-      subtitle: "SOCIALMORE là dịch vụ công nghệ gọn nhẹ và thực tế, giúp người tổ chức mở sự kiện dễ dàng hơn. Từ khâu lên ý tưởng, tuyển người tham gia, thu phí, giao tiếp đa ngôn ngữ đến kết nối địa điểm, chúng tôi giảm bớt gánh nặng vận hành và tạo nền tảng để hoạt động duy trì lâu dài. Khi sự kiện diễn ra đều đặn, mạng lưới cộng đồng đa văn hóa sẽ phát triển và mở ra cơ hội hợp tác với doanh nghiệp lẫn chính quyền.",
-      primaryCta: "Xem dịch vụ",
-      secondaryCta: "Liên hệ"
-    },
-    focus: {
-      title: "Điều chúng tôi theo đuổi",
-      community: "Cung cấp hệ thống hỗ trợ trọn gói tuyển thành viên, vận hành, kế toán và liên lạc để người tổ chức có thể duy trì hoạt động hằng ngày.",
-      eventInfra: "Tinh gọn những phần vất vả nhất của việc tổ chức sự kiện—đăng ký, thanh toán, truyền thông và tìm địa điểm—để ban tổ chức tập trung vào nội dung và người tham gia.",
-      multiCulture: "Kết nối với cộng đồng đa văn hóa, đặc biệt là lao động và du học sinh nước ngoài, lắng nghe nhu cầu thực tế và tạo cầu nối với xã hội Nhật Bản."
-    },
-    highlights: {
-      title: "Tính năng thiết thực cho người tổ chức",
-      items: [
-        "Tuyển và quản lý sự kiện: biểu mẫu đa ngôn ngữ, quản lý số lượng và tổng hợp tự động.",
-        "Thanh toán online & sổ sách đơn giản: thu và đối soát phí tham gia nhẹ nhàng, phù hợp cả sự kiện nhỏ.",
-        "Giao tiếp đa ngôn ngữ: kênh liên lạc hỗ trợ tiếng Nhật, Trung, Anh và nhiều ngôn ngữ cộng đồng khác.",
-        "Kết nối nguồn lực vận hành: giới thiệu địa điểm, cộng tác viên, khách mời và mạng lưới địa phương cần thiết cho cộng đồng."
-      ]
-    },
-    now: {
-      title: "Những hoạt động đang triển khai",
-      items: [
-        "Thử nghiệm hệ thống cùng các cộng đồng địa phương tại khu vực Mitaka",
-        "Vận hành sự kiện hỗ trợ đời sống và học tập cho cộng đồng người nước ngoài",
-        "Khởi động dự án tìm kiếm khả năng hợp tác đa văn hóa với doanh nghiệp và chính quyền",
-        "Nâng cấp công cụ vận hành và tính năng chia sẻ nguồn lực cho ban tổ chức"
-      ]
-    }
-  },
-  about: {
-    title: "Về SOCIALMORE",
-    body: "SOCIALMORE (Công ty cổ phần Sōshō More) là công ty công nghệ đặt trụ sở tại Mitaka, Tokyo. Nhờ nhiều năm tự tổ chức sự kiện cộng đồng, chúng tôi hiểu rõ khó khăn và gánh nặng mà người tổ chức phải gánh. Công nghệ chỉ là công cụ để giảm sức người, không phải mục tiêu cuối cùng. Chúng tôi ưu tiên xây nền tảng vững chắc để ban tổ chức an tâm hoạt động và cộng đồng tiếp tục lớn mạnh.",
-    vision: "Từ chính hiện trường cộng đồng, nâng đỡ một xã hội nơi nhiều nền văn hóa cùng sống, học và kết nối.",
-    values: [
-      "Lấy thực tế làm gốc: xuất phát từ nhu cầu thật sự tại cộng đồng.",
-      "Công nghệ gọn nhẹ: chỉ trau chuốt những giải pháp giúp giảm gánh nặng, không làm mọi thứ phức tạp hơn.",
-      "Hợp tác đa văn hóa: làm cầu nối giữa cộng đồng người nước ngoài tại Nhật và xã hội sở tại.",
-      "Đồng hành dài lâu: còn cộng đồng thì chúng tôi còn ở bên hỗ trợ."
-    ]
-  },
-  services: {
-    platformTitle: "Dịch vụ của chúng tôi",
-    organizers: {
-      title: "Giảm tải để người tổ chức tiếp tục bước tới",
-      cards: [
-        "Công cụ vận hành sự kiện: gom tuyển người, liên lạc, tiếp đón và quản lý dữ liệu vào một nơi.",
-        "Hỗ trợ thanh toán & kế toán: thu phí online và ghi chép tinh gọn, hạn chế xử lý thủ công.",
-        "Giao tiếp: kênh liên lạc đa ngôn ngữ giúp trao đổi với người tham gia trôi chảy."
-      ]
-    },
-    companies: {
-      title: "Đồng hành cùng hợp tác đa văn hóa",
-      cards: [
-        "Liên kết cộng đồng: cùng cộng đồng thật thiết kế giao lưu văn hóa, workshop và sự kiện trải nghiệm.",
-        "Hiểu biết thực tế: nắm bắt nhu cầu, thách thức của cộng đồng đa văn hóa thông qua hoạt động thường xuyên.",
-        "Chương trình hợp tác: đồng thiết kế sự kiện, đào tạo và dự án hỗ trợ với doanh nghiệp, chính quyền."
-      ]
-    }
-  },
-  contact: {
-    title: "Liên hệ với chúng tôi",
-    body: "Chúng tôi sẵn sàng trao đổi về vận hành cộng đồng, hỗ trợ sự kiện, hợp tác với doanh nghiệp hoặc chính quyền, cũng như mọi câu hỏi liên quan đến cộng đồng đa văn hóa. Thành viên phù hợp nhất sẽ phản hồi theo nội dung yêu cầu."
-  },
-  news: {
-    body: "Chia sẻ câu chuyện hợp tác cộng đồng, tiến độ dự án và thông tin phát hành mới."
-  }
-},
-
-my: {
-  home: {
-    hero: {
-      title: "ဂျပန်နိုင်ငံတွင် လုပ်ကိုင်နေသော အသိုင်းအဝိုင်းစီစဉ်သူများအတွက် သက်သာသောနည်းပညာဝန်ဆောင်မှု",
-      subtitle: "SOCIALMORE သည် ပရိုဂရမ်ပြုလုပ်ခြင်း၊ စုစည်းခြင်း၊ ငွေပေးချေမှု၊ ဘာသာစကားစုံ ဆက်သွယ်မှုနှင့် နေရာညှိနှိုင်းမှုတို့ကို လွယ်ကူစေသည့် ပေါ့ပါးပြီး အသုံးဝင်သော နည်းပညာဝန်ဆောင်မှုဖြစ်သည်။ လည်ပတ်မှု၏ပင်ပန်းမှုကို လျှော့ချကာ လှုပ်ရှားမှုများကို ဆက်လက်လုပ်ဆောင်နိုင်စေသော အခြေခံကို တည်ဆောက်ပေးသည်။ လှုပ်ရှားမှုများ အဆက်မပြတ် ပြုလုပ်သည့်အခါ မတူညီသော ယဉ်ကျေးမှုအသိုင်းအဝိုင်းနှင့် ယုံကြည်စိတ်ချရသော ကွန်ရက်များ ဖွံ့ဖြိုးလာကာ ကုမ္ပဏီများနှင့် မြို့ပေါင်းစည်းရေးအဖွဲ့များအပေါ် ပူးပေါင်းဆောင်ရွက်မှုများ ဖွင့်လှစ်ပေးသည်။",
-      primaryCta: "ဝန်ဆောင်မှုများကြည့်ရှုမည်",
-      secondaryCta: "ဆက်သွယ်မည်"
-    },
-    focus: {
-      title: "ကျွန်ုပ်တို့၏ ဦးစားပေးလုပ်ငန်းများ",
-      community: "နေ့စဉ် လှုပ်ရှားမှုများကို သက်သာစွာ ဆက်လက်လုပ်ဆောင်နိုင်ရန် စုစည်းခြင်း၊ စီမံခန့်ခွဲမှု၊ စာရင်းကိုင်နှင့် ဆက်သွယ်မှုတို့ကို တစ်နေရာတည်းတွင် ထောက်ပံ့ပေးသည့် စနစ်ကို ပေးအပ်ပါသည်။",
-      eventInfra: "လက်ခံရေး၊ ငွေပေးချေမှု၊ ကြေငြာခြင်း၊ နေရာရှာဖွေရေးကဲ့သို့ အလုပ်ပိုများသော အစိတ်အပိုင်းများကို ပေါ့ပါးစေပြီး အကြောင်းအရာနှင့် ပါဝင်သူများအပေါ် ဂရုပြုနိုင်စေပါသည်။",
-      multiCulture: "နိုင်ငံခြားသားလုပ်သားများနှင့် ကျောင်းသားများ ပါဝင်သည့် မတူညီသော ယဉ်ကျေးမှုအသိုင်းအဝိုင်းများနှင့် ဆက်သွယ်ကာ မြေပြင်အသံများကို သေချာစွာ နားထောင်ပြီး ဂျပန်လူ့အဖွဲ့အစည်းနှင့် ပူးပေါင်းဆောင်ရွက်မှုကို ဖန်တီးပါသည်।"
-    },
-    highlights: {
-      title: "စီစဉ်သူများအတွက် အသုံးဝင်သည့် လုပ်ဆောင်ချက်များ",
-      items: [
-        "ပြိုင်ပွဲခေါ်ယူခြင်းနှင့် စီမံခန့်ခွဲမှု: ဘာသာစကားစုံ ဖောင်များ၊ လူဦးရေ စောင့်ကြည့်မှုနှင့် အလိုအလျောက် စုစည်းမှုများဖြင့် အလုပ်ခွန်အား လျှော့ချပါ။",
-        "အွန်လိုင်းငွေပေးချေမှုနှင့် ရိုးရှင်းသော စာရင်းကိုင်မှု: ပါဝင်ကြေးများကို လွယ်ကူစွာစုဆောင်းကာ သေးငယ်သည့် အစီအစဉ်များကိုမျှ ယုံကြည်စိတ်ချစွာ လုပ်ဆောင်နိုင်ပါသည်။",
-        "ဘာသာစကားစုံ ဆက်သွယ်မှု: ဂျပန်၊ တရုတ်၊ အင်္ဂလိပ် အစရှိသည့် ဘာသာစကားများဖြင့် အသိုင်းအဝိုင်းလိုအပ်ချက်များကို ဖြည့်ဆည်းပေးသည့် ဆက်သွယ်ရေး လမ်းကြောင်းများ။",
-        "လည်ပတ်ရေး အရင်းအမြစ်ပံ့ပိုးမှု: နေရာဒေသများ၊ ပူးပေါင်းလုပ်သူများ၊ ဧည့်သည်များနှင့် ဒေသခံချိတ်ဆက်မှုများကို မိမိ အသိုင်းအဝိုင်း လုပ်ငန်းများအတွက် မိတ်ဆက်ပေးနိုင်ပါသည်।"
-      ]
-    },
-    now: {
-      title: "လက်ရှိ ဆောင်ရွက်နေသော စီမံချက်များ",
-      items: [
-        "မိတာကဒေသရှိ ဒေသခံအသိုင်းအဝိုင်းများနှင့် ပူးပေါင်းကာ စနစ်ကို စမ်းသပ်နေခြင်း",
-        "နိုင်ငံခြားသားအသိုင်းအဝိုင်းများအတွက် အသက်မွေးနှင့် ပညာရေးထောက်ပံ့ရေး အစီအစဉ်များ လည်ပတ်နေခြင်း",
-        "ကုမ္ပဏီများနှင့် မြို့ပေါင်းစည်းရေးအဖွဲ့များနှင့် မတူယဉ်ကျေးမှု ပူးပေါင်းလုပ်ငန်းများ စတင်လေ့လာခြင်း",
-        "စီစဉ်သူများအတွက် ကိရိယာများနှင့် အရင်းအမြစ်မျှဝေမှု လုပ်ဆောင်ချက်များ ပြုပြင်မွမ်းမံခြင်း"
-      ]
-    }
-  },
-  about: {
-    title: "SOCIALMORE အကြောင်း",
-    body: "SOCIALMORE (株式会社創翔モア) သည် တိုကျိုမြို့ မိတာကကို ဌာနချုပ်ထားသော နည်းပညာကုမ္ပဏီဖြစ်သည်။ အသိုင်းအဝိုင်းအဖြစ်အပျက်များကို ကိုယ်တိုင် စီစဉ်ကျင်းပလာသည့် အတွေ့အကြုံကြောင့် စီစဉ်သူများ၏ အခက်အခဲနှင့် ပင်ပန်းမှုများကို နက်နဲစွာ နားလည်လာခဲ့သည်။ နည်းပညာသည် လုပ်ငန်းခွန်အား လျှော့ချရန် အသုံးချသည့် ကိရိယာတစ်ခုသာ ဖြစ်ပြီး ရည်မှန်းချက် မဟုတ်ပါ။ အသိုင်းအဝိုင်းများ သက်သာစွာ ဆက်လက်တိုးတက်စေရန် အခြေခံတည်ဆောက်ပေးခြင်းကို အရေးကြီးအနေဖြင့် ထားရှိထားပါသည်။",
-    vision: "အသိုင်းအဝိုင်း လက်ခုံများမှစ၍ မတူညီသော ယဉ်ကျေးမှုများ အတူတကွ နေထိုင်၊ လေ့လာ၊ ချိတ်ဆက်နိုင်သော လူ့အသိုင်းအဝိုင်းကို ထောက်ပံ့သည်။",
-    values: [
-      "မြေပြင်အခြေခံ：အသိုင်းအဝိုင်းမှ လိုအပ်ချက်များကို အခြေခံ၍ စိတ်ကူးအကြံပေးပါသည်။",
-      "ပေါ့ပါးသည့် နည်းပညာ：လုပ်ငန်းခွန်အား လျှော့ချသည့် နည်းပညာများကိုသာ အာရုံစိုက်တိုးတက်စေသည်။",
-      "များစွာသော ယဉ်ကျေးမှု ပူးပေါင်းခြင်း：ဂျပန်နိုင်ငံရှိ နိုင်ငံခြားသား အသိုင်းအဝိုင်းနှင့် လူ့အဖွဲ့အစည်းကြား ချိတ်ဆက်ပေးသည်။",
-      "ရှည်လျားသော လက်တွဲမှု：အသိုင်းအဝိုင်း ရှိသရွေ့ ကျွန်ုပ်တို့လည်း အမြဲအနေဖြင့် အတူရှိနေပါမည်။"
-    ]
-  },
-  services: {
-    platformTitle: "ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ",
-    organizers: {
-      title: "စီစဉ်သူများ၏ ပင်ပန်းမှုကို လျှော့ချရန်",
-      cards: [
-        "ပြိုင်ပွဲစီမံခန့်ခွဲမှု ကိရိယာများ：စုစည်းခြင်း၊ ဆက်သွယ်ရေး၊ လက်ခံမှတ်တမ်းနှင့် ဒေတာစီမံခန့်ခွဲမှုကို တစ်နေရာတည်းတွင် ပြီးစီးစေသည်။",
-        "ငွေရှင်းတမ်း ပံ့ပိုးမှု：အွန်လိုင်းဖြင့် ပါဝင်ကြေးများကို ရရှိကာ ရိုးရှင်းသော စာရင်းကိုင်မှုဖြင့် အချိန်ကုန်မှု လျှော့ချပေးသည်။",
-        "ဆက်သွယ်ရေး：ဘာသာစကားစုံ လမ်းကြောင်းများဖြင့် ပါဝင်သူများနှင့် မပြတ်သားမှုမရှိစေသည်။"
-      ]
-    },
-    companies: {
-      title: "မတူယဉ်ကျေးမှုများနှင့် ပူးပေါင်းရန်",
-      cards: [
-        "အသိုင်းအဝိုင်း ပူးတွဲလုပ်ငန်း：ယဉ်ကျေးမှုဖလှယ်မှု၊ စမ်းသပ်ပင် နှင့် အတွေ့အကြုံအဆိုပါ အစီအစဉ်များကို အမှန်တကယ် အသိုင်းအဝိုင်းများနှင့် ပူးပေါင်းစီစဉ်သည်။",
-        "မြေပြင်သိမြင်ချက်：မတူညီသော ယဉ်ကျေးမှုအသိုင်းအဝိုင်းများ၏ လိုအပ်ချက်နှင့် စိန်ခေါ်ချက်များကို လုပ်ငန်းမှတဆင့် နားလည်စေသည်။",
-        "ပူးပေါင်း ပရိုဂရမ်များ：ကုမ္ပဏီများနှင့် မြို့ပေါင်းစည်းရေးအဖွဲ့များနှင့် အတူ သင်တန်း၊ ပံ့ပိုးရေး ပရိုဂရမ်များ တည်ဆောက်သည်။"
-      ]
-    }
-  },
-  contact: {
-    title: "ဆက်သွယ်ပေးပါ",
-    body: "အသိုင်းအဝိုင်း လည်ပတ်မှုများ၊ ပြိုင်ပွဲထောက်ပံ့ရေး၊ ကုမ္ပဏီများ သို့မဟုတ် မြို့ပေါင်းစည်းရေးအဖွဲ့များနှင့် ပူးပေါင်းရန်၊ မတူယဉ်ကျေးမှုအသိုင်းအဝိုင်းများနှင့် ဆက်သွယ်ရာတွင် မည်သည့် မေးမြန်းချက်မဆို ကြိုဆိုပါသည်။ သင့်လိုအပ်ချက်အလိုက် သင့်လျော်ဆုံး အဖွဲ့ဝင်မှ တုံ့ပြန်ပေးပါမည်။"
-  },
-  news: {
-    body: "အသိုင်းအဝိုင်း ပူးပေါင်းမှု ဥပမာများ၊ ပရိုဂရမ်တိုးတက်မှုများနှင့် ထုတ်ပြန်သတင်းများကို မျှဝေပါမည်။"
-  }
-},
-
-id: {
-  home: {
-    hero: {
-      title: "Layanan teknologi ringan yang mendukung penyelenggara komunitas di Jepang",
-      subtitle: "SOCIALMORE adalah layanan teknologi yang ringan dan praktis untuk membantu penyelenggara membuka acara dengan lebih mudah. Dari perencanaan, perekrutan peserta, pembayaran, komunikasi multibahasa, hingga kolaborasi tempat, kami mengurangi beban operasional dan menyiapkan fondasi agar kegiatan bisa berlanjut. Semakin banyak kegiatan berlangsung, jaringan komunitas multikultural semakin kuat dan memudahkan kolaborasi dengan perusahaan maupun pemerintah daerah.",
-      primaryCta: "Lihat layanan",
-      secondaryCta: "Hubungi kami"
-    },
-    focus: {
-      title: "Fokus utama kami",
-      community: "Menyediakan sistem terpadu untuk rekrutmen, operasional, pencatatan, dan komunikasi agar penyelenggara komunitas dapat menjalankan aktivitas harian secara berkelanjutan.",
-      eventInfra: "Meringankan bagian paling berat dari operasional acara—pendaftaran, pembayaran, publikasi, dan pencarian tempat—agar penyelenggara bisa fokus pada konten dan peserta.",
-      multiCulture: "Terhubung dengan komunitas multikultural, terutama pekerja asing dan pelajar, sambil menyimak suara lapangan untuk membuka kerja sama dengan masyarakat Jepang."
-    },
-    highlights: {
-      title: "Fitur praktis bagi penyelenggara",
-      items: [
-        "Perekrutan & manajemen acara: formulir multibahasa, kontrol kuota, dan rekap otomatis.",
-        "Pembayaran daring & pembukuan sederhana: mempermudah penarikan biaya dan pencocokan pembayaran, termasuk untuk acara kecil.",
-        "Komunikasi multibahasa: saluran kontak dalam bahasa Jepang, Mandarin, Inggris, dan bahasa komunitas lainnya.",
-        "Dukungan sumber daya operasional: memperkenalkan lokasi, kolaborator, tamu, dan jejaring lokal yang dibutuhkan komunitas."
-      ]
-    },
-    now: {
-      title: "Inisiatif yang sedang berjalan",
-      items: [
-        "Menguji sistem bersama komunitas lokal di sekitar Mitaka",
-        "Menyelenggarakan acara dukungan hidup dan belajar bagi komunitas asing",
-        "Memulai proyek untuk mengeksplorasi kolaborasi multikultural dengan perusahaan dan pemerintah daerah",
-        "Meningkatkan alat bantu penyelenggara serta fitur kolaborasi sumber daya"
-      ]
-    }
-  },
-  about: {
-    title: "Tentang SOCIALMORE",
-    body: "SOCIALMORE (Sosho More Inc.) adalah perusahaan teknologi yang berbasis di Mitaka, Tokyo. Pengalaman bertahun-tahun menyelenggarakan acara komunitas membuat kami memahami secara mendalam tantangan dan beban para penyelenggara. Teknologi adalah alat untuk mengurangi pekerjaan, bukan tujuan akhir. Kami fokus membangun fondasi agar penyelenggara dapat terus berkegiatan dengan tenang dan komunitas dapat tumbuh.",
-    vision: "Dari garis depan komunitas, kami menopang masyarakat di mana banyak budaya dapat hidup, belajar, dan terhubung bersama.",
-    values: [
-      "Berangkat dari lapangan: berawal dari kebutuhan nyata komunitas.",
-      "Teknologi ringan: hanya mengasah solusi yang mengurangi beban tanpa menambah kerumitan.",
-      "Kolaborasi multikultural: menjembatani komunitas asing di Jepang dengan masyarakat luas.",
-      "Pendampingan jangka panjang: selama komunitas masih berjalan, kami tetap mendampingi."
-    ]
-  },
-  services: {
-    platformTitle: "Layanan kami",
-    organizers: {
-      title: "Meringankan beban agar kegiatan terus berjalan",
-      cards: [
-        "Perangkat operasional acara: satukan perekrutan, komunikasi, penerimaan, dan manajemen data.",
-        "Dukungan pembayaran & pembukuan: penarikan biaya daring dan pencatatan sederhana menghemat waktu tatap muka.",
-        "Komunikasi: saluran multibahasa menjaga percakapan dengan peserta tetap lancar."
-      ]
-    },
-    companies: {
-      title: "Bersama komunitas multikultural",
-      cards: [
-        "Kolaborasi komunitas: merancang pertukaran budaya, lokakarya, dan acara pengalaman dengan komunitas nyata.",
-        "Wawasan lapangan: memahami kebutuhan dan tantangan komunitas multikultural melalui kegiatan nyata.",
-        "Program kolaborasi: bersama perusahaan dan pemerintah daerah mendesain acara, pelatihan, dan proyek dukungan."
-      ]
-    }
-  },
-  contact: {
-    title: "Hubungi kami",
-    body: "Silakan ajukan pertanyaan mengenai pengelolaan komunitas, dukungan acara, kerja sama dengan perusahaan atau pemerintah, maupun cara terhubung dengan komunitas multikultural. Kami akan menghubungkan Anda dengan anggota tim yang paling sesuai."
-  },
-  news: {
-    body: "Kami membagikan kisah kolaborasi komunitas, kemajuan proyek, dan informasi rilis."
-  }
-},
-
-fil: {
-  home: {
-    hero: {
-      title: "Magaan na tech service para sa mga tagapangasiwa ng komunidad sa Japan",
-      subtitle: "Ang SOCIALMORE ay magaang at praktikal na teknolohiyang serbisyo na tumutulong sa mga organizer na magbukas ng mga kaganapan nang walang hirap. Mula sa pagbuo ng programa, pag-recruit ng kalahok, pagbabayad, multilingual na komunikasyon, hanggang sa koordinasyon ng venue, binabawasan namin ang bigat ng operasyon at naghahanda ng matibay na batayan para magpatuloy ang mga gawain. Habang dumarami ang mga aktibidad, mas tumitibay ang ugnayan sa mga multikultural na komunidad at mas bukas ang pakikipagtulungan sa mga kumpanya at pamahalaang lokal.",
-      primaryCta: "Tingnan ang mga serbisyo",
-      secondaryCta: "Makipag-ugnayan"
-    },
-    focus: {
-      title: "Ang aming pinagtutuunan",
-      community: "Nagbibigay kami ng sistemang sumasaklaw sa pagre-recruit, pagpapatakbo, accounting, at komunikasyon upang magawa ng mga organizer ang araw-araw na gawain nang hindi nabibigatan.",
-      eventInfra: "Pinapagaan namin ang pinaka-mabigat na bahagi ng pag-oorganisa—pagpaparehistro, bayad, anunsyo, at paghahanap ng venue—para makatutok ang mga organizer sa nilalaman at mga kalahok.",
-      multiCulture: "Patuloy kaming nakakonekta sa mga multikultural na komunidad, lalo na sa mga manggagawang dayuhan at mag-aaral, at maingat na pinakikinggan ang boses ng field upang makalikha ng pagtutulungan sa lipunang Hapon."
-    },
-    highlights: {
-      title: "Mga kapaki-pakinabang na tampok para sa organizer",
-      items: [
-        "Pagre-recruit at pamamahala ng event: multilingual na form, kontrol sa bilang ng kalahok, at awtomatikong buod.",
-        "Online na bayad at payak na bookkeeping: maayos na paglikom at pagtutugma ng bayarin, kahit para sa maliliit na event.",
-        "Multilingual na komunikasyon: mga channel para sa Japanese, Chinese, English, at iba pang wika ng komunidad.",
-        "Tulong sa mapagkukunang pang-operasyon: maipapakilala namin ang mga venue, katuwang, panauhin, at lokal na ugnayan na kailangan ng komunidad."
-      ]
-    },
-    now: {
-      title: "Mga proyektong isinasagawa ngayon",
-      items: [
-        "Sabay sinusubok ang sistema kasama ang lokal na komunidad sa paligid ng Mitaka",
-        "Nagpapatakbo ng mga kaganapang sumusuporta sa pamumuhay at pag-aaral ng mga banyagang komunidad",
-        "Naglulunsad ng mga proyektong sumusuri sa multikultural na kooperasyon kasama ang mga kumpanya at pamahalaang lokal",
-        "Patuloy na pinapahusay ang mga tool ng organizer at kakayahang magbahagi ng mga mapagkukunan"
-      ]
-    }
-  },
-  about: {
-    title: "Tungkol sa SOCIALMORE",
-    body: "Ang SOCIALMORE (Sosho More Inc.) ay kompanyang teknolohiya na nakabase sa Mitaka, Tokyo. Dahil kami mismo ang nagplano at nagpatakbo ng mga kaganapan sa komunidad sa loob ng maraming taon, malalim naming naiintindihan ang mga hamon at bigat na pasan ng mga organizer. Ang teknolohiya ay kasangkapan para magaan ang operasyon, hindi ang layunin mismo. Pinahahalagahan namin ang pagbuo ng matatag na pundasyon upang makapagpatuloy nang may kapanatagan ang mga organizer at patuloy na lumago ang komunidad.",
-    vision: "Mula sa frontlines ng komunidad, sinusuportahan namin ang lipunang magkakasamang namumuhay, nag-aaral, at nag-uugnay ang sari-saring kultura.",
-    values: [
-      "Nakaugat sa field: nagsisimula sa totoong pangangailangan ng komunidad.",
-      "Magaan na teknolohiya: pinapanday lang ang mga solusyong nagpapagaan ng trabaho nang hindi nagpapakumplikado.",
-      "Multikultural na pagtutulungan: tulay sa pagitan ng mga komunidad ng dayuhan sa Japan at ng mas malawak na lipunan.",
-      "Pangmatagalang paggabay: hangga't may komunidad, nariyan kami upang sumuporta."
-    ]
-  },
-  services: {
-    platformTitle: "Aming mga serbisyo",
-    organizers: {
-      title: "Pagaanin ang gawain ng mga organizer",
-      cards: [
-        "Mga kasangkapan sa operasyon ng event: pinagsasama ang recruitment, komunikasyon, pagtanggap, at pamamahala ng data.",
-        "Suporta sa bayad at accounting: online na koleksyon ng bayarin at simpleng bookkeeping para hindi na kailangang mano-manong magproseso.",
-        "Komunikasyon: mga channel na may maraming wika para maging maayos ang usapan sa mga kalahok."
-      ]
-    },
-    companies: {
-      title: "Suporta sa pakikipagtulungan sa multikultural na komunidad",
-      cards: [
-        "Pakikipag-ugnay sa komunidad: magplano ng cultural exchange, workshop, at experiential events kasama ang tunay na komunidad.",
-        "Mga insight mula sa field: maintindihan ang pangangailangan at hamon ng multikultural na komunidad sa pamamagitan ng aktwal na gawain.",
-        "Mga programang kolaborasyon: magdisenyo ng mga event, pagsasanay, at proyekto ng suporta kasama ang mga kumpanya at pamahalaang lokal."
-      ]
-    }
-  },
-  contact: {
-    title: "Kumontak sa amin",
-    body: "Bukas kami sa mga tanong tungkol sa pagpapatakbo ng komunidad, suporta sa kaganapan, pakikipagtulungan sa mga kumpanya o pamahalaan, at anumang usapin tungkol sa multikultural na komunidad. Angkop na miyembro ng koponan ang tutugon ayon sa inyong pangangailangan."
-  },
-  news: {
-    body: "Ibinabahagi namin ang mga halimbawa ng pakikipagtulungan, progreso ng proyekto, at mga balita sa paglabas ng serbisyo."
-  }
-}
-
 };
 
 const readStoredLocale = () => {
@@ -598,8 +947,13 @@ export function useI18n() {
   };
 
   const t = (path) => {
-    const localesToTry = [state.locale, ...FALLBACK_LOCALES.filter((loc) => loc !== state.locale)];
+    const localesToTry = [state.locale, ...FALLBACK_LOCALES];
+    const visited = new Set();
     for (const locale of localesToTry) {
+      if (!locale || visited.has(locale)) {
+        continue;
+      }
+      visited.add(locale);
       const value = getValueByPath(messages[locale], path);
       if (value !== undefined) {
         return value;
