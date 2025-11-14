@@ -138,12 +138,12 @@ const switchLanguage = (locale) => {
   width: 42px;
   height: 42px;
   border-radius: 14px;
-  background: linear-gradient(145deg, rgba(37, 183, 176, 0.15), rgba(15, 138, 215, 0.25));
+  background: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 24px rgba(15, 138, 215, 0.18);
-  border: 1px solid rgba(15, 138, 215, 0.2);
+  box-shadow: none;
+  border: none;
 }
 
 .logo-mark img {
