@@ -104,7 +104,7 @@
         </div>
         <div class="card-grid">
           <article v-for="item in latestNews" :key="item.id" class="card news-card">
-            <div class="news-thumb" :style="newsCoverStyle" aria-hidden="true"></div>
+            <div class="news-thumb" :style="coverForItem(item)" aria-hidden="true"></div>
             <!-- news-default.svg: デフォルトのニュースサムネイル。必要に応じて各記事個別の画像に差し替えます。 -->
             <p class="news-date">{{ formatDate(item.date) }}</p>
             <h3>{{ item.title[currentLocale] }}</h3>
@@ -168,6 +168,13 @@ const currentHome = computed(() => dictionary.value.home);
 const homeNow = computed(() => currentHome.value.now ?? { title: '', description: '', projects: [] });
 const nowProjects = computed(() => homeNow.value.projects ?? []);
 const latestNews = computed(() => newsItems.slice(0, 3));
+
+const coverForItem = (item) => {
+  const source = item.cover ?? newsDefaultCover;
+  return {
+    backgroundImage: `linear-gradient(135deg, rgba(15, 138, 215, 0.15), rgba(246, 195, 67, 0.15)), url('${source}')`
+  };
+};
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -434,6 +441,13 @@ const formatDate = (dateStr) => {
 .news-teaser {
   background: #0d1c2e;
   color: #fff;
+  border-radius: 32px;
+  margin-bottom: 3rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.news-teaser .container {
+  padding: 3rem 1.5rem;
 }
 
 .news-teaser .card {
