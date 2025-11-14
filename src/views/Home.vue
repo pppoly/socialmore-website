@@ -74,6 +74,22 @@
       </div>
     </section>
 
+    <section class="section now-projects" v-if="nowProjects.length">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">{{ homeNow.title }}</h2>
+          <p class="section-description">
+            {{ homeNow.description }}
+          </p>
+        </div>
+        <ul class="now-list">
+          <li v-for="project in nowProjects" :key="project">
+            <span>{{ project }}</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section news-teaser">
       <div class="container">
         <div class="section-heading">
@@ -126,6 +142,8 @@ const newsCoverStyle = computed(() => ({
 const heroStats = computed(() => heroDashboard.value?.stats ?? []);
 
 const currentHome = computed(() => dictionary.value.home);
+const homeNow = computed(() => currentHome.value.now ?? { title: '', description: '', projects: [] });
+const nowProjects = computed(() => homeNow.value.projects ?? []);
 const latestNews = computed(() => newsItems.slice(0, 3));
 
 const formatDate = (dateStr) => {
@@ -335,6 +353,31 @@ const formatDate = (dateStr) => {
   font-weight: 600;
   cursor: pointer;
   text-align: left;
+}
+
+.now-projects {
+  background: linear-gradient(180deg, rgba(37, 183, 176, 0.08), rgba(15, 138, 215, 0.08));
+  border-radius: 32px;
+  padding: 2.5rem 0;
+}
+
+.now-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.now-list li {
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 20px 40px rgba(15, 138, 215, 0.08);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.5;
 }
 
 .news-teaser {
