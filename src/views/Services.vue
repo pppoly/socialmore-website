@@ -4,6 +4,7 @@
       <div class="section-heading">
         <p class="eyebrow">{{ t('services.eyebrow') }}</p>
         <h1 class="section-title">{{ t('services.title') }}</h1>
+        <p class="section-description">{{ t('services.subtitle') }}</p>
       </div>
       <section class="service-icon-grid">
         <!-- icon-membership.svg: 会員管理SaaSの象徴となるダッシュボードアイコン。 -->

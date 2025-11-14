@@ -37,171 +37,180 @@ export const messages = {
     },
     home: {
       hero: {
-        title: '外国人と地域をつなぐ、やさしいテックプラットフォーム',
+        title: '在日コミュニティ主催者を支える軽量テックサービス',
         subtitle:
-          'コミュニティイベントと会員管理SaaSを一体化し、在日外国人が安心して働き暮らせる仕組みを提供します。自治体・企業・コミュニティの協働を促進します。',
-        primaryCta: 'サービスを見る',
+          'SOCIALMOREは、簡単に使えるテクノロジーツールでイベント主催の負担を軽くし、コミュニケーションを滑らかにし、必要なリソースにつながりやすくします。コミュニティから始まり、多様な在日コミュニティと日本の企業・機関を結び、持続的な協働エコシステムを築きます。',
+        primaryCta: 'サービスを知る',
         secondaryCta: 'お問い合わせ',
         eyebrow: 'SOCIAL + SaaS',
         dashboard: {
           focusTag: 'コミュニティ',
           statusLabel: '稼働中',
           stats: [
-            { label: '登録コミュニティ', value: '128', note: '各地域で展開' },
-            { label: '外国人メンバー', value: '12k', note: '月間アクティブ' },
-            { label: '企業パートナー', value: '54', note: '導入済み' }
+            { label: '連携コミュニティ', value: '128', note: '各地域で展開' },
+            { label: 'アクティブメンバー', value: '12k', note: '月間' },
+            { label: '企業・機関', value: '54', note: '協働中' }
           ]
         }
       },
-      valuesTitle: '注力している領域',
-      valuesDescription: 'SaaSとコミュニティ運営を組み合わせ、外国人と地域の信頼を育む3つの柱。',
+      valuesTitle: '私たちが注力する3つの領域',
+      valuesDescription:
+        '現場の声に寄り添い、コミュニティ主催者の運営・連携・成長を支える仕組みを整えています。',
       values: [
         {
-          title: 'コミュニティとイベント',
-          description: '地域のコミュニティが複数言語でイベントを開催し、外国人住民が参加しやすい場をつくります。'
+          title: 'コミュニティ主催者支援',
+          description: '在日コミュニティの主催者が、煩雑なフォームや調整に追われず活動できるよう伴走します。'
         },
         {
-          title: '会員管理SaaS',
-          description: 'クラウド上でメンバーシップと決済を管理し、通知やレポートを自動化します。'
+          title: 'イベント運営インフラ',
+          description: '募集・通知・決済・当日の動線までを一体化した、軽量で信頼できる基盤を提供します。'
         },
         {
-          title: '外国人労働者支援',
-          description: 'キャリア相談やスキルアップ講座で、日本での生活と仕事を総合的にサポートします。'
+          title: '多文化コミュニティ連携',
+          description: '外国人労働者、留学生、多文化住民のネットワークを活かし、企業や自治体との協働をつなぎます。'
         }
       ],
-      highlightsTitle: 'プロダクトハイライト',
-      highlightsDescription: '自治体・コミュニティ・企業のワークフローを1つの画面で見渡せる最新モジュール。',
+      highlightsTitle: 'コミュニティイベントを楽にする機能',
+      highlightsDescription: '募集から当日運営、振り返りまでをひとつながりの体験に。',
       productHighlights: [
         {
-          title: 'シンプルなイベント管理',
-          body: 'ドラッグ＆ドロップで日程を作成し、QRチェックインやリアルタイム参加状況を表示。'
+          title: 'イベント募集と管理',
+          body: '多言語フォーム、人数管理、自動集計をまとめて提供。'
         },
         {
-          title: 'オンライン決済と会費',
-          body: '会費やイベント料金を多言語のUIでオンライン収納。領収書の自動送信も実装。'
+          title: 'オンライン決済と費用整理',
+          body: '参加費の受付や簡単な清算機能で、主催者の台帳作業を削減。'
         },
         {
-          title: '多言語サポート',
-          body: '日本語・英語・ベトナム語などを含むコミュニケーションテンプレートを提供。'
+          title: '参加者とのコミュニケーション',
+          body: '日本語・中国語・英語などでの案内・リマインドをテンプレート化。'
+        },
+        {
+          title: 'コミュニティ資源ネットワーク',
+          body: '会場、登壇者、協力パートナーなど、必要なリソース探しを支援。'
         }
       ],
+      now: {
+        title: '現在進行中のプロジェクト',
+        description: '実際のコミュニティと検証を重ね、サービスとネットワークを磨いています。',
+        projects: [
+          '東京都三鷹で地域コミュニティと協力し、イベント運営システムをテスト',
+          '外国人労働者コミュニティ向けに生活情報とスキル講座をサポート',
+          '日本企業と多文化コミュニティ協業の機会を共創',
+          'コミュニティ主催者向けの運営ツールと資源協力モジュールを磨き込み'
+        ]
+      },
       newsTitle: '最新ニュース',
-      newsDescription: 'サービスのアップデートやイベントレポートをお届けします。'
+      newsDescription: 'サービスのアップデートやコミュニティ連携の様子を発信しています。'
     },
     about: {
-      eyebrow: 'SOCIALMORE',
-      title: '会社紹介',
+      eyebrow: '会社紹介',
+      title: 'SOCIALMOREについて',
+      intro:
+        'SOCIALMORE（創翔モア）は東京都三鷹で生まれたテックカンパニーです。コミュニティの現場でイベントを支援してきた経験から、主催者が直面する課題を肌で感じてきました。テクノロジーは目的ではなく、現場の負担を軽くするための道具だと考えています。',
       visionTitle: 'ビジョン',
-      visionText:
-        'テクノロジーを通じて、在日外国人が安心して働き、暮らし、地域とつながる社会をつくります。',
-      missionTitle: 'ミッションと価値観',
+      visionText: '在日多文化コミュニティが円滑に交流・協働し、コミュニティを支える人がよりよく支えられる社会をつくる。',
+      missionTitle: '価値観',
       values: [
-        { title: '信頼', body: '透明性のあるデータ運用と伴走型サポートで、関係者すべてに信頼される存在に。' },
-        { title: '包摂', body: '言語や文化の違いを越えたコミュニケーションの橋渡しをします。' },
-        { title: '地域連携', body: '自治体・NPO・企業がシームレスに協働できる仕組みを構築します。' },
-        { title: '学び', body: '利用者の声を機能改善に反映し、進化し続けるサービスを届けます。' }
+        { title: 'リアルな現場', body: '実際のイベントシーンと主催者の声からすべての機能を設計します。' },
+        { title: '軽やかなテクノロジー', body: 'テクノロジーは負担を減らす手段であり、複雑さを増やさないことを大切にします。' },
+        { title: '多文化協働', body: '在地の日本人と外国人住民の共同行動を支える橋渡し役を担います。' },
+        { title: '長期的な伴走', body: 'コミュニティが続く限り、現場に寄り添いアップデートを続けます。' }
       ],
       timelineTitle: 'マイルストーン',
       timeline: [
-        { year: '2022', text: '東京都三鷹市で創業。多文化共生イベントからサービス開発を開始。' },
-        { year: '2023', text: 'コミュニティ向けSaaS β版を提供。複数自治体とのPoCを実施。' },
-        { year: '2024', text: '企業向け外国人材サポートモジュールをリリースし、提携社数が拡大。' }
+        { year: '2022', text: '東京都三鷹で創業。多文化コミュニティと現場実証を開始。' },
+        { year: '2023', text: '主催者向けの軽量ツール群をβ提供し、複数コミュニティと検証。' },
+        { year: '2024', text: '企業・自治体との協働プログラムを拡張し、サービス基盤を刷新。' }
       ],
       galleryTitle: '現場の様子',
-      galleryDescription: 'オフィスやイベントの写真を通して、SOCIALMOREの雰囲気を伝えます。',
+      galleryDescription: 'オフィスやイベントの瞬間から、SOCIALMOREの空気感をお伝えします。',
       galleryPhotos: [
-        {
-          file: 'photo-office-01.jpg',
-          caption: 'photo-office-01.jpg｜オフィスでの協働風景'
-        },
-        {
-          file: 'photo-event-01.jpg',
-          caption: 'photo-event-01.jpg｜コミュニティイベントの模様'
-        },
-        {
-          file: 'photo-team-portrait.jpg',
-          caption: 'photo-team-portrait.jpg｜チーム集合写真'
-        }
+        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg｜オフィスでの協働風景' },
+        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg｜コミュニティイベントの様子' },
+        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg｜チーム集合写真' }
       ]
     },
     services: {
-      eyebrow: 'プラットフォーム',
-      title: 'サービス',
-      communityTitle: 'コミュニティ向け',
-      companyTitle: '企業向け',
+      eyebrow: 'プラットフォーム紹介',
+      title: '私たちのサービス',
+      subtitle: 'コミュニティ運営 × イベントテック × 多文化ネットワーク',
+      communityTitle: 'コミュニティ主催者向け',
+      companyTitle: '企業・自治体向け',
       iconHighlights: [
         {
-          title: '会員管理SaaS',
-          description: '会費決済や会員証を一元管理し、主要ダッシュボードに表示する基幹モジュール。',
+          title: '主催者の伴走支援',
+          description: '企画・募集・連絡を一貫してサポートする軽量ワークフロー。',
           iconKey: 'membership'
         },
         {
-          title: 'コミュニティ／外国人支援',
-          description: '地域の相談窓口やイベント連携を象徴する会話バブル型のアイコンを使用。',
+          title: 'イベント運営インフラ',
+          description: '申込、決済、会場運営を統合した信頼性の高い基盤。',
           iconKey: 'community'
         },
         {
-          title: '企業向けAIスキルアップ',
-          description: '研修・学習の進捗を示すAIチップ＋矢印のアイコンで人材育成を表現。',
+          title: '多文化ネットワーク',
+          description: '在日コミュニティと企業を結び、現場の声を届ける連携網。',
           iconKey: 'ai'
         }
       ],
       communityCards: [
         {
-          title: '会員管理クラウド',
-          bullets: ['会員データベース', '自動決済リマインド', '活動レポート作成']
+          title: 'イベント運営ツール',
+          bullets: ['多言語の募集フォーム', '参加枠・リマインド管理', 'チェックインとレポート']
         },
         {
-          title: 'イベント＆RSVP',
-          bullets: ['多言語イベントページ', 'QRチェックイン', 'キャンセル待ち管理']
+          title: '費用と決済',
+          bullets: ['オンライン決済と簡易精算', '入出金の整理', '領収書の自動送付']
         },
         {
-          title: 'コミュニケーションハブ',
-          bullets: ['テンプレートメッセージ', '自動翻訳メモ', '地域情報の共有']
+          title: 'コミュニケーション',
+          bullets: ['多言語テンプレート', '参加者への一斉連絡', '協力先との共有ノート']
         }
       ],
       companyCards: [
         {
-          title: 'スキルトレーニング',
-          bullets: ['日本語＆ビジネスマナー研修', 'メンター紹介', 'オンライン教材']
+          title: 'コミュニティ協働',
+          bullets: ['実証イベントや体験企画', '多文化交流の設計', '現場スタッフの伴走']
         },
         {
-          title: '人材マッチング',
-          bullets: ['スキルタグ検索', '求人投稿管理', '面談スケジューラー']
+          title: '現場インサイト',
+          bullets: ['コミュニティからのフィードバック', '参加者データの要約', '課題と機会の共有']
         },
         {
-          title: 'オンボーディングサポート',
-          bullets: ['生活情報ガイド', '社員向けカルチャー講座', 'FAQチャットボット']
+          title: 'プログラム支援',
+          bullets: ['技能講座や生活情報会', '自治体・企業との共同企画', '評価・改善レポート']
         }
       ],
-      plansTitle: 'プラン例',
+      plansTitle: '伴走メニューの一例',
       plans: [
         {
           name: 'スターター',
-          description: '小規模団体や新規導入向け',
-          bullets: ['最大500名の会員', 'イベント作成3本まで', 'メールサポート']
+          description: '小規模コミュニティや試行導入向け',
+          bullets: ['最大500名のメンバー', '月3本のイベント', 'メールサポート']
         },
         {
-          name: 'プロ',
-          description: '継続活用を想定した人気プラン',
-          bullets: ['無制限イベント', '多拠点管理', '専任カスタマーサクセス']
+          name: 'パートナー',
+          description: '継続的な伴走と複数拠点運営に',
+          bullets: ['無制限イベント', '多拠点・多言語対応', '専任カスタマーサクセス']
         },
         {
           name: 'エンタープライズ',
-          description: '大規模自治体・企業向け',
-          bullets: ['API連携', 'SSO対応', '24時間サポート']
+          description: '大規模プロジェクト・自治体連携向け',
+          bullets: ['API連携', 'SSO / IAM連携', '24時間サポート']
         }
       ]
     },
     news: {
       eyebrow: '最新情報',
       title: 'ニュース',
-      intro: '最新のリリース情報やコミュニティ連携事例をチェックしてください。'
+      intro: 'リリース情報や連携事例、現場レポートをお届けします。'
     },
     contact: {
       eyebrow: 'お問い合わせ',
-      title: 'お問い合わせ',
-      intro: '導入やパートナーシップに関するご相談を受け付けています。',
+      title: 'お気軽にご相談ください',
+      intro:
+        'コミュニティイベントの運営支援、協業のご相談、プロジェクトへの参加など、内容を問わずお気軽にご連絡ください。内容に応じて最適なメンバーが対応します。',
       form: {
         name: 'お名前',
         email: 'メールアドレス',
@@ -209,24 +218,24 @@ export const messages = {
         inquiryType: 'お問い合わせ種別',
         message: 'メッセージ',
         submit: '送信する',
-        success: 'お問い合わせありがとうございました。（このフォームはデモであり、実際には送信されません。）',
+        success: 'お問い合わせありがとうございました。（本フォームはデモのため送信されません。）',
         validation: {
           required: '必須項目です',
           email: '正しいメールアドレスを入力してください'
         }
       },
-      inquiryOptions: ['コミュニティSaaSについて', '企業向け研修・採用支援', 'パートナーシップ', 'その他'],
+      inquiryOptions: ['コミュニティ運営支援について', '企業・自治体との協業', '多文化プロジェクト', 'その他'],
       info: {
-        company: '株式会社創翔モア SOCIALMORE',
+        company: 'SOCIALMORE（株式会社創翔モア）',
         location: '東京都三鷹市',
         email: 'info@socialmore.jp',
-        encouragement: '自治体・企業・コミュニティ・個人の皆さまからのお問い合わせをお待ちしています。'
+        encouragement: 'どなたからのご相談も歓迎しています。内容に合わせて伴走方法をご提案します。'
       }
     },
     footer: {
       company: {
         name: 'SOCIALMORE（株式会社創翔モア）',
-        address: '東京都三鷹市を拠点に事業を展開しています。',
+        address: '東京都三鷹市を拠点に、全国のコミュニティを支援しています。',
         registration: '法人番号などの登録情報はお問い合わせに応じて開示いたします。'
       },
       contact: {
@@ -324,9 +333,7 @@ export const messages = {
           },
           {
             title: '3. 禁止事項',
-            body: [
-              '法令違反、ハラスメント、知的財産権侵害、不正アクセスなど、他者や当社の権利を侵害する行為は禁止します。'
-            ]
+            body: ['法令違反、ハラスメント、知的財産権侵害、不正アクセスなど、他者や当社の権利を侵害する行為は禁止します。']
           },
           {
             title: '4. サービス変更・停止',
@@ -372,149 +379,167 @@ export const messages = {
     },
     home: {
       hero: {
-        title: 'A friendly tech platform connecting foreign residents and local communities',
+        title: 'Lightweight tech service for community organizers in Japan',
         subtitle:
-          'We unify community engagement and SaaS tools so foreign workers in Japan can live and work confidently while cities, NPOs, and companies collaborate seamlessly.',
-        primaryCta: 'View services',
-        secondaryCta: 'Contact us',
+          'SOCIALMORE combines simple tools and real field support so community organizers worry less about forms, coordination, and logistics. We start from the communities on the ground, then bridge them with Japanese companies and institutions to build a sustainable ecosystem.',
+        primaryCta: 'Explore our services',
+        secondaryCta: 'Get in touch',
         eyebrow: 'SOCIAL + SaaS',
         dashboard: {
           focusTag: 'Community',
           statusLabel: 'Live',
           stats: [
-            { label: 'Communities', value: '128', note: 'active cities' },
-            { label: 'Members', value: '12k', note: 'monthly active' },
-            { label: 'Partners', value: '54', note: 'deployments' }
+            { label: 'Partner communities', value: '128', note: 'across Japan' },
+            { label: 'Active members', value: '12k', note: 'monthly' },
+            { label: 'Partners', value: '54', note: 'companies & orgs' }
           ]
         }
       },
-      valuesTitle: 'Focus areas',
-      valuesDescription: 'Three pillars that blend SaaS workflows with community trust building.',
+      valuesTitle: 'Three priorities we focus on',
+      valuesDescription: 'Everything we build is rooted in real community operations, so organizers can keep events running smoothly.',
       values: [
         {
-          title: 'Community and events',
-          description: 'Local organizers host multilingual events so foreign residents can join with confidence.'
+          title: 'Support for organizers',
+          description: 'Help on-the-ground hosts run activities in Japan without drowning in forms, chats, or coordination work.'
         },
         {
-          title: 'Membership SaaS',
-          description: 'Manage members and payments in the cloud with automated notifications and reports.'
+          title: 'Event infrastructure',
+          description: 'A lightweight stack that unifies sign-ups, notifications, payments, and onsite flows.'
         },
         {
-          title: 'Support for workers',
-          description: 'Career coaching and skill programs help foreign professionals thrive in Japan.'
+          title: 'Multicultural connections',
+          description: 'Link foreign workers, students, and residents with Japanese enterprises for real collaboration opportunities.'
         }
       ],
-      highlightsTitle: 'Product highlights',
-      highlightsDescription: 'Modern modules that let cities, communities, and companies share the same view.',
+      highlightsTitle: 'Key features that make events easier',
+      highlightsDescription: 'From recruitment to wrap-up, everything lives in a single workflow.',
       productHighlights: [
         {
-          title: 'Simple event operations',
-          body: 'Drag-and-drop scheduling, QR check-in, and real-time attendance tracking.'
+          title: 'Event enrollment & management',
+          body: 'Multilingual forms, capacity controls, and automatic summaries.'
         },
         {
-          title: 'Online payments',
-          body: 'Collect dues and event fees in multiple languages with automatic receipts.'
+          title: 'Online payments & reconciliation',
+          body: 'Collect fees, sort expenses, and send receipts without extra spreadsheets.'
         },
         {
-          title: 'Multilingual support',
-          body: 'Templates that cover Japanese, English, Vietnamese, and more community languages.'
+          title: 'Participant communications',
+          body: 'Templates for Japanese, Chinese, English, and more to reduce misunderstandings.'
+        },
+        {
+          title: 'Community resource network',
+          body: 'Match organizers with venues, speakers, and collaboration partners.'
         }
       ],
+      now: {
+        title: 'What we are working on now',
+        description: 'We co-create with communities to refine the service and the collaboration network.',
+        projects: [
+          'Testing the event operations system with neighborhood partners in Mitaka, Tokyo',
+          'Providing life info and skill events for foreign worker communities',
+          'Exploring multicultural collaboration opportunities with Japanese companies',
+          'Polishing organizer tools plus the resource-collaboration modules'
+        ]
+      },
       newsTitle: 'Latest news',
       newsDescription: 'Updates about the platform, partnerships, and field projects.'
     },
     about: {
-      eyebrow: 'SOCIALMORE',
-      title: 'About us',
+      eyebrow: 'Company',
+      title: 'About SOCIALMORE',
+      intro:
+        'SOCIALMORE was founded in Mitaka, Tokyo. We have spent years hosting and supporting community events, so we deeply understand the obstacles organizers face. For us, technology is a tool to reduce workload, not a goal by itself.',
       visionTitle: 'Vision',
-      visionText: 'Through technology we help foreign residents work, live, and stay connected to local communities.',
-      missionTitle: 'Mission & values',
+      visionText: 'Make it easier for multicultural communities in Japan to collaborate, communicate, and live together while caring for the people who support them.',
+      missionTitle: 'Values',
       values: [
-        { title: 'Trust', body: 'Operate transparently with data and long-term support for every stakeholder.' },
-        { title: 'Inclusion', body: 'Bridge languages and cultures so conversations stay open and respectful.' },
-        { title: 'Local partnerships', body: 'Enable cities, NPOs, and companies to collaborate seamlessly.' },
-        { title: 'Learning', body: 'Listen to community feedback and keep improving the service.' }
+        { title: 'Real field insight', body: 'Start from real event scenes and organizer needs, then turn them into product updates.' },
+        { title: 'Lightweight tech', body: 'Technology should remove friction and stay approachable.' },
+        { title: 'Multicultural collaboration', body: 'Serve as a bridge between local Japanese groups and foreign residents.' },
+        { title: 'Long-term partnership', body: 'Stay close to communities for as long as they exist and keep iterating together.' }
       ],
       timelineTitle: 'Milestones',
       timeline: [
-        { year: '2022', text: 'Founded in Mitaka, Tokyo and started with multicultural events.' },
-        { year: '2023', text: 'Released the beta SaaS for communities and ran PoC projects with cities.' },
-        { year: '2024', text: 'Launched corporate support modules for foreign talent and expanded partnerships.' }
+        { year: '2022', text: 'Founded in Mitaka and started pilots with multicultural communities.' },
+        { year: '2023', text: 'Released lightweight organizer tools in beta and tested with multiple groups.' },
+        { year: '2024', text: 'Expanded corporate and municipal collaborations while refreshing the platform.' }
       ],
       galleryTitle: 'Field snapshots',
-      galleryDescription: 'A glimpse of our office, events, and team moments.',
+      galleryDescription: 'Moments from our office, events, and team collaborations.',
       galleryPhotos: [
-        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg | Collaboration in the office' },
+        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg | Office collaboration' },
         { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg | Community event scene' },
         { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg | Team portrait' }
       ]
     },
     services: {
-      eyebrow: 'Platform',
-      title: 'Products & services',
+      eyebrow: 'Platform overview',
+      title: 'What we offer',
+      subtitle: 'Community operations × Event technology × Multicultural connections',
       communityTitle: 'For community organizers',
-      companyTitle: 'For companies',
+      companyTitle: 'For companies & public partners',
       iconHighlights: [
         {
-          title: 'Membership SaaS',
-          description: 'Core dashboard for dues, passes, and consolidated member records.',
+          title: 'Organizer support',
+          description: 'One workflow that covers planning, sign-ups, communication, and wrap-up.',
           iconKey: 'membership'
         },
         {
-          title: 'Community support',
-          description: 'Icon set inspired by help desks and neighborhood meetups.',
+          title: 'Event infrastructure',
+          description: 'Reliable stack for applications, payments, and onsite logistics.',
           iconKey: 'community'
         },
         {
-          title: 'AI skill programs',
-          description: 'Chip-and-arrow icon showing career upskilling journeys.',
+          title: 'Multicultural network',
+          description: 'Bridge communities and enterprises so field insights travel both ways.',
           iconKey: 'ai'
         }
       ],
       communityCards: [
         {
-          title: 'Membership cloud',
-          bullets: ['Member database', 'Automated payment reminders', 'Activity reports']
+          title: 'Event tools',
+          bullets: ['Multilingual signup pages', 'Capacity & reminder management', 'Check-in plus summaries']
         },
         {
-          title: 'Events & RSVP',
-          bullets: ['Multilingual event pages', 'QR check-in', 'Waitlist tools']
+          title: 'Payments & costs',
+          bullets: ['Online fee collection', 'Simple reconciliation', 'Automatic receipts']
         },
         {
-          title: 'Communication hub',
-          bullets: ['Template messages', 'Notes with translation', 'Local updates']
+          title: 'Communication',
+          bullets: ['Templates across languages', 'Bulk updates to participants', 'Shared notes with partners']
         }
       ],
       companyCards: [
         {
-          title: 'Skill training',
-          bullets: ['Japanese & business etiquette', 'Mentor network', 'Online lessons']
+          title: 'Community collaboration',
+          bullets: ['Co-create cultural exchanges', 'Onsite experience programs', 'Field facilitation support']
         },
         {
-          title: 'Talent matching',
-          bullets: ['Skill tags', 'Job posting management', 'Interview scheduling']
+          title: 'Insight from the field',
+          bullets: ['Feedback from multicultural events', 'Participant data highlights', 'Shared challenges & opportunities']
         },
         {
-          title: 'Onboarding support',
-          bullets: ['Life guide', 'Culture briefings', 'FAQ chatbot']
+          title: 'Program support',
+          bullets: ['Skill sessions and life info workshops', 'Joint projects with cities & firms', 'Evaluation and improvement reports']
         }
       ],
-      plansTitle: 'Sample plans',
+      plansTitle: 'Sample engagement models',
       plans: [
-        { name: 'Starter', description: 'For small teams', bullets: ['Up to 500 members', '3 events', 'Email support'] },
-        { name: 'Pro', description: 'Most popular', bullets: ['Unlimited events', 'Multi-site admin', 'Dedicated CS'] },
-        { name: 'Enterprise', description: 'For large orgs', bullets: ['API access', 'SSO', '24/7 support'] }
+        { name: 'Starter', description: 'For pilots and small teams', bullets: ['Up to 500 members', '3 events per month', 'Email support'] },
+        { name: 'Partner', description: 'For ongoing operations', bullets: ['Unlimited events', 'Multi-location & multilingual care', 'Dedicated CS manager'] },
+        { name: 'Enterprise', description: 'For large programs', bullets: ['API integrations', 'SSO / IAM', '24/7 support'] }
       ]
     },
     news: {
       eyebrow: 'Updates',
       title: 'News',
-      intro: 'Platform releases, pilots, and stories from the field.'
+      intro: 'Platform releases, partnership pilots, and stories from the field.'
     },
     contact: {
-      eyebrow: 'Get in touch',
-      title: 'Contact',
-      intro: 'We welcome chats about adoption, pilots, and partnerships.',
+      eyebrow: 'Contact',
+      title: 'We would love to hear from you',
+      intro:
+        'Whether you need help running events, want to explore collaborations, or plan to join our community projects, feel free to reach out. We will connect you with the right teammate.',
       form: {
         name: 'Name',
         email: 'Email',
@@ -522,25 +547,25 @@ export const messages = {
         inquiryType: 'Inquiry type',
         message: 'Message',
         submit: 'Send message',
-        success: 'Thank you for reaching out. (This form is a demo and does not actually send emails.)',
+        success: 'Thank you for your note. (This form is a demo and will not actually send an email.)',
         validation: {
           required: 'This field is required',
-          email: 'Please enter a valid email'
+          email: 'Please enter a valid email address'
         }
       },
-      inquiryOptions: ['Community SaaS', 'Corporate training & hiring', 'Partnership', 'Other'],
+      inquiryOptions: ['Community operations', 'Corporate / public partnerships', 'Multicultural programs', 'Other'],
       info: {
         company: 'SOCIALMORE Inc.',
-        location: 'Mitaka, Tokyo, Japan',
+        location: 'Mitaka, Tokyo',
         email: 'info@socialmore.jp',
-        encouragement: 'Cities, companies, community leaders, and individuals are all welcome to reach out.'
+        encouragement: 'We welcome conversations from organizers, companies, municipalities, and individuals alike.'
       }
     },
     footer: {
       company: {
         name: 'SOCIALMORE Inc.',
-        address: 'Based in Mitaka, Tokyo, Japan.',
-        registration: 'Registration details are available upon request.'
+        address: 'Based in Mitaka, Tokyo and supporting communities across Japan.',
+        registration: 'Company registration details are available upon request.'
       },
       contact: {
         title: 'Contact',
@@ -552,87 +577,77 @@ export const messages = {
       },
       links: {
         title: 'Legal',
-        privacy: 'Privacy Policy',
-        terms: 'Terms of Use'
+        privacy: 'Privacy policy',
+        terms: 'Terms of use'
       },
       copyright: '© 2024 SOCIALMORE Inc. All rights reserved.'
     },
     legal: {
       privacy: {
-        title: 'Privacy Policy',
+        title: 'Privacy policy',
         updated: 'Last updated: April 1, 2024',
         intro:
-          'SOCIALMORE (“we”) is committed to protecting personal data so we can deliver a safe and reliable service. This policy explains what data we collect and how we use it.',
+          'SOCIALMORE (“we”) is committed to handling personal information appropriately so that we can deliver our services safely and continuously. This policy explains the types of data we collect and how we use it.',
         sections: [
           {
             title: '1. Information we collect',
-            body: ['We only collect the information needed to provide, secure, and improve the service.'],
+            body: ['We collect only the data needed to deliver, improve, and secure our services. It mainly includes:'],
             bullets: [
-              'Account details such as name, email, organization, preferred language',
-              'Usage data (access logs, browser type, device info, pages viewed)',
-              'Inquiry and support history',
-              'Payment information handled by trusted payment processors (we do not store card numbers)'
+              'Account details (name, email address, organization, preferred language)',
+              'Usage data (access logs, browser and device information, browsing history)',
+              'Inquiry content and support records',
+              'Payment information processed via trusted providers (we do not store credit card numbers)'
             ]
           },
           {
             title: '2. Purpose of use',
-            body: ['We use the data for service delivery, identity verification, fraud prevention, improvements, and important notices.']
+            body: ['We use the information to provide the service, verify users, prevent abuse, improve features, and deliver important notices or support responses.']
           },
           {
-            title: '3. Third-party sharing',
+            title: '3. Sharing with third parties',
             body: [
-              'We may share limited data with vetted service providers such as payment processors, hosting, and analytics partners.',
-              'Vendors are contractually obligated to handle data only within the agreed scope.'
+              'We may share data with trusted partners such as payment, infrastructure, or analytics providers within the necessary scope.',
+              'Such partners only handle the data under contracts and our instructions.'
             ]
           },
           {
             title: '4. Storage & security',
             body: [
-              'Data is stored in Japan or regions with adequate protection.',
-              'We apply access controls, encryption, and monitoring to prevent loss or leaks.'
+              'Data is stored in Japan or in regions with adequate protection levels.',
+              'We apply access controls, encryption, and audit logs to prevent loss or leaks.'
             ]
           },
           {
             title: '5. User rights',
-            body: [
-              'You may request disclosure, correction, or deletion of your data as permitted by law.',
-              'Contact us via the address below for such requests.'
-            ]
+            body: ['You may request to view, correct, or delete your personal data within the limits of applicable laws. Please contact us to make such requests.']
           },
           {
             title: '6. Cookies',
-            body: [
-              'We use cookies to remember language choices and understand usage patterns.',
-              'You can disable cookies in your browser, but some features may not work.'
-            ]
+            body: ['We may use cookies or similar technologies to remember language settings and understand usage. Disabling cookies may limit some functions.']
           },
           {
-            title: '7. Updates',
-            body: ['We will update this policy when laws or services change and notify users of material updates.']
+            title: '7. Policy updates',
+            body: ['We may revise this policy when laws or services change. Significant changes will be announced on this page and communicated appropriately.']
           },
           {
             title: '8. Contact',
-            body: ['Questions about privacy? Email info@socialmore.jp.']
+            body: ['Please contact info@socialmore.jp for privacy-related questions.']
           }
         ]
       },
       terms: {
-        title: 'Terms of Use',
+        title: 'Terms of use',
         updated: 'Last updated: April 1, 2024',
-        intro:
-          'These Terms govern your use of the SOCIALMORE website and related services. Please read them carefully before using the service.',
+        intro: 'These terms govern your use of the SOCIALMORE website and related services. By using the service you agree to the terms.',
         sections: [
-          { title: '1. Scope', body: ['The Terms apply to all online services provided by SOCIALMORE.'] },
+          { title: '1. Scope', body: ['Applies to all online services we provide.'] },
           {
-            title: '2. Accounts',
-            body: [
-              'You are responsible for keeping registration details accurate.',
-              'Notify us promptly if you suspect unauthorized use.'
-            ]
+            title: '2. Account responsibility',
+            body: ['Users must keep their registration details accurate and contact us immediately if unauthorized use is suspected.']
           },
           {
             title: '3. Prohibited actions',
-            body: ['No illegal, harassing, infringing, or unauthorized access activities.']
+            body: ['Any illegal activity, harassment, infringement, or unauthorized access is prohibited.']
           },
           {
             title: '4. Service changes',
@@ -641,22 +656,22 @@ export const messages = {
           {
             title: '5. Disclaimer',
             body: [
-              'The service is provided “as is” without guarantees of uninterrupted availability.',
-              'We are not liable for damages unless caused by our intentional or grossly negligent acts.',
-              'If liability arises, it is limited to the amount you paid in the past 12 months for the service.'
+              'The service is provided “as is” without guarantees of uninterrupted operation or fitness for a particular purpose.',
+              'We are not liable for damages unless caused by our willful misconduct or gross negligence.',
+              'If liability is unavoidable, it is limited to direct damages up to the amount paid by the user in the past 12 months.'
             ]
           },
           {
             title: '6. Intellectual property',
-            body: ['All IP related to the service belongs to SOCIALMORE or its licensors.']
+            body: ['All IP related to the service belongs to us or to the rightful owners.']
           },
           {
-            title: '7. Governing law',
-            body: ['Japanese law governs these Terms. The Tokyo District Court has exclusive jurisdiction.']
+            title: '7. Governing law & jurisdiction',
+            body: ['These terms are governed by Japanese law. Disputes are subject to the exclusive jurisdiction of the Tokyo District Court.']
           },
           {
             title: '8. Contact',
-            body: ['Reach us at info@socialmore.jp for questions about these Terms.']
+            body: ['Please reach out to info@socialmore.jp regarding these terms.']
           }
         ]
       }
@@ -668,20 +683,21 @@ export const messages = {
       about: '关于我们',
       services: '服务',
       news: '新闻',
-      contact: '联系'
+      contact: '联系我们'
     },
     buttons: {
-      viewServices: '查看服务',
+      viewServices: '了解服务',
       contactUs: '联系我们',
-      learnMore: '了解更多',
+      learnMore: '进一步了解',
       readMore: '阅读更多'
     },
     home: {
       hero: {
-        title: '连接在日社群与地方伙伴的友好科技平台',
-        subtitle: 'SOCIALMORE 将社群活动与 SaaS 工具结合，让在日外国人更安心地工作与生活，同时帮助自治体、企业与社区顺畅协作。',
-        primaryCta: '查看服务',
-        secondaryCta: '立即联系',
+        title: '支持在日社群主理人的轻量科技服务',
+        subtitle:
+          'SOCIALMORE 通过简单易用的技术工具，让活动主办更省心、沟通更顺畅、资源更容易找到。从社群出发，连结在日多元社区与日本企业、机构，形成可持续的活动与合作生态。',
+        primaryCta: '了解我们的服务',
+        secondaryCta: '联系我们',
         eyebrow: 'SOCIAL + SaaS',
         dashboard: {
           focusTag: '社群',
@@ -693,43 +709,65 @@ export const messages = {
           ]
         }
       },
-      valuesTitle: '重点方向',
-      valuesDescription: '结合 SaaS 与社群陪伴的三大支柱。',
+      valuesTitle: '我们专注于三件事情',
+      valuesDescription: '以真实社群需求为核心，让主办方的运营、沟通与连结更顺畅。',
       values: [
-        { title: '社群与活动', description: '帮助各地社群多语言运营活动，让参与者轻松加入。' },
-        { title: '会员管理 SaaS', description: '在云端管理成员与费用，自动发送通知和报表。' },
-        { title: '外国人支持', description: '提供职业咨询与技能课程，协助在日生活与成长。' }
+        {
+          title: '社群主理人支援',
+          description: '帮助在日社群主办方轻松开展活动，减少繁琐的表格、沟通与对接。'
+        },
+        {
+          title: '活动运营基础设施',
+          description: '提供「报名・通知・支付・会场协力」的一体化基础设施。'
+        },
+        {
+          title: '多文化社区连结',
+          description: '连结外国劳工、留学生与跨文化居民，为企业与机构带来真实可信的合作网络。'
+        }
       ],
-      highlightsTitle: '产品亮点',
-      highlightsDescription: '让自治体、企业、社群共享同一视角的轻量模块。',
+      highlightsTitle: '让社群活动变得轻松的关键功能',
+      highlightsDescription: '围绕活动的每个关键节点，提供可立即上手的工具。',
       productHighlights: [
-        { title: '活动管理', body: '拖拽式排期、QR 签到、实时参与统计。' },
-        { title: '在线支付', body: '多语言界面收取费用并自动寄送收据。' },
-        { title: '多语言沟通', body: '涵盖中日英等语言的沟通模板，快速回应。' }
+        { title: '活动募集与管理', body: '多语言报名表、人数管理、自动汇总，一次完成。' },
+        { title: '在线支付与费用整理', body: '支持活动收费与简单结算，让主理人不再被对账困扰。' },
+        { title: '参与者沟通与通知', body: '支持日语、中文、英文等多语言沟通，降低误解成本。' },
+        { title: '社群资源协作网络', body: '协助主办方对接场地、嘉宾、合作方等活动资源。' }
       ],
+      now: {
+        title: '我们正在推动的工作',
+        description: '与在地社群共同打磨产品与协作网络，确保每一步都贴近真实需求。',
+        projects: [
+          '在东京三鹰，与在地社群合作测试活动运营系统',
+          '为外国劳工社群提供生活信息与技能活动支持',
+          '与日本企业探索多文化社区合作机会',
+          '打磨面向社群主理人的运营工具和资源协作模块'
+        ]
+      },
       newsTitle: '最新动态',
-      newsDescription: '平台更新、合作案例与现场故事。'
+      newsDescription: '关注平台版本更新、合作项目与现场故事。'
     },
     about: {
-      eyebrow: 'SOCIALMORE',
-      title: '关于我们',
+      eyebrow: '公司简介',
+      title: '关于 SOCIALMORE',
+      intro:
+        'SOCIALMORE（創翔モア）是一家在东京三鹰成立的科技公司。我们长期在社区现场举办活动、支持社群，深刻感受到主办方在运营中遇到的种种困难。技术对我们来说不是目的，而是减轻社群运营负担的工具。通过让活动变得更容易，我们希望让更多社群得以持续、成长、连接。',
       visionTitle: '愿景',
-      visionText: '以科技为桥梁，让在日外国人与地方社会安心共生。',
-      missionTitle: '使命与价值观',
+      visionText: '让在日多元社群更顺畅地交流、协作与共同生活，让支持社区的人，被更好地支持。',
+      missionTitle: '价值观',
       values: [
-        { title: '信任', body: '以透明的数据与长期陪伴获得伙伴信赖。' },
-        { title: '包容', body: '跨越语言文化差异，搭建顺畅沟通。' },
-        { title: '区域协作', body: '帮助自治体、NPO 与企业无缝合作。' },
-        { title: '持续学习', body: '倾听现场声音，持续优化服务。' }
+        { title: '真实现场', body: '从真实的活动场景与主理人需求出发，持续倾听与反馈。' },
+        { title: '轻量科技', body: '技术必须让运营减负，而不是增加复杂度。' },
+        { title: '多文化协作', body: '连接在地日本人与外国居民，共同推动社区行动。' },
+        { title: '长期陪伴', body: '社群持续存在，我们就在现场，与伙伴长期同行。' }
       ],
-      timelineTitle: '发展历程',
+      timelineTitle: '发展里程碑',
       timeline: [
-        { year: '2022', text: '在东京三鹰成立，从多文化活动起步。' },
-        { year: '2023', text: '推出社区版 SaaS β，展开多地验证。' },
-        { year: '2024', text: '上线企业端模块，拓展协作伙伴。' }
+        { year: '2022', text: '在东京三鹰成立，与多文化社区开展活动与验证。' },
+        { year: '2023', text: '推出面向主理人的轻量工具，和多地社群共同测试。' },
+        { year: '2024', text: '扩展与企业、自治体的合作项目，并升级平台能力。' }
       ],
       galleryTitle: '现场一瞥',
-      galleryDescription: '透过办公室与活动照片，感受 SOCIALMORE 的氛围。',
+      galleryDescription: '透过办公室与活动照片，感受 SOCIALMORE 的日常。',
       galleryPhotos: [
         { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg｜办公室协作' },
         { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg｜社群活动' },
@@ -737,30 +775,49 @@ export const messages = {
       ]
     },
     services: {
-      eyebrow: '平台服务',
-      title: '产品与方案',
-      communityTitle: '面向社群主理人',
-      companyTitle: '面向企业与机构',
+      eyebrow: '平台介绍',
+      title: '我们提供的服务',
+      subtitle: '社群运营 × 活动技术 × 多文化连结',
+      communityTitle: '面向社群主理人（主办方）',
+      companyTitle: '面向企业与机构（Partners）',
       iconHighlights: [
-        { title: '会员管理 SaaS', description: '将会员、费用与通行证整合在一个面板。', iconKey: 'membership' },
-        { title: '社群支援', description: '象征社区咨询与活动合作的对话气泡图示。', iconKey: 'community' },
-        { title: 'AI 技能成长', description: '芯片与箭头图示，代表学习与进阶。', iconKey: 'ai' }
+        { title: '主理人支援', description: '一条龙覆盖企划、报名、沟通与复盘。', iconKey: 'membership' },
+        { title: '活动运营基础设施', description: '报名、支付、语言支持、会场协作一体化。', iconKey: 'community' },
+        { title: '多文化连结网络', description: '连接社区与企业，让现场洞察快速流动。', iconKey: 'ai' }
       ],
       communityCards: [
-        { title: '会员云', bullets: ['成员数据库', '自动缴费提醒', '运营报告'] },
-        { title: '活动 & 报名', bullets: ['多语言活动页', 'QR 签到', '候补名单管理'] },
-        { title: '沟通枢纽', bullets: ['模板讯息', '自动翻译备注', '在地资讯分享'] }
+        {
+          title: '活动运营工具（Event Tools）',
+          bullets: ['报名、通知、签到、数据管理一次完成', '多语言界面降低沟通负担', '活动模板可快速复用']
+        },
+        {
+          title: '费用与支付（Payment）',
+          bullets: ['支持线上收费与简单结算', '自动整理收支与凭证', '减少手动对账时间']
+        },
+        {
+          title: '沟通与协作（Communication）',
+          bullets: ['多语言沟通与提醒', '参与者与志愿者同步', '合作方共享关键资讯']
+        }
       ],
       companyCards: [
-        { title: '技能培训', bullets: ['日语与商务礼仪', '导师配对', '线上教材'] },
-        { title: '人才对接', bullets: ['技能标签搜索', '职位发布管理', '面谈排程'] },
-        { title: '入职支持', bullets: ['生活资讯手册', '文化培训', 'FAQ 聊天机器人'] }
+        {
+          title: '社区协作（Community Collaboration）',
+          bullets: ['文化交流与体验项目', '真实社群现场活动', '主办端与企业端双向沟通']
+        },
+        {
+          title: '现场信息洞察（Insight）',
+          bullets: ['来自多文化活动的反馈', '参与者画像与需求摘要', '协助制定沟通策略']
+        },
+        {
+          title: '合作项目支持（Programs）',
+          bullets: ['与企业／自治体共同策划讲座或体验', '技能与生活信息课程', '评估与后续改进建议']
+        }
       ],
-      plansTitle: '方案示例',
+      plansTitle: '合作模式示例',
       plans: [
-        { name: '入门版', description: '适合小型团队', bullets: ['最多 500 名成员', '最多 3 场活动', '邮件支持'] },
-        { name: '专业版', description: '常用首选方案', bullets: ['不限活动数量', '多据点管理', '专属成功经理'] },
-        { name: '企业版', description: '大型机构', bullets: ['API 整合', 'SSO 单点登录', '24/7 支持'] }
+        { name: '入门计划', description: '适合试点与小型团队', bullets: ['最多 500 名成员', '每月 3 场活动', '邮件支持'] },
+        { name: '伙伴计划', description: '适合持续运营与多据点协作', bullets: ['不限活动数量', '多地点与多语言支持', '专属成功经理'] },
+        { name: '企业计划', description: '面向大型项目或机构', bullets: ['API 集成', 'SSO / IAM', '24/7 支持'] }
       ]
     },
     news: {
@@ -770,8 +827,9 @@ export const messages = {
     },
     contact: {
       eyebrow: '联系我们',
-      title: '联系',
-      intro: '欢迎就导入、合作或社群支援等议题与我们交流。',
+      title: '欢迎与我们联系',
+      intro:
+        '无论是社群活动的运营支持、合作交流的机会，或是希望参与我们的社区项目，都欢迎随时联系我们。我们会根据内容安排最合适的成员与您对接。',
       form: {
         name: '姓名',
         email: '邮箱',
@@ -785,18 +843,18 @@ export const messages = {
           email: '请输入有效的邮箱地址'
         }
       },
-      inquiryOptions: ['关于社区 SaaS', '企业培训 / 招聘', '合作提案', '其他'],
+      inquiryOptions: ['社群运营支援', '企业 / 机构合作', '多文化项目', '其他'],
       info: {
         company: 'SOCIALMORE（创翔莫尔株式会社）',
         location: '日本东京三鹰',
         email: 'info@socialmore.jp',
-        encouragement: '欢迎自治体、企业、社群伙伴与个人来信。'
+        encouragement: '欢迎自治体、企业、社群伙伴与个人来信，我们会尽快回复。'
       }
     },
     footer: {
       company: {
         name: 'SOCIALMORE（创翔莫尔株式会社）',
-        address: '在日本东京三鹰开展业务。',
+        address: '在日本东京三鹰开展业务，持续支持各地社群。',
         registration: '如有需要，可提供公司的登记与注册信息。'
       },
       contact: {
@@ -879,7 +937,7 @@ export const messages = {
           },
           {
             title: '6. 知识产权',
-            body: ['与本服务相关的所有知识产权归本公司或合法权利人所有。']
+            body: ['与本服务相关的所有知产权归本公司或合法权利人所有。']
           },
           {
             title: '7. 准据法与管辖',
@@ -894,7 +952,6 @@ export const messages = {
     }
   }
 };
-
 const readStoredLocale = () => {
   if (typeof window === 'undefined') {
     return DEFAULT_LOCALE;
