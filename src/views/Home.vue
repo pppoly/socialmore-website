@@ -96,7 +96,7 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
-import heroMainVisual from '../assets/hero/hero-main.jpg';
+import heroMainVisual from '../assets/hero/hero-main.svg';
 import heroOverlayShapes from '../assets/hero/hero-overlay-shapes.svg';
 import newsDefaultCover from '../assets/news/news-default.svg';
 import { newsItems } from '../data/news';

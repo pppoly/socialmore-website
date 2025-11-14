@@ -64,7 +64,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import headerLogo from '@/assets/brand/logo.png';
+import headerLogo from '../assets/brand/brand-logo-primary.svg';
 import { useI18n } from '../composables/useI18n';
 
 const { t, currentLocale, setLocale } = useI18n();
