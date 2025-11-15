@@ -4,7 +4,7 @@ import newsCoverWebsite from '../assets/news/news2.png';
 export const newsItems = [
   {
     id: 1,
-    date: '2024-10-18',
+    date: '2025-10-18',
     title: {
       ja: 'SOCIALMORE公式サイトを公開しました',
       en: 'SOCIALMORE launches its official website'
