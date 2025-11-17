@@ -39,13 +39,13 @@ export const messages = {
       hero: {
         title: '在日コミュニティ主催者を支える軽量テックサービス',
         subtitle:
-          'SOCIALMOREは、簡単に使えるテクノロジーツールでイベント主催の負担を軽くし、コミュニケーションを滑らかにし、必要なリソースにつながりやすくします。コミュニティから始まり、多様な在日コミュニティと日本の企業・機関を結び、持続的な協働エコシステムを築きます。',
+          '主催者を支えるわかりやすいテクノロジーでイベント主催の負担を軽くし、コミュニケーションを滑らかにし、必要なリソースにつながりやすくします。コミュニティから始まり、多様な在留外国人コミュニティと日本の企業・機関を結び、持続的な協働エコシステムを築きます。',
         primaryCta: 'サービスを知る',
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: 'β版準備中',
           title: 'リリースまでの3ステップ',
-          description: '現場のコミュニティと共創しながら、段階的にアクセスを広げています。',
+          description: '現場のコミュニティと共創しながら、段階的にアクセスの輪を広げています。',
           steps: [
             { title: 'プランニング', body: '課題と必須フローを整理し、最小構成で設計。' },
             { title: '共創テスト', body: '実際のイベントで伴走し、毎週アップデート。' },
@@ -74,12 +74,12 @@ export const messages = {
           iconKey: 'connection'
         }
       ],
-      highlightsTitle: 'コミュニティイベントを楽にする機能',
+      highlightsTitle: 'コミュニティイベントを創造するシステム',
       highlightsDescription: '募集から当日運営、振り返りまでをひとつながりの体験に。',
       productHighlights: [
         {
           title: 'イベント募集と管理',
-          body: '多言語フォーム、人数管理、自動集計をまとめて提供。'
+          body: '多言語フォーマット、参加人数（参加者）管理、自動集計をまとめて提供。'
         },
         {
           title: 'オンライン決済と費用整理',
@@ -137,13 +137,13 @@ export const messages = {
     },
     services: {
       eyebrow: 'プラットフォーム紹介',
-      title: '私たちのサービス',
+      title: 'サポート・コンテンツ',
       subtitle: 'コミュニティ運営 × イベントテック × 多文化ネットワーク',
       communityTitle: 'コミュニティ主催者向け',
       companyTitle: '企業・自治体向け',
       iconHighlights: [
         {
-          title: '主催者の伴走支援',
+          title: '寄り添い支援',
           description: '企画・募集・連絡を一貫してサポートする軽量ワークフロー。',
           iconKey: 'membership'
         },
@@ -153,8 +153,8 @@ export const messages = {
           iconKey: 'community'
         },
         {
-          title: '多文化ネットワーク',
-          description: '在日コミュニティと企業を結び、現場の声を届ける連携網。',
+          title: '多文化リレーション',
+          description: '在留外国人コミュニティと企業を結び、現場の声を届けるネットワーク。',
           iconKey: 'ai'
         }
       ],
@@ -182,7 +182,7 @@ export const messages = {
           bullets: ['実証イベントや体験企画', '多文化交流の設計', '現場スタッフの伴走']
         },
         {
-          title: '現場インサイト',
+          title: '現場のツボ',
           iconKey: 'insight',
           bullets: ['コミュニティからのフィードバック', '参加者データの要約', '課題と機会の共有']
         },
@@ -192,20 +192,20 @@ export const messages = {
           bullets: ['技能講座や生活情報会', '自治体・企業との共同企画', '評価・改善レポート']
         }
       ],
-      plansTitle: '伴走メニューの一例',
+      plansTitle: '寄り添いプログラムの一例',
       plans: [
         {
-          name: 'スターター',
+          name: 'Starter',
           description: '小規模コミュニティや試行導入向け',
           bullets: ['最大500名のメンバー', '月3本のイベント', 'メールサポート']
         },
         {
-          name: 'パートナー',
+          name: 'Partnership',
           description: '継続的な伴走と複数拠点運営に',
           bullets: ['無制限イベント', '多拠点・多言語対応', '専任カスタマーサクセス']
         },
         {
-          name: 'エンタープライズ',
+          name: 'Enterprise',
           description: '大規模プロジェクト・自治体連携向け',
           bullets: ['API連携', 'SSO / IAM連携', '24時間サポート']
         }
@@ -226,7 +226,7 @@ export const messages = {
       eyebrow: 'お問い合わせ',
       title: 'お気軽にご相談ください',
       intro:
-        'コミュニティイベントの運営支援、協業のご相談、プロジェクトへの参加など、内容を問わずお気軽にご連絡ください。内容に応じて最適なメンバーが対応します。',
+        'コミュニティイベントの運営支援、協業のご相談、プロジェクトへの参加など、内容を問わずお気軽にご連絡ください。内容に応じて最適なメンバーが対応します。尚、個人情報の保護に基づき、ご相談やいただいたメールアドレスなど等の個人情報は目的以外に使用しませんのでご安心ください。',
       form: {
         name: 'お名前',
         email: 'メールアドレス',
@@ -396,13 +396,13 @@ export const messages = {
       hero: {
         title: 'Lightweight tech service for community organizers in Japan',
         subtitle:
-          'SOCIALMORE combines simple tools and real field support so community organizers worry less about forms, coordination, and logistics. We start from the communities on the ground, then bridge them with Japanese companies and institutions to build a sustainable ecosystem.',
+          'Organizer-friendly technology lightens event workloads, smooths communication, and makes it easier to reach the resources you need. Starting from the community level, we connect diverse foreign resident communities with Japanese companies and institutions to build a lasting collaboration ecosystem.',
         primaryCta: 'Explore our services',
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: 'Pre-launch',
           title: 'Three steps to launch',
-          description: 'We widen access stage by stage with the communities building alongside us.',
+          description: 'We widen the circle of access stage by stage with the communities building alongside us.',
           steps: [
             { title: 'Planning', body: 'Map the essential workflows and design the leanest experience.' },
             { title: 'Co-creation pilots', body: 'Run real events together and ship weekly improvements.' },
@@ -430,12 +430,12 @@ export const messages = {
           iconKey: 'connection'
         }
       ],
-      highlightsTitle: 'Key features that make events easier',
+      highlightsTitle: 'Systems that help create community events',
       highlightsDescription: 'From recruitment to wrap-up, everything lives in a single workflow.',
       productHighlights: [
         {
           title: 'Event enrollment & management',
-          body: 'Multilingual forms, capacity controls, and automatic summaries.'
+          body: 'Multilingual formats, participant tracking, and automatic summaries.'
         },
         {
           title: 'Online payments & reconciliation',
@@ -493,14 +493,14 @@ export const messages = {
     },
     services: {
       eyebrow: 'Platform overview',
-      title: 'What we offer',
+      title: 'Support & content',
       subtitle: 'Community operations × Event technology × Multicultural connections',
       communityTitle: 'For community organizers',
       companyTitle: 'For companies & public partners',
       iconHighlights: [
         {
-          title: 'Organizer support',
-          description: 'One workflow that covers planning, sign-ups, communication, and wrap-up.',
+          title: 'Support at your side',
+          description: 'A workflow that stays close through planning, sign-ups, communication, and wrap-up.',
           iconKey: 'membership'
         },
         {
@@ -509,8 +509,8 @@ export const messages = {
           iconKey: 'community'
         },
         {
-          title: 'Multicultural network',
-          description: 'Bridge communities and enterprises so field insights travel both ways.',
+          title: 'Multicultural relations',
+          description: 'Connect foreign resident communities with companies so field insights reach the right teams.',
           iconKey: 'ai'
         }
       ],
@@ -538,7 +538,7 @@ export const messages = {
           bullets: ['Co-create cultural exchanges', 'Onsite experience programs', 'Field facilitation support']
         },
         {
-          title: 'Insight from the field',
+          title: 'Field essentials',
           iconKey: 'insight',
           bullets: ['Feedback from multicultural events', 'Participant data highlights', 'Shared challenges & opportunities']
         },
@@ -548,10 +548,10 @@ export const messages = {
           bullets: ['Skill sessions and life info workshops', 'Joint projects with cities & firms', 'Evaluation and improvement reports']
         }
       ],
-      plansTitle: 'Sample engagement models',
+      plansTitle: 'Sample companion programs',
       plans: [
         { name: 'Starter', description: 'For pilots and small teams', bullets: ['Up to 500 members', '3 events per month', 'Email support'] },
-        { name: 'Partner', description: 'For ongoing operations', bullets: ['Unlimited events', 'Multi-location & multilingual care', 'Dedicated CS manager'] },
+        { name: 'Partnership', description: 'For ongoing operations', bullets: ['Unlimited events', 'Multi-location & multilingual care', 'Dedicated CS manager'] },
         { name: 'Enterprise', description: 'For large programs', bullets: ['API integrations', 'SSO / IAM', '24/7 support'] }
       ],
       planNote: 'Plans are illustrative. Contact us for a tailored scope.'
@@ -570,7 +570,7 @@ export const messages = {
       eyebrow: 'Contact',
       title: 'We would love to hear from you',
       intro:
-        'Whether you need help running events, want to explore collaborations, or plan to join our community projects, feel free to reach out. We will connect you with the right teammate.',
+        'Whether you need help running events, want to explore collaborations, or plan to join our community projects, feel free to reach out. We will connect you with the right teammate. We protect any personal information you share and only use it to respond to your inquiry.',
       form: {
         name: 'Name',
         email: 'Email',
@@ -725,13 +725,13 @@ export const messages = {
       hero: {
         title: '支持在日社群主理人的轻量科技服务',
         subtitle:
-          'SOCIALMORE 通过简单易用的技术工具，让活动主办更省心、沟通更顺畅、资源更容易找到。从社群出发，连结在日多元社区与日本企业、机构，形成可持续的活动与合作生态。',
+          '借助清晰易懂的技术工具，替活动主理人减轻负担、让沟通更顺畅，并更快连接所需资源。我们从社区出发，串联多元的在留外国人社群与日本企业、机构，共同打造可持续的协作生态。',
         primaryCta: '了解我们的服务',
         eyebrow: 'SOCIAL + SaaS',
         panel: {
           eyebrow: '公测筹备',
           title: '上线三步走',
-          description: '与社群伙伴一起分阶段开放，让每一批用户都获得充分支持。',
+          description: '与在地社群共同共创，循序渐进地扩大连结的圈。',
           steps: [
             { title: '规划', body: '梳理问题与核心流程，只构建必要功能。' },
             { title: '共创试点', body: '在真实活动中陪跑，并以周为单位优化。' },
@@ -759,10 +759,10 @@ export const messages = {
           iconKey: 'connection'
         }
       ],
-      highlightsTitle: '让社群活动变得轻松的关键功能',
+      highlightsTitle: '打造社群活动的系统',
       highlightsDescription: '围绕活动的每个关键节点，提供可立即上手的工具。',
       productHighlights: [
-        { title: '活动募集与管理', body: '多语言报名表、人数管理、自动汇总，一次完成。' },
+        { title: '活动募集与管理', body: '多语言格式、参与人数（参与者）管理与自动汇总，一次搞定。' },
         { title: '在线支付与费用整理', body: '支持活动收费与简单结算，让主理人不再被对账困扰。' },
         { title: '参与者沟通与通知', body: '支持日语、中文、英文等多语言沟通，降低误解成本。' },
         { title: '社群资源协作网络', body: '协助主办方对接场地、嘉宾、合作方等活动资源。' }
@@ -810,14 +810,14 @@ export const messages = {
     },
     services: {
       eyebrow: '平台介绍',
-      title: '我们提供的服务',
+      title: '支援内容',
       subtitle: '社群运营 × 活动技术 × 多文化连结',
       communityTitle: '面向社群主理人（主办方）',
       companyTitle: '面向企业与机构（Partners）',
       iconHighlights: [
-        { title: '主理人支援', description: '一条龙覆盖企划、报名、沟通与复盘。', iconKey: 'membership' },
+        { title: '贴身支援', description: '以一条完整流程，贴身陪伴企划、报名、沟通与复盘。', iconKey: 'membership' },
         { title: '活动运营基础设施', description: '报名、支付、语言支持、会场协作一体化。', iconKey: 'community' },
-        { title: '多文化连结网络', description: '连接社区与企业，让现场洞察快速流动。', iconKey: 'ai' }
+        { title: '多文化关系网络', description: '连结在留外国人社群与企业，把现场声音传递到正确团队。', iconKey: 'ai' }
       ],
       communityCards: [
         {
@@ -843,7 +843,7 @@ export const messages = {
           bullets: ['文化交流与体验项目', '真实社群现场活动', '主办端与企业端双向沟通']
         },
         {
-          title: '现场信息洞察（Insight）',
+          title: '现场要点（Insight）',
           iconKey: 'insight',
           bullets: ['来自多文化活动的反馈', '参与者画像与需求摘要', '协助制定沟通策略']
         },
@@ -853,7 +853,7 @@ export const messages = {
           bullets: ['与企业／自治体共同策划讲座或体验', '技能与生活信息课程', '评估与后续改进建议']
         }
       ],
-      plansTitle: '合作模式示例',
+      plansTitle: '贴身计划示例',
       plans: [
         { name: '入门计划', description: '适合试点与小型团队', bullets: ['最多 500 名成员', '每月 3 场活动', '邮件支持'] },
         { name: '伙伴计划', description: '适合持续运营与多据点协作', bullets: ['不限活动数量', '多地点与多语言支持', '专属成功经理'] },
@@ -875,7 +875,7 @@ export const messages = {
       eyebrow: '联系我们',
       title: '欢迎与我们联系',
       intro:
-        '无论是社群活动的运营支持、合作交流的机会，或是希望参与我们的社区项目，都欢迎随时联系我们。我们会根据内容安排最合适的成员与您对接。',
+        '无论是社群活动的运营支持、合作交流的机会，或是希望参与我们的社区项目，都欢迎随时联系我们。我们会根据内容安排最合适的成员与您对接。我们也会依照个人信息保护原则，仅为回应咨询而使用您提供的联络资讯，请放心。',
       form: {
         name: '姓名',
         email: '邮箱',
