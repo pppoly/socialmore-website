@@ -120,6 +120,10 @@ const switchLanguage = (locale) => {
   padding: 1rem 1.5rem;
 }
 
+.header-inner > * {
+  min-width: 0;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -275,6 +279,16 @@ const switchLanguage = (locale) => {
 
   .menu-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo-text .en {
+    letter-spacing: 0.1em;
   }
 }
 </style>

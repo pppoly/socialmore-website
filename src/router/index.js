@@ -1,12 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Services from '../views/Services.vue';
-import News from '../views/News.vue';
-import NewsDetail from '../views/NewsDetail.vue';
-import Contact from '../views/Contact.vue';
-import PrivacyPolicy from '../views/PrivacyPolicy.vue';
-import TermsOfUse from '../views/TermsOfUse.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,13 +8,13 @@ const router = createRouter({
   },
   routes: [
     { path: '/', name: 'home', component: Home },
-    { path: '/about', name: 'about', component: About },
-    { path: '/services', name: 'services', component: Services },
-    { path: '/news', name: 'news', component: News },
-    { path: '/news/:id', name: 'news-detail', component: NewsDetail },
-    { path: '/contact', name: 'contact', component: Contact },
-    { path: '/privacy', name: 'privacy', component: PrivacyPolicy },
-    { path: '/terms', name: 'terms', component: TermsOfUse }
+    { path: '/about', name: 'about', component: () => import('../views/About.vue') },
+    { path: '/services', name: 'services', component: () => import('../views/Services.vue') },
+    { path: '/news', name: 'news', component: () => import('../views/News.vue') },
+    { path: '/news/:id', name: 'news-detail', component: () => import('../views/NewsDetail.vue') },
+    { path: '/contact', name: 'contact', component: () => import('../views/Contact.vue') },
+    { path: '/privacy', name: 'privacy', component: () => import('../views/PrivacyPolicy.vue') },
+    { path: '/terms', name: 'terms', component: () => import('../views/TermsOfUse.vue') }
   ]
 });
 

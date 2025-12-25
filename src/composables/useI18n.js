@@ -24,7 +24,7 @@ export const messages = {
   ja: {
     nav: {
       home: 'ホーム',
-      about: '会社紹介',
+      about: '理念',
       services: 'サービス',
       news: 'ニュース',
       contact: 'お問い合わせ'
@@ -37,102 +37,194 @@ export const messages = {
     },
     home: {
       hero: {
-        title: '在日コミュニティ主催者を支える軽量テックサービス',
+        eyebrow: 'SocialMore 構造設計',
+        title: '分裂は常態、協働は構造でしか続かない',
         subtitle:
-          '主催者を支えるわかりやすいテクノロジーでイベント主催の負担を軽くし、コミュニケーションを滑らかにし、必要なリソースにつながりやすくします。コミュニティから始まり、多様な在留外国人コミュニティと日本の企業・機関を結び、持続的な協働エコシステムを築きます。',
-        primaryCta: 'サービスを知る',
-        eyebrow: 'SOCIAL + SaaS',
-        panel: {
-          eyebrow: 'β版準備中',
-          title: 'リリースまでの3ステップ',
-          description: '現場のコミュニティと共創しながら、段階的にアクセスの輪を広げています。',
-          steps: [
-            { title: 'プランニング', body: '課題と必須フローを整理し、最小構成で設計。' },
-            { title: '共創テスト', body: '実際のイベントで伴走し、毎週アップデート。' },
-            { title: 'Public β', body: 'オンボーディングとサポートを整え、順次招待。' }
-          ],
-          note: '早期アクセスに興味のあるコミュニティはお気軽にご連絡ください。'
-        }
-      },
-      valuesTitle: '私たちが注力する3つの領域',
-      valuesDescription:
-        '現場の声に寄り添い、コミュニティ主催者の運営・連携・成長を支える仕組みを整えています。',
-      values: [
-        {
-          title: 'コミュニティ主催者支援',
-          description: '在日コミュニティの主催者が、煩雑なフォームや調整に追われず活動できるよう伴走します。',
-          iconKey: 'support'
-        },
-        {
-          title: 'イベント運営インフラ',
-          description: '募集・通知・決済・当日の動線までを一体化した、軽量で信頼できる基盤を提供します。',
-          iconKey: 'infra'
-        },
-        {
-          title: '多文化コミュニティ連携',
-          description: '外国人労働者、留学生、多文化住民のネットワークを活かし、企業や自治体との協働をつなぎます。',
-          iconKey: 'connection'
-        }
-      ],
-      highlightsTitle: 'コミュニティイベントを創造するシステム',
-      highlightsDescription: '募集から当日運営、振り返りまでをひとつながりの体験に。',
-      productHighlights: [
-        {
-          title: 'イベント募集と管理',
-          body: '多言語フォーマット、参加人数（参加者）管理、自動集計をまとめて提供。'
-        },
-        {
-          title: 'オンライン決済と費用整理',
-          body: '参加費の受付や簡単な清算機能で、主催者の台帳作業を削減。'
-        },
-        {
-          title: '参加者とのコミュニケーション',
-          body: '日本語・中国語・英語などでの案内・リマインドをテンプレート化。'
-        },
-        {
-          title: 'コミュニティ資源ネットワーク',
-          body: '会場、登壇者、協力パートナーなど、必要なリソース探しを支援。'
-        }
-      ],
-      now: {
-        title: '現在進行中のプロジェクト',
-        description: '実際のコミュニティと検証を重ね、サービスとネットワークを磨いています。',
-        projects: [
-          '東京都三鷹で地域コミュニティと協力し、イベント運営システムをテスト',
-          '外国人労働者コミュニティ向けに生活情報とスキル講座をサポート',
-          '日本企業と多文化コミュニティ協業の機会を共創',
-          'コミュニティ主催者向けの運営ツールと資源協力モジュールを磨き込み'
+          '主催者はコミュニティの運営主体として、イベントを通じて担い手を結び、運営責任を引き受ける存在です。個人から企業・団体・自治体・NPO まで含みます。',
+        definition:
+          'SocialMore は分裂が常態の世界に、合意に依存しない協働構造を設計し、コミュニティの現場で拡張性を検証する運用システムです。',
+        stance: 'SocialMore は対立を消すのではなく、分裂した世界に協働可能な構造を提供します。',
+        primaryCta: '主催者です',
+        secondaryCta: '今すぐ体験',
+        panelEyebrow: '構造の射程',
+        panelTitle: '公開前に責任とルールを固定する',
+        panelItems: [
+          {
+            title: 'ルール化された公開',
+            body: '公開範囲、承認、キャンセル待ち、注意事項、返金条件を公開前に固定。'
+          },
+          {
+            title: '責任とコストの可視化',
+            body: '申込状況、決済、振込を追跡できる状態で運用。'
+          },
+          {
+            title: '同一ルールの多言語提示',
+            body: '日/英/中で同義の規則を提示し、責任の曖昧さを減らす。'
+          }
         ]
       },
-      newsTitle: '最新ニュース',
-      newsDescription: 'サービスのアップデートやコミュニティ連携の様子を発信しています。'
+      why: {
+        eyebrow: '課題',
+        title: '主催者が最初に失うのは時間ではなく責任の境界',
+        lead:
+          '多言語対応、申込、決済、参加者管理、現場運営が同時に動くと、ルールの境界が曖昧になり責任が溶けます。',
+        points: [
+          {
+            title: '構造不在は責任不在',
+            body: '定員・申込条件・返金・注意事項が曖昧だと、誰が何を担うかが追跡不能になる。'
+          },
+          {
+            title: '審査から運営へ、境界を固定',
+            body: '主催者の審査を入口にし、運営画面で公開範囲と権限を規定する。'
+          },
+          {
+            title: '記録がある協働だけが継続する',
+            body: '申込状態、決済、同意内容が残るため、イベント後も運営が持続する。'
+          }
+        ]
+      },
+      how: {
+        eyebrow: '流れ',
+        title: '公開から精算まで、構造を途切れさせない',
+        lead:
+          '主催者の運営画面とモバイルの流れで、公開/申込/決済/ルール告知/振込を一続きの責任構造にする。',
+        steps: [
+          {
+            title: '公開',
+            body: 'カテゴリ、公開範囲、承認、キャンセル待ち、注意事項、返金ルールを設定。'
+          },
+          {
+            title: '申込',
+            body: '申込フォームの必須項目と同意を収集し、定員を追跡。'
+          },
+          {
+            title: '決済',
+            body: 'Stripe 連携を有効化し、参加費を回収。'
+          },
+          {
+            title: 'ルール告知',
+            body: 'リスク、返金、同意文を表示して責任を明文化。'
+          },
+          {
+            title: '振込',
+            body: '振込設定で収益の流れを確定。'
+          }
+        ]
+      },
+      what: {
+        eyebrow: '構造能力',
+        title: '三つの構造能力',
+        lead: '機能の説明ではなく、責任とコストを固定する構造として実装しています。',
+        items: [
+          {
+            title: 'イベントの構造',
+            body: '公開範囲、承認、定員、返金、注意事項、必須項目を事前に固定する。',
+            evidence: [
+              'イベント作成フォームでルール/定員/申込条件を設定',
+              '注意事項と返金条件を公開ページに表示',
+              '申込状況と定員を可視化'
+            ]
+          },
+          {
+            title: 'コミュニティの構造',
+            body: 'ポータルの公開範囲と情報設計で、外部に対する責任境界を作る。',
+            evidence: [
+              '公開/限定/非公開の範囲を選択',
+              'ポータルの表示ブロックとテーマを設定',
+              'ラベルと紹介文でコミュニティの責任範囲を明示'
+            ]
+          },
+          {
+            title: '決済と精算の構造',
+            body: '決済と振込の設定を可視化し、コストと責任を追跡可能にする。',
+            evidence: [
+              'Stripe 連携で決済を開始',
+              'プランと手数料を明示',
+              '振込設定で精算フローを固定'
+            ]
+          }
+        ]
+      },
+      ai: {
+        eyebrow: 'AI 補助',
+        title: 'AI は構造の実行補助として働く',
+        items: [
+          'AI が注意事項・リスク・返金・同意文の下書きを作成し、主催者が確認・確定',
+          'AI が多言語の意味を揃え、同じルールを同じルールとして伝える',
+          'AI が公開前に不足項目（定員/締切/返金/必須項目等）を指摘'
+        ]
+      },
+      proof: {
+        eyebrow: '運用事例',
+        title: '公開事例',
+        lead: '公開可能な事例は整理中です。',
+        items: ['コミュニティポータルの公開事例', '決済/振込の運用事例', '多言語ルールの運用事例'],
+        placeholder: '準備中'
+      },
+      cta: {
+        eyebrow: '開始',
+        title: '構造を先に決めてから動かす',
+        body: '主催者として責任の境界線を引くか、まず体験して構造の流れを確かめてください。',
+        primary: '主催者です',
+        secondary: '今すぐ体験',
+        tertiary: '導入相談を予約'
+      }
     },
     about: {
-      eyebrow: '会社紹介',
-      title: 'SOCIALMOREについて',
-      intro:
-        'SOCIALMORE（創翔モア）は東京都三鷹で生まれたテックカンパニーです。コミュニティの現場でイベントを支援してきた経験から、主催者が直面する課題を肌で感じてきました。テクノロジーは目的ではなく、現場の負担を軽くするための道具だと考えています。',
-      visionTitle: 'ビジョン',
-      visionText: '在日多文化コミュニティが円滑に交流・協働し、コミュニティを支える人がよりよく支えられる社会をつくる。',
-      missionTitle: '価値観',
-      values: [
-        { title: 'リアルな現場', body: '実際のイベントシーンと主催者の声からすべての機能を設計します。' },
-        { title: '軽やかなテクノロジー', body: 'テクノロジーは負担を減らす手段であり、複雑さを増やさないことを大切にします。' },
-        { title: '多文化協働', body: '在地の日本人と外国人住民の共同行動を支える橋渡し役を担います。' },
-        { title: '長期的な伴走', body: 'コミュニティが続く限り、現場に寄り添いアップデートを続けます。' }
-      ],
-      timelineTitle: 'マイルストーン',
-      timeline: [
-        { year: '2022', text: '東京都三鷹で創業。多文化コミュニティと現場実証を開始。' },
-        { year: '2023', text: '主催者向けの軽量ツール群をβ提供し、複数コミュニティと検証。' },
-        { year: '2024', text: '企業・自治体との協働プログラムを拡張し、サービス基盤を刷新。' }
-      ],
-      galleryTitle: '現場の様子',
-      galleryDescription: 'オフィスやイベントの瞬間から、SOCIALMOREの空気感をお伝えします。',
-      galleryPhotos: [
-        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg｜オフィスでの協働風景' },
-        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg｜コミュニティイベントの様子' },
-        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg｜チーム集合写真' }
+      eyebrow: '理念',
+      title: '構造としての SocialMore',
+      definition:
+        'SocialMore は分裂が常態の世界に、合意に依存しない協働構造を設計し、コミュニティの現場で拡張性を検証する運用システムです。',
+      stance: 'SocialMore は対立を消すのではなく、分裂した世界に協働可能な構造を提供します。',
+      sections: [
+        {
+          title: '課題',
+          lines: [
+            '多言語・申込・決済・参加者管理が同時に進むと、ルールの境界が曖昧になる。',
+            '定員・返金・注意事項が未確定のまま公開されると責任が追跡不能になる。',
+            'だから公開前に規則と権限を固定し、申込と決済の記録を残す構造が必要。'
+          ]
+        },
+        {
+          title: '世界観',
+          lines: [
+            '分裂は常態で、共通の感情や物語では長期協働は続かない。',
+            '協働を支えるのは、公開範囲・申込条件・決済/振込を追跡できる構造。',
+            'SocialMore は公開→申込→決済→ルール告知→振込を一つの責任線にする。'
+          ]
+        },
+        {
+          title: 'なぜコミュニティか',
+          lines: [
+            'コミュニティは異質性が高く、ルールの欠落がすぐ失序として現れる。',
+            'ポータルの公開範囲と申込条件を小さな単位で検証できる。',
+            'そこで成立した構造だけが拡張の資格を持つ。'
+          ]
+        },
+        {
+          title: '何をするか',
+          lines: [
+            '主催者の運営画面で公開範囲、承認、定員、返金、注意事項を事前に固定する。',
+            'モバイル申込で必須情報と同意を収集し、参加と責任を記録する。',
+            '決済と振込設定でコストと責任の流れを可視化する。'
+          ]
+        },
+        {
+          title: '使命',
+          lines: [
+            '必然的に分裂する世界のために、合意に依存しない協働構造を設計する。',
+            'その構造は公開/申込/決済/振込/ポータルに一貫して適用される。',
+            '申込・決済・振込の記録が残る状態を成果とする。'
+          ]
+        },
+        {
+          title: '今なぜ必要か',
+          lines: [
+            '協働能力が拡散し、小規模なイベントでも決済と責任が伴うようになった。',
+            '多言語参加が日常化し、同一ルールを提示する必要がある。',
+            'だから今、規則とコストを追跡可能にする構造が不可欠。'
+          ]
+        }
       ]
     },
     services: {
@@ -244,7 +336,7 @@ export const messages = {
       info: {
         company: 'SOCIALMORE（株式会社創翔モア）',
         location: '東京都三鷹市',
-        email: 'info@socialmore.co.jp',
+        email: 'admin@socialmore.co.jp',
         encouragement: 'どなたからのご相談も歓迎しています。内容に合わせて伴走方法をご提案します。'
       }
     },
@@ -256,7 +348,7 @@ export const messages = {
       contact: {
         title: 'お問い合わせ',
         emailLabel: 'メール',
-        email: 'info@socialmore.co.jp',
+        email: 'admin@socialmore.co.jp',
         phoneLabel: '電話',
         phone: '080-6567-1105',
         hours: '平日 10:00-18:00'
@@ -329,7 +421,7 @@ export const messages = {
           },
           {
             title: '8. お問い合わせ',
-            body: ['プライバシーに関するご質問は info@socialmore.co.jp までお寄せください。']
+            body: ['プライバシーに関するご質問は admin@socialmore.co.jp までお寄せください。']
           }
         ]
       },
@@ -372,7 +464,7 @@ export const messages = {
           },
           {
             title: '8. 連絡先',
-            body: ['本規約に関するお問い合わせは info@socialmore.co.jp までご連絡ください。']
+            body: ['本規約に関するお問い合わせは admin@socialmore.co.jp までご連絡ください。']
           }
         ]
       }
@@ -381,7 +473,7 @@ export const messages = {
   en: {
     nav: {
       home: 'Home',
-      about: 'About',
+      about: 'Philosophy',
       services: 'Services',
       news: 'News',
       contact: 'Contact'
@@ -394,101 +486,194 @@ export const messages = {
     },
     home: {
       hero: {
-        title: 'Lightweight tech service for community organizers in Japan',
+        eyebrow: 'SOCIALMORE STRUCTURE',
+        title: 'Fracture is normal; collaboration only lasts with structure',
         subtitle:
-          'Organizer-friendly technology lightens event workloads, smooths communication, and makes it easier to reach the resources you need. Starting from the community level, we connect diverse foreign resident communities with Japanese companies and institutions to build a lasting collaboration ecosystem.',
-        primaryCta: 'Explore our services',
-        eyebrow: 'SOCIAL + SaaS',
-        panel: {
-          eyebrow: 'Pre-launch',
-          title: 'Three steps to launch',
-          description: 'We widen the circle of access stage by stage with the communities building alongside us.',
-          steps: [
-            { title: 'Planning', body: 'Map the essential workflows and design the leanest experience.' },
-            { title: 'Co-creation pilots', body: 'Run real events together and ship weekly improvements.' },
-            { title: 'Public beta', body: 'Stand up onboarding & support, then invite teams in waves.' }
-          ],
-          note: 'Raise your hand if you want to join the early access list.'
-        }
-      },
-      valuesTitle: 'Three priorities we focus on',
-      valuesDescription: 'Everything we build is rooted in real community operations, so organizers can keep events running smoothly.',
-      values: [
-        {
-          title: 'Support for organizers',
-          description: 'Help on-the-ground hosts run activities in Japan without drowning in forms, chats, or coordination work.',
-          iconKey: 'support'
-        },
-        {
-          title: 'Event infrastructure',
-          description: 'A lightweight stack that unifies sign-ups, notifications, payments, and onsite flows.',
-          iconKey: 'infra'
-        },
-        {
-          title: 'Multicultural connections',
-          description: 'Link foreign workers, students, and residents with Japanese enterprises for real collaboration opportunities.',
-          iconKey: 'connection'
-        }
-      ],
-      highlightsTitle: 'Systems that help create community events',
-      highlightsDescription: 'From recruitment to wrap-up, everything lives in a single workflow.',
-      productHighlights: [
-        {
-          title: 'Event enrollment & management',
-          body: 'Multilingual formats, participant tracking, and automatic summaries.'
-        },
-        {
-          title: 'Online payments & reconciliation',
-          body: 'Collect fees, sort expenses, and send receipts without extra spreadsheets.'
-        },
-        {
-          title: 'Participant communications',
-          body: 'Templates for Japanese, Chinese, English, and more to reduce misunderstandings.'
-        },
-        {
-          title: 'Community resource network',
-          body: 'Match organizers with venues, speakers, and collaboration partners.'
-        }
-      ],
-      now: {
-        title: 'What we are working on now',
-        description: 'We co-create with communities to refine the service and the collaboration network.',
-        projects: [
-          'Testing the event operations system with neighborhood partners in Mitaka, Tokyo',
-          'Providing life info and skill events for foreign worker communities',
-          'Exploring multicultural collaboration opportunities with Japanese companies',
-          'Polishing organizer tools plus the resource-collaboration modules'
+          'An organizer is the community operator who connects actors through events and carries operational responsibility. Organizers can be individuals or organizations such as companies, institutions, local governments, or NPOs.',
+        definition:
+          'SocialMore designs collaboration structures that do not rely on consensus for a world where fracture is normal, and validates their scalability through community operations.',
+        stance: 'SocialMore does not remove differences; it provides structures for collaboration in a fractured world.',
+        primaryCta: "I'm an organizer",
+        secondaryCta: 'Try now',
+        panelEyebrow: 'Structure scope',
+        panelTitle: 'Fix rules and responsibility before publishing',
+        panelItems: [
+          {
+            title: 'Rule-bound publishing',
+            body: 'Visibility, approvals, waitlists, notices, and refund terms are fixed before launch.'
+          },
+          {
+            title: 'Responsibility and cost visibility',
+            body: 'Registration status, payments, and payouts stay traceable.'
+          },
+          {
+            title: 'Same rules across languages',
+            body: 'JA/EN/ZH communicate identical rules to reduce ambiguity.'
+          }
         ]
       },
-      newsTitle: 'Latest news',
-      newsDescription: 'Updates about the platform, partnerships, and field projects.'
+      why: {
+        eyebrow: 'Why',
+        title: 'Organizers lose responsibility boundaries before they lose time',
+        lead:
+          'When multilingual outreach, registrations, payments, participant management, and onsite operations run in parallel, rules blur and responsibility dissolves.',
+        points: [
+          {
+            title: 'No structure means no responsibility',
+            body: 'Without clear capacity, conditions, refunds, and notices, accountability becomes untraceable.'
+          },
+          {
+            title: 'Review → operations fix boundaries',
+            body: 'Organizer review defines visibility and permissions before operations begin.'
+          },
+          {
+            title: 'Recorded collaboration is the only durable one',
+            body: 'Registration status, payments, and consent stay recorded after the event ends.'
+          }
+        ]
+      },
+      how: {
+        eyebrow: 'How',
+        title: 'Keep structure continuous from publish to payout',
+        lead:
+          'Organizer operations and mobile flows connect publishing, registration, payment, rule notices, and payout into one responsibility chain.',
+        steps: [
+          {
+            title: 'Publish',
+            body: 'Set category, visibility, approvals, waitlists, notices, and refund rules.'
+          },
+          {
+            title: 'Registration',
+            body: 'Collect required fields and consent while tracking capacity.'
+          },
+          {
+            title: 'Payment',
+            body: 'Enable Stripe and collect participation fees.'
+          },
+          {
+            title: 'Rule notice',
+            body: 'Present risks, refunds, and consent text to make responsibility explicit.'
+          },
+          {
+            title: 'Payout',
+            body: 'Fix payout settings to confirm settlement flow.'
+          }
+        ]
+      },
+      what: {
+        eyebrow: 'What',
+        title: 'Three structural capabilities',
+        lead: 'These are not “features” but structures that fix responsibility and cost.',
+        items: [
+          {
+            title: 'Event structure',
+            body: 'Fix visibility, approvals, capacity, refunds, notices, and required fields in advance.',
+            evidence: [
+              'Event form defines rules, capacity, and registration conditions',
+              'Notices and refund terms show on the public flow',
+              'Registration status and capacity remain visible'
+            ]
+          },
+          {
+            title: 'Community structure',
+            body: 'Portal visibility and information design create an external responsibility boundary.',
+            evidence: [
+              'Choose public/limited/private visibility',
+              'Configure portal blocks and themes',
+              'Labels and descriptions define community scope'
+            ]
+          },
+          {
+            title: 'Payment & settlement structure',
+            body: 'Make collection and payout settings traceable for cost and responsibility.',
+            evidence: [
+              'Stripe onboarding opens collection',
+              'Plans and fees are explicit',
+              'Payout settings fix settlement flow'
+            ]
+          }
+        ]
+      },
+      ai: {
+        eyebrow: 'AI Co-Pilot',
+        title: 'AI only reduces friction in executing structure',
+        items: [
+          'AI drafts notices, risk, refund, and consent text, and organizers confirm and finalize',
+          'AI aligns meanings across languages so the same rules stay the same rules',
+          'AI flags missing items before publishing (capacity, deadline, refunds, required fields)'
+        ]
+      },
+      proof: {
+        eyebrow: 'Proof',
+        title: 'Operational cases',
+        lead: 'Public case materials are in preparation.',
+        items: ['Community portal releases', 'Collection/payout operations', 'Multilingual rule operations'],
+        placeholder: 'In preparation'
+      },
+      cta: {
+        eyebrow: 'Start',
+        title: 'Fix the structure before you move',
+        body: 'Start as an organizer to define responsibility boundaries, or try the flow first to validate the structure.',
+        primary: "I'm an organizer",
+        secondary: 'Try now',
+        tertiary: 'Book a consult'
+      }
     },
     about: {
-      eyebrow: 'Company',
-      title: 'About SOCIALMORE',
-      intro:
-        'SOCIALMORE was founded in Mitaka, Tokyo. We have spent years hosting and supporting community events, so we deeply understand the obstacles organizers face. For us, technology is a tool to reduce workload, not a goal by itself.',
-      visionTitle: 'Vision',
-      visionText: 'Make it easier for multicultural communities in Japan to collaborate, communicate, and live together while caring for the people who support them.',
-      missionTitle: 'Values',
-      values: [
-        { title: 'Real field insight', body: 'Start from real event scenes and organizer needs, then turn them into product updates.' },
-        { title: 'Lightweight tech', body: 'Technology should remove friction and stay approachable.' },
-        { title: 'Multicultural collaboration', body: 'Serve as a bridge between local Japanese groups and foreign residents.' },
-        { title: 'Long-term partnership', body: 'Stay close to communities for as long as they exist and keep iterating together.' }
-      ],
-      timelineTitle: 'Milestones',
-      timeline: [
-        { year: '2022', text: 'Founded in Mitaka and started pilots with multicultural communities.' },
-        { year: '2023', text: 'Released lightweight organizer tools in beta and tested with multiple groups.' },
-        { year: '2024', text: 'Expanded corporate and municipal collaborations while refreshing the platform.' }
-      ],
-      galleryTitle: 'Field snapshots',
-      galleryDescription: 'Moments from our office, events, and team collaborations.',
-      galleryPhotos: [
-        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg | Office collaboration' },
-        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg | Community event scene' },
-        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg | Team portrait' }
+      eyebrow: 'Philosophy',
+      title: 'SocialMore as structure',
+      definition:
+        'SocialMore designs collaboration structures that do not rely on consensus for a world where fracture is normal, and validates their scalability through community operations.',
+      stance: 'SocialMore does not remove differences; it provides structures for collaboration in a fractured world.',
+      sections: [
+        {
+          title: 'Problem',
+          lines: [
+            'When multilingual outreach, registration, payment, and participant management run in parallel, rule boundaries blur.',
+            'If capacity, refunds, and notices are unclear at publishing, responsibility becomes untraceable.',
+            'We need structure that fixes rules and permissions before publishing and keeps registration/payment records.'
+          ]
+        },
+        {
+          title: 'World View',
+          lines: [
+            'Fracture is the norm; shared emotion or narrative cannot sustain long-term collaboration.',
+            'Structure that traces visibility, registration conditions, collection, and payouts is what sustains collaboration.',
+            'SocialMore ties publish → registration → payment → rule notice → payout into one responsibility line.'
+          ]
+        },
+        {
+          title: 'Why Communities',
+          lines: [
+            'Communities are heterogeneous; rule gaps surface as disorder quickly.',
+            'Portal visibility and registration conditions can be tested at a small scale.',
+            'Only structures that survive here deserve to scale.'
+          ]
+        },
+        {
+          title: 'What We Do',
+          lines: [
+            'The organizer interface fixes visibility, approvals, capacity, refunds, and notices before publishing.',
+            'Mobile registration collects required fields and consent, recording participation and responsibility.',
+            'Collection and payout settings make cost and responsibility traceable.'
+          ]
+        },
+        {
+          title: 'Mission',
+          lines: [
+            'Design collaboration structures that do not rely on consensus for a fractured world.',
+            'Apply those structures across publishing, registration, payment, payout, and portals.',
+            'Success means records remain for registration, payment, and payout.'
+          ]
+        },
+        {
+          title: 'Why Now',
+          lines: [
+            'Collaboration ability spreads fast; even small events carry payment and responsibility.',
+            'Multilingual participation is normal, so the same rules must be presented consistently.',
+            'Now is the moment to make rules and costs traceable.'
+          ]
+        }
       ]
     },
     services: {
@@ -588,7 +773,7 @@ export const messages = {
       info: {
         company: 'SOCIALMORE Inc.',
         location: 'Mitaka, Tokyo',
-        email: 'info@socialmore.co.jp',
+        email: 'admin@socialmore.co.jp',
         encouragement: 'We welcome conversations from organizers, companies, municipalities, and individuals alike.'
       }
     },
@@ -600,7 +785,7 @@ export const messages = {
         contact: {
           title: 'Contact',
           emailLabel: 'Email',
-          email: 'info@socialmore.co.jp',
+          email: 'admin@socialmore.co.jp',
           phoneLabel: 'Phone',
           phone: '080-6567-1105',
           hours: 'Weekdays 10:00-18:00 JST'
@@ -661,7 +846,7 @@ export const messages = {
           },
           {
             title: '8. Contact',
-            body: ['Please contact info@socialmore.co.jp for privacy-related questions.']
+            body: ['Please contact admin@socialmore.co.jp for privacy-related questions.']
           }
         ]
       },
@@ -701,7 +886,7 @@ export const messages = {
           },
           {
             title: '8. Contact',
-            body: ['Please reach out to info@socialmore.co.jp regarding these terms.']
+            body: ['Please reach out to admin@socialmore.co.jp regarding these terms.']
           }
         ]
       }
@@ -710,7 +895,7 @@ export const messages = {
   zh: {
     nav: {
       home: '首页',
-      about: '关于我们',
+      about: '理念',
       services: '服务',
       news: '新闻',
       contact: '联系我们'
@@ -723,89 +908,194 @@ export const messages = {
     },
     home: {
       hero: {
-        title: '支持在日社群主理人的轻量科技服务',
+        eyebrow: 'SOCIALMORE STRUCTURE',
+        title: '分裂是常态，协作必须靠结构',
         subtitle:
-          '借助清晰易懂的技术工具，替活动主理人减轻负担、让沟通更顺畅，并更快连接所需资源。我们从社区出发，串联多元的在留外国人社群与日本企业、机构，共同打造可持续的协作生态。',
-        primaryCta: '了解我们的服务',
-        eyebrow: 'SOCIAL + SaaS',
-        panel: {
-          eyebrow: '公测筹备',
-          title: '上线三步走',
-          description: '与在地社群共同共创，循序渐进地扩大连结的圈。',
-          steps: [
-            { title: '规划', body: '梳理问题与核心流程，只构建必要功能。' },
-            { title: '共创试点', body: '在真实活动中陪跑，并以周为单位优化。' },
-            { title: 'Public β', body: '完善导入与支援机制，按批次邀请。' }
-          ],
-          note: '欢迎想加入早期体验的社群来信，我们会尽快联系。'
-        }
-      },
-      valuesTitle: '我们专注于三件事情',
-      valuesDescription: '以真实社群需求为核心，让主办方的运营、沟通与连结更顺畅。',
-      values: [
-        {
-          title: '社群主理人支援',
-          description: '帮助在日社群主办方轻松开展活动，减少繁琐的表格、沟通与对接。',
-          iconKey: 'support'
-        },
-        {
-          title: '活动运营基础设施',
-          description: '提供「报名・通知・支付・会场协力」的一体化基础设施。',
-          iconKey: 'infra'
-        },
-        {
-          title: '多文化社区连结',
-          description: '连结外国劳工、留学生与跨文化居民，为企业与机构带来真实可信的合作网络。',
-          iconKey: 'connection'
-        }
-      ],
-      highlightsTitle: '打造社群活动的系统',
-      highlightsDescription: '围绕活动的每个关键节点，提供可立即上手的工具。',
-      productHighlights: [
-        { title: '活动募集与管理', body: '多语言格式、参与人数（参与者）管理与自动汇总，一次搞定。' },
-        { title: '在线支付与费用整理', body: '支持活动收费与简单结算，让主理人不再被对账困扰。' },
-        { title: '参与者沟通与通知', body: '支持日语、中文、英文等多语言沟通，降低误解成本。' },
-        { title: '社群资源协作网络', body: '协助主办方对接场地、嘉宾、合作方等活动资源。' }
-      ],
-      now: {
-        title: '我们正在推动的工作',
-        description: '与在地社群共同打磨产品与协作网络，确保每一步都贴近真实需求。',
-        projects: [
-          '在东京三鹰，与在地社群合作测试活动运营系统',
-          '为外国劳工社群提供生活信息与技能活动支持',
-          '与日本企业探索多文化社区合作机会',
-          '打磨面向社群主理人的运营工具和资源协作模块'
+          '主理人是社群的组织者，通过活动连接行动者并承担运营责任。主理人可以是个人或组织（企业、机构、政府部门、NPO 等）。',
+        definition:
+          'SocialMore 是为分裂常态的世界设计不依赖共识的协作结构，并用社群场景验证其可扩展性的运行系统。',
+        stance: 'SocialMore 不是在消除分歧，而是在为分裂的世界，提供可协作的结构。',
+        primaryCta: '我是主理人',
+        secondaryCta: '立即体验',
+        panelEyebrow: '结构边界',
+        panelTitle: '在公开前固定责任与规则',
+        panelItems: [
+          {
+            title: '规则化发布',
+            body: '公开范围、审批、候补、注意事项、退款条件在发布前固定。'
+          },
+          {
+            title: '责任与成本可视化',
+            body: '报名状态、收款与打款保持可追溯。'
+          },
+          {
+            title: '同一规则的多语言表达',
+            body: '日/英/中传达同一规则，降低责任歧义。'
+          }
         ]
       },
-      newsTitle: '最新动态',
-      newsDescription: '关注平台版本更新、合作项目与现场故事。'
+      why: {
+        eyebrow: 'Why',
+        title: '主理人最先失去的不是时间，而是责任边界',
+        lead:
+          '多语言、报名、收款、参与者管理与现场运营并行时，规则边界会迅速模糊，责任被稀释。',
+        points: [
+          {
+            title: '没有结构就没有责任',
+            body: '定员、报名条件、退款与注意事项不清晰时，责任无法追溯。'
+          },
+          {
+            title: '审查 → 运用先定边界',
+            body: '主理人审查作为入口，明确公开范围与权限。'
+          },
+          {
+            title: '有记录的协作才可持续',
+            body: '报名状态、支付与同意记录留存，活动结束后仍可追溯。'
+          }
+        ]
+      },
+      how: {
+        eyebrow: 'How',
+        title: '从发布到结算，结构不断链',
+        lead:
+          '主理人运用画面与移动端流程把发布/报名/收款/规则告知/结算串成责任链路。',
+        steps: [
+          {
+            title: '发布',
+            body: '设置分类、公开范围、审批、候补、注意事项与退款规则。'
+          },
+          {
+            title: '报名',
+            body: '收集必填信息与同意项，并追踪定员。'
+          },
+          {
+            title: '收款',
+            body: '开通 Stripe 收款并收取参与费用。'
+          },
+          {
+            title: '规则告知',
+            body: '展示风险、退款、同意文，明确责任边界。'
+          },
+          {
+            title: '结算',
+            body: '配置打款设置，固定结算流程。'
+          }
+        ]
+      },
+      what: {
+        eyebrow: 'What',
+        title: '三类结构能力',
+        lead: '不是功能堆叠，而是责任与成本的结构化。',
+        items: [
+          {
+            title: '活动结构',
+            body: '在发布前固定公开范围、审批、定员、退款、注意事项与必填项。',
+            evidence: [
+              '活动表单定义规则、定员与报名条件',
+              '注意事项与退款条款在公开流程中呈现',
+              '报名状态与定员保持可视化'
+            ]
+          },
+          {
+            title: '社群结构',
+            body: '通过门户公开范围与信息架构，建立对外责任边界。',
+            evidence: [
+              '公开/限定/非公开范围选择',
+              '门户区块与主题配置',
+              '标签与介绍定义社群范围'
+            ]
+          },
+          {
+            title: '收款与结算结构',
+            body: '收款与打款设置可追溯，成本与责任清晰。',
+            evidence: [
+              'Stripe 入驻开通收款',
+              '方案与手续费明确',
+              '打款设置固定结算流程'
+            ]
+          }
+        ]
+      },
+      ai: {
+        eyebrow: 'AI 协作',
+        title: 'AI 仅用于降低结构执行摩擦',
+        items: [
+          'AI 起草注意事项、风险、退款、同意文，由主理人确认与定稿',
+          'AI 保持多语言含义一致，让同一规则仍是同一规则',
+          'AI 在发布前指出缺失项（定员/截止/退款/必填项等）'
+        ]
+      },
+      proof: {
+        eyebrow: 'Proof',
+        title: '运用案例',
+        lead: '公开案例整理中。',
+        items: ['社群门户公开案例', '收款/结算运用案例', '多语言规则运用案例'],
+        placeholder: '准备中'
+      },
+      cta: {
+        eyebrow: 'Start',
+        title: '先把结构定下来',
+        body: '作为主理人明确运营责任线，或先体验流程确认结构。',
+        primary: '我是主理人',
+        secondary: '立即体验',
+        tertiary: '预约导入咨询'
+      }
     },
     about: {
-      eyebrow: '公司简介',
-      title: '关于 SOCIALMORE',
-      intro:
-        'SOCIALMORE（創翔モア）是一家在东京三鹰成立的科技公司。我们长期在社区现场举办活动、支持社群，深刻感受到主办方在运营中遇到的种种困难。技术对我们来说不是目的，而是减轻社群运营负担的工具。通过让活动变得更容易，我们希望让更多社群得以持续、成长、连接。',
-      visionTitle: '愿景',
-      visionText: '让在日多元社群更顺畅地交流、协作与共同生活，让支持社区的人，被更好地支持。',
-      missionTitle: '价值观',
-      values: [
-        { title: '真实现场', body: '从真实的活动场景与主理人需求出发，持续倾听与反馈。' },
-        { title: '轻量科技', body: '技术必须让运营减负，而不是增加复杂度。' },
-        { title: '多文化协作', body: '连接在地日本人与外国居民，共同推动社区行动。' },
-        { title: '长期陪伴', body: '社群持续存在，我们就在现场，与伙伴长期同行。' }
-      ],
-      timelineTitle: '发展里程碑',
-      timeline: [
-        { year: '2022', text: '在东京三鹰成立，与多文化社区开展活动与验证。' },
-        { year: '2023', text: '推出面向主理人的轻量工具，和多地社群共同测试。' },
-        { year: '2024', text: '扩展与企业、自治体的合作项目，并升级平台能力。' }
-      ],
-      galleryTitle: '现场一瞥',
-      galleryDescription: '透过办公室与活动照片，感受 SOCIALMORE 的日常。',
-      galleryPhotos: [
-        { file: 'photo-office-01.jpg', caption: 'photo-office-01.jpg｜办公室协作' },
-        { file: 'photo-event-01.jpg', caption: 'photo-event-01.jpg｜社群活动' },
-        { file: 'photo-team-portrait.jpg', caption: 'photo-team-portrait.jpg｜团队合影' }
+      eyebrow: '理念',
+      title: '作为结构的 SocialMore',
+      definition:
+        'SocialMore 是为分裂常态的世界设计不依赖共识的协作结构，并用社群场景验证其可扩展性的运行系统。',
+      stance: 'SocialMore 不是在消除分歧，而是在为分裂的世界，提供可协作的结构。',
+      sections: [
+        {
+          title: 'Problem',
+          lines: [
+            '多语言发布、报名、支付与参与者管理并行时，规则边界会变模糊。',
+            '定员、退款、注意事项未在发布前明确时，责任就无法追溯。',
+            '因此需要在发布前固定规则与权限，并保留报名与收款记录。'
+          ]
+        },
+        {
+          title: 'World View',
+          lines: [
+            '分裂是常态，情绪与统一叙事无法支撑长期协作。',
+            '可持续协作依赖于可追溯的公开范围、报名条件、收款与结算结构。',
+            'SocialMore 把发布→报名→收款→规则告知→结算连成一条责任线。'
+          ]
+        },
+        {
+          title: 'Why Communities',
+          lines: [
+            '社群高度异质，规则缺口会迅速造成失序。',
+            '通过门户公开范围与报名条件，可以在小尺度验证结构。',
+            '只有在社群中跑通的结构才具备扩展资格。'
+          ]
+        },
+        {
+          title: 'What We Do',
+          lines: [
+            '主理人运用画面固定公开范围、审批、定员、退款与注意事项。',
+            '移动端报名收集必填信息与同意，记录参与与责任。',
+            '收款与结算设置让成本与责任流向可追溯。'
+          ]
+        },
+        {
+          title: 'Mission',
+          lines: [
+            '为必然分裂的世界设计不依赖共识的协作结构。',
+            '这些结构覆盖发布、报名、收款、结算与门户。',
+            '报名、收款与结算的记录可追溯即是成果。'
+          ]
+        },
+        {
+          title: 'Why Now',
+          lines: [
+            '协作能力扩散，小规模活动也伴随收款与责任。',
+            '多语言参与成为日常，同一规则需要一致表达。',
+            '现在必须把规则与成本做成可追溯结构。'
+          ]
+        }
       ]
     },
     services: {
@@ -893,7 +1183,7 @@ export const messages = {
       info: {
         company: 'SOCIALMORE（创翔莫尔株式会社）',
         location: '日本东京三鹰',
-        email: 'info@socialmore.co.jp',
+        email: 'admin@socialmore.co.jp',
         encouragement: '欢迎自治体、企业、社群伙伴与个人来信，我们会尽快回复。'
       }
     },
@@ -905,7 +1195,7 @@ export const messages = {
       contact: {
         title: '联系 SOCIALMORE',
         emailLabel: '邮箱',
-        email: 'info@socialmore.co.jp',
+        email: 'admin@socialmore.co.jp',
         phoneLabel: '电话',
         phone: '080-6567-1105',
         hours: '工作日 10:00-18:00（日本时间）'
@@ -954,7 +1244,7 @@ export const messages = {
           },
           {
             title: '8. 联系方式',
-            body: ['关于隐私问题，请寄信至 info@socialmore.co.jp。']
+            body: ['关于隐私问题，请寄信至 admin@socialmore.co.jp。']
           }
         ]
       },
@@ -990,7 +1280,7 @@ export const messages = {
           },
           {
             title: '8. 联系方式',
-            body: ['条款相关问题请联络 info@socialmore.co.jp。']
+            body: ['条款相关问题请联络 admin@socialmore.co.jp。']
           }
         ]
       }

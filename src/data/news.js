@@ -1,6 +1,3 @@
-import newsCoverIncorporation from '../assets/news/news1.png';
-import newsCoverWebsite from '../assets/news/news2.png';
-
 export const newsItems = [
   {
     id: 1,
@@ -15,7 +12,7 @@ export const newsItems = [
       en: 'We launched a trilingual (JA/EN/ZH) website to share our community work and service updates with more partners.',
       zh: '为了更细致传达与社群的共创，我们上线了日/英/中文三语网站。'
     },
-    cover: newsCoverWebsite,
+    cover: '/news/news2.png',
     content: {
       ja: [
         'SOCIALMOREの公式サイトが公開されました。トップページではコミュニティ主催者支援や多文化連携の取り組みをコンパクトにまとめ、ブログ形式で最新活動も追えるようになっています。三言語（日本語・英語・中国語）で情報をお届けします。',
@@ -44,7 +41,7 @@ export const newsItems = [
       en: 'On August 8, 2025 we incorporated in Mitaka, Tokyo to deepen our community-first mission.',
       zh: '我们于 2025 年 8 月 8 日在东京三鹰完成法人登记，加速在日社群支援。'
     },
-    cover: newsCoverIncorporation,
+    cover: '/news/news1.png',
     content: {
       ja: [
         'SOCIALMORE（株式会社創翔モア）は、2025年8月8日付で東京都三鷹市に登記を完了しました。住所は 〒181-0013 東京都三鷹市下連雀3丁目27番1号 三協ビル2階 です。',
