@@ -37,137 +37,174 @@ export const messages = {
     },
     home: {
       hero: {
-        eyebrow: 'SocialMore 構造設計',
-        title: '分裂は常態、協働は構造でしか続かない',
-        subtitle:
-          '主催者はコミュニティの運営主体として、イベントを通じて担い手を結び、運営責任を引き受ける存在です。個人から企業・団体・自治体・NPO まで含みます。',
-        definition:
-          'SocialMore は分裂が常態の世界に、合意に依存しない協働構造を設計し、コミュニティの現場で拡張性を検証する運用システムです。',
-        stance: 'SocialMore は対立を消すのではなく、分裂した世界に協働可能な構造を提供します。',
-        primaryCta: '主催者です',
-        secondaryCta: '今すぐ体験',
-        panelEyebrow: '構造の射程',
-        panelTitle: '公開前に責任とルールを固定する',
-        panelItems: [
+        eyebrow: 'MORE | Community Operating System',
+        title: '主催者が再現できる運営基盤をLINE上で持てる',
+        subtitle: 'LINE Mini App でそのまま使える。主催者も参加者もアプリのダウンロードは不要です。',
+        coreMessage: '募集、申込、決済、通知、精算を一つの流れにまとめ、毎回の運営を再現可能にします。',
+        stance: '企画のたびにやり方がぶれない、主催者向け運営OSです。',
+        primaryCta: 'LINEで今すぐ体験',
+        secondaryCta: 'はじめて企画する',
+        results: [
           {
-            title: 'ルール化された公開',
-            body: '公開範囲、承認、キャンセル待ち、注意事項、返金条件を公開前に固定。'
+            label: '問い合わせ削減',
+            value: '-XX%',
+            note: '重複質問を減らし、準備時間を確保'
           },
           {
-            title: '責任とコストの可視化',
-            body: '申込状況、決済、振込を追跡できる状態で運用。'
+            label: '当日運営の安定',
+            value: '-XX%',
+            note: '受付・連絡ミスの発生を抑制'
           },
           {
-            title: '同一ルールの多言語提示',
-            body: '日/英/中で同義の規則を提示し、責任の曖昧さを減らす。'
+            label: '精算の見通し',
+            value: '-XX日',
+            note: '精算完了までの期間を短縮'
           }
         ]
       },
       why: {
         eyebrow: '課題',
-        title: '主催者が最初に失うのは時間ではなく責任の境界',
-        lead:
-          '多言語対応、申込、決済、参加者管理、現場運営が同時に動くと、ルールの境界が曖昧になり責任が溶けます。',
+        title: '主催者の現場は、いまも個人負担で回っている',
+        lead: '主催者一人に実務が集中し、同じ説明が繰り返され、運営結果が直前まで読めない状態が続いています。',
         points: [
           {
-            title: '構造不在は責任不在',
-            body: '定員・申込条件・返金・注意事項が曖昧だと、誰が何を担うかが追跡不能になる。'
+            title: '主催者が一人で全部を抱える',
+            body: '公開設定、申込対応、入金確認、当日連絡まで同じ担当者に集中する。'
           },
           {
-            title: '審査から運営へ、境界を固定',
-            body: '主催者の審査を入口にし、運営画面で公開範囲と権限を規定する。'
+            title: 'ルール説明を何度も繰り返す',
+            body: '参加条件、注意事項、返金ルールの案内がチャットごとに分散してしまう。'
           },
           {
-            title: '記録がある協働だけが継続する',
-            body: '申込状態、決済、同意内容が残るため、イベント後も運営が持続する。'
+            title: '準備と当日運営が予測しづらい',
+            body: '申込状況と決済状況がずれ、直前の確認作業が増える。'
           }
         ]
       },
-      how: {
-        eyebrow: '流れ',
-        title: '公開から精算まで、構造を途切れさせない',
-        lead:
-          '主催者の運営画面とモバイルの流れで、公開/申込/決済/ルール告知/振込を一続きの責任構造にする。',
-        steps: [
-          {
-            title: '公開',
-            body: 'カテゴリ、公開範囲、承認、キャンセル待ち、注意事項、返金ルールを設定。'
-          },
-          {
-            title: '申込',
-            body: '申込フォームの必須項目と同意を収集し、定員を追跡。'
-          },
-          {
-            title: '決済',
-            body: 'Stripe 連携を有効化し、参加費を回収。'
-          },
-          {
-            title: 'ルール告知',
-            body: 'リスク、返金、同意文を表示して責任を明文化。'
-          },
-          {
-            title: '振込',
-            body: '振込設定で収益の流れを確定。'
-          }
-        ]
-      },
-      what: {
-        eyebrow: '構造能力',
-        title: '三つの構造能力',
-        lead: '機能の説明ではなく、責任とコストを固定する構造として実装しています。',
+      scenarios: {
+        eyebrow: '企画助手',
+        title: '企画を進める3つのシナリオ',
+        lead: '状況に合わせて入口を選ぶだけで、次にやることを整理できます。',
+        inputLabel: '入力',
+        outputLabel: '出力',
+        nextActionLabel: '次アクション',
         items: [
           {
-            title: 'イベントの構造',
-            body: '公開範囲、承認、定員、返金、注意事項、必須項目を事前に固定する。',
-            evidence: [
-              'イベント作成フォームでルール/定員/申込条件を設定',
-              '注意事項と返金条件を公開ページに表示',
-              '申込状況と定員を可視化'
-            ]
+            title: '企画相談（ゼロから）',
+            input: 'やりたい内容と対象者',
+            output: '企画の骨子と実行手順',
+            nextAction: 'はじめて企画する',
+            routeKey: 'firstPlan'
           },
           {
-            title: 'コミュニティの構造',
-            body: 'ポータルの公開範囲と情報設計で、外部に対する責任境界を作る。',
-            evidence: [
-              '公開/限定/非公開の範囲を選択',
-              'ポータルの表示ブロックとテーマを設定',
-              'ラベルと紹介文でコミュニティの責任範囲を明示'
-            ]
+            title: '構想整理（あいまい案を収束）',
+            input: '散らばったメモや要件',
+            output: '実行可能な構成と優先順位',
+            nextAction: '案を整理する',
+            routeKey: 'organizePlan'
           },
           {
-            title: '決済と精算の構造',
-            body: '決済と振込の設定を可視化し、コストと責任を追跡可能にする。',
-            evidence: [
-              'Stripe 連携で決済を開始',
-              'プランと手数料を明示',
-              '振込設定で精算フローを固定'
-            ]
+            title: '草案診断（抜け漏れ診断）',
+            input: '作成済みの企画草案',
+            output: '不足項目と修正提案',
+            nextAction: '草案を診断する',
+            routeKey: 'diagnoseDraft'
           }
         ]
       },
-      ai: {
-        eyebrow: 'AI 補助',
-        title: 'AI は構造の実行補助として働く',
+      steps: {
+        eyebrow: '5ステップ運営',
+        title: '公開から精算までを標準化',
+        lead: '運営を5つの手順に固定し、担当が変わっても同じ品質で回せるようにします。',
         items: [
-          'AI が注意事項・リスク・返金・同意文の下書きを作成し、主催者が確認・確定',
-          'AI が多言語の意味を揃え、同じルールを同じルールとして伝える',
-          'AI が公開前に不足項目（定員/締切/返金/必須項目等）を指摘'
+          {
+            title: 'ルール設定',
+            body: '申込条件、注意事項、返金条件を公開前に確定する。'
+          },
+          {
+            title: '申込管理',
+            body: '必要情報と同意を一元収集し、参加状況を見える化する。'
+          },
+          {
+            title: '支払い記録',
+            body: '決済記録と申込記録をひも付け、確認作業を短縮する。'
+          },
+          {
+            title: '通知実行',
+            body: '変更連絡、リマインド、当日案内を同じ導線で配信する。'
+          },
+          {
+            title: '精算振り返り',
+            body: '精算状況を確認し、次回運営に使える記録として残す。'
+          }
         ]
       },
       proof: {
-        eyebrow: '運用事例',
-        title: '公開事例',
-        lead: '公開可能な事例は整理中です。',
-        items: ['コミュニティポータルの公開事例', '決済/振込の運用事例', '多言語ルールの運用事例'],
-        placeholder: '準備中'
+        eyebrow: 'Proof',
+        title: '数値で確認できる運営改善',
+        lead: '導入後の変化を、主催者が確認できる指標で示します。',
+        metrics: [
+          {
+            title: '問い合わせ件数',
+            value: '-XX%',
+            note: '対象期間：導入後3か月（同規模イベント比較）'
+          },
+          {
+            title: '準備工数',
+            value: '-XX%',
+            note: '対象期間：導入前後の企画準備時間比較'
+          },
+          {
+            title: '精算完了まで',
+            value: '-XX日',
+            note: '対象期間：イベント終了後の精算完了日数'
+          }
+        ]
+      },
+      trust: {
+        eyebrow: '安心材料',
+        title: '導入前に確認できる運用条件',
+        lead: 'はじめる前に必要な情報を、先に確認できるようにしています。',
+        items: [
+          {
+            title: '導入に必要なもの',
+            body: 'LINEアカウントと基本情報だけで開始可能。専用アプリ開発は不要。'
+          },
+          {
+            title: '利用開始までの時間',
+            body: '初期設定後、当日からテスト運用を開始できます。'
+          },
+          {
+            title: '決済・データ管理方針',
+            body: '決済履歴と申込情報をひも付け、運営記録として追跡可能に管理。'
+          },
+          {
+            title: 'よくある質問',
+            body: '料金、導入手順、運営フローのFAQを案内し、導入判断を支援。'
+          }
+        ]
       },
       cta: {
         eyebrow: '開始',
-        title: '構造を先に決めてから動かす',
-        body: '主催者として責任の境界線を引くか、まず体験して構造の流れを確かめてください。',
-        primary: '主催者です',
-        secondary: '今すぐ体験',
-        tertiary: '導入相談を予約'
+        title: '今の状況に合う入口から始める',
+        body: '企画の段階に合わせて、最適なフローへ直接進めます。',
+        actions: [
+          {
+            label: 'はじめて企画する',
+            routeKey: 'firstPlan',
+            variant: 'primary'
+          },
+          {
+            label: '案を整理する',
+            routeKey: 'organizePlan',
+            variant: 'secondary'
+          },
+          {
+            label: '草案を診断する',
+            routeKey: 'diagnoseDraft',
+            variant: 'ghost'
+          }
+        ]
       }
     },
     about: {
@@ -486,137 +523,174 @@ export const messages = {
     },
     home: {
       hero: {
-        eyebrow: 'SOCIALMORE STRUCTURE',
-        title: 'Fracture is normal; collaboration only lasts with structure',
-        subtitle:
-          'An organizer is the community operator who connects actors through events and carries operational responsibility. Organizers can be individuals or organizations such as companies, institutions, local governments, or NPOs.',
-        definition:
-          'SocialMore designs collaboration structures that do not rely on consensus for a world where fracture is normal, and validates their scalability through community operations.',
-        stance: 'SocialMore does not remove differences; it provides structures for collaboration in a fractured world.',
-        primaryCta: "I'm an organizer",
-        secondaryCta: 'Try now',
-        panelEyebrow: 'Structure scope',
-        panelTitle: 'Fix rules and responsibility before publishing',
-        panelItems: [
+        eyebrow: 'MORE | Community Operating System',
+        title: 'Give organizers a repeatable operating foundation on LINE',
+        subtitle: 'Use directly on LINE Mini App. No app download for organizers or participants.',
+        coreMessage: 'Run publishing, registration, payment, notifications, and settlement in one repeatable flow.',
+        stance: 'Built for organizers who need predictable day-to-day operations.',
+        primaryCta: 'Try on LINE now',
+        secondaryCta: 'Start from scratch',
+        results: [
           {
-            title: 'Rule-bound publishing',
-            body: 'Visibility, approvals, waitlists, notices, and refund terms are fixed before launch.'
+            label: 'Inquiry reduction',
+            value: '-XX%',
+            note: 'Fewer repetitive questions before event day'
           },
           {
-            title: 'Responsibility and cost visibility',
-            body: 'Registration status, payments, and payouts stay traceable.'
+            label: 'Day-of stability',
+            value: '-XX%',
+            note: 'Lower check-in and coordination issues'
           },
           {
-            title: 'Same rules across languages',
-            body: 'JA/EN/ZH communicate identical rules to reduce ambiguity.'
+            label: 'Settlement visibility',
+            value: '-XX days',
+            note: 'Faster close after each event'
           }
         ]
       },
       why: {
         eyebrow: 'Why',
-        title: 'Organizers lose responsibility boundaries before they lose time',
-        lead:
-          'When multilingual outreach, registrations, payments, participant management, and onsite operations run in parallel, rules blur and responsibility dissolves.',
+        title: 'Operations still rely on one person carrying everything',
+        lead: 'Organizers handle all tasks, repeat the same rule explanations, and still face unpredictable outcomes before launch.',
         points: [
           {
-            title: 'No structure means no responsibility',
-            body: 'Without clear capacity, conditions, refunds, and notices, accountability becomes untraceable.'
+            title: 'One organizer carries the full load',
+            body: 'Setup, attendee responses, payment checks, and day-of coordination stack onto one role.'
           },
           {
-            title: 'Review → operations fix boundaries',
-            body: 'Organizer review defines visibility and permissions before operations begin.'
+            title: 'Rules are explained repeatedly',
+            body: 'Eligibility, notices, and refund terms are answered over and over across channels.'
           },
           {
-            title: 'Recorded collaboration is the only durable one',
-            body: 'Registration status, payments, and consent stay recorded after the event ends.'
+            title: 'Operations remain unpredictable',
+            body: 'Registration and payment status drift until the last minute.'
           }
         ]
       },
-      how: {
-        eyebrow: 'How',
-        title: 'Keep structure continuous from publish to payout',
-        lead:
-          'Organizer operations and mobile flows connect publishing, registration, payment, rule notices, and payout into one responsibility chain.',
-        steps: [
-          {
-            title: 'Publish',
-            body: 'Set category, visibility, approvals, waitlists, notices, and refund rules.'
-          },
-          {
-            title: 'Registration',
-            body: 'Collect required fields and consent while tracking capacity.'
-          },
-          {
-            title: 'Payment',
-            body: 'Enable Stripe and collect participation fees.'
-          },
-          {
-            title: 'Rule notice',
-            body: 'Present risks, refunds, and consent text to make responsibility explicit.'
-          },
-          {
-            title: 'Payout',
-            body: 'Fix payout settings to confirm settlement flow.'
-          }
-        ]
-      },
-      what: {
-        eyebrow: 'What',
-        title: 'Three structural capabilities',
-        lead: 'These are not “features” but structures that fix responsibility and cost.',
+      scenarios: {
+        eyebrow: 'Planning Assistant',
+        title: 'Three planning scenarios',
+        lead: 'Choose the entry that matches your current planning stage.',
+        inputLabel: 'Input',
+        outputLabel: 'Output',
+        nextActionLabel: 'Next action',
         items: [
           {
-            title: 'Event structure',
-            body: 'Fix visibility, approvals, capacity, refunds, notices, and required fields in advance.',
-            evidence: [
-              'Event form defines rules, capacity, and registration conditions',
-              'Notices and refund terms show on the public flow',
-              'Registration status and capacity remain visible'
-            ]
+            title: 'Planning consultation (from zero)',
+            input: 'Your objective and target audience',
+            output: 'A practical event outline and starting checklist',
+            nextAction: 'Start from scratch',
+            routeKey: 'firstPlan'
           },
           {
-            title: 'Community structure',
-            body: 'Portal visibility and information design create an external responsibility boundary.',
-            evidence: [
-              'Choose public/limited/private visibility',
-              'Configure portal blocks and themes',
-              'Labels and descriptions define community scope'
-            ]
+            title: 'Concept structuring (organize ambiguity)',
+            input: 'Scattered notes and partial ideas',
+            output: 'A prioritized and executable plan structure',
+            nextAction: 'Organize my plan',
+            routeKey: 'organizePlan'
           },
           {
-            title: 'Payment & settlement structure',
-            body: 'Make collection and payout settings traceable for cost and responsibility.',
-            evidence: [
-              'Stripe onboarding opens collection',
-              'Plans and fees are explicit',
-              'Payout settings fix settlement flow'
-            ]
+            title: 'Draft diagnosis (gap check)',
+            input: 'Your current draft',
+            output: 'Missing items and revision guidance',
+            nextAction: 'Diagnose my draft',
+            routeKey: 'diagnoseDraft'
           }
         ]
       },
-      ai: {
-        eyebrow: 'AI Co-Pilot',
-        title: 'AI only reduces friction in executing structure',
+      steps: {
+        eyebrow: '5-Step Operations',
+        title: 'Standardize execution from launch to settlement',
+        lead: 'Run each event with the same operational sequence and traceable records.',
         items: [
-          'AI drafts notices, risk, refund, and consent text, and organizers confirm and finalize',
-          'AI aligns meanings across languages so the same rules stay the same rules',
-          'AI flags missing items before publishing (capacity, deadline, refunds, required fields)'
+          {
+            title: 'Rule setup',
+            body: 'Define participation conditions, notices, and refund policy before publishing.'
+          },
+          {
+            title: 'Registration management',
+            body: 'Collect required fields and consent with live status tracking.'
+          },
+          {
+            title: 'Payment traceability',
+            body: 'Link payment records to registration records for faster verification.'
+          },
+          {
+            title: 'Notification execution',
+            body: 'Send reminders and updates through one reliable operational channel.'
+          },
+          {
+            title: 'Settlement review',
+            body: 'Close each event with clear records and carry learnings forward.'
+          }
         ]
       },
       proof: {
         eyebrow: 'Proof',
-        title: 'Operational cases',
-        lead: 'Public case materials are in preparation.',
-        items: ['Community portal releases', 'Collection/payout operations', 'Multilingual rule operations'],
-        placeholder: 'In preparation'
+        title: 'Operational impact by measurable metrics',
+        lead: 'Track outcomes with operational numbers, not impressions.',
+        metrics: [
+          {
+            title: 'Inquiry volume',
+            value: '-XX%',
+            note: 'Measured over the first 3 months after onboarding'
+          },
+          {
+            title: 'Preparation effort',
+            value: '-XX%',
+            note: 'Compared against pre-adoption preparation workload'
+          },
+          {
+            title: 'Time to settlement close',
+            value: '-XX days',
+            note: 'From event end date to settlement completion'
+          }
+        ]
+      },
+      trust: {
+        eyebrow: 'Trust',
+        title: 'What you can verify before adoption',
+        lead: 'Clear operational conditions help teams decide quickly and safely.',
+        items: [
+          {
+            title: 'What is required to start',
+            body: 'A LINE account and basic event information are enough for initial setup.'
+          },
+          {
+            title: 'Time to first use',
+            body: 'You can start pilot operation on the same day after setup.'
+          },
+          {
+            title: 'Payment and data policy',
+            body: 'Registration and payment records stay linked for traceable operations.'
+          },
+          {
+            title: 'Frequently asked questions',
+            body: 'Pricing, onboarding, and workflow FAQs are available before rollout.'
+          }
+        ]
       },
       cta: {
         eyebrow: 'Start',
-        title: 'Fix the structure before you move',
-        body: 'Start as an organizer to define responsibility boundaries, or try the flow first to validate the structure.',
-        primary: "I'm an organizer",
-        secondary: 'Try now',
-        tertiary: 'Book a consult'
+        title: 'Choose the right entry for your planning stage',
+        body: 'Jump directly into the workflow that matches your current task.',
+        actions: [
+          {
+            label: 'Start from scratch',
+            routeKey: 'firstPlan',
+            variant: 'primary'
+          },
+          {
+            label: 'Organize my plan',
+            routeKey: 'organizePlan',
+            variant: 'secondary'
+          },
+          {
+            label: 'Diagnose my draft',
+            routeKey: 'diagnoseDraft',
+            variant: 'ghost'
+          }
+        ]
       }
     },
     about: {
@@ -908,137 +982,174 @@ export const messages = {
     },
     home: {
       hero: {
-        eyebrow: 'SOCIALMORE STRUCTURE',
-        title: '分裂是常态，协作必须靠结构',
-        subtitle:
-          '主理人是社群的组织者，通过活动连接行动者并承担运营责任。主理人可以是个人或组织（企业、机构、政府部门、NPO 等）。',
-        definition:
-          'SocialMore 是为分裂常态的世界设计不依赖共识的协作结构，并用社群场景验证其可扩展性的运行系统。',
-        stance: 'SocialMore 不是在消除分歧，而是在为分裂的世界，提供可协作的结构。',
-        primaryCta: '我是主理人',
-        secondaryCta: '立即体验',
-        panelEyebrow: '结构边界',
-        panelTitle: '在公开前固定责任与规则',
-        panelItems: [
+        eyebrow: 'MORE | Community Operating System',
+        title: '主办方可以在 LINE 上拥有可复用的运营基盘',
+        subtitle: '通过 LINE Mini App 直接使用，主办方和参与者都无需下载 App。',
+        coreMessage: '把发布、报名、收款、通知、结算放进同一流程，运营可复制、可追踪。',
+        stance: '面向主办方日常实务设计的运营OS。',
+        primaryCta: '立即在 LINE 体验',
+        secondaryCta: '从零开始企划',
+        results: [
           {
-            title: '规则化发布',
-            body: '公开范围、审批、候补、注意事项、退款条件在发布前固定。'
+            label: '咨询量下降',
+            value: '-XX%',
+            note: '减少重复问答，释放准备时间'
           },
           {
-            title: '责任与成本可视化',
-            body: '报名状态、收款与打款保持可追溯。'
+            label: '当日运作稳定',
+            value: '-XX%',
+            note: '降低签到与现场协调失误'
           },
           {
-            title: '同一规则的多语言表达',
-            body: '日/英/中传达同一规则，降低责任歧义。'
+            label: '结算可预测',
+            value: '-XX天',
+            note: '缩短活动结束到结算完成时间'
           }
         ]
       },
       why: {
         eyebrow: 'Why',
-        title: '主理人最先失去的不是时间，而是责任边界',
-        lead:
-          '多语言、报名、收款、参与者管理与现场运营并行时，规则边界会迅速模糊，责任被稀释。',
+        title: '主办方常常还在靠个人硬扛运营',
+        lead: '一个人扛全部、规则反复解释、活动结果临近开始仍不可预测，是最常见的运营状态。',
         points: [
           {
-            title: '没有结构就没有责任',
-            body: '定员、报名条件、退款与注意事项不清晰时，责任无法追溯。'
+            title: '主办方一个人扛全部',
+            body: '从设置活动到回复问题、确认收款、现场协调都压在同一人身上。'
           },
           {
-            title: '审查 → 运用先定边界',
-            body: '主理人审查作为入口，明确公开范围与权限。'
+            title: '规则需要反复解释',
+            body: '报名条件、注意事项、退款规则分散在不同对话中，反复沟通成本高。'
           },
           {
-            title: '有记录的协作才可持续',
-            body: '报名状态、支付与同意记录留存，活动结束后仍可追溯。'
+            title: '运营结果不可预测',
+            body: '报名与收款状态不同步，导致活动前集中补救。'
           }
         ]
       },
-      how: {
-        eyebrow: 'How',
-        title: '从发布到结算，结构不断链',
-        lead:
-          '主理人运用画面与移动端流程把发布/报名/收款/规则告知/结算串成责任链路。',
-        steps: [
-          {
-            title: '发布',
-            body: '设置分类、公开范围、审批、候补、注意事项与退款规则。'
-          },
-          {
-            title: '报名',
-            body: '收集必填信息与同意项，并追踪定员。'
-          },
-          {
-            title: '收款',
-            body: '开通 Stripe 收款并收取参与费用。'
-          },
-          {
-            title: '规则告知',
-            body: '展示风险、退款、同意文，明确责任边界。'
-          },
-          {
-            title: '结算',
-            body: '配置打款设置，固定结算流程。'
-          }
-        ]
-      },
-      what: {
-        eyebrow: 'What',
-        title: '三类结构能力',
-        lead: '不是功能堆叠，而是责任与成本的结构化。',
+      scenarios: {
+        eyebrow: '企划助手',
+        title: '三种企划场景',
+        lead: '按当前阶段进入对应流程，快速拿到下一步。',
+        inputLabel: '输入',
+        outputLabel: '输出',
+        nextActionLabel: '下一步',
         items: [
           {
-            title: '活动结构',
-            body: '在发布前固定公开范围、审批、定员、退款、注意事项与必填项。',
-            evidence: [
-              '活动表单定义规则、定员与报名条件',
-              '注意事项与退款条款在公开流程中呈现',
-              '报名状态与定员保持可视化'
-            ]
+            title: '企划咨询（从零开始）',
+            input: '目标与受众',
+            output: '可执行的企划骨架与清单',
+            nextAction: '从零开始企划',
+            routeKey: 'firstPlan'
           },
           {
-            title: '社群结构',
-            body: '通过门户公开范围与信息架构，建立对外责任边界。',
-            evidence: [
-              '公开/限定/非公开范围选择',
-              '门户区块与主题配置',
-              '标签与介绍定义社群范围'
-            ]
+            title: '构想整理（收敛模糊方案）',
+            input: '分散笔记与零散需求',
+            output: '结构化优先级与执行顺序',
+            nextAction: '整理方案',
+            routeKey: 'organizePlan'
           },
           {
-            title: '收款与结算结构',
-            body: '收款与打款设置可追溯，成本与责任清晰。',
-            evidence: [
-              'Stripe 入驻开通收款',
-              '方案与手续费明确',
-              '打款设置固定结算流程'
-            ]
+            title: '草案诊断（查漏补缺）',
+            input: '已有活动草案',
+            output: '缺失项与修正建议',
+            nextAction: '诊断草案',
+            routeKey: 'diagnoseDraft'
           }
         ]
       },
-      ai: {
-        eyebrow: 'AI 协作',
-        title: 'AI 仅用于降低结构执行摩擦',
+      steps: {
+        eyebrow: '5-Step Operations',
+        title: '把运营流程标准化',
+        lead: '将每场活动固定到同一套步骤，减少临时决策。',
         items: [
-          'AI 起草注意事项、风险、退款、同意文，由主理人确认与定稿',
-          'AI 保持多语言含义一致，让同一规则仍是同一规则',
-          'AI 在发布前指出缺失项（定员/截止/退款/必填项等）'
+          {
+            title: '规则设定',
+            body: '上线前明确报名条件、注意事项与退款规则。'
+          },
+          {
+            title: '报名管理',
+            body: '统一收集信息与同意项，实时掌握报名状态。'
+          },
+          {
+            title: '支付留痕',
+            body: '支付记录关联报名记录，核对更快。'
+          },
+          {
+            title: '通知执行',
+            body: '提醒、变更、当日信息通过统一入口发送。'
+          },
+          {
+            title: '结算复盘',
+            body: '活动结束后快速结算，并沉淀下次可复用数据。'
+          }
         ]
       },
       proof: {
         eyebrow: 'Proof',
-        title: '运用案例',
-        lead: '公开案例整理中。',
-        items: ['社群门户公开案例', '收款/结算运用案例', '多语言规则运用案例'],
-        placeholder: '准备中'
+        title: '可验证的运营指标',
+        lead: '用可追踪数字评估运营改善效果。',
+        metrics: [
+          {
+            title: '咨询件数',
+            value: '-XX%',
+            note: '统计周期：导入后3个月'
+          },
+          {
+            title: '准备工时',
+            value: '-XX%',
+            note: '对比导入前后同规模活动'
+          },
+          {
+            title: '结算完成时间',
+            value: '-XX天',
+            note: '从活动结束到结算完成的平均天数'
+          }
+        ]
+      },
+      trust: {
+        eyebrow: '安心材料',
+        title: '导入前可确认的信息',
+        lead: '关键条件透明，便于团队快速判断。',
+        items: [
+          {
+            title: '导入所需条件',
+            body: '仅需 LINE 账号和基础活动信息，无需额外开发。'
+          },
+          {
+            title: '开始使用所需时间',
+            body: '完成初始设置后可在当天开始测试运作。'
+          },
+          {
+            title: '支付与数据管理方针',
+            body: '报名与支付记录关联管理，支持后续追溯与核对。'
+          },
+          {
+            title: '常见问题',
+            body: '提供费用、流程、实施方式等 FAQ 供导入前确认。'
+          }
+        ]
       },
       cta: {
         eyebrow: 'Start',
-        title: '先把结构定下来',
-        body: '作为主理人明确运营责任线，或先体验流程确认结构。',
-        primary: '我是主理人',
-        secondary: '立即体验',
-        tertiary: '预约导入咨询'
+        title: '按你的企划阶段直接进入对应流程',
+        body: '选择入口后，直接跳转到对应的企划助手流程。',
+        actions: [
+          {
+            label: '从零开始企划',
+            routeKey: 'firstPlan',
+            variant: 'primary'
+          },
+          {
+            label: '整理方案',
+            routeKey: 'organizePlan',
+            variant: 'secondary'
+          },
+          {
+            label: '诊断草案',
+            routeKey: 'diagnoseDraft',
+            variant: 'ghost'
+          }
+        ]
       }
     },
     about: {

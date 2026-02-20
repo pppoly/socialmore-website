@@ -1,7 +1,10 @@
 const env = import.meta.env || {};
 
 export const ctaLinks = {
-  apply: env.VITE_ORGANIZER_APPLY_URL || 'https://test.socialmore.jp/organizer/apply',
-  experience: env.VITE_EXPERIENCE_URL || 'https://test.socialmore.jp/experience',
-  consult: env.VITE_CONSULT_URL || '#' // TODO: fill onboarding consultation URL or set VITE_CONSULT_URL
+  lineMiniApp: env.VITE_LINE_MINI_APP_URL || 'https://test.socialmore.jp/experience',
+  plannerRoutes: {
+    firstPlan: env.VITE_PLANNER_START_PATH || '/planner/start',
+    organizePlan: env.VITE_PLANNER_ORGANIZE_PATH || '/planner/organize',
+    diagnoseDraft: env.VITE_PLANNER_DIAGNOSE_PATH || '/planner/diagnose'
+  }
 };

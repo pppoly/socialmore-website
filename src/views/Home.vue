@@ -9,38 +9,30 @@
           <p class="eyebrow">{{ hero.eyebrow }}</p>
           <h1>{{ hero.title }}</h1>
           <p class="subtitle">{{ hero.subtitle }}</p>
-          <p class="definition">{{ hero.definition }}</p>
+          <p class="core-message">{{ hero.coreMessage }}</p>
           <p class="stance">{{ hero.stance }}</p>
           <div class="cta-row">
             <a
-              :href="links.apply"
+              :href="links.lineMiniApp"
               class="btn btn-primary cta-primary"
-              :target="linkTarget(links.apply)"
-              :rel="linkRel(links.apply)"
+              :target="linkTarget(links.lineMiniApp)"
+              :rel="linkRel(links.lineMiniApp)"
             >
               <span>{{ hero.primaryCta }}</span>
               <img :src="heroCtaArrow" alt="" aria-hidden="true" />
             </a>
-            <a
-              :href="links.experience"
-              class="btn btn-secondary"
-              :target="linkTarget(links.experience)"
-              :rel="linkRel(links.experience)"
-            >
+            <RouterLink :to="plannerRouteFor('firstPlan')" class="btn btn-secondary">
               {{ hero.secondaryCta }}
-            </a>
+            </RouterLink>
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-panel">
-            <p class="panel-eyebrow">{{ hero.panelEyebrow }}</p>
-            <h3>{{ hero.panelTitle }}</h3>
-            <ul class="panel-list">
-              <li v-for="item in heroPanelItems" :key="item.title">
-                <h4>{{ item.title }}</h4>
-                <p>{{ item.body }}</p>
-              </li>
-            </ul>
+          <div class="hero-results">
+            <article v-for="item in heroResults" :key="item.label" class="result-card">
+              <p class="result-label">{{ item.label }}</p>
+              <p class="result-value">{{ item.value }}</p>
+              <p class="result-note">{{ item.note }}</p>
+            </article>
           </div>
         </div>
       </div>
@@ -62,50 +54,54 @@
       </div>
     </section>
 
-    <section class="section dense-section how-section">
+    <section class="section dense-section scenarios-section">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">{{ how.eyebrow }}</p>
-          <h2 class="section-title">{{ how.title }}</h2>
-          <p class="section-description">{{ how.lead }}</p>
+          <p class="eyebrow">{{ scenarios.eyebrow }}</p>
+          <h2 class="section-title">{{ scenarios.title }}</h2>
+          <p class="section-description">{{ scenarios.lead }}</p>
         </div>
-        <div class="how-grid">
-          <ol class="how-steps">
-            <li v-for="(step, index) in howSteps" :key="step.title" class="how-step">
-              <div class="step-index">{{ String(index + 1).padStart(2, '0') }}</div>
-              <div class="step-body">
-                <h3>{{ step.title }}</h3>
-                <p>{{ step.body }}</p>
+        <div class="card-grid scenario-grid">
+          <article v-for="item in scenarioItems" :key="item.title" class="card scenario-card">
+            <h3>{{ item.title }}</h3>
+            <dl class="scenario-specs">
+              <div class="scenario-row">
+                <dt>{{ scenarios.inputLabel }}</dt>
+                <dd>{{ item.input }}</dd>
               </div>
-            </li>
-          </ol>
-          <aside class="card ai-card">
-            <p class="eyebrow">{{ ai.eyebrow }}</p>
-            <h3>{{ ai.title }}</h3>
-            <ul class="ai-list">
-              <li v-for="item in aiItems" :key="item">{{ item }}</li>
-            </ul>
-          </aside>
+              <div class="scenario-row">
+                <dt>{{ scenarios.outputLabel }}</dt>
+                <dd>{{ item.output }}</dd>
+              </div>
+              <div class="scenario-row">
+                <dt>{{ scenarios.nextActionLabel }}</dt>
+                <dd>{{ item.nextAction }}</dd>
+              </div>
+            </dl>
+            <RouterLink :to="plannerRouteFor(item.routeKey)" class="text-link">
+              {{ item.nextAction }} →
+            </RouterLink>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section dense-section">
+    <section class="section dense-section steps-section">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">{{ what.eyebrow }}</p>
-          <h2 class="section-title">{{ what.title }}</h2>
-          <p class="section-description">{{ what.lead }}</p>
+          <p class="eyebrow">{{ steps.eyebrow }}</p>
+          <h2 class="section-title">{{ steps.title }}</h2>
+          <p class="section-description">{{ steps.lead }}</p>
         </div>
-        <div class="card-grid what-grid">
-          <article v-for="item in whatItems" :key="item.title" class="card what-card">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.body }}</p>
-            <ul class="evidence-list">
-              <li v-for="evidence in item.evidence" :key="evidence">{{ evidence }}</li>
-            </ul>
-          </article>
-        </div>
+        <ol class="steps-list">
+          <li v-for="(step, index) in stepItems" :key="step.title" class="step-card">
+            <div class="step-index">{{ String(index + 1).padStart(2, '0') }}</div>
+            <div class="step-body">
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.body }}</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -117,9 +113,26 @@
           <p class="section-description">{{ proof.lead }}</p>
         </div>
         <div class="card-grid proof-grid">
-          <article v-for="item in proofItems" :key="item" class="card proof-card">
-            <p>{{ item }}</p>
-            <span class="proof-placeholder">{{ proof.placeholder }}</span>
+          <article v-for="metric in proofMetrics" :key="metric.title" class="card proof-card">
+            <p class="metric-title">{{ metric.title }}</p>
+            <p class="metric-value">{{ metric.value }}</p>
+            <p class="metric-note">{{ metric.note }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dense-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">{{ trust.eyebrow }}</p>
+          <h2 class="section-title">{{ trust.title }}</h2>
+          <p class="section-description">{{ trust.lead }}</p>
+        </div>
+        <div class="card-grid trust-grid">
+          <article v-for="item in trustItems" :key="item.title" class="card trust-card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
           </article>
         </div>
       </div>
@@ -133,30 +146,15 @@
           <p class="section-description">{{ cta.body }}</p>
         </div>
         <div class="cta-actions">
-          <a
-            :href="links.apply"
-            class="btn btn-primary"
-            :target="linkTarget(links.apply)"
-            :rel="linkRel(links.apply)"
+          <RouterLink
+            v-for="action in ctaActions"
+            :key="action.routeKey"
+            :to="plannerRouteFor(action.routeKey)"
+            class="btn"
+            :class="buttonClass(action.variant)"
           >
-            {{ cta.primary }}
-          </a>
-          <a
-            :href="links.experience"
-            class="btn btn-secondary"
-            :target="linkTarget(links.experience)"
-            :rel="linkRel(links.experience)"
-          >
-            {{ cta.secondary }}
-          </a>
-          <a
-            :href="links.consult"
-            class="btn btn-ghost"
-            :target="linkTarget(links.consult)"
-            :rel="linkRel(links.consult)"
-          >
-            {{ cta.tertiary }}
-          </a>
+            {{ action.label }}
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -178,21 +176,29 @@ const links = ctaLinks;
 const isExternalLink = (href) => /^https?:\/\//.test(href);
 const linkTarget = (href) => (isExternalLink(href) ? '_blank' : null);
 const linkRel = (href) => (isExternalLink(href) ? 'noopener' : null);
+const plannerRouteFor = (routeKey) => links.plannerRoutes?.[routeKey] ?? '/';
+
+const buttonClass = (variant) => {
+  if (variant === 'secondary') return 'btn-secondary';
+  if (variant === 'ghost') return 'btn-ghost';
+  return 'btn-primary';
+};
 
 const home = computed(() => dictionary.value.home ?? {});
 const hero = computed(() => home.value.hero ?? {});
-const heroPanelItems = computed(() => (Array.isArray(hero.value.panelItems) ? hero.value.panelItems : []));
+const heroResults = computed(() => (Array.isArray(hero.value.results) ? hero.value.results : []));
 const why = computed(() => home.value.why ?? {});
 const whyPoints = computed(() => (Array.isArray(why.value.points) ? why.value.points : []));
-const how = computed(() => home.value.how ?? {});
-const howSteps = computed(() => (Array.isArray(how.value.steps) ? how.value.steps : []));
-const what = computed(() => home.value.what ?? {});
-const whatItems = computed(() => (Array.isArray(what.value.items) ? what.value.items : []));
-const ai = computed(() => home.value.ai ?? {});
-const aiItems = computed(() => (Array.isArray(ai.value.items) ? ai.value.items : []));
+const scenarios = computed(() => home.value.scenarios ?? {});
+const scenarioItems = computed(() => (Array.isArray(scenarios.value.items) ? scenarios.value.items : []));
+const steps = computed(() => home.value.steps ?? {});
+const stepItems = computed(() => (Array.isArray(steps.value.items) ? steps.value.items : []));
 const proof = computed(() => home.value.proof ?? {});
-const proofItems = computed(() => (Array.isArray(proof.value.items) ? proof.value.items : []));
+const proofMetrics = computed(() => (Array.isArray(proof.value.metrics) ? proof.value.metrics : []));
+const trust = computed(() => home.value.trust ?? {});
+const trustItems = computed(() => (Array.isArray(trust.value.items) ? trust.value.items : []));
 const cta = computed(() => home.value.cta ?? {});
+const ctaActions = computed(() => (Array.isArray(cta.value.actions) ? cta.value.actions : []));
 
 const heroBackgroundStyle = computed(() => ({
   backgroundImage:
@@ -272,8 +278,7 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   z-index: 1;
 }
 
-.hero-grid > *,
-.how-grid > * {
+.hero-grid > * {
   min-width: 0;
 }
 
@@ -288,7 +293,7 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   line-height: 1.6;
 }
 
-.definition,
+.core-message,
 .stance {
   margin: 0 0 0.9rem;
   color: rgba(255, 255, 255, 0.9);
@@ -319,43 +324,41 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   justify-content: flex-start;
 }
 
-.hero-panel {
-  width: min(360px, 100%);
+.hero-results {
+  width: min(420px, 100%);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.result-card {
   background: rgba(4, 12, 24, 0.82);
   color: #fff;
-  border-radius: 24px;
-  padding: 1.5rem;
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
   box-shadow: 0 30px 60px rgba(3, 12, 23, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.panel-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 0.5rem;
-}
-
-.panel-list {
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.9rem;
-}
-
-.panel-list h4 {
-  margin: 0 0 0.35rem;
-  font-size: 0.95rem;
-}
-
-.panel-list p {
+.result-label {
   margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.result-value {
+  margin: 0.25rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.result-note {
+  margin: 0.2rem 0 0;
   color: rgba(255, 255, 255, 0.72);
-  line-height: 1.5;
-  font-size: 0.9rem;
+  line-height: 1.45;
+  font-size: 0.86rem;
 }
 
 .cta-primary {
@@ -399,26 +402,56 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   line-height: 1.6;
 }
 
-.how-section {
+.scenarios-section {
   background: linear-gradient(180deg, rgba(15, 138, 215, 0.06), rgba(246, 195, 67, 0.08));
 }
 
-.how-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  align-items: start;
+.scenario-grid {
+  align-items: stretch;
 }
 
-.how-steps {
+.scenario-card h3 {
+  margin: 0 0 0.8rem;
+}
+
+.scenario-specs {
+  margin: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.scenario-row {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.scenario-row dt {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scenario-row dd {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.steps-section {
+  background: #fff;
+}
+
+.steps-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 1rem;
+  gap: 0.95rem;
 }
 
-.how-step {
+.step-card {
   background: #fff;
   border-radius: 20px;
   padding: 1.1rem 1.25rem;
@@ -452,47 +485,6 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   line-height: 1.6;
 }
 
-.ai-card {
-  background: #0b1c2c;
-  color: #eff4ff;
-  border-radius: 22px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 45px rgba(11, 28, 46, 0.25);
-}
-
-.ai-card .eyebrow {
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.25em;
-}
-
-.ai-card h3 {
-  margin: 0 0 0.75rem;
-}
-
-.ai-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 0.75rem;
-  color: rgba(239, 244, 255, 0.8);
-  line-height: 1.6;
-}
-
-.what-card h3 {
-  margin-top: 0;
-}
-
-.evidence-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.9rem 0 0;
-  display: grid;
-  gap: 0.5rem;
-  color: var(--color-muted);
-  font-size: 0.92rem;
-}
-
 .proof-section {
   background: #0d1c2e;
   color: #fff;
@@ -508,13 +500,38 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   border-radius: 18px;
 }
 
-.proof-placeholder {
-  display: inline-flex;
-  margin-top: 0.6rem;
-  font-size: 0.82rem;
+.metric-title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.84rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+}
+
+.metric-value {
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+}
+
+.metric-note {
+  margin: 0.4rem 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.trust-grid {
+  align-items: stretch;
+}
+
+.trust-card h3 {
+  margin: 0 0 0.6rem;
+}
+
+.trust-card p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.6;
 }
 
 .cta-section {
@@ -546,10 +563,6 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
   .hero-visual {
     justify-content: center;
   }
-
-  .how-grid {
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  }
 }
 
 @media (max-width: 600px) {
@@ -576,13 +589,9 @@ watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
     font-size: clamp(2rem, 7vw, 2.5rem);
   }
 
-  .hero-panel {
+  .result-card {
     padding: 1.25rem;
-    border-radius: 20px;
-  }
-
-  .panel-list {
-    gap: 0.75rem;
+    border-radius: 16px;
   }
 }
 </style>
