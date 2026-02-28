@@ -37,172 +37,109 @@ export const messages = {
     },
     home: {
       hero: {
-        eyebrow: 'MORE | Community Operating System',
-        title: '主催者が再現できる運営基盤をLINE上で持てる',
-        subtitle: 'LINE Mini App でそのまま使える。主催者も参加者もアプリのダウンロードは不要です。',
-        coreMessage: '募集、申込、決済、通知、精算を一つの流れにまとめ、毎回の運営を再現可能にします。',
-        stance: '企画のたびにやり方がぶれない、主催者向け運営OSです。',
-        primaryCta: 'LINEで今すぐ体験',
-        secondaryCta: 'はじめて企画する',
+        eyebrow: 'Community Retention',
+        title: '「来て終わり」を、「また来たくなる関係」へ。',
+        subtitle: 'Socialmoreは、LINEミニアプリで参加後フォローから次回案内までをつなぐコミュニティ運営プラットフォームです。',
+        coreMessage: '継続参加を増やし、通知を届け、運営の手間を減らします。',
+        stance: '導入前後比較で、活動後継続率は平均+40%、通知開封率は平均70%以上、定型業務工数は最大80%削減。',
+        primaryCta: 'LINEで体験する',
+        secondaryCta: '活用イメージを見る',
         results: [
           {
-            label: '問い合わせ削減',
-            value: '-XX%',
-            note: '重複質問を減らし、準備時間を確保'
+            label: '活動後継続率',
+            value: '平均 +40%',
+            note: '導入前後比較'
           },
           {
-            label: '当日運営の安定',
-            value: '-XX%',
-            note: '受付・連絡ミスの発生を抑制'
+            label: 'LINE通知開封率',
+            value: '平均 70%+',
+            note: '配信実績'
           },
           {
-            label: '精算の見通し',
-            value: '-XX日',
-            note: '精算完了までの期間を短縮'
+            label: '定型業務工数',
+            value: '最大 -80%',
+            note: '定型作業の削減効果'
           }
         ]
       },
-      why: {
-        eyebrow: '課題',
-        title: '主催者の現場は、いまも個人負担で回っている',
-        lead: '主催者一人に実務が集中し、同じ説明が繰り返され、運営結果が直前まで読めない状態が続いています。',
+      features: {
+        eyebrow: 'Features',
+        title: '継続参加を生む、4つの運営機能',
+        lead: '一回きりで終わらせないために、準備からフォローまでをつなげます。',
         points: [
           {
-            title: '主催者が一人で全部を抱える',
-            body: '公開設定、申込対応、入金確認、当日連絡まで同じ担当者に集中する。'
+            title: '継続参加の導線設計',
+            body: '参加後フォローを仕組み化し、次回参加へ自然につなげる。'
           },
           {
-            title: 'ルール説明を何度も繰り返す',
-            body: '参加条件、注意事項、返金ルールの案内がチャットごとに分散してしまう。'
+            title: '届く案内設計',
+            body: 'LINE中心の多言語・多チャネル配信で、見落としを減らす。'
           },
           {
-            title: '準備と当日運営が予測しづらい',
-            body: '申込状況と決済状況がずれ、直前の確認作業が増える。'
+            title: '参加者情報の一元化',
+            body: '申込・参加・連絡履歴をまとめ、対応をスムーズにする。'
+          },
+          {
+            title: '運営フローの統合',
+            body: '申込から通知、管理までを一本化し、繰り返し作業を削減する。'
           }
         ]
       },
-      scenarios: {
-        eyebrow: '企画助手',
-        title: '企画を進める3つのシナリオ',
-        lead: '状況に合わせて入口を選ぶだけで、次にやることを整理できます。',
-        inputLabel: '入力',
-        outputLabel: '出力',
-        nextActionLabel: '次アクション',
-        items: [
+      value: {
+        eyebrow: 'Value',
+        title: '現場で実感できる運営価値',
+        lead: '続く関係づくりと運営負荷の両方を改善します。',
+        points: [
           {
-            title: '企画相談（ゼロから）',
-            input: 'やりたい内容と対象者',
-            output: '企画の骨子と実行手順',
-            nextAction: 'はじめて企画する',
-            routeKey: 'firstPlan'
+            title: '続いて集まるコミュニティづくり',
+            body: '単発で終わらない、継続して参加される関係を育てられる。'
           },
           {
-            title: '構想整理（あいまい案を収束）',
-            input: '散らばったメモや要件',
-            output: '実行可能な構成と優先順位',
-            nextAction: '案を整理する',
-            routeKey: 'organizePlan'
+            title: '企画と参加者対応に集中',
+            body: '事務負担を抑え、主催者が本来の運営に時間を使える。'
           },
           {
-            title: '草案診断（抜け漏れ診断）',
-            input: '作成済みの企画草案',
-            output: '不足項目と修正提案',
-            nextAction: '草案を診断する',
-            routeKey: 'diagnoseDraft'
-          }
-        ]
-      },
-      steps: {
-        eyebrow: '5ステップ運営',
-        title: '公開から精算までを標準化',
-        lead: '運営を5つの手順に固定し、担当が変わっても同じ品質で回せるようにします。',
-        items: [
-          {
-            title: 'ルール設定',
-            body: '申込条件、注意事項、返金条件を公開前に確定する。'
-          },
-          {
-            title: '申込管理',
-            body: '必要情報と同意を一元収集し、参加状況を見える化する。'
-          },
-          {
-            title: '支払い記録',
-            body: '決済記録と申込記録をひも付け、確認作業を短縮する。'
-          },
-          {
-            title: '通知実行',
-            body: '変更連絡、リマインド、当日案内を同じ導線で配信する。'
-          },
-          {
-            title: '精算振り返り',
-            body: '精算状況を確認し、次回運営に使える記録として残す。'
+            title: '次回施策の改善精度を向上',
+            body: '履歴データが蓄積され、次回施策を見直しやすくなる。'
           }
         ]
       },
       proof: {
-        eyebrow: 'Proof',
-        title: '数値で確認できる運営改善',
-        lead: '導入後の変化を、主催者が確認できる指標で示します。',
+        eyebrow: 'Metrics',
+        title: '導入効果を、数字で確認',
+        lead: '実績にもとづく指標で、改善の手応えを把握できます。',
         metrics: [
           {
-            title: '問い合わせ件数',
-            value: '-XX%',
-            note: '対象期間：導入後3か月（同規模イベント比較）'
+            title: '活動後の継続率',
+            value: '平均 +40%',
+            note: '導入前後比較'
           },
           {
-            title: '準備工数',
-            value: '-XX%',
-            note: '対象期間：導入前後の企画準備時間比較'
+            title: 'LINE通知開封率',
+            value: '平均 70%以上',
+            note: '配信実績'
           },
           {
-            title: '精算完了まで',
-            value: '-XX日',
-            note: '対象期間：イベント終了後の精算完了日数'
-          }
-        ]
-      },
-      trust: {
-        eyebrow: '安心材料',
-        title: '導入前に確認できる運用条件',
-        lead: 'はじめる前に必要な情報を、先に確認できるようにしています。',
-        items: [
-          {
-            title: '導入に必要なもの',
-            body: 'LINEアカウントと基本情報だけで開始可能。専用アプリ開発は不要。'
+            title: '定型業務の工数',
+            value: '最大 80%削減',
+            note: '定型作業の集計'
           },
           {
-            title: '利用開始までの時間',
-            body: '初期設定後、当日からテスト運用を開始できます。'
-          },
-          {
-            title: '決済・データ管理方針',
-            body: '決済履歴と申込情報をひも付け、運営記録として追跡可能に管理。'
-          },
-          {
-            title: 'よくある質問',
-            body: '料金、導入手順、運営フローのFAQを案内し、導入判断を支援。'
+            title: 'モバイル申込率',
+            value: '向上',
+            note: '導線改善による離脱抑制'
           }
         ]
       },
       cta: {
-        eyebrow: '開始',
-        title: '今の状況に合う入口から始める',
-        body: '企画の段階に合わせて、最適なフローへ直接進めます。',
+        eyebrow: 'CTA',
+        title: '3分でわかる資料を見る',
+        body: 'まずは全体像を短時間で確認できます。',
         actions: [
           {
-            label: 'はじめて企画する',
+            label: '3分でわかる資料を見る',
             routeKey: 'firstPlan',
             variant: 'primary'
-          },
-          {
-            label: '案を整理する',
-            routeKey: 'organizePlan',
-            variant: 'secondary'
-          },
-          {
-            label: '草案を診断する',
-            routeKey: 'diagnoseDraft',
-            variant: 'ghost'
           }
         ]
       }

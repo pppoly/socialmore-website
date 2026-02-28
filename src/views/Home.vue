@@ -41,12 +41,12 @@
     <section class="section dense-section">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">{{ why.eyebrow }}</p>
-          <h2 class="section-title">{{ why.title }}</h2>
-          <p class="section-description">{{ why.lead }}</p>
+          <p class="eyebrow">{{ features.eyebrow }}</p>
+          <h2 class="section-title">{{ features.title }}</h2>
+          <p class="section-description">{{ features.lead }}</p>
         </div>
         <div class="card-grid why-grid">
-          <article v-for="point in whyPoints" :key="point.title" class="card why-card">
+          <article v-for="point in featureItems" :key="point.title" class="card why-card">
             <h3>{{ point.title }}</h3>
             <p>{{ point.body }}</p>
           </article>
@@ -54,54 +54,19 @@
       </div>
     </section>
 
-    <section class="section dense-section scenarios-section">
+    <section class="section dense-section">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">{{ scenarios.eyebrow }}</p>
-          <h2 class="section-title">{{ scenarios.title }}</h2>
-          <p class="section-description">{{ scenarios.lead }}</p>
+          <p class="eyebrow">{{ valueSection.eyebrow }}</p>
+          <h2 class="section-title">{{ valueSection.title }}</h2>
+          <p class="section-description">{{ valueSection.lead }}</p>
         </div>
-        <div class="card-grid scenario-grid">
-          <article v-for="item in scenarioItems" :key="item.title" class="card scenario-card">
-            <h3>{{ item.title }}</h3>
-            <dl class="scenario-specs">
-              <div class="scenario-row">
-                <dt>{{ scenarios.inputLabel }}</dt>
-                <dd>{{ item.input }}</dd>
-              </div>
-              <div class="scenario-row">
-                <dt>{{ scenarios.outputLabel }}</dt>
-                <dd>{{ item.output }}</dd>
-              </div>
-              <div class="scenario-row">
-                <dt>{{ scenarios.nextActionLabel }}</dt>
-                <dd>{{ item.nextAction }}</dd>
-              </div>
-            </dl>
-            <RouterLink :to="plannerRouteFor(item.routeKey)" class="text-link">
-              {{ item.nextAction }} →
-            </RouterLink>
+        <div class="card-grid why-grid">
+          <article v-for="point in valueItems" :key="point.title" class="card why-card">
+            <h3>{{ point.title }}</h3>
+            <p>{{ point.body }}</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section dense-section steps-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">{{ steps.eyebrow }}</p>
-          <h2 class="section-title">{{ steps.title }}</h2>
-          <p class="section-description">{{ steps.lead }}</p>
-        </div>
-        <ol class="steps-list">
-          <li v-for="(step, index) in stepItems" :key="step.title" class="step-card">
-            <div class="step-index">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="step-body">
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.body }}</p>
-            </div>
-          </li>
-        </ol>
       </div>
     </section>
 
@@ -117,22 +82,6 @@
             <p class="metric-title">{{ metric.title }}</p>
             <p class="metric-value">{{ metric.value }}</p>
             <p class="metric-note">{{ metric.note }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dense-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">{{ trust.eyebrow }}</p>
-          <h2 class="section-title">{{ trust.title }}</h2>
-          <p class="section-description">{{ trust.lead }}</p>
-        </div>
-        <div class="card-grid trust-grid">
-          <article v-for="item in trustItems" :key="item.title" class="card trust-card">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.body }}</p>
           </article>
         </div>
       </div>
@@ -187,16 +136,16 @@ const buttonClass = (variant) => {
 const home = computed(() => dictionary.value.home ?? {});
 const hero = computed(() => home.value.hero ?? {});
 const heroResults = computed(() => (Array.isArray(hero.value.results) ? hero.value.results : []));
-const why = computed(() => home.value.why ?? {});
-const whyPoints = computed(() => (Array.isArray(why.value.points) ? why.value.points : []));
-const scenarios = computed(() => home.value.scenarios ?? {});
-const scenarioItems = computed(() => (Array.isArray(scenarios.value.items) ? scenarios.value.items : []));
-const steps = computed(() => home.value.steps ?? {});
-const stepItems = computed(() => (Array.isArray(steps.value.items) ? steps.value.items : []));
+const features = computed(() => home.value.features ?? home.value.why ?? {});
+const featureItems = computed(() => (Array.isArray(features.value.points) ? features.value.points : []));
+const valueSection = computed(() => home.value.value ?? home.value.steps ?? {});
+const valueItems = computed(() => {
+  if (Array.isArray(valueSection.value.points)) return valueSection.value.points;
+  if (Array.isArray(valueSection.value.items)) return valueSection.value.items;
+  return [];
+});
 const proof = computed(() => home.value.proof ?? {});
 const proofMetrics = computed(() => (Array.isArray(proof.value.metrics) ? proof.value.metrics : []));
-const trust = computed(() => home.value.trust ?? {});
-const trustItems = computed(() => (Array.isArray(trust.value.items) ? trust.value.items : []));
 const cta = computed(() => home.value.cta ?? {});
 const ctaActions = computed(() => (Array.isArray(cta.value.actions) ? cta.value.actions : []));
 
