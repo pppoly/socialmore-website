@@ -204,14 +204,25 @@
 
       <div class="landing-target-grid">
         <article v-for="item in targetCards" :key="item.name" class="landing-target-card">
-          <div class="landing-target-image-shell" :class="item.placeholderClass">
+          <div
+            class="landing-target-image-shell"
+            :class="[item.placeholderClass, { 'has-image': item.src, 'is-placeholder': !item.src }]"
+          >
             <img
               v-if="item.src"
               class="landing-target-image"
               :src="item.src"
               :alt="item.alt"
             />
-            <span v-else class="landing-target-placeholder">{{ item.placeholder }}</span>
+            <div v-else class="landing-target-illustration" aria-hidden="true">
+              <div class="landing-target-illustration-aurora"></div>
+              <div class="landing-target-illustration-group">
+                <span class="landing-target-avatar large"></span>
+                <span class="landing-target-avatar medium"></span>
+                <span class="landing-target-avatar small"></span>
+              </div>
+              <span class="landing-target-illustration-label">{{ item.placeholder }}</span>
+            </div>
           </div>
           <div class="landing-target-body">
             <h3 class="landing-target-name">{{ item.name }}</h3>
@@ -1018,7 +1029,6 @@ onBeforeUnmount(() => {
 }
 
 .landing-line-mini-image,
-.landing-target-image,
 .landing-diff-image,
 .landing-pain-image,
 .landing-feature-preview-image,
@@ -1547,11 +1557,109 @@ onBeforeUnmount(() => {
 }
 
 .landing-target-image-shell.community {
-  background: var(--landing-bg2);
+  background: linear-gradient(180deg, #f4f9ff 0%, #e6eef7 100%);
 }
 
 .landing-target-image-shell.organizer {
-  background: var(--landing-bg2);
+  background: linear-gradient(180deg, #f8fbff 0%, #edf3fa 100%);
+}
+
+.landing-target-image-shell.has-image {
+  padding: 0;
+}
+
+.landing-target-image-shell.is-placeholder {
+  padding: 0;
+}
+
+.landing-target-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.landing-target-illustration {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 16%, rgba(255, 255, 255, 0.82), transparent 34%),
+    linear-gradient(145deg, #eff5ff 0%, #d9e7fb 52%, #c5dbf8 100%);
+}
+
+.landing-target-illustration-aurora {
+  position: absolute;
+  inset: 18px 20px auto auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+.landing-target-illustration-group {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  transform: translateX(-50%);
+}
+
+.landing-target-avatar {
+  position: relative;
+  display: inline-flex;
+  border-radius: 999px 999px 26px 26px;
+  background: linear-gradient(180deg, #ffffff, #e8f0fb);
+  box-shadow: 0 14px 30px rgba(24, 69, 119, 0.12);
+}
+
+.landing-target-avatar::before {
+  content: '';
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff, #eef3fb);
+  transform: translateX(-50%);
+  box-shadow: 0 10px 20px rgba(24, 69, 119, 0.1);
+}
+
+.landing-target-avatar.large {
+  width: 74px;
+  height: 92px;
+}
+
+.landing-target-avatar.medium {
+  width: 62px;
+  height: 78px;
+}
+
+.landing-target-avatar.small {
+  width: 54px;
+  height: 66px;
+}
+
+.landing-target-illustration-label {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(26, 95, 168, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #50708f;
 }
 
 .landing-target-placeholder {
