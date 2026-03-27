@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント一覧 | SOCIALMORE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-bg: #ffffff;
+      --c-bg2: #f5f5f3;
+      --c-surface: #ffffff;
+      --c-text: #1a1a1a;
+      --c-muted: #6b6b6b;
+      --c-hint: #a0a0a0;
+      --c-border: rgba(0,0,0,0.09);
+      --c-border-strong: rgba(26,95,168,0.22);
+      --c-info-text: #1a5fa8;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-xl: 24px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, #ffffff, #f7f7f5 78%);
+      color: var(--c-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--c-border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--c-text);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark img {
+      width: 26px;
+      height: auto;
+      display: block;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: .85rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav-logo-jp { font-weight: 600; }
+    .nav-logo-en { font-size: .7rem; letter-spacing: .15em; color: var(--c-muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      right: -12px;
+      height: 16px;
+    }
+
+    .nav-link-main,
+    .nav-links > a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-muted);
+      transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-links > a:hover,
+    .nav-link-main[aria-current="page"],
+    .nav-item:hover .nav-link-main,
+    .nav-item:focus-within .nav-link-main {
+      color: var(--c-text);
+      background: rgba(26,95,168,0.06);
+      border-color: rgba(26,95,168,0.10);
+      box-shadow: 0 8px 18px rgba(26,95,168,0.08);
+    }
+
+    .nav-link-main {
+      gap: 8px;
+    }
+
+    .nav-link-main::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-item:hover .nav-link-main::after,
+    .nav-item:focus-within .nav-link-main::after {
+      border-color: var(--c-text);
+      transform: translateY(1px) rotate(225deg);
+    }
+
+    .nav-submenu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      min-width: 248px;
+      padding: 10px;
+      border: 1px solid rgba(26,95,168,0.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(11, 28, 46, 0.10), 0 4px 10px rgba(11, 28, 46, 0.04);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px) scale(0.98);
+      transform-origin: top center;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .nav-submenu::before {
+      content: '';
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.98);
+      border-top: 1px solid rgba(26,95,168,0.10);
+      border-left: 1px solid rgba(26,95,168,0.10);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .nav-submenu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text);
+      white-space: nowrap;
+      text-decoration: none;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    .nav-submenu a::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid var(--c-hint);
+      border-right: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-submenu a:hover {
+      background: var(--c-bg2);
+      color: var(--c-text);
+    }
+
+    .nav-submenu a:hover::after {
+      border-color: var(--c-text);
+      transform: translateX(2px) rotate(45deg);
+    }
+
+    .nav-submenu a[aria-current="page"] {
+      background: var(--c-bg2);
+      color: var(--c-text);
+    }
+
+    .nav-submenu a[aria-current="page"]::after {
+      border-color: var(--c-text);
+    }
+
+    .nav-item:hover .nav-submenu,
+    .nav-item:focus-within .nav-submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    .shell {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .section {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .section-heading-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .section-list-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -.01em;
+    }
+
+    .section-note {
+      color: var(--c-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .section-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-info-text);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .section-link::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-left: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+    }
+
+    .event-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .event-card {
+      appearance: none;
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 240px);
+      min-height: 100%;
+      padding: 0;
+      border: 1px solid var(--c-border);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(26,95,168,0.14);
+      box-shadow: 0 22px 46px rgba(11, 28, 46, 0.08);
+    }
+
+    .event-card-poster {
+      height: 168px;
+      background: var(--c-bg2);
+      border-bottom: 0.5px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--c-hint);
+    }
+
+    .event-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      padding: 18px 18px 20px;
+    }
+
+    .event-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: -.02em;
+    }
+
+    .event-card-time {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.7;
+      color: var(--c-text);
+    }
+
+    .event-card-location {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--c-muted);
+    }
+
+    .event-card-summary {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--c-muted);
+    }
+
+    .event-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 200;
+    }
+
+    .event-modal.is-open {
+      display: flex;
+    }
+
+    .event-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(17, 31, 46, 0.42);
+      backdrop-filter: blur(6px);
+    }
+
+    .event-modal-panel {
+      position: relative;
+      width: min(100%, 760px);
+      max-height: min(88vh, 920px);
+      overflow: auto;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(26,95,168,0.10);
+      border-radius: 28px;
+      box-shadow: 0 26px 60px rgba(11, 28, 46, 0.18);
+    }
+
+    .event-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--c-border);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      color: var(--c-text);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .event-modal-body {
+      display: grid;
+      gap: 22px;
+      padding: 28px;
+    }
+
+    .event-modal-content {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+      align-content: start;
+      position: relative;
+      padding-right: 116px;
+    }
+
+    .event-modal-poster {
+      appearance: none;
+      width: min(100%, 360px);
+      justify-self: center;
+      aspect-ratio: 3 / 4;
+      border: 1px dashed rgba(26,95,168,0.24);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(26,95,168,0.06), rgba(26,95,168,0) 34%),
+        linear-gradient(180deg, #fbfdff, #f3f7fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--c-hint);
+      font-size: 14px;
+      text-align: center;
+      cursor: zoom-in;
+    }
+
+    .event-modal-time {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(26,95,168,0.08);
+      color: var(--c-info-text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .event-modal-title {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+    }
+
+    .event-modal-title-row {
+      min-width: 0;
+    }
+
+    .event-modal-qr {
+      width: 96px;
+      aspect-ratio: 1;
+      border: 1px dashed rgba(26,95,168,0.24);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, #fbfdff, #f3f7fc);
+      display: grid;
+      place-items: center;
+      padding: 14px;
+      color: var(--c-hint);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      position: absolute;
+      top: 48px;
+      right: 0;
+    }
+
+    .event-modal-block {
+      display: grid;
+      gap: 10px;
+    }
+
+    .event-modal-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-hint);
+    }
+
+    .event-modal-text {
+      font-size: 15px;
+      line-height: 1.95;
+      color: var(--c-text);
+    }
+
+    .poster-viewer {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+      z-index: 260;
+    }
+
+    .poster-viewer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .poster-viewer-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 20, 34, 0.74);
+      backdrop-filter: blur(12px);
+    }
+
+    .poster-viewer-panel {
+      position: relative;
+      z-index: 1;
+      width: auto;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 32px);
+      display: grid;
+      justify-items: center;
+    }
+
+    .poster-viewer-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 50%;
+      background: rgba(13,20,34,0.74);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .poster-viewer-frame {
+      width: min(560px, calc(100vw - 40px), calc((100vh - 88px) * 0.75));
+      display: grid;
+      justify-items: center;
+    }
+
+    .poster-viewer-frame .event-modal-poster {
+      width: 100%;
+      max-width: 560px;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    @media (min-width: 900px) {
+      .event-modal-panel {
+        width: min(100%, 960px);
+      }
+
+      .event-modal-body {
+        grid-template-columns: 320px minmax(0, 1fr);
+        align-items: start;
+        gap: 28px;
+      }
+
+      .event-modal-poster {
+        width: 100%;
+      }
+
+      .event-modal-content {
+        padding-top: 8px;
+        padding-right: 156px;
+      }
+
+      .event-modal-title-row {
+        min-width: 0;
+      }
+
+      .event-modal-qr {
+        width: 132px;
+      }
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      background: linear-gradient(180deg, #eef4fb, #f8fbff);
+      color: var(--c-text);
+      padding: 40px 24px 28px;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .footer-inner {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .footer-brand .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: .85rem;
+    }
+
+    .footer-brand .nav-logo-en {
+      color: var(--c-muted);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--c-muted);
+    }
+
+    .footer-text span {
+      color: var(--c-hint);
+      margin-right: 6px;
+    }
+
+    .footer-copy {
+      border-top: 1px solid var(--c-border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--c-hint);
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 24px, 1240px);
+        padding: 24px 0 36px;
+      }
+
+      .nav {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page-footer {
+        margin-top: 40px;
+        padding: 32px 20px 24px;
+      }
+
+      .footer-inner {
+        width: min(100%, 1240px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="socialmore.html" aria-label="SOCIALMORE">
+      <span class="nav-logo-mark">
+        <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+      </span>
+      <span class="nav-logo-text">
+        <span class="nav-logo-jp">創翔モア</span>
+        <span class="nav-logo-en">SOCIALMORE</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a class="nav-link-main" href="socialmore.html">ホーム</a>
+        <div class="nav-submenu">
+          <a href="socialmore.html#line-mini">LINEミニアプリとは</a>
+          <a href="socialmore.html#pain">活用シーン</a>
+          <a href="socialmore.html#feature">できること</a>
+          <a href="socialmore.html#diff">他のサービスとの違い</a>
+          <a href="socialmore.html#pricing">料金プラン</a>
+          <a href="socialmore.html#company">会社情報</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="event.html" aria-current="page">イベント情報</a>
+        <div class="nav-submenu">
+          <a href="event-upcoming.html" aria-current="page">近日開催</a>
+          <a href="event-past.html">過去</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="blog.html">ブログ</a>
+        <div class="nav-submenu">
+          <a href="blog-latest.html">最新記事</a>
+          <a href="blog-archive.html">過去の記事</a>
+        </div>
+      </div>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+    <a class="section-link" href="event.html">イベント情報へ戻る</a>
+    <section class="section">
+      <div class="section-head">
+        <div class="section-heading-stack">
+          <h2 class="section-title">近日開催</h2>
+        </div>
+      </div>
+      <div class="section-list-title">イベント一覧</div>
+      <div class="event-list">
+        <button type="button" class="event-card event-modal-trigger">
+          <div class="event-card-poster">イベントポスター表示エリア</div>
+          <div class="event-card-body">
+            <h3 class="event-card-title">イベント名</h3>
+            <div class="event-card-time">2026年5月30日（土）17:00 - 20:45ごろ</div>
+            <div class="event-card-location">場所：後日公開予定</div>
+            <p class="event-card-summary">イベント内容の概要をここに追加できます。参加対象や当日の流れなど、まず見てほしい情報を短くまとめられます。</p>
+          </div>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div class="event-modal" id="eventModal" aria-hidden="true">
+    <div class="event-modal-backdrop" data-close-modal></div>
+    <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+      <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
+      <div class="event-modal-body">
+        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">イベントポスター表示エリア</button>
+        <div class="event-modal-content">
+          <div class="event-modal-time">2026年5月30日（土）17:00 - 20:45ごろ</div>
+          <div class="event-modal-title-row">
+            <h2 class="event-modal-title" id="eventModalTitle">イベント名</h2>
+            <div class="event-modal-qr">QR code<br>表示エリア</div>
+          </div>
+          <section class="event-modal-block">
+            <div class="event-modal-label">場所</div>
+            <div class="event-modal-text">後日公開予定</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">内容</div>
+            <div class="event-modal-text">イベント内容の概要をここに追加できます。参加対象や当日の流れなど、まず見てほしい情報を短くまとめられます。</div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="poster-viewer" id="posterViewer" aria-hidden="true">
+    <div class="poster-viewer-backdrop" data-close-poster-viewer></div>
+    <div class="poster-viewer-panel" role="dialog" aria-modal="true" aria-label="イベントポスター">
+      <button type="button" class="poster-viewer-close" data-close-poster-viewer aria-label="閉じる">×</button>
+      <div class="poster-viewer-frame" id="posterViewerFrame"></div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="footer-brand" aria-label="SOCIALMORE">
+            <span class="nav-logo-mark">
+              <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+            </span>
+            <span class="nav-logo-text">
+              <span class="nav-logo-jp">創翔モア</span>
+              <span class="nav-logo-en">SOCIALMORE</span>
+            </span>
+          </div>
+          <p class="footer-text">181-0013 東京都三鷹市下連雀3-27-1 三協ビル2階</p>
+        </div>
+
+        <div class="footer-column">
+          <p class="footer-text"><span>メール:</span>admin@socialmore.co.jp</p>
+          <p class="footer-text"><span>電話:</span>080-6567-1105</p>
+          <p class="footer-text">平日 10:00-18:00</p>
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 SOCIALMORE Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-item a').forEach((link) => {
+      link.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        });
+      });
+    });
+
+    const eventModal = document.getElementById('eventModal');
+    const posterViewer = document.getElementById('posterViewer');
+    const posterViewerFrame = document.getElementById('posterViewerFrame');
+    const eventOpeners = document.querySelectorAll('.event-modal-trigger');
+    const posterTriggers = document.querySelectorAll('.event-poster-trigger');
+    const eventClosers = document.querySelectorAll('[data-close-modal]');
+    const posterViewerClosers = document.querySelectorAll('[data-close-poster-viewer]');
+
+    const syncBodyLock = () => {
+      const shouldLock = Boolean(
+        eventModal?.classList.contains('is-open') ||
+        posterViewer?.classList.contains('is-open')
+      );
+      document.body.style.overflow = shouldLock ? 'hidden' : '';
+    };
+
+    const closePosterViewer = () => {
+      if (!posterViewer) return;
+      posterViewer.classList.remove('is-open');
+      posterViewer.setAttribute('aria-hidden', 'true');
+      if (posterViewerFrame) {
+        posterViewerFrame.innerHTML = '';
+      }
+      syncBodyLock();
+    };
+
+    const openPosterViewer = (poster) => {
+      if (!posterViewer || !posterViewerFrame || !poster) return;
+      posterViewerFrame.innerHTML = '';
+      const posterClone = poster.cloneNode(true);
+      posterClone.removeAttribute('aria-label');
+      posterClone.classList.remove('event-poster-trigger');
+      posterClone.tabIndex = -1;
+      posterViewerFrame.appendChild(posterClone);
+      posterViewer.classList.add('is-open');
+      posterViewer.setAttribute('aria-hidden', 'false');
+      syncBodyLock();
+    };
+
+    const closeEventModal = () => {
+      if (!eventModal) return;
+      closePosterViewer();
+      eventModal.classList.remove('is-open');
+      eventModal.setAttribute('aria-hidden', 'true');
+      syncBodyLock();
+    };
+
+    const openEventModal = () => {
+      if (!eventModal) return;
+      eventModal.classList.add('is-open');
+      eventModal.setAttribute('aria-hidden', 'false');
+      syncBodyLock();
+    };
+
+    eventOpeners.forEach((button) => {
+      button.addEventListener('click', openEventModal);
+    });
+
+    eventClosers.forEach((button) => {
+      button.addEventListener('click', closeEventModal);
+    });
+
+    posterTriggers.forEach((button) => {
+      button.addEventListener('click', () => openPosterViewer(button));
+    });
+
+    posterViewerClosers.forEach((button) => {
+      button.addEventListener('click', closePosterViewer);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (posterViewer?.classList.contains('is-open')) {
+          closePosterViewer();
+          return;
+        }
+        closeEventModal();
+      }
+    });
+  </script>
+</body>
+</html>

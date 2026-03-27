@@ -1,0 +1,59 @@
+<svg width="420" height="766" viewBox="0 0 420 766" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="766" fill="#F8FBFE"/>
+
+  <rect x="0.5" y="10.5" width="419" height="149" rx="15.5" fill="white" stroke="#D6E1EC"/>
+  <rect x="20" y="26" width="92" height="92" rx="18" fill="url(#coverBg)"/>
+  <rect x="20.5" y="26.5" width="91" height="91" rx="17.5" stroke="#D6E1EC"/>
+  <rect x="28" y="34" width="50" height="24" rx="12" fill="#232B39"/>
+  <text x="53" y="50" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="12" font-weight="800" fill="white">カバー</text>
+  <text x="27" y="67" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="8" font-weight="700" fill="#FFFFFF">まちづくりの参加受付</text>
+  <text x="27" y="83" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="11" font-weight="800" fill="#7C5A00">4月18日(土)</text>
+  <text x="27" y="95" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="11" font-weight="800" fill="#7C5A00">14:00〜</text>
+  <circle cx="89" cy="80" r="16" fill="#FFB4C8"/>
+  <ellipse cx="84" cy="74" rx="6" ry="10" fill="#FFD8E2"/>
+  <ellipse cx="95" cy="74" rx="6" ry="10" fill="#FFD8E2"/>
+  <circle cx="89" cy="84" r="11" fill="#FFB4C8"/>
+  <rect x="118" y="26" width="86" height="92" rx="18" fill="#F5FAFD" stroke="#D6E1EC"/>
+  <path d="M161 57V87" stroke="#17233A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M146 72H176" stroke="#17233A" stroke-width="5" stroke-linecap="round"/>
+  <text x="17" y="139" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="12" font-weight="600" fill="#6D7785">1枚目=カバー / 大きい画像は自動圧縮</text>
+
+  <rect x="11" y="196" width="392" height="241" rx="15" fill="white" stroke="#D6E1EC"/>
+  <rect x="22" y="211" width="370" height="58" rx="12" fill="#F7FBFE" stroke="#E4ECF4"/>
+  <text x="31" y="247" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">タイトル</text>
+  <text x="129" y="245" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">春の交流カフェ ｜ はじめて参加</text>
+  <text x="359" y="272" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">歓迎</text>
+
+  <rect x="22" y="275" width="370" height="58" rx="12" fill="#F7FBFE" stroke="#E4ECF4"/>
+  <text x="31" y="312" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">日程</text>
+  <text x="120" y="312" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">4月18日 14:00 〜 4月18日 16:00</text>
+
+  <rect x="22" y="339" width="370" height="58" rx="12" fill="#F7FBFE" stroke="#E4ECF4"/>
+  <text x="31" y="376" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">場所</text>
+  <text x="113" y="376" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="17" font-weight="800" fill="#17233A">Socialmoreコミュニティスペース</text>
+  <text x="29" y="415" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="13" font-weight="800" fill="#4D87E7">地図で選択</text>
+  <text x="112" y="415" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="13" font-weight="800" fill="#4D87E7">手入力</text>
+
+  <rect x="13" y="458" width="392" height="163" rx="15" fill="white" stroke="#D6E1EC"/>
+  <text x="26" y="486" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="16" font-weight="800" fill="#17233A">天気と当日の案内</text>
+  <rect x="310" y="468" width="71" height="28" rx="14" fill="#E8F8F2"/>
+  <text x="345.5" y="486" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="11" font-weight="800" fill="#1E8A74">季節の案内</text>
+  <text x="26" y="513" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="10.5" font-weight="500" fill="#7C8796">4/18(土) 14:00　Socialmoreコミュニティスペース</text>
+  <text x="26" y="548" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="18" font-weight="800" fill="#17233A">寒暖差に注意しやすい時期です</text>
+  <text x="26" y="582" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#5F6B79">この時期は日中と夜で体感差が出やすいです。屋外導</text>
+  <text x="26" y="603" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#5F6B79">線がある場合は、服装や羽織りの案内を添えると安</text>
+  <text x="26" y="624" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="12.5" font-weight="500" fill="#5F6B79">心です。</text>
+
+  <rect x="14" y="672" width="392" height="74" rx="15" fill="white" fill-opacity="0.5" stroke="#E5ECF3"/>
+  <text x="30" y="716" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="15" font-weight="800" fill="#4F5A68">下書きを保存</text>
+  <rect x="183" y="699" width="216" height="42" rx="21" fill="#1397DD"/>
+  <text x="291" y="725" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="15" font-weight="800" fill="white">イベントを公開</text>
+
+  <defs>
+    <linearGradient id="coverBg" x1="20" y1="26" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2AE"/>
+      <stop offset="0.42" stop-color="#FFF8D6"/>
+      <stop offset="1" stop-color="#E5F7FF"/>
+    </linearGradient>
+  </defs>
+</svg>

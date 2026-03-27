@@ -296,6 +296,7 @@ export const messages = {
       form: {
         name: 'お名前',
         email: 'メールアドレス',
+        phone: '電話',
         organization: '所属（任意）',
         inquiryType: 'お問い合わせ種別',
         message: 'メッセージ',
@@ -770,6 +771,7 @@ export const messages = {
       form: {
         name: 'Name',
         email: 'Email',
+        phone: 'Phone',
         organization: 'Organization (optional)',
         inquiryType: 'Inquiry type',
         message: 'Message',
@@ -1217,6 +1219,7 @@ export const messages = {
       form: {
         name: '姓名',
         email: '邮箱',
+        phone: '电话',
         organization: '组织 / 团体（选填）',
         inquiryType: '咨询类型',
         message: '留言',

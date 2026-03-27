@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事 | SOCIALMORE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-bg: #ffffff;
+      --c-bg2: #f5f5f3;
+      --c-text: #1a1a1a;
+      --c-muted: #6b6b6b;
+      --c-hint: #a0a0a0;
+      --c-border: rgba(0,0,0,0.09);
+      --c-info-text: #1a5fa8;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, #ffffff, #f7f7f5 78%);
+      color: var(--c-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--c-border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--c-text);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark img {
+      width: 26px;
+      height: auto;
+      display: block;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: .85rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav-logo-jp { font-weight: 600; }
+    .nav-logo-en { font-size: .7rem; letter-spacing: .15em; color: var(--c-muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      right: -12px;
+      height: 16px;
+    }
+
+    .nav-link-main,
+    .nav-links > a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-muted);
+      transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-links > a:hover,
+    .nav-links > a[aria-current="page"],
+    .nav-item:hover .nav-link-main,
+    .nav-item:focus-within .nav-link-main {
+      color: var(--c-text);
+      background: rgba(26,95,168,0.06);
+      border-color: rgba(26,95,168,0.10);
+      box-shadow: 0 8px 18px rgba(26,95,168,0.08);
+    }
+
+    .nav-link-main {
+      gap: 8px;
+    }
+
+    .nav-link-main::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-item:hover .nav-link-main::after,
+    .nav-item:focus-within .nav-link-main::after {
+      border-color: var(--c-text);
+      transform: translateY(1px) rotate(225deg);
+    }
+
+    .nav-submenu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      min-width: 248px;
+      padding: 10px;
+      border: 1px solid rgba(26,95,168,0.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(11, 28, 46, 0.10), 0 4px 10px rgba(11, 28, 46, 0.04);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px) scale(0.98);
+      transform-origin: top center;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .nav-submenu::before {
+      content: '';
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.98);
+      border-top: 1px solid rgba(26,95,168,0.10);
+      border-left: 1px solid rgba(26,95,168,0.10);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .nav-submenu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text);
+      white-space: nowrap;
+      text-decoration: none;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    .nav-submenu a::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid var(--c-hint);
+      border-right: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-submenu a:hover {
+      background: var(--c-bg2);
+      color: var(--c-text);
+    }
+
+    .nav-submenu a:hover::after {
+      border-color: var(--c-text);
+      transform: translateX(2px) rotate(45deg);
+    }
+
+    .nav-item:hover .nav-submenu,
+    .nav-item:focus-within .nav-submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    .shell {
+      width: min(920px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-muted);
+    }
+
+    .back-link::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-left: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .article {
+      display: grid;
+      gap: 20px;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--c-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .article-cover {
+      aspect-ratio: 1.7 / 1;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .article-cover.default {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(26,95,168,0.18), rgba(26,95,168,0) 32%),
+        linear-gradient(135deg, #f2f7ff, #ecf3ff 46%, #f7f7f5 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+      color: #355772;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .article-body {
+      display: grid;
+      gap: 16px;
+      padding: 30px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-info-text);
+    }
+
+    .article-date {
+      font-size: 12px;
+      letter-spacing: .12em;
+      color: var(--c-hint);
+    }
+
+    .article-title {
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.14;
+      letter-spacing: -.03em;
+    }
+
+    .article-summary {
+      color: var(--c-muted);
+      font-size: 15px;
+      line-height: 1.9;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .article-content {
+      display: grid;
+      gap: 18px;
+      color: var(--c-text);
+      font-size: 16px;
+      line-height: 1.95;
+    }
+
+    .not-found {
+      padding: 30px;
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      background: linear-gradient(180deg, #eef4fb, #f8fbff);
+      color: var(--c-text);
+      padding: 40px 24px 28px;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .footer-inner {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .footer-brand .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: .85rem;
+    }
+
+    .footer-brand .nav-logo-en {
+      color: var(--c-muted);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--c-muted);
+    }
+
+    .footer-text span {
+      color: var(--c-hint);
+      margin-right: 6px;
+    }
+
+    .footer-copy {
+      border-top: 1px solid var(--c-border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--c-hint);
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .shell {
+        width: min(100% - 24px, 920px);
+        padding: 24px 0 36px;
+      }
+
+      .article-card {
+        border-radius: 24px;
+      }
+
+      .article-body {
+        padding: 22px;
+      }
+
+      .page-footer {
+        margin-top: 40px;
+        padding: 32px 20px 24px;
+      }
+
+      .footer-inner {
+        width: min(100%, 1240px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="socialmore.html" aria-label="SOCIALMORE">
+      <span class="nav-logo-mark">
+        <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+      </span>
+      <span class="nav-logo-text">
+        <span class="nav-logo-jp">創翔モア</span>
+        <span class="nav-logo-en">SOCIALMORE</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a class="nav-link-main" href="socialmore.html">ホーム</a>
+        <div class="nav-submenu">
+          <a href="socialmore.html#line-mini">LINEミニアプリとは</a>
+          <a href="socialmore.html#pain">活用シーン</a>
+          <a href="socialmore.html#feature">できること</a>
+          <a href="socialmore.html#diff">他のサービスとの違い</a>
+          <a href="socialmore.html#pricing">料金プラン</a>
+          <a href="socialmore.html#company">会社情報</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="event.html">イベント情報</a>
+        <div class="nav-submenu">
+          <a href="event-upcoming.html">近日開催</a>
+          <a href="event-past.html">過去</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="blog.html" aria-current="page">ブログ</a>
+        <div class="nav-submenu">
+          <a href="blog-latest.html">最新記事</a>
+          <a href="blog-archive.html">過去の記事</a>
+        </div>
+      </div>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+    <a class="back-link" href="blog.html">ブログ一覧に戻る</a>
+    <div id="article-root" class="article"></div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="footer-brand" aria-label="SOCIALMORE">
+            <span class="nav-logo-mark">
+              <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+            </span>
+            <span class="nav-logo-text">
+              <span class="nav-logo-jp">創翔モア</span>
+              <span class="nav-logo-en">SOCIALMORE</span>
+            </span>
+          </div>
+          <p class="footer-text">181-0013 東京都三鷹市下連雀3-27-1 三協ビル2階</p>
+        </div>
+
+        <div class="footer-column">
+          <p class="footer-text"><span>メール:</span>admin@socialmore.co.jp</p>
+          <p class="footer-text"><span>電話:</span>080-6567-1105</p>
+          <p class="footer-text">平日 10:00-18:00</p>
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 SOCIALMORE Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    const articles = {
+      '3': {
+        date: '2026年2月20日',
+        title: '増資を実施しました',
+        summary: '派手さはありませんが、会社を安定して継続するために、増資という重要な準備を進めました。',
+        coverLabel: 'SOCIALMORE',
+        content: [
+          '最近、あまり目立たないけれど、大事なことを一つやりました。増資です。派手な話ではありません。ストーリーにするほどのことでもないのかもしれません。',
+          'でも、会社を少しでも安定させるための準備です。スタートアップには不確実さがつきものです。だからこそ、できる準備はしておきたい。',
+          'プロダクトを磨き続けること。チームを少しずつ広げていくこと。そのための土台を整えました。',
+          '勢いだけでやるつもりはありません。ちゃんと続けるつもりです。もし今、スタートアップに入るか迷っているなら、少なくとも、これは衝動ではありません。'
+        ]
+      },
+      '1': {
+        date: '2025年10月18日',
+        title: 'SOCIALMORE公式サイトを公開しました',
+        summary: 'コミュニティとの共創をより丁寧に伝えるため、三言語（日本語・英語・中国語）サイトを公開しました。',
+        cover: 'news/news2.png',
+        content: [
+          'SOCIALMOREの公式サイトが公開されました。トップページではコミュニティ主催者支援や多文化連携の取り組みをコンパクトにまとめ、ブログ形式で最新活動も追えるようになっています。三言語（日本語・英語・中国語）で情報をお届けします。',
+          '今後はβテストのレポートや、現場の主催者による記事なども随時追加予定です。引き続き、三鷹を拠点に全国のコミュニティチームと協働していきます。'
+        ]
+      },
+      '2': {
+        date: '2025年8月8日',
+        title: 'SOCIALMORE株式会社を設立しました',
+        summary: '2025年8月8日、三鷹市下連雀で法人登記を完了し、コミュニティ支援を加速させます。',
+        cover: 'news/news1.png',
+        content: [
+          'SOCIALMORE（株式会社創翔モア）は、2025年8月8日付で東京都三鷹市に登記を完了しました。住所は 〒181-0013 東京都三鷹市下連雀3丁目27番1号 三協ビル2階 です。',
+          'これまでも現場のコミュニティと共にサービスを磨いてきましたが、法人化によってより多くの自治体・企業と継続的に連携し、在日コミュニティの運営負担を軽くする仕組みづくりを加速していきます。'
+        ]
+      }
+    };
+
+    document.querySelectorAll('.nav-item a').forEach((link) => {
+      link.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        });
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const article = articles[params.get('id')];
+    const root = document.getElementById('article-root');
+
+    if (!article) {
+      root.innerHTML = `
+        <article class="article-card not-found">
+          <h1 class="article-title">記事が見つかりませんでした</h1>
+          <p class="article-summary">URLをご確認のうえ、ブログ一覧からもう一度お探しください。</p>
+        </article>
+      `;
+    } else {
+      document.title = `${article.title} | SOCIALMORE`;
+      const coverMarkup = article.cover
+        ? `<div class="article-cover" style="background-image: linear-gradient(135deg, rgba(15, 138, 215, 0.12), rgba(246, 195, 67, 0.14)), url('${article.cover}');"></div>`
+        : `<div class="article-cover default">${article.coverLabel}</div>`;
+
+      root.innerHTML = `
+        <article class="article-card">
+          ${coverMarkup}
+          <div class="article-body">
+            <div class="article-date">${article.date}</div>
+            <h1 class="article-title">${article.title}</h1>
+            <p class="article-summary">${article.summary}</p>
+            <div class="article-content">
+              ${article.content.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+  </script>
+</body>
+</html>

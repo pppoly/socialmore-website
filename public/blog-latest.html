@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最新記事 | SOCIALMORE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-bg: #ffffff;
+      --c-bg2: #f5f5f3;
+      --c-surface: #ffffff;
+      --c-text: #1a1a1a;
+      --c-muted: #6b6b6b;
+      --c-hint: #a0a0a0;
+      --c-border: rgba(0,0,0,0.09);
+      --c-border-strong: rgba(26,95,168,0.22);
+      --c-info-text: #1a5fa8;
+      --c-success-bg: #e6f4ec;
+      --c-success-text: #1a7a3c;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-xl: 24px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, #ffffff, #f7f7f5 78%);
+      color: var(--c-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--c-border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--c-text);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-mark img {
+      width: 26px;
+      height: auto;
+      display: block;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: .85rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav-logo-jp { font-weight: 600; }
+    .nav-logo-en { font-size: .7rem; letter-spacing: .15em; color: var(--c-muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      right: -12px;
+      height: 16px;
+    }
+
+    .nav-link-main,
+    .nav-links > a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-muted);
+      transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-links > a:hover,
+    .nav-links > a[aria-current="page"],
+    .nav-item:hover .nav-link-main,
+    .nav-item:focus-within .nav-link-main {
+      color: var(--c-text);
+      background: rgba(26,95,168,0.06);
+      border-color: rgba(26,95,168,0.10);
+      box-shadow: 0 8px 18px rgba(26,95,168,0.08);
+    }
+
+    .nav-link-main {
+      gap: 8px;
+    }
+
+    .nav-link-main::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-item:hover .nav-link-main::after,
+    .nav-item:focus-within .nav-link-main::after {
+      border-color: var(--c-text);
+      transform: translateY(1px) rotate(225deg);
+    }
+
+    .nav-submenu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      min-width: 248px;
+      padding: 10px;
+      border: 1px solid rgba(26,95,168,0.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(11, 28, 46, 0.10), 0 4px 10px rgba(11, 28, 46, 0.04);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px) scale(0.98);
+      transform-origin: top center;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .nav-submenu::before {
+      content: '';
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.98);
+      border-top: 1px solid rgba(26,95,168,0.10);
+      border-left: 1px solid rgba(26,95,168,0.10);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .nav-submenu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text);
+      white-space: nowrap;
+      text-decoration: none;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    .nav-submenu a::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid var(--c-hint);
+      border-right: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .nav-submenu a:hover {
+      background: var(--c-bg2);
+      color: var(--c-text);
+    }
+
+    .nav-submenu a:hover::after {
+      border-color: var(--c-text);
+      transform: translateX(2px) rotate(45deg);
+    }
+
+    .nav-item:hover .nav-submenu,
+    .nav-item:focus-within .nav-submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    .shell {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .section {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .section-heading-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .section-list-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -.01em;
+    }
+
+    .section-note {
+      color: var(--c-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .section-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-info-text);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+
+    .section-link::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-left: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+    }
+
+    .post-card {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--c-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 320px));
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .empty-state {
+      padding: 18px 0 4px;
+      color: var(--c-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .post-thumb {
+      aspect-ratio: 1.9 / 1;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .post-thumb.default {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(26,95,168,0.18), rgba(26,95,168,0) 32%),
+        linear-gradient(135deg, #f2f7ff, #ecf3ff 46%, #f7f7f5 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      color: #355772;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .post-body {
+      display: grid;
+      gap: 10px;
+      padding: 16px 16px 18px;
+      flex: 1;
+    }
+
+    .post-date {
+      font-size: 12px;
+      letter-spacing: .12em;
+      color: var(--c-hint);
+    }
+
+    .post-title {
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+
+    .post-summary {
+      color: var(--c-muted);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .post-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--c-info-text);
+    }
+
+    .post-link::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      background: linear-gradient(180deg, #eef4fb, #f8fbff);
+      color: var(--c-text);
+      padding: 40px 24px 28px;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .footer-inner {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .footer-brand .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: .85rem;
+    }
+
+    .footer-brand .nav-logo-en {
+      color: var(--c-muted);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--c-muted);
+    }
+
+    .footer-text span {
+      color: var(--c-hint);
+      margin-right: 6px;
+    }
+
+    .footer-copy {
+      border-top: 1px solid var(--c-border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--c-hint);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .post-grid {
+        grid-template-columns: repeat(2, minmax(0, 320px));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .shell {
+        width: min(100% - 24px, 1240px);
+        padding: 24px 0 36px;
+      }
+
+      .post-card {
+        border-radius: 24px;
+      }
+
+      .post-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-footer {
+        margin-top: 40px;
+        padding: 32px 20px 24px;
+      }
+
+      .footer-inner {
+        width: min(100%, 1240px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="socialmore.html" aria-label="SOCIALMORE">
+      <span class="nav-logo-mark">
+        <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+      </span>
+      <span class="nav-logo-text">
+        <span class="nav-logo-jp">創翔モア</span>
+        <span class="nav-logo-en">SOCIALMORE</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a class="nav-link-main" href="socialmore.html">ホーム</a>
+        <div class="nav-submenu">
+          <a href="socialmore.html#line-mini">LINEミニアプリとは</a>
+          <a href="socialmore.html#pain">活用シーン</a>
+          <a href="socialmore.html#feature">できること</a>
+          <a href="socialmore.html#diff">他のサービスとの違い</a>
+          <a href="socialmore.html#pricing">料金プラン</a>
+          <a href="socialmore.html#company">会社情報</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="event.html">イベント情報</a>
+        <div class="nav-submenu">
+          <a href="event-upcoming.html">近日開催</a>
+          <a href="event-past.html">過去</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="blog.html" aria-current="page">ブログ</a>
+        <div class="nav-submenu">
+          <a href="blog-latest.html" aria-current="page">最新記事</a>
+          <a href="blog-archive.html">過去の記事</a>
+        </div>
+      </div>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+    <a class="section-link" href="blog.html">ブログへ戻る</a>
+    <section class="section">
+      <div class="section-head">
+        <div class="section-heading-stack">
+          <h2 class="section-title">最新記事</h2>
+        </div>
+      </div>
+      <div id="recent-empty" class="empty-state">直近1か月以内の記事はまだありません。</div>
+      <div id="recent-posts" class="post-grid"></div>
+    </section>
+
+    <section id="archive-section" class="section-block" hidden>
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">過去の記事</h2>
+        </div>
+      </div>
+
+      <div id="archive-posts" class="post-grid">
+        <article class="post-card" data-published="2026-02-20">
+          <div class="post-thumb default">SOCIALMORE</div>
+          <div class="post-body">
+            <div class="post-date">2026年2月20日</div>
+            <h3 class="post-title">増資を実施しました</h3>
+            <p class="post-summary">派手さはありませんが、会社を安定して継続するために、増資という重要な準備を進めました。</p>
+            <a class="post-link" href="blog-post.html?id=3">続きを読む</a>
+          </div>
+        </article>
+
+        <article class="post-card" data-published="2025-10-18">
+          <div class="post-thumb" style="background-image: linear-gradient(135deg, rgba(15, 138, 215, 0.12), rgba(246, 195, 67, 0.14)), url('news/news2.png');"></div>
+          <div class="post-body">
+            <div class="post-date">2025年10月18日</div>
+            <h3 class="post-title">SOCIALMORE公式サイトを公開しました</h3>
+            <p class="post-summary">コミュニティとの共創をより丁寧に伝えるため、三言語（日本語・英語・中国語）サイトを公開しました。</p>
+            <a class="post-link" href="blog-post.html?id=1">続きを読む</a>
+          </div>
+        </article>
+
+        <article class="post-card" data-published="2025-08-08">
+          <div class="post-thumb" style="background-image: linear-gradient(135deg, rgba(15, 138, 215, 0.12), rgba(246, 195, 67, 0.14)), url('news/news1.png');"></div>
+          <div class="post-body">
+            <div class="post-date">2025年8月8日</div>
+            <h3 class="post-title">SOCIALMORE株式会社を設立しました</h3>
+            <p class="post-summary">2025年8月8日、三鷹市下連雀で法人登記を完了し、コミュニティ支援を加速させます。</p>
+            <a class="post-link" href="blog-post.html?id=2">続きを読む</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <div class="footer-brand" aria-label="SOCIALMORE">
+            <span class="nav-logo-mark">
+              <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+            </span>
+            <span class="nav-logo-text">
+              <span class="nav-logo-jp">創翔モア</span>
+              <span class="nav-logo-en">SOCIALMORE</span>
+            </span>
+          </div>
+          <p class="footer-text">181-0013 東京都三鷹市下連雀3-27-1 三協ビル2階</p>
+        </div>
+
+        <div class="footer-column">
+          <p class="footer-text"><span>メール:</span>admin@socialmore.co.jp</p>
+          <p class="footer-text"><span>電話:</span>080-6567-1105</p>
+          <p class="footer-text">平日 10:00-18:00</p>
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 SOCIALMORE Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-item a').forEach((link) => {
+      link.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        });
+      });
+    });
+
+    const recentPosts = document.getElementById('recent-posts');
+    const recentEmpty = document.getElementById('recent-empty');
+    const archivePosts = document.getElementById('archive-posts');
+    const archiveSection = document.getElementById('archive-section');
+
+    if (recentPosts && archivePosts) {
+      const cutoff = new Date();
+      cutoff.setMonth(cutoff.getMonth() - 1);
+
+      Array.from(archivePosts.querySelectorAll('.post-card')).forEach((post) => {
+        const published = post.getAttribute('data-published');
+        if (!published) return;
+        const publishedAt = new Date(`${published}T00:00:00`);
+        if (Number.isNaN(publishedAt.getTime())) return;
+        if (publishedAt >= cutoff) {
+          recentPosts.appendChild(post);
+        }
+      });
+
+      if (recentEmpty) {
+        recentEmpty.style.display = recentPosts.children.length > 0 ? 'none' : 'block';
+      }
+
+      if (archiveSection && archivePosts.children.length === 0) {
+        archiveSection.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

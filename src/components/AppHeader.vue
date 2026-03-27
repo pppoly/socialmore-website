@@ -70,9 +70,9 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import headerLogo from '../assets/brand/brand-logo-symbol.svg';
 import { useI18n } from '../composables/useI18n';
 
+const headerLogo = '/brand/brand-logo-symbol.svg';
 const { t, currentLocale, setLocale } = useI18n();
 const isMenuOpen = ref(false);
 const navLinks = computed(() => {

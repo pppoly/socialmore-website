@@ -17,12 +17,18 @@
         <label>
           {{ t('contact.form.name') }}
           <input type="text" v-model="form.name" />
-          <span v-if="errors.name" class="error">{{ errors.name }}</span>
         </label>
         <label>
-          {{ t('contact.form.email') }}
-          <input type="email" v-model="form.email" />
+          <span class="label-row">
+            <span>{{ t('contact.form.email') }}</span>
+            <span class="field-badge">必須</span>
+          </span>
+          <input type="email" v-model="form.email" required />
           <span v-if="errors.email" class="error">{{ errors.email }}</span>
+        </label>
+        <label>
+          {{ t('contact.form.phone') }}
+          <input type="tel" v-model="form.phone" />
         </label>
         <label>
           {{ t('contact.form.organization') }}
@@ -35,8 +41,11 @@
           </select>
         </label>
         <label>
-          {{ t('contact.form.message') }}
-          <textarea rows="5" v-model="form.message"></textarea>
+          <span class="label-row">
+            <span>{{ t('contact.form.message') }}</span>
+            <span class="field-badge">必須</span>
+          </span>
+          <textarea rows="5" v-model="form.message" required></textarea>
           <span v-if="errors.message" class="error">{{ errors.message }}</span>
         </label>
         <button type="submit" class="btn btn-primary">{{ t('contact.form.submit') }}</button>
@@ -59,12 +68,13 @@ const validationMessages = computed(() => contact.value.form.validation);
 const form = reactive({
   name: '',
   email: '',
+  phone: '',
   organization: '',
   inquiryType: inquiryOptions.value[0],
   message: ''
 });
 
-const errors = reactive({ name: '', email: '', message: '' });
+const errors = reactive({ email: '', message: '' });
 const successMessage = ref('');
 
 watch(inquiryOptions, (options) => {
@@ -75,14 +85,14 @@ watch(inquiryOptions, (options) => {
 
 const submitForm = () => {
   const validation = validationMessages.value;
-  errors.name = form.name ? '' : validation.required;
   errors.email = validateEmail(form.email) ? '' : validation.email;
   errors.message = form.message ? '' : validation.required;
 
-  if (!errors.name && !errors.email && !errors.message) {
+  if (!errors.email && !errors.message) {
     successMessage.value = contact.value.form.success;
     form.name = '';
     form.email = '';
+    form.phone = '';
     form.organization = '';
     form.inquiryType = inquiryOptions.value[0];
     form.message = '';
@@ -127,6 +137,26 @@ label {
   flex-direction: column;
   gap: 0.35rem;
   font-weight: 600;
+}
+
+.label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: rgba(15, 138, 215, 0.1);
+  color: #1a5fa8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 input,
