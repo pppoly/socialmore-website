@@ -302,7 +302,6 @@
           <div class="landing-company-body">
             イベント運営の現場には、まだ多くの手間が残っています。MOREは、その課題をLINE上でシンプルに整理し、主催者の運営を支えるツールです。
           </div>
-          <div class="landing-partner-box">LINEパートナー認定ロゴ（要確認）</div>
         </div>
         <div class="landing-meta-table">
           <div v-for="item in companyFacts" :key="item.label" class="landing-meta-row">
@@ -1849,16 +1848,6 @@ onBeforeUnmount(() => {
   font-size: 14px;
   line-height: 1.85;
   color: var(--landing-muted);
-}
-
-.landing-partner-box {
-  margin-top: 22px;
-  padding: 14px;
-  border: 0.5px dashed var(--landing-border-strong);
-  border-radius: var(--landing-radius-md);
-  font-size: 12px;
-  text-align: center;
-  color: var(--landing-hint);
 }
 
 .landing-meta-table {
