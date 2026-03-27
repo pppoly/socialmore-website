@@ -13,7 +13,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'docs',
-    emptyOutDir: false,
+    emptyOutDir: true,
     // Inline static assets to avoid generating extra binary files (e.g. hero JPG) in docs/
     assetsInlineLimit: 5 * 1024 * 1024,
   },
