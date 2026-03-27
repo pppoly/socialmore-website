@@ -158,7 +158,9 @@ const switchLanguage = (locale) => {
 }
 
 .logo-text .jp {
+  display: inline-block;
   font-weight: 600;
+  letter-spacing: 0.28em;
 }
 
 .logo-text .en {

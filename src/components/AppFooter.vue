@@ -110,8 +110,10 @@ const phoneHref = computed(() => {
 }
 
 .brand-jp {
+  display: inline-block;
   font-weight: 600;
   color: #1a1a1a;
+  letter-spacing: 0.28em;
 }
 
 .brand-en {
