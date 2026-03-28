@@ -34,13 +34,43 @@
           </div>
         </div>
 
-        <RouterLink to="/news" class="nav-link-single" @click="closeMenu">
-          {{ t('nav.news') }}
-        </RouterLink>
+        <div class="nav-item">
+          <a href="/event.html" class="nav-link-main" @click="closeMenu">
+            {{ eventLabel }}
+          </a>
+          <div class="nav-submenu">
+            <a
+              v-for="link in eventLinks"
+              :key="link.href"
+              :href="link.href"
+              class="nav-submenu-link"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </div>
 
-        <RouterLink to="/contact" class="nav-link-single" @click="closeMenu">
-          {{ t('nav.contact') }}
-        </RouterLink>
+        <div class="nav-item">
+          <a href="/blog.html" class="nav-link-main" @click="closeMenu">
+            {{ blogLabel }}
+          </a>
+          <div class="nav-submenu">
+            <a
+              v-for="link in blogLinks"
+              :key="link.href"
+              :href="link.href"
+              class="nav-submenu-link"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </div>
+
+        <a href="/contact.html" class="nav-link-single" @click="closeMenu">
+          {{ contactLabel }}
+        </a>
 
         <div class="language-switch">
           <button
@@ -93,13 +123,44 @@
           </div>
         </div>
 
+        <div class="mobile-section-group">
+          <a href="/event.html" class="nav-link-single mobile-home-link" @click="closeMenu">
+            {{ eventLabel }}
+          </a>
+          <div class="mobile-sub-links">
+            <a
+              v-for="link in eventLinks"
+              :key="link.href"
+              :href="link.href"
+              class="mobile-sub-link"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-section-group">
+          <a href="/blog.html" class="nav-link-single mobile-home-link" @click="closeMenu">
+            {{ blogLabel }}
+          </a>
+          <div class="mobile-sub-links">
+            <a
+              v-for="link in blogLinks"
+              :key="link.href"
+              :href="link.href"
+              class="mobile-sub-link"
+              @click="closeMenu"
+            >
+              {{ link.label }}
+            </a>
+          </div>
+        </div>
+
         <div class="mobile-links">
-          <RouterLink to="/news" class="nav-link-single" @click="closeMenu">
-            {{ t('nav.news') }}
-          </RouterLink>
-          <RouterLink to="/contact" class="nav-link-single" @click="closeMenu">
-            {{ t('nav.contact') }}
-          </RouterLink>
+          <a href="/contact.html" class="nav-link-single" @click="closeMenu">
+            {{ contactLabel }}
+          </a>
         </div>
 
         <div class="language-switch mobile-language-switch">
@@ -125,7 +186,7 @@ import { useI18n } from '../composables/useI18n';
 
 const headerLogo = '/brand/brand-logo-symbol.svg';
 const route = useRoute();
-const { t, currentLocale, setLocale } = useI18n();
+const { currentLocale, setLocale } = useI18n();
 const isMenuOpen = ref(false);
 
 const localePick = (messages) =>
@@ -136,6 +197,30 @@ const homeLabel = computed(() =>
     ja: 'ホーム',
     en: 'Home',
     zh: '首页'
+  })
+);
+
+const eventLabel = computed(() =>
+  localePick({
+    ja: 'イベント情報',
+    en: 'Events',
+    zh: '活动信息'
+  })
+);
+
+const blogLabel = computed(() =>
+  localePick({
+    ja: 'ブログ',
+    en: 'Blog',
+    zh: '博客'
+  })
+);
+
+const contactLabel = computed(() =>
+  localePick({
+    ja: 'お問い合わせ',
+    en: 'Contact',
+    zh: '联系我们'
   })
 );
 
@@ -186,6 +271,44 @@ const sectionLinks = computed(() => [
       ja: '会社情報',
       en: 'Company',
       zh: '公司信息'
+    })
+  }
+]);
+
+const eventLinks = computed(() => [
+  {
+    href: '/event-upcoming.html',
+    label: localePick({
+      ja: '近日開催',
+      en: 'Upcoming',
+      zh: '即将举办'
+    })
+  },
+  {
+    href: '/event-past.html',
+    label: localePick({
+      ja: '過去',
+      en: 'Past Events',
+      zh: '往期活动'
+    })
+  }
+]);
+
+const blogLinks = computed(() => [
+  {
+    href: '/blog-latest.html',
+    label: localePick({
+      ja: '最新記事',
+      en: 'Latest Posts',
+      zh: '最新文章'
+    })
+  },
+  {
+    href: '/blog-archive.html',
+    label: localePick({
+      ja: '過去の記事',
+      en: 'Archive',
+      zh: '历史文章'
     })
   }
 ]);
