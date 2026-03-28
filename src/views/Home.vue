@@ -1017,24 +1017,23 @@ onBeforeUnmount(() => {
 
 .landing-line-mini-figure,
 .landing-target-image-shell {
-  height: 168px;
+  height: auto;
+  aspect-ratio: 3 / 2;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 20px;
+  padding: 0;
   border-bottom: 0.5px solid var(--landing-border);
   background: var(--landing-bg2);
 }
 
 .landing-line-mini-image,
-.landing-diff-image,
-.landing-pain-image,
-.landing-feature-preview-image,
-.landing-feature-full-image {
+.landing-diff-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .landing-line-mini-body,
@@ -1224,7 +1223,6 @@ onBeforeUnmount(() => {
 
 .landing-pain-card,
 .landing-solve-card {
-  min-height: 600px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1269,14 +1267,22 @@ onBeforeUnmount(() => {
 }
 
 .landing-pain-media {
-  flex: 1;
-  min-height: 340px;
+  flex: none;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 0;
   overflow: hidden;
   background: var(--landing-bg3);
+}
+
+.landing-pain-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .landing-feature-accordion {
@@ -1396,13 +1402,13 @@ onBeforeUnmount(() => {
 }
 
 .landing-feature-peek {
-  width: 212px;
-  min-width: 212px;
-  height: 120px;
+  width: 132px;
+  min-width: 132px;
+  height: 224px;
   flex-shrink: 0;
   overflow: hidden;
   border: 1px solid rgba(26, 95, 168, 0.1);
-  border-radius: 16px;
+  border-radius: 24px;
   background: #fff;
   box-shadow: 0 10px 18px rgba(17, 31, 46, 0.08);
   transition:
@@ -1423,6 +1429,14 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+.landing-feature-preview-image,
+.landing-feature-full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .landing-feature-chevron {
@@ -1462,13 +1476,18 @@ onBeforeUnmount(() => {
 }
 
 .landing-feature-full {
-  padding: 0 20px 20px;
+  width: min(100%, 286px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 95, 168, 0.1);
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 12px 22px rgba(17, 31, 46, 0.08);
 }
 
 .landing-feature-full-image {
-  width: min(50%, 220px);
-  margin: 0 auto;
-  height: auto;
+  display: block;
 }
 
 .landing-diff-grid {
@@ -1487,13 +1506,14 @@ onBeforeUnmount(() => {
 }
 
 .landing-diff-figure {
-  height: 168px;
+  height: auto;
+  aspect-ratio: 3 / 2;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 12px;
+  padding: 0;
   border: 0.5px solid var(--landing-border);
   border-radius: var(--landing-radius-lg);
   background: var(--landing-bg2);
@@ -2052,7 +2072,7 @@ onBeforeUnmount(() => {
   }
 
   .landing-pain-media {
-    min-height: 240px;
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -2095,18 +2115,15 @@ onBeforeUnmount(() => {
   }
 
   .landing-feature-peek {
-    width: 136px;
-    min-width: 136px;
-    height: 84px;
-    border-radius: 12px;
+    width: 108px;
+    min-width: 108px;
+    height: 184px;
+    border-radius: 20px;
   }
 
   .landing-feature-full {
-    padding: 0 16px 16px;
-  }
-
-  .landing-feature-full-image {
-    width: min(62%, 210px);
+    width: min(100%, 248px);
+    margin-bottom: 16px;
   }
 }
 
