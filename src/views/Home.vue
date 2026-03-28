@@ -26,12 +26,19 @@
             <span class="landing-tag">無料イベント対応</span>
           </div>
         </div>
-        <div class="landing-hero-visual">
-          <img
-            class="landing-hero-image"
-            src="/socialmore-assets/hero/home-hero-app.png"
-            alt="MOREのアプリ画面イメージ"
-          />
+        <div class="landing-hero-visual has-video">
+          <video
+            class="landing-hero-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            :poster="heroPosterSrc"
+            aria-label="MOREの紹介動画"
+          >
+            <source :src="heroVideoSrc" type="video/mp4" />
+          </video>
         </div>
       </div>
     </section>
@@ -378,6 +385,9 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
+const heroPosterSrc = '/socialmore-assets/hero/home-hero-app.png';
+const heroVideoSrc = '/socialmore-assets/hero/community.mp4';
+
 const lineMiniItems = [
   {
     src: '/socialmore-assets/line-mini/no-install.png',
@@ -508,16 +518,16 @@ const targetCards = [
   {
     name: '大学サークル・学生コミュニティ',
     text: 'コストを抑えて、定期的なイベントを運営したい。',
-    src: '',
-    alt: '',
+    src: '/socialmore-assets/community/student-community.png',
+    alt: '学生コミュニティのイメージ',
     placeholder: '学生サークル',
     placeholderClass: 'student'
   },
   {
-    name: '小〜中規模の社会人コミュニティ',
+    name: '小〜中規模の趣味コミュニティ',
     text: '趣味・勉強会・交流イベントを気軽に開きたい。',
     src: '/socialmore-assets/community/social-community.png',
-    alt: '社会人コミュニティのイメージ',
+    alt: '趣味コミュニティのイメージ',
     placeholder: '',
     placeholderClass: 'community'
   },
@@ -983,13 +993,44 @@ onBeforeUnmount(() => {
   z-index: 0;
 }
 
-.landing-hero-image {
+.landing-hero-visual.has-video::before,
+.landing-hero-visual.has-video::after {
+  display: none;
+}
+
+.landing-hero-visual.has-video {
+  display: block;
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+}
+
+.landing-hero-video {
   position: relative;
   z-index: 1;
-  width: min(100%, 560px);
-  max-height: 320px;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
   object-fit: contain;
-  filter: drop-shadow(0 18px 36px rgba(26, 95, 168, 0.18));
+  border-radius: inherit;
+  background: transparent;
+}
+
+@media (min-width: 1280px) {
+  .landing-hero {
+    width: min(1460px, calc(100% - 36px));
+  }
+
+  .landing-hero-inner {
+    grid-template-columns: minmax(0, 0.98fr) minmax(460px, 1.08fr);
+    gap: clamp(36px, 4.8vw, 72px);
+  }
+
+  .landing-hero-copy {
+    max-width: 640px;
+  }
 }
 
 .landing-line-mini-grid,
@@ -2099,6 +2140,10 @@ onBeforeUnmount(() => {
     min-height: 318px;
   }
 
+  .landing-hero-video {
+    min-height: 318px;
+  }
+
   .landing-hero-visual::before {
     left: 34%;
     bottom: 68px;
@@ -2167,6 +2212,14 @@ onBeforeUnmount(() => {
     height: 280px;
     padding: 20px;
     border-radius: 26px;
+  }
+
+  .landing-hero-visual.has-video {
+    padding: 0;
+  }
+
+  .landing-hero-video {
+    min-height: 280px;
   }
 
   .landing-hero-visual::before {

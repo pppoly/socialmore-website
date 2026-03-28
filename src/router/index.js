@@ -16,7 +16,7 @@ const router = createRouter({
     return { top: 0 };
   },
   routes: [
-    { path: '/', name: 'home', component: Home },
+    { path: '/', alias: ['/socialmore'], name: 'home', component: Home },
     { path: '/about', name: 'about', component: () => import('../views/About.vue') },
     { path: '/services', name: 'services', component: () => import('../views/Services.vue') },
     { path: '/news', name: 'news', component: () => import('../views/News.vue') },

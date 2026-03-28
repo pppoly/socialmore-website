@@ -16,7 +16,7 @@
           <RouterLink
             to="/"
             class="nav-link-main"
-            :class="{ active: route.path === '/' }"
+            :class="{ active: route.name === 'home' }"
             @click="closeMenu"
           >
             {{ homeLabel }}
@@ -107,10 +107,15 @@
     <transition name="slide">
       <div v-if="isMenuOpen" class="mobile-nav">
         <div class="mobile-section-group">
-          <RouterLink to="/" class="nav-link-single mobile-home-link" @click="closeMenu">
+          <RouterLink
+            to="/"
+            class="nav-link-single mobile-home-link"
+            :class="{ 'is-open': openMobileSection === 'home' }"
+            @click="(event) => handleMobilePrimaryClick('home', event)"
+          >
             {{ homeLabel }}
           </RouterLink>
-          <div class="mobile-sub-links">
+          <div v-show="openMobileSection === 'home'" class="mobile-sub-links">
             <RouterLink
               v-for="link in sectionLinks"
               :key="link.hash"
@@ -124,10 +129,15 @@
         </div>
 
         <div class="mobile-section-group">
-          <a href="/event.html" class="nav-link-single mobile-home-link" @click="closeMenu">
+          <a
+            href="/event.html"
+            class="nav-link-single mobile-home-link"
+            :class="{ 'is-open': openMobileSection === 'event' }"
+            @click="(event) => handleMobilePrimaryClick('event', event)"
+          >
             {{ eventLabel }}
           </a>
-          <div class="mobile-sub-links">
+          <div v-show="openMobileSection === 'event'" class="mobile-sub-links">
             <a
               v-for="link in eventLinks"
               :key="link.href"
@@ -141,10 +151,15 @@
         </div>
 
         <div class="mobile-section-group">
-          <a href="/blog.html" class="nav-link-single mobile-home-link" @click="closeMenu">
+          <a
+            href="/blog.html"
+            class="nav-link-single mobile-home-link"
+            :class="{ 'is-open': openMobileSection === 'blog' }"
+            @click="(event) => handleMobilePrimaryClick('blog', event)"
+          >
             {{ blogLabel }}
           </a>
-          <div class="mobile-sub-links">
+          <div v-show="openMobileSection === 'blog'" class="mobile-sub-links">
             <a
               v-for="link in blogLinks"
               :key="link.href"
@@ -188,6 +203,7 @@ const headerLogo = '/brand/brand-logo-symbol.svg';
 const route = useRoute();
 const { currentLocale, setLocale } = useI18n();
 const isMenuOpen = ref(false);
+const openMobileSection = ref(null);
 
 const localePick = (messages) =>
   messages[currentLocale.value] ?? messages.ja ?? messages.en ?? messages.zh ?? '';
@@ -315,10 +331,23 @@ const blogLinks = computed(() => [
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
+  if (!isMenuOpen.value) {
+    openMobileSection.value = null;
+  }
 };
 
 const closeMenu = () => {
   isMenuOpen.value = false;
+  openMobileSection.value = null;
+};
+
+const handleMobilePrimaryClick = (section, event) => {
+  if (openMobileSection.value !== section) {
+    event.preventDefault();
+    openMobileSection.value = section;
+    return;
+  }
+  closeMenu();
 };
 
 const switchLanguage = (locale) => {
@@ -620,7 +649,24 @@ const switchLanguage = (locale) => {
 }
 
 .mobile-home-link {
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.mobile-home-link::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid #a0a0a0;
+  border-bottom: 1.5px solid #a0a0a0;
+  transform: translateY(-2px) rotate(45deg);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mobile-home-link.is-open::after {
+  border-color: var(--color-dark);
+  transform: translateY(1px) rotate(225deg);
 }
 
 .mobile-sub-links {
