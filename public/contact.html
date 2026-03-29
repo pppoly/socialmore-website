@@ -369,8 +369,25 @@
       font-weight: 600;
     }
 
+    .success.is-error {
+      background: rgba(217, 83, 79, 0.08);
+      color: #b94a48;
+    }
+
     .success.show {
       display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .page-footer {
@@ -585,9 +602,14 @@
             <div class="field-error">お問い合わせ内容を入力してください。</div>
           </div>
 
+          <div class="sr-only" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
           <div class="submit-row">
             <button class="submit-btn" type="submit">送信する</button>
-            <div class="submit-note">デモ用フォームです。送信後に確認メッセージを表示します。</div>
+            <div class="submit-note">送信後に確認メッセージを表示します。</div>
           </div>
 
           <div id="success" class="success">送信内容を受け付けました。ありがとうございます。</div>
@@ -625,6 +647,11 @@
   <script>
     const form = document.getElementById('contact-form');
     const success = document.getElementById('success');
+    const submitButton = form.querySelector('.submit-btn');
+    const CONTACT_ENDPOINT = window.SOCIALMORE_CONTACT_ENDPOINT
+      || 'https://test.socialmore.jp/api/v1/public/support/contact';
+    const DEFAULT_CATEGORY = 'other';
+    const DEFAULT_SUBJECT = '公式サイトからのお問い合わせ';
 
     document.querySelectorAll('.nav-item a').forEach((link) => {
       link.addEventListener('click', () => {
@@ -637,8 +664,77 @@
     });
 
     const validateEmail = (value) => /.+@.+\..+/.test(value);
+    const trimTo = (value, maxLength) => value.trim().slice(0, maxLength);
+    const setSubmitting = (isSubmitting) => {
+      submitButton.disabled = isSubmitting;
+      submitButton.setAttribute('aria-busy', String(isSubmitting));
+    };
+    const showStatus = (message, isError = false) => {
+      success.textContent = message;
+      success.classList.toggle('is-error', isError);
+      success.classList.add('show');
+    };
+    const clearStatus = () => {
+      success.classList.remove('show', 'is-error');
+      success.textContent = '送信内容を受け付けました。ありがとうございます。';
+    };
+    const buildName = () => {
+      const lastName = form.last_name.value.trim();
+      const firstName = form.first_name.value.trim();
+      const fullName = `${lastName} ${firstName}`.trim();
 
-    form.addEventListener('submit', (event) => {
+      if (fullName) {
+        return trimTo(fullName, 120);
+      }
+
+      if (form.organization.value.trim()) {
+        return trimTo(form.organization.value, 120);
+      }
+
+      return trimTo(form.email.value.split('@')[0] || 'Website Contact', 120);
+    };
+    const buildPayload = () => {
+      const email = trimTo(form.email.value, 160);
+      const phone = trimTo(form.phone.value, 64);
+
+      return {
+        name: buildName(),
+        email,
+        company: trimTo(form.organization.value, 160),
+        phone,
+        category: DEFAULT_CATEGORY,
+        subject: DEFAULT_SUBJECT,
+        content: trimTo(form.message.value, 2000),
+        pageUrl: trimTo(window.location.href, 400),
+        contact: trimTo([email, phone].filter(Boolean).join(' / '), 160),
+        website: trimTo(form.website.value, 160)
+      };
+    };
+    const submitContact = async () => {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'omit',
+        body: JSON.stringify(buildPayload())
+      });
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (error) {
+        data = null;
+      }
+
+      if (!response.ok) {
+        throw new Error(data && data.message ? data.message : 'submit_failed');
+      }
+
+      return data;
+    };
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const emailField = form.querySelector('[data-field="email"]');
@@ -651,12 +747,26 @@
       messageField.classList.toggle('invalid', !message);
 
       if (!validateEmail(email) || !message) {
-        success.classList.remove('show');
+        clearStatus();
         return;
       }
 
-      form.reset();
-      success.classList.add('show');
+      clearStatus();
+      setSubmitting(true);
+
+      try {
+        const result = await submitContact();
+        form.reset();
+        showStatus(
+          result && result.accepted
+            ? 'お問い合わせを受け付けました。'
+            : '送信内容を受け付けました。ありがとうございます。'
+        );
+      } catch (error) {
+        showStatus('送信に失敗しました。時間をおいて再度お試しください。', true);
+      } finally {
+        setSubmitting(false);
+      }
     });
   </script>
 </body>
