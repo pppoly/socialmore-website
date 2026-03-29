@@ -361,17 +361,62 @@
 
     .success {
       display: none;
-      padding: 14px 16px;
-      border-radius: 16px;
+      padding: 18px 20px;
+      border-radius: 20px;
       background: var(--c-success-bg);
       color: var(--c-success-text);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+    }
+
+    .success-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .success-body {
+      margin: 8px 0 0;
       font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .success-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(15, 23, 42, 0.72);
+    }
+
+    .success-ticket {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: inherit;
       font-weight: 600;
+    }
+
+    .success-ticket-id {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      letter-spacing: 0.04em;
     }
 
     .success.is-error {
       background: rgba(217, 83, 79, 0.08);
       color: #b94a48;
+      border-color: rgba(185, 74, 72, 0.12);
+    }
+
+    .success.is-error .success-meta {
+      color: rgba(116, 28, 26, 0.86);
+    }
+
+    .success.is-error .success-ticket {
+      background: rgba(255, 255, 255, 0.62);
     }
 
     .success.show {
@@ -612,7 +657,19 @@
             <div class="submit-note">送信後に確認メッセージを表示します。</div>
           </div>
 
-          <div id="success" class="success">送信内容を受け付けました。ありがとうございます。</div>
+          <div id="success" class="success" aria-live="polite">
+            <div id="success-title" class="success-title">お問い合わせを受け付けました。</div>
+            <p id="success-body" class="success-body">通常1〜2営業日以内にご返信します。</p>
+            <div class="success-meta">
+              <div id="success-ticket-row" hidden>
+                <span class="success-ticket">
+                  <span>お問い合わせ番号</span>
+                  <strong id="success-ticket-id" class="success-ticket-id"></strong>
+                </span>
+              </div>
+              <div id="success-note">確認メールが届かない場合は admin@socialmore.co.jp までご連絡ください。</div>
+            </div>
+          </div>
         </form>
       </section>
     </main>
@@ -647,11 +704,21 @@
   <script>
     const form = document.getElementById('contact-form');
     const success = document.getElementById('success');
+    const successTitle = document.getElementById('success-title');
+    const successBody = document.getElementById('success-body');
+    const successNote = document.getElementById('success-note');
+    const successTicketRow = document.getElementById('success-ticket-row');
+    const successTicketId = document.getElementById('success-ticket-id');
     const submitButton = form.querySelector('.submit-btn');
     const CONTACT_ENDPOINT = window.SOCIALMORE_CONTACT_ENDPOINT
       || 'https://test.socialmore.jp/api/v1/public/support/contact';
     const DEFAULT_CATEGORY = 'other';
     const DEFAULT_SUBJECT = '公式サイトからのお問い合わせ';
+    const DEFAULT_SUCCESS_STATE = {
+      title: 'お問い合わせを受け付けました。',
+      body: '通常1〜2営業日以内にご返信します。',
+      note: '確認メールが届かない場合は admin@socialmore.co.jp までご連絡ください。'
+    };
 
     document.querySelectorAll('.nav-item a').forEach((link) => {
       link.addEventListener('click', () => {
@@ -669,14 +736,22 @@
       submitButton.disabled = isSubmitting;
       submitButton.setAttribute('aria-busy', String(isSubmitting));
     };
-    const showStatus = (message, isError = false) => {
-      success.textContent = message;
+    const renderStatus = ({ title, body, note, ticketId = '', isError = false }) => {
+      successTitle.textContent = title;
+      successBody.textContent = body;
+      successNote.textContent = note;
+      successTicketId.textContent = ticketId;
+      successTicketRow.hidden = !ticketId;
       success.classList.toggle('is-error', isError);
       success.classList.add('show');
     };
     const clearStatus = () => {
       success.classList.remove('show', 'is-error');
-      success.textContent = '送信内容を受け付けました。ありがとうございます。';
+      successTitle.textContent = DEFAULT_SUCCESS_STATE.title;
+      successBody.textContent = DEFAULT_SUCCESS_STATE.body;
+      successNote.textContent = DEFAULT_SUCCESS_STATE.note;
+      successTicketId.textContent = '';
+      successTicketRow.hidden = true;
     };
     const buildName = () => {
       const lastName = form.last_name.value.trim();
@@ -757,13 +832,19 @@
       try {
         const result = await submitContact();
         form.reset();
-        showStatus(
-          result && result.accepted
-            ? 'お問い合わせを受け付けました。'
-            : '送信内容を受け付けました。ありがとうございます。'
-        );
+        renderStatus({
+          title: 'お問い合わせを受け付けました。',
+          body: '通常1〜2営業日以内にご返信します。',
+          note: '確認メールが届かない場合は admin@socialmore.co.jp までご連絡ください。',
+          ticketId: result && result.ticketId ? result.ticketId : ''
+        });
       } catch (error) {
-        showStatus('送信に失敗しました。時間をおいて再度お試しください。', true);
+        renderStatus({
+          title: '送信に失敗しました。',
+          body: '時間をおいて再度お試しください。',
+          note: '改善しない場合は admin@socialmore.co.jp までご連絡ください。',
+          isError: true
+        });
       } finally {
         setSubmitting(false);
       }
