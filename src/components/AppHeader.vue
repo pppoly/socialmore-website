@@ -72,29 +72,6 @@
           {{ contactLabel }}
         </a>
 
-        <div class="language-switch">
-          <button
-            class="lang-btn"
-            :class="{ active: currentLocale === 'ja' }"
-            @click="() => switchLanguage('ja')"
-          >
-            日本語
-          </button>
-          <button
-            class="lang-btn"
-            :class="{ active: currentLocale === 'en' }"
-            @click="() => switchLanguage('en')"
-          >
-            English
-          </button>
-          <button
-            class="lang-btn"
-            :class="{ active: currentLocale === 'zh' }"
-            @click="() => switchLanguage('zh')"
-          >
-            中文
-          </button>
-        </div>
       </nav>
 
       <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle navigation">
@@ -177,18 +154,6 @@
             {{ contactLabel }}
           </a>
         </div>
-
-        <div class="language-switch mobile-language-switch">
-          <button class="lang-btn" :class="{ active: currentLocale === 'ja' }" @click="() => switchLanguage('ja')">
-            日本語
-          </button>
-          <button class="lang-btn" :class="{ active: currentLocale === 'en' }" @click="() => switchLanguage('en')">
-            English
-          </button>
-          <button class="lang-btn" :class="{ active: currentLocale === 'zh' }" @click="() => switchLanguage('zh')">
-            中文
-          </button>
-        </div>
       </div>
     </transition>
   </header>
@@ -201,7 +166,7 @@ import { useI18n } from '../composables/useI18n';
 
 const headerLogo = '/brand/brand-logo-symbol.svg';
 const route = useRoute();
-const { currentLocale, setLocale } = useI18n();
+const { currentLocale } = useI18n();
 const isMenuOpen = ref(false);
 const openMobileSection = ref(null);
 
@@ -350,10 +315,6 @@ const handleMobilePrimaryClick = (section, event) => {
   closeMenu();
 };
 
-const switchLanguage = (locale) => {
-  setLocale(locale);
-  closeMenu();
-};
 </script>
 
 <style scoped>
@@ -576,31 +537,6 @@ const switchLanguage = (locale) => {
   transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.language-switch {
-  display: inline-flex;
-  gap: 0.25rem;
-  background: rgba(15, 138, 215, 0.08);
-  padding: 0.25rem;
-  border-radius: 999px;
-}
-
-.lang-btn {
-  border: none;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  background: transparent;
-  cursor: pointer;
-  color: var(--color-muted);
-}
-
-.lang-btn.active {
-  background: #fff;
-  color: var(--color-primary);
-  box-shadow: 0 6px 12px rgba(15, 138, 215, 0.18);
-}
-
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -693,10 +629,6 @@ const switchLanguage = (locale) => {
 
 .mobile-links .nav-link-single {
   justify-content: flex-start;
-}
-
-.mobile-language-switch {
-  width: fit-content;
 }
 
 .slide-enter-active,
