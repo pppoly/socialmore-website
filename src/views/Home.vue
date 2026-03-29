@@ -213,13 +213,17 @@
         <article v-for="item in targetCards" :key="item.name" class="landing-target-card">
           <div
             class="landing-target-image-shell"
-            :class="[item.placeholderClass, { 'has-image': item.src, 'is-placeholder': !item.src }]"
+            :class="[
+              item.placeholderClass,
+              { 'has-image': hasTargetImage(item), 'is-placeholder': !hasTargetImage(item) }
+            ]"
           >
             <img
-              v-if="item.src"
+              v-if="hasTargetImage(item)"
               class="landing-target-image"
               :src="item.src"
               :alt="item.alt"
+              @error="markBrokenTargetImage(item.src)"
             />
             <div v-else class="landing-target-illustration" aria-hidden="true">
               <div class="landing-target-illustration-aurora"></div>
@@ -613,6 +617,7 @@ const gmvInputRef = ref(null);
 const painPanelRefs = ref([]);
 const painWrapHeight = ref(0);
 const supportsHover = ref(false);
+const brokenTargetImages = ref({});
 
 const siteUrl = computed(() =>
   (import.meta.env.VITE_SITE_URL || 'https://www.socialmore.co.jp').replace(/\/+$/, '')
@@ -690,6 +695,16 @@ const toggleFeature = (index) => {
 
 const setPlanBilling = (period) => {
   billingPeriod.value = period === 'yearly' ? 'yearly' : 'monthly';
+};
+
+const hasTargetImage = (item) => Boolean(item.src) && !brokenTargetImages.value[item.src];
+
+const markBrokenTargetImage = (src) => {
+  if (!src || brokenTargetImages.value[src]) return;
+  brokenTargetImages.value = {
+    ...brokenTargetImages.value,
+    [src]: true
+  };
 };
 
 const formatJPY = (value) => `¥${Math.round(value).toLocaleString('ja-JP')}`;
