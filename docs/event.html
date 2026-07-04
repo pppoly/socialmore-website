@@ -33,201 +33,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 40px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 0.5px solid var(--c-border);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      color: var(--c-text);
-      flex-shrink: 0;
-    }
-
-    .nav-logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .nav-logo-mark img {
-      width: 26px;
-      height: auto;
-      display: block;
-    }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      font-size: .85rem;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    .nav-logo-jp { font-weight: 600; }
-    .nav-logo-en { font-size: .7rem; letter-spacing: .15em; color: var(--c-muted); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: -12px;
-      right: -12px;
-      height: 16px;
-    }
-
-    .nav-link-main,
-    .nav-links > a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 14px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--c-muted);
-      transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
-    }
-
-    .nav-links > a:hover,
-    .nav-links > a[aria-current="page"],
-    .nav-link-main[aria-current="page"],
-    .nav-item:hover .nav-link-main,
-    .nav-item:focus-within .nav-link-main {
-      color: var(--c-text);
-      background: rgba(26,95,168,0.06);
-      border-color: rgba(26,95,168,0.10);
-      box-shadow: 0 8px 18px rgba(26,95,168,0.08);
-    }
-
-    .nav-link-main {
-      gap: 8px;
-    }
-
-    .nav-link-main::after {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-right: 1.5px solid var(--c-hint);
-      border-bottom: 1.5px solid var(--c-hint);
-      transform: translateY(-2px) rotate(45deg);
-      transition: transform .2s ease, border-color .2s ease;
-    }
-
-    .nav-item:hover .nav-link-main::after,
-    .nav-item:focus-within .nav-link-main::after {
-      border-color: var(--c-text);
-      transform: translateY(1px) rotate(225deg);
-    }
-
-    .nav-submenu {
-      position: absolute;
-      top: calc(100% + 14px);
-      left: 50%;
-      min-width: 248px;
-      padding: 10px;
-      border: 1px solid rgba(26,95,168,0.10);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(11, 28, 46, 0.10), 0 4px 10px rgba(11, 28, 46, 0.04);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(10px) scale(0.98);
-      transform-origin: top center;
-      transition: opacity .22s ease, transform .22s ease;
-    }
-
-    .nav-submenu::before {
-      content: '';
-      position: absolute;
-      top: -7px;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      background: rgba(255,255,255,0.98);
-      border-top: 1px solid rgba(26,95,168,0.10);
-      border-left: 1px solid rgba(26,95,168,0.10);
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    .nav-submenu a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 11px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--c-text);
-      white-space: nowrap;
-      text-decoration: none;
-      border-bottom: none;
-      box-shadow: none;
-    }
-
-    .nav-submenu a::after {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-top: 1.5px solid var(--c-hint);
-      border-right: 1.5px solid var(--c-hint);
-      transform: rotate(45deg);
-      transition: transform .2s ease, border-color .2s ease;
-    }
-
-    .nav-submenu a:hover {
-      background: var(--c-bg2);
-      color: var(--c-text);
-    }
-
-    .nav-submenu a:hover::after {
-      border-color: var(--c-text);
-      transform: translateX(2px) rotate(45deg);
-    }
-
-    .nav-submenu a[aria-current="page"] {
-      background: var(--c-bg2);
-      color: var(--c-text);
-    }
-
-    .nav-submenu a[aria-current="page"]::after {
-      border-color: var(--c-text);
-    }
-
-    .nav-item:hover .nav-submenu,
-    .nav-item:focus-within .nav-submenu {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0) scale(1);
-    }
+    [hidden] { display: none !important; }
 
     .shell {
       width: min(1240px, calc(100% - 40px));
@@ -326,13 +132,6 @@
       transform: translateX(2px) rotate(45deg);
     }
 
-    .section-list-title {
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: -.01em;
-    }
-
     .section-note {
       color: var(--c-muted);
       font-size: 14px;
@@ -355,9 +154,11 @@
 
     .event-card {
       appearance: none;
-      display: flex;
-      flex-direction: column;
-      width: min(100%, 240px);
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      width: min(100%, 430px);
+      max-width: calc(100vw - 40px);
+      min-width: 0;
       min-height: 100%;
       padding: 0;
       border: 1px solid var(--c-border);
@@ -371,6 +172,16 @@
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
+    a.event-card {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .event-card:focus-visible {
+      outline: 3px solid rgba(26,95,168,0.24);
+      outline-offset: 4px;
+    }
+
     .event-card:hover {
       transform: translateY(-2px);
       border-color: rgba(26,95,168,0.14);
@@ -378,12 +189,20 @@
     }
 
     .event-card-poster {
-      height: 168px;
-      background: var(--c-bg2);
-      border-bottom: 0.5px solid var(--c-border);
+      width: 100%;
+      min-width: 0;
+      aspect-ratio: 3 / 4;
+      min-height: 100%;
+      background:
+        #f3eee6
+        var(--event-poster-image, none)
+        center / contain
+        no-repeat;
+      border-right: 0.5px solid var(--c-border);
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       font-size: 11px;
       color: var(--c-hint);
     }
@@ -391,35 +210,94 @@
     .event-card-body {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 8px;
       flex: 1;
-      padding: 18px 18px 20px;
+      min-width: 0;
+      padding: 14px;
     }
 
     .event-card-title {
-      font-size: 15px;
+      font-size: clamp(16px, 1.8vw, 19px);
       font-weight: 700;
-      line-height: 1.45;
+      line-height: 1.25;
       letter-spacing: -.02em;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .event-card-time {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       line-height: 1.7;
       color: var(--c-text);
     }
 
+    .event-card-title,
+    .event-card-time,
+    .event-card-location,
+    .event-card-summary {
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
     .event-card-location {
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.7;
       color: var(--c-muted);
     }
 
     .event-card-summary {
-      font-size: 13px;
-      line-height: 1.7;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      font-size: 11px;
+      line-height: 1.65;
       color: var(--c-muted);
+    }
+
+    .event-card-tags,
+    .event-modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .event-card-tag,
+    .event-modal-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(26,95,168,0.08);
+      color: var(--c-info-text);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-card-tag--status[data-status="open"] {
+      background: rgba(9,131,72,0.10);
+      color: #09733f;
+    }
+
+    .event-card-tag--status[data-status="active"] {
+      background: rgba(26,95,168,0.10);
+      color: var(--c-info-text);
+    }
+
+    .event-card-tag--status[data-status="upcoming"] {
+      background: rgba(214,137,16,0.12);
+      color: #8a5a08;
+    }
+
+    .event-card-tag--status[data-status="closed"] {
+      background: rgba(0,0,0,0.06);
+      color: #555;
     }
 
     .event-modal {
@@ -445,7 +323,7 @@
 
     .event-modal-panel {
       position: relative;
-      width: min(100%, 760px);
+      width: min(100%, 1040px);
       max-height: min(88vh, 920px);
       overflow: auto;
       background: rgba(255,255,255,0.98);
@@ -481,27 +359,32 @@
       min-width: 0;
       align-content: start;
       position: relative;
-      padding-right: 116px;
     }
 
     .event-modal-poster {
       appearance: none;
-      width: min(100%, 360px);
+      width: min(100%, 320px);
       justify-self: center;
       aspect-ratio: 3 / 4;
-      border: 1px dashed rgba(26,95,168,0.24);
+      border: 1px solid var(--c-border);
       border-radius: 24px;
-      background:
-        radial-gradient(circle at top left, rgba(26,95,168,0.06), rgba(26,95,168,0) 34%),
-        linear-gradient(180deg, #fbfdff, #f3f7fc);
+      background: #f3eee6;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      overflow: hidden;
       color: var(--c-hint);
       font-size: 14px;
       text-align: center;
       cursor: zoom-in;
+    }
+
+    .event-modal-poster img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
     }
 
     .event-modal-time {
@@ -527,26 +410,6 @@
       min-width: 0;
     }
 
-    .event-modal-qr {
-      width: 96px;
-      aspect-ratio: 1;
-      border: 1px dashed rgba(26,95,168,0.24);
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, #fbfdff, #f3f7fc);
-      display: grid;
-      place-items: center;
-      padding: 14px;
-      color: var(--c-hint);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1.5;
-      text-align: center;
-      position: absolute;
-      top: 48px;
-      right: 0;
-    }
-
     .event-modal-block {
       display: grid;
       gap: 10px;
@@ -564,6 +427,47 @@
       font-size: 15px;
       line-height: 1.95;
       color: var(--c-text);
+    }
+
+    .event-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .event-modal-link {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid rgba(26,95,168,0.22);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c-info-text);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .event-modal-link::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .event-modal-link:hover {
+      background: rgba(26,95,168,0.07);
+      border-color: rgba(26,95,168,0.35);
+      transform: translateX(2px);
     }
 
     .poster-viewer {
@@ -629,12 +533,8 @@
     }
 
     @media (min-width: 900px) {
-      .event-modal-panel {
-        width: min(100%, 960px);
-      }
-
       .event-modal-body {
-        grid-template-columns: 320px minmax(0, 1fr);
+        grid-template-columns: 360px minmax(0, 1fr);
         align-items: start;
         gap: 28px;
       }
@@ -645,15 +545,10 @@
 
       .event-modal-content {
         padding-top: 8px;
-        padding-right: 156px;
       }
 
       .event-modal-title-row {
         min-width: 0;
-      }
-
-      .event-modal-qr {
-        width: 132px;
       }
     }
 
@@ -777,16 +672,52 @@
       .hero {
         margin-bottom: 22px;
       }
+
+      .event-card {
+        grid-template-columns: 92px minmax(0, 1fr);
+        width: min(100%, 360px);
+        max-width: calc(100vw - 24px);
+      }
+
+      .event-card-poster {
+        height: 122px;
+        min-height: 0;
+        border-right: 0.5px solid var(--c-border);
+        border-bottom: none;
+      }
+
+      .event-card-body {
+        gap: 6px;
+        padding: 11px 12px;
+      }
+
+      .event-card-title {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+
+      .event-card-time,
+      .event-card-location {
+        font-size: 10.5px;
+        line-height: 1.55;
+      }
+
+      .event-card-summary {
+        display: none;
+      }
+
+      .event-card-tags {
+        gap: 6px;
+      }
+
+      .event-card-tag {
+        min-height: 22px;
+        padding: 0 8px;
+        font-size: 10px;
+      }
     }
 
     @media (max-width: 640px) {
-      .nav {
-        padding: 12px 20px;
-      }
-
-      .nav-links {
-        display: none;
-      }
 
       .shell {
         width: min(100% - 24px, 1240px);
@@ -806,6 +737,22 @@
         flex-direction: column;
       }
 
+      .event-card {
+        grid-template-columns: 92px minmax(0, 1fr);
+        width: min(100%, 360px);
+      }
+
+      .event-card-poster {
+        height: 122px;
+        min-height: 0;
+        border-right: 0.5px solid var(--c-border);
+        border-bottom: none;
+      }
+
+      .event-card-body {
+        padding: 11px 12px;
+      }
+
       .page-footer {
         margin-top: 40px;
         padding: 32px 20px 24px;
@@ -815,9 +762,13 @@
         width: min(100%, 1240px);
       }
     }
+
+
+
+
   </style>
-  <link rel="stylesheet" href="nav-mobile.css">
-  <script src="nav-mobile.js" defer></script>
+  <link rel="stylesheet" href="nav-mobile.css?v=20260703-footer-balance">
+  <script src="nav-mobile.js?v=20260703-footer-balance" defer></script>
 </head>
 <body>
   <nav class="nav">
@@ -846,13 +797,22 @@
           <a href="/#pain">活用シーン</a>
           <a href="/#feature">できること</a>
           <a href="/#diff">他のサービスとの違い</a>
+          <a href="/#partners">共創・連携パートナー</a>
           <a href="/#pricing">料金プラン</a>
           <a href="/#company">会社情報</a>
         </div>
       </div>
       <div class="nav-item">
+        <a class="nav-link-main" href="/partners">パートナー</a>
+        <div class="nav-submenu">
+          <a href="/partners">共創・連携について</a>
+          <a href="/partners/companies">連携先一覧</a>
+        </div>
+      </div>
+      <div class="nav-item">
         <a class="nav-link-main" href="event.html" aria-current="page">イベント情報</a>
         <div class="nav-submenu">
+          <a href="event-current.html">開催中</a>
           <a href="event-upcoming.html">近日開催</a>
           <a href="event-past.html">過去</a>
         </div>
@@ -875,32 +835,117 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" data-event-section="current">
+      <div class="section-head">
+        <div class="section-heading-stack">
+          <h2 class="section-title"><a class="section-title-link" href="event-current.html">開催中</a></h2>
+        </div>
+      </div>
+      <div class="event-list" data-event-list="current">
+        <button
+          type="button"
+          class="event-card event-modal-trigger"
+          data-event-modal-target="viiviiEventModal"
+          data-event-card
+          data-event-id="viivii-campaign"
+          data-application-start="2026-06-25"
+          data-application-end="2026-07-31"
+          data-event-start="2026-08-01"
+          data-event-end="2026-08-15"
+        >
+          <div class="event-card-poster" style="--event-poster-image: url('socialmore-assets/partners/viivii-campaign-poster.png')" role="img" aria-label="Viivii コミュニティPR動画制作キャンペーンの告知ポスター"></div>
+          <div class="event-card-body">
+            <div class="event-card-tags">
+              <span class="event-card-tag event-card-tag--status" data-event-status>募集中</span>
+              <span class="event-card-tag">企業連携</span>
+              <span class="event-card-tag">PR動画制作</span>
+            </div>
+            <h3 class="event-card-title">Viivii コミュニティPR動画制作キャンペーン</h3>
+            <div class="event-card-time">募集期間：2026年6月25日 - 7月31日</div>
+            <div class="event-card-location">実施期間：2026年8月1日 - 8月15日</div>
+            <p class="event-card-summary">コミュニティや団体の魅力を、動画という形でより多くの人へ届けるための企画です。</p>
+          </div>
+        </button>
+      </div>
+      <p class="section-note" data-empty-note hidden>開催中のイベントはありません。</p>
+    </section>
+
+    <section class="section" data-event-section="upcoming">
       <div class="section-head">
         <div class="section-heading-stack">
           <h2 class="section-title"><a class="section-title-link" href="event-upcoming.html">近日開催</a></h2>
         </div>
       </div>
-      <div class="section-list-title">イベント一覧</div>
-      <div class="event-list">
+      <p class="section-note" data-empty-note>近日開催予定のイベントはありません。</p>
+      <div class="event-list" data-event-list="upcoming"></div>
+    </section>
+
+    <section class="section" data-event-section="past">
+      <div class="section-head">
+        <h2 class="section-title"><a class="section-title-link" href="event-past.html">過去</a></h2>
+      </div>
+      <div class="event-list" data-event-list="past">
         <button type="button" class="event-card event-modal-trigger">
-          <div class="event-card-poster">イベントポスター表示エリア</div>
+          <div class="event-card-poster" style="--event-poster-image: url('socialmore-assets/events/kumori-meatballs-poster.jpg')" role="img" aria-label="くもりときどきミートボール 野外上映会ポスター"></div>
           <div class="event-card-body">
-            <h3 class="event-card-title">イベント名</h3>
-            <div class="event-card-time">2026年5月30日（土）17:00 - 20:45ごろ</div>
-            <div class="event-card-location">場所：後日公開予定</div>
-            <p class="event-card-summary">イベント内容の概要をここに追加できます。参加対象や当日の流れなど、まず見てほしい情報を短くまとめられます。</p>
+            <div class="event-card-tags">
+              <span class="event-card-tag">終了</span>
+              <span class="event-card-tag">野外上映会</span>
+            </div>
+            <h3 class="event-card-title">くもりときどきミートボール 野外上映会</h3>
+            <div class="event-card-time">2026年5月30日（土）17:00開場・19:15上映開始</div>
+            <div class="event-card-location">会場：新川あおやぎ公園</div>
+            <p class="event-card-summary">三鷹を拠点に活動する地域コミュニティとともに、ご家族やご友人と楽しめる野外上映会を開催しました。</p>
           </div>
         </button>
       </div>
     </section>
+  </div>
 
-    <section class="section">
-      <div class="section-head">
-        <h2 class="section-title"><a class="section-title-link" href="event-past.html">過去</a></h2>
+  <div class="event-modal" id="viiviiEventModal" aria-hidden="true">
+    <div class="event-modal-backdrop" data-close-modal></div>
+    <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="viiviiEventModalTitle">
+      <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
+      <div class="event-modal-body">
+        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">
+          <img src="socialmore-assets/partners/viivii-campaign-poster.png" alt="Viivii コミュニティPR動画制作キャンペーンの告知ポスター">
+        </button>
+        <div class="event-modal-content">
+          <div class="event-modal-time">募集期間：2026年6月25日 - 7月31日</div>
+          <div class="event-modal-tags">
+            <span class="event-modal-tag event-card-tag--status" data-event-status-for="viivii-campaign">募集中</span>
+            <span class="event-modal-tag">企業連携</span>
+            <span class="event-modal-tag">PR動画制作</span>
+          </div>
+          <div class="event-modal-title-row">
+            <h2 class="event-modal-title" id="viiviiEventModalTitle">Viivii コミュニティPR動画制作キャンペーン</h2>
+          </div>
+          <section class="event-modal-block">
+            <div class="event-modal-label">内容</div>
+            <div class="event-modal-text">コミュニティや団体の魅力を、動画という形でより多くの人へ届けるための企画です。活動紹介、メンバー募集、イベント告知などに活用できるPR動画づくりの機会として紹介しています。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">実施期間</div>
+            <div class="event-modal-text">2026年8月1日 - 8月15日</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">対象</div>
+            <div class="event-modal-text">学生サークル、コミュニティ、NPO・非営利団体、イベント主催者、地域団体、クリエイターコミュニティなど。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">支援内容</div>
+            <div class="event-modal-text">1有効再生 = 1円として活動をサポートします。支援金の上限は、1団体あたり30,000円です。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">申込</div>
+            <div class="event-modal-text">募集条件や支援内容の詳細は、申込ページで確認できます。</div>
+          </section>
+          <div class="event-modal-actions">
+            <a class="event-modal-link" href="/partners/viivii">企業ページを見る</a>
+          </div>
+        </div>
       </div>
-      <p class="section-note">掲載したイベントはありません。</p>
-    </section>
+    </div>
   </div>
 
   <div class="event-modal" id="eventModal" aria-hidden="true">
@@ -908,20 +953,38 @@
     <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
       <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
       <div class="event-modal-body">
-        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">イベントポスター表示エリア</button>
+        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">
+          <img src="socialmore-assets/events/kumori-meatballs-poster.jpg" alt="くもりときどきミートボール 野外上映会ポスター">
+        </button>
         <div class="event-modal-content">
-          <div class="event-modal-time">2026年5月30日（土）17:00 - 20:45ごろ</div>
+          <div class="event-modal-time">2026年5月30日（土）17:00開場・19:15上映開始</div>
+          <div class="event-modal-tags">
+            <span class="event-modal-tag">終了</span>
+            <span class="event-modal-tag">野外上映会</span>
+            <span class="event-modal-tag">Presented by SOCIALMORE</span>
+          </div>
           <div class="event-modal-title-row">
-            <h2 class="event-modal-title" id="eventModalTitle">イベント名</h2>
-            <div class="event-modal-qr">QR code<br>表示エリア</div>
+            <h2 class="event-modal-title" id="eventModalTitle">くもりときどきミートボール 野外上映会</h2>
           </div>
           <section class="event-modal-block">
             <div class="event-modal-label">場所</div>
-            <div class="event-modal-text">後日公開予定</div>
+            <div class="event-modal-text">新川あおやぎ公園</div>
           </section>
           <section class="event-modal-block">
             <div class="event-modal-label">内容</div>
-            <div class="event-modal-text">イベント内容の概要をここに追加できます。参加対象や当日の流れなど、まず見てほしい情報を短くまとめられます。</div>
+            <div class="event-modal-text">私たち創翔モアは、三鷹を拠点に活動する地域コミュニティの活動を支えています。当日は、ご家族やご友人と一緒に楽しめる野外上映会として開催しました。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">開催情報</div>
+            <div class="event-modal-text">終演は20:45頃を予定しています。児童は必ず保護者の方とご来場ください。座席は若干数のパイプ椅子となるため、レジャーシートなどをお持ちください。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">雨天時</div>
+            <div class="event-modal-text">雨天の場合は、新川・中原コミュニティーセンター体育館で上映します。入場制限のため、雨の日は事前予約が必要です。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">主催・共催</div>
+            <div class="event-modal-text">主催：NPO法人しゃべくりシネマ<br>共催：創翔モア / SOCIALMORE</div>
           </section>
         </div>
       </div>
@@ -937,8 +1000,9 @@
   </div>
 
   <footer class="page-footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
+  <div class="footer-inner">
+    <div class="footer-layout">
+      <div class="footer-company">
         <div class="footer-column">
           <div class="footer-brand" aria-label="SOCIALMORE">
             <span class="nav-logo-mark">
@@ -949,19 +1013,65 @@
               <span class="nav-logo-en">SOCIALMORE</span>
             </span>
           </div>
-          <p class="footer-text">181-0013 東京都三鷹市下連雀3-27-1 三協ビル2階</p>
+          <p class="footer-text footer-address">
+            <span>181-0013</span>
+            <span>東京都三鷹市下連雀3-27-1</span>
+            <span>三協ビル2階</span>
+          </p>
         </div>
-
-        <div class="footer-column">
-          <p class="footer-text"><span>メール:</span>admin@socialmore.co.jp</p>
-          <p class="footer-text"><span>電話:</span>080-6567-1105</p>
+        <div class="footer-contact-list">
+          <p class="footer-text"><span>メール:</span><a class="footer-link" href="mailto:admin@socialmore.co.jp">admin@socialmore.co.jp</a></p>
+          <p class="footer-text"><span>電話:</span><a class="footer-link" href="tel:08065671105">080-6567-1105</a></p>
           <p class="footer-text">平日 10:00-18:00</p>
         </div>
       </div>
-      <p class="footer-copy">© 2025 SOCIALMORE Inc.</p>
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">サービス</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#line-mini">LINEミニアプリとは</a></li>
+            <li><a class="footer-nav-link" href="/#pain">活用シーン</a></li>
+            <li><a class="footer-nav-link" href="/#feature">できること</a></li>
+            <li><a class="footer-nav-link" href="/#diff">他のサービスとの違い</a></li>
+            <li><a class="footer-nav-link" href="/#pricing">料金プラン</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">連携</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#partners">共創・連携パートナー</a></li>
+            <li><a class="footer-nav-link" href="/partners">共創・連携について</a></li>
+            <li><a class="footer-nav-link" href="/partners/companies">連携先一覧</a></li>
+            <li><a class="footer-nav-link" href="/partners/viivii">Viivii</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">イベント・発信</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="event.html">イベント情報</a></li>
+            <li><a class="footer-nav-link" href="event-current.html">開催中</a></li>
+            <li><a class="footer-nav-link" href="event-upcoming.html">近日開催</a></li>
+            <li><a class="footer-nav-link" href="event-past.html">過去のイベント</a></li>
+            <li><a class="footer-nav-link" href="blog.html">ブログ</a></li>
+            <li><a class="footer-nav-link" href="blog-latest.html">最新記事</a></li>
+            <li><a class="footer-nav-link" href="blog-archive.html">過去の記事</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">会社・相談</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#company">会社情報</a></li>
+            <li><a class="footer-nav-link" href="contact.html">お問い合わせ</a></li>
+            <li><a class="footer-nav-link" href="contact.html?type=partner">連携について相談する</a></li>
+          </ul>
+        </section>
+      </nav>
     </div>
-  </footer>
+    <div class="footer-copy">© 2025 SOCIALMORE Inc.</div>
+  </div>
+</footer>
 
+  <script src="event-status.js?v=20260704-current-events"></script>
   <script>
     document.querySelectorAll('.nav-item a').forEach((link) => {
       link.addEventListener('click', () => {
@@ -973,17 +1083,16 @@
       });
     });
 
-    const eventModal = document.getElementById('eventModal');
+    const defaultEventModal = document.getElementById('eventModal');
     const posterViewer = document.getElementById('posterViewer');
     const posterViewerFrame = document.getElementById('posterViewerFrame');
     const eventOpeners = document.querySelectorAll('.event-modal-trigger');
     const posterTriggers = document.querySelectorAll('.event-poster-trigger');
     const eventClosers = document.querySelectorAll('[data-close-modal]');
     const posterViewerClosers = document.querySelectorAll('[data-close-poster-viewer]');
-
     const syncBodyLock = () => {
       const shouldLock = Boolean(
-        eventModal?.classList.contains('is-open') ||
+        document.querySelector('.event-modal.is-open') ||
         posterViewer?.classList.contains('is-open')
       );
       document.body.style.overflow = shouldLock ? 'hidden' : '';
@@ -1012,27 +1121,30 @@
       syncBodyLock();
     };
 
-    const closeEventModal = () => {
-      if (!eventModal) return;
+    const closeEventModal = (modal = document.querySelector('.event-modal.is-open') || defaultEventModal) => {
+      if (!modal) return;
       closePosterViewer();
-      eventModal.classList.remove('is-open');
-      eventModal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
       syncBodyLock();
     };
 
-    const openEventModal = () => {
-      if (!eventModal) return;
-      eventModal.classList.add('is-open');
-      eventModal.setAttribute('aria-hidden', 'false');
+    const openEventModal = (button) => {
+      const modal = button?.dataset.eventModalTarget
+        ? document.getElementById(button.dataset.eventModalTarget)
+        : defaultEventModal;
+      if (!modal) return;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
       syncBodyLock();
     };
 
     eventOpeners.forEach((button) => {
-      button.addEventListener('click', openEventModal);
+      button.addEventListener('click', () => openEventModal(button));
     });
 
     eventClosers.forEach((button) => {
-      button.addEventListener('click', closeEventModal);
+      button.addEventListener('click', () => closeEventModal());
     });
 
     posterTriggers.forEach((button) => {

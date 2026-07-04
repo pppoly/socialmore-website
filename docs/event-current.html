@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>開催中 | SOCIALMORE</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-bg: #ffffff;
+      --c-bg2: #f5f5f3;
+      --c-surface: #ffffff;
+      --c-text: #1a1a1a;
+      --c-muted: #6b6b6b;
+      --c-hint: #a0a0a0;
+      --c-border: rgba(0,0,0,0.09);
+      --c-border-strong: rgba(26,95,168,0.22);
+      --c-info-text: #1a5fa8;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.04);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-xl: 24px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, #ffffff, #f7f7f5 78%);
+      color: var(--c-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    [hidden] { display: none !important; }
+
+    .shell {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .section {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .section-heading-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .section-note {
+      color: var(--c-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .section-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-info-text);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .section-link::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-left: 1.5px solid var(--c-hint);
+      border-bottom: 1.5px solid var(--c-hint);
+      transform: rotate(45deg);
+    }
+
+    .event-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .event-card {
+      appearance: none;
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      width: min(100%, 430px);
+      max-width: calc(100vw - 40px);
+      min-width: 0;
+      min-height: 100%;
+      padding: 0;
+      border: 1px solid var(--c-border);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    a.event-card {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .event-card:focus-visible {
+      outline: 3px solid rgba(26,95,168,0.24);
+      outline-offset: 4px;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(26,95,168,0.14);
+      box-shadow: 0 22px 46px rgba(11, 28, 46, 0.08);
+    }
+
+    .event-card-poster {
+      width: 100%;
+      min-width: 0;
+      aspect-ratio: 3 / 4;
+      min-height: 100%;
+      background:
+        #f3eee6
+        var(--event-poster-image, none)
+        center / contain
+        no-repeat;
+      border-right: 0.5px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: 11px;
+      color: var(--c-hint);
+    }
+
+    .event-card-poster img {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .event-card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+      padding: 14px;
+    }
+
+    .event-card-title {
+      font-size: clamp(16px, 1.8vw, 19px);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .event-card-time {
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.7;
+      color: var(--c-text);
+    }
+
+    .event-card-title,
+    .event-card-time,
+    .event-card-location,
+    .event-card-summary {
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .event-card-location {
+      font-size: 11px;
+      line-height: 1.7;
+      color: var(--c-muted);
+    }
+
+    .event-card-summary {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      font-size: 11px;
+      line-height: 1.65;
+      color: var(--c-muted);
+    }
+
+    .event-card-tags,
+    .event-modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .event-card-tag,
+    .event-modal-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(26,95,168,0.08);
+      color: var(--c-info-text);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-card-tag--status[data-status="open"] {
+      background: rgba(9,131,72,0.10);
+      color: #09733f;
+    }
+
+    .event-card-tag--status[data-status="active"] {
+      background: rgba(26,95,168,0.10);
+      color: var(--c-info-text);
+    }
+
+    .event-card-tag--status[data-status="upcoming"] {
+      background: rgba(214,137,16,0.12);
+      color: #8a5a08;
+    }
+
+    .event-card-tag--status[data-status="closed"] {
+      background: rgba(0,0,0,0.06);
+      color: #555;
+    }
+
+    .event-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 200;
+    }
+
+    .event-modal.is-open {
+      display: flex;
+    }
+
+    .event-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(17, 31, 46, 0.42);
+      backdrop-filter: blur(6px);
+    }
+
+    .event-modal-panel {
+      position: relative;
+      width: min(100%, 1040px);
+      max-height: min(88vh, 920px);
+      overflow: auto;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(26,95,168,0.10);
+      border-radius: 28px;
+      box-shadow: 0 26px 60px rgba(11, 28, 46, 0.18);
+    }
+
+    .event-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--c-border);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      color: var(--c-text);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .event-modal-body {
+      display: grid;
+      gap: 22px;
+      padding: 28px;
+    }
+
+    .event-modal-content {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+      align-content: start;
+      position: relative;
+    }
+
+    .event-modal-poster {
+      appearance: none;
+      width: min(100%, 320px);
+      justify-self: center;
+      aspect-ratio: 3 / 4;
+      border: 1px solid var(--c-border);
+      border-radius: 24px;
+      background: #f3eee6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--c-hint);
+      font-size: 14px;
+      text-align: center;
+      cursor: zoom-in;
+    }
+
+    .event-modal-poster img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .event-modal-time {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(26,95,168,0.08);
+      color: var(--c-info-text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .event-modal-title {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+    }
+
+    .event-modal-title-row {
+      min-width: 0;
+    }
+
+    .event-modal-block {
+      display: grid;
+      gap: 10px;
+    }
+
+    .event-modal-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-hint);
+    }
+
+    .event-modal-text {
+      font-size: 15px;
+      line-height: 1.95;
+      color: var(--c-text);
+    }
+
+    .event-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .event-modal-link {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid rgba(26,95,168,0.22);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c-info-text);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .event-modal-link::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .event-modal-link:hover {
+      background: rgba(26,95,168,0.07);
+      border-color: rgba(26,95,168,0.35);
+      transform: translateX(2px);
+    }
+
+    .poster-viewer {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+      z-index: 260;
+    }
+
+    .poster-viewer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .poster-viewer-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 20, 34, 0.74);
+      backdrop-filter: blur(12px);
+    }
+
+    .poster-viewer-panel {
+      position: relative;
+      z-index: 1;
+      width: auto;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 32px);
+      display: grid;
+      justify-items: center;
+    }
+
+    .poster-viewer-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 50%;
+      background: rgba(13,20,34,0.74);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .poster-viewer-frame {
+      width: min(560px, calc(100vw - 40px), calc((100vh - 88px) * 0.75));
+      display: grid;
+      justify-items: center;
+    }
+
+    .poster-viewer-frame .event-modal-poster {
+      width: 100%;
+      max-width: 560px;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    @media (min-width: 900px) {
+      .event-modal-body {
+        grid-template-columns: 360px minmax(0, 1fr);
+        align-items: start;
+        gap: 28px;
+      }
+
+      .event-modal-poster {
+        width: 100%;
+      }
+
+      .event-modal-content {
+        padding-top: 8px;
+      }
+
+      .event-modal-title-row {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .event-card {
+        grid-template-columns: 92px minmax(0, 1fr);
+        width: min(100%, 360px);
+        max-width: calc(100vw - 24px);
+      }
+
+      .event-card-poster {
+        height: 122px;
+        min-height: 0;
+        border-right: 0.5px solid var(--c-border);
+        border-bottom: none;
+      }
+
+      .event-card-body {
+        gap: 6px;
+        padding: 11px 12px;
+      }
+
+      .event-card-title {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+
+      .event-card-time,
+      .event-card-location {
+        font-size: 10.5px;
+        line-height: 1.55;
+      }
+
+      .event-card-summary {
+        display: none;
+      }
+
+      .event-card-tags {
+        gap: 6px;
+      }
+
+      .event-card-tag {
+        min-height: 22px;
+        padding: 0 8px;
+        font-size: 10px;
+      }
+    }
+
+    .page-footer {
+      margin-top: 56px;
+      background: linear-gradient(180deg, #eef4fb, #f8fbff);
+      color: var(--c-text);
+      padding: 40px 24px 28px;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .footer-inner {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .footer-brand .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: .85rem;
+    }
+
+    .footer-brand .nav-logo-en {
+      color: var(--c-muted);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--c-muted);
+    }
+
+    .footer-text span {
+      color: var(--c-hint);
+      margin-right: 6px;
+    }
+
+    .footer-copy {
+      border-top: 1px solid var(--c-border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--c-hint);
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 24px, 1240px);
+        padding: 24px 0 36px;
+      }
+
+      .event-card {
+        grid-template-columns: 92px minmax(0, 1fr);
+        width: min(100%, 360px);
+      }
+
+      .event-card-poster {
+        height: 122px;
+        min-height: 0;
+        border-right: 0.5px solid var(--c-border);
+        border-bottom: none;
+      }
+
+      .event-card-body {
+        padding: 11px 12px;
+      }
+
+      .page-footer {
+        margin-top: 40px;
+        padding: 32px 20px 24px;
+      }
+
+      .footer-inner {
+        width: min(100%, 1240px);
+      }
+    }
+
+
+
+
+  </style>
+  <link rel="stylesheet" href="nav-mobile.css?v=20260703-footer-balance">
+  <script src="nav-mobile.js?v=20260703-footer-balance" defer></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="/" aria-label="SOCIALMORE">
+      <span class="nav-logo-mark">
+        <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+      </span>
+      <span class="nav-logo-text">
+        <span class="nav-logo-jp">創翔モア</span>
+        <span class="nav-logo-en">SOCIALMORE</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="メニューを開く">
+      <span class="nav-toggle-label">メニュー</span>
+      <span class="nav-toggle-lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a class="nav-link-main" href="/">ホーム</a>
+        <div class="nav-submenu">
+          <a href="/#line-mini">LINEミニアプリとは</a>
+          <a href="/#pain">活用シーン</a>
+          <a href="/#feature">できること</a>
+          <a href="/#diff">他のサービスとの違い</a>
+          <a href="/#partners">共創・連携パートナー</a>
+          <a href="/#pricing">料金プラン</a>
+          <a href="/#company">会社情報</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="/partners">パートナー</a>
+        <div class="nav-submenu">
+          <a href="/partners">共創・連携について</a>
+          <a href="/partners/companies">連携先一覧</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="event.html" aria-current="page">イベント情報</a>
+        <div class="nav-submenu">
+          <a href="event-current.html" aria-current="page">開催中</a>
+          <a href="event-upcoming.html">近日開催</a>
+          <a href="event-past.html">過去</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link-main" href="blog.html">ブログ</a>
+        <div class="nav-submenu">
+          <a href="blog-latest.html">最新記事</a>
+          <a href="blog-archive.html">過去の記事</a>
+        </div>
+      </div>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+    <a class="section-link" href="event.html">イベント情報へ戻る</a>
+    <section class="section" data-event-section="current">
+      <div class="section-head">
+        <div class="section-heading-stack">
+          <h2 class="section-title">開催中</h2>
+        </div>
+      </div>
+      <div class="event-list" data-event-list="current">
+        <button
+          type="button"
+          class="event-card event-modal-trigger"
+          data-event-modal-target="viiviiEventModal"
+          data-event-card
+          data-event-id="viivii-campaign"
+          data-show-in="current"
+          data-application-start="2026-06-25"
+          data-application-end="2026-07-31"
+          data-event-start="2026-08-01"
+          data-event-end="2026-08-15"
+        >
+          <div class="event-card-poster" style="--event-poster-image: url('socialmore-assets/partners/viivii-campaign-poster.png')" role="img" aria-label="Viivii コミュニティPR動画制作キャンペーンの告知ポスター"></div>
+          <div class="event-card-body">
+            <div class="event-card-tags">
+              <span class="event-card-tag event-card-tag--status" data-event-status>募集中</span>
+              <span class="event-card-tag">企業連携</span>
+              <span class="event-card-tag">PR動画制作</span>
+            </div>
+            <h3 class="event-card-title">Viivii コミュニティPR動画制作キャンペーン</h3>
+            <div class="event-card-time">募集期間：2026年6月25日 - 7月31日</div>
+            <div class="event-card-location">実施期間：2026年8月1日 - 8月15日</div>
+            <p class="event-card-summary">コミュニティや団体の魅力を、動画という形でより多くの人へ届けるための企画です。</p>
+          </div>
+        </button>
+      </div>
+      <p class="section-note" data-empty-note hidden>開催中のイベントはありません。</p>
+    </section>
+  </div>
+
+  <div class="event-modal" id="viiviiEventModal" aria-hidden="true">
+    <div class="event-modal-backdrop" data-close-modal></div>
+    <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="viiviiEventModalTitle">
+      <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
+      <div class="event-modal-body">
+        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">
+          <img src="socialmore-assets/partners/viivii-campaign-poster.png" alt="Viivii コミュニティPR動画制作キャンペーンの告知ポスター">
+        </button>
+        <div class="event-modal-content">
+          <div class="event-modal-time">募集期間：2026年6月25日 - 7月31日</div>
+          <div class="event-modal-tags">
+            <span class="event-modal-tag event-card-tag--status" data-event-status-for="viivii-campaign">募集中</span>
+            <span class="event-modal-tag">企業連携</span>
+            <span class="event-modal-tag">PR動画制作</span>
+          </div>
+          <div class="event-modal-title-row">
+            <h2 class="event-modal-title" id="viiviiEventModalTitle">Viivii コミュニティPR動画制作キャンペーン</h2>
+          </div>
+          <section class="event-modal-block">
+            <div class="event-modal-label">内容</div>
+            <div class="event-modal-text">コミュニティや団体の魅力を、動画という形でより多くの人へ届けるための企画です。活動紹介、メンバー募集、イベント告知などに活用できるPR動画づくりの機会として紹介しています。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">実施期間</div>
+            <div class="event-modal-text">2026年8月1日 - 8月15日</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">対象</div>
+            <div class="event-modal-text">学生サークル、コミュニティ、NPO・非営利団体、イベント主催者、地域団体、クリエイターコミュニティなど。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">支援内容</div>
+            <div class="event-modal-text">1有効再生 = 1円として活動をサポートします。支援金の上限は、1団体あたり30,000円です。</div>
+          </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">申込</div>
+            <div class="event-modal-text">募集条件や支援内容の詳細は、申込ページで確認できます。</div>
+          </section>
+          <div class="event-modal-actions">
+            <a class="event-modal-link" href="/partners/viivii">企業ページを見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="poster-viewer" id="posterViewer" aria-hidden="true">
+    <div class="poster-viewer-backdrop" data-close-poster-viewer></div>
+    <div class="poster-viewer-panel" role="dialog" aria-modal="true" aria-label="イベントポスター">
+      <button type="button" class="poster-viewer-close" data-close-poster-viewer aria-label="閉じる">×</button>
+      <div class="poster-viewer-frame" id="posterViewerFrame"></div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+  <div class="footer-inner">
+    <div class="footer-layout">
+      <div class="footer-company">
+        <div class="footer-column">
+          <div class="footer-brand" aria-label="SOCIALMORE">
+            <span class="nav-logo-mark">
+              <img src="brand/brand-logo-symbol.svg" alt="SOCIALMORE logomark">
+            </span>
+            <span class="nav-logo-text">
+              <span class="nav-logo-jp">創翔モア</span>
+              <span class="nav-logo-en">SOCIALMORE</span>
+            </span>
+          </div>
+          <p class="footer-text footer-address">
+            <span>181-0013</span>
+            <span>東京都三鷹市下連雀3-27-1</span>
+            <span>三協ビル2階</span>
+          </p>
+        </div>
+        <div class="footer-contact-list">
+          <p class="footer-text"><span>メール:</span><a class="footer-link" href="mailto:admin@socialmore.co.jp">admin@socialmore.co.jp</a></p>
+          <p class="footer-text"><span>電話:</span><a class="footer-link" href="tel:08065671105">080-6567-1105</a></p>
+          <p class="footer-text">平日 10:00-18:00</p>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">サービス</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#line-mini">LINEミニアプリとは</a></li>
+            <li><a class="footer-nav-link" href="/#pain">活用シーン</a></li>
+            <li><a class="footer-nav-link" href="/#feature">できること</a></li>
+            <li><a class="footer-nav-link" href="/#diff">他のサービスとの違い</a></li>
+            <li><a class="footer-nav-link" href="/#pricing">料金プラン</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">連携</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#partners">共創・連携パートナー</a></li>
+            <li><a class="footer-nav-link" href="/partners">共創・連携について</a></li>
+            <li><a class="footer-nav-link" href="/partners/companies">連携先一覧</a></li>
+            <li><a class="footer-nav-link" href="/partners/viivii">Viivii</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">イベント・発信</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="event.html">イベント情報</a></li>
+            <li><a class="footer-nav-link" href="event-current.html">開催中</a></li>
+            <li><a class="footer-nav-link" href="event-upcoming.html">近日開催</a></li>
+            <li><a class="footer-nav-link" href="event-past.html">過去のイベント</a></li>
+            <li><a class="footer-nav-link" href="blog.html">ブログ</a></li>
+            <li><a class="footer-nav-link" href="blog-latest.html">最新記事</a></li>
+            <li><a class="footer-nav-link" href="blog-archive.html">過去の記事</a></li>
+          </ul>
+        </section>
+        <section class="footer-nav-group">
+          <h2 class="footer-nav-title">会社・相談</h2>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="/#company">会社情報</a></li>
+            <li><a class="footer-nav-link" href="contact.html">お問い合わせ</a></li>
+            <li><a class="footer-nav-link" href="contact.html?type=partner">連携について相談する</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+    <div class="footer-copy">© 2025 SOCIALMORE Inc.</div>
+  </div>
+</footer>
+
+  <script src="event-status.js?v=20260704-current-events"></script>
+  <script>
+    document.querySelectorAll('.nav-item a').forEach((link) => {
+      link.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        });
+      });
+    });
+
+    const defaultEventModal = document.getElementById('eventModal');
+    const posterViewer = document.getElementById('posterViewer');
+    const posterViewerFrame = document.getElementById('posterViewerFrame');
+    const eventOpeners = document.querySelectorAll('.event-modal-trigger');
+    const posterTriggers = document.querySelectorAll('.event-poster-trigger');
+    const eventClosers = document.querySelectorAll('[data-close-modal]');
+    const posterViewerClosers = document.querySelectorAll('[data-close-poster-viewer]');
+    const syncBodyLock = () => {
+      const shouldLock = Boolean(
+        document.querySelector('.event-modal.is-open') ||
+        posterViewer?.classList.contains('is-open')
+      );
+      document.body.style.overflow = shouldLock ? 'hidden' : '';
+    };
+
+    const closePosterViewer = () => {
+      if (!posterViewer) return;
+      posterViewer.classList.remove('is-open');
+      posterViewer.setAttribute('aria-hidden', 'true');
+      if (posterViewerFrame) {
+        posterViewerFrame.innerHTML = '';
+      }
+      syncBodyLock();
+    };
+
+    const openPosterViewer = (poster) => {
+      if (!posterViewer || !posterViewerFrame || !poster) return;
+      posterViewerFrame.innerHTML = '';
+      const posterClone = poster.cloneNode(true);
+      posterClone.removeAttribute('aria-label');
+      posterClone.classList.remove('event-poster-trigger');
+      posterClone.tabIndex = -1;
+      posterViewerFrame.appendChild(posterClone);
+      posterViewer.classList.add('is-open');
+      posterViewer.setAttribute('aria-hidden', 'false');
+      syncBodyLock();
+    };
+
+    const closeEventModal = (modal = document.querySelector('.event-modal.is-open') || defaultEventModal) => {
+      if (!modal) return;
+      closePosterViewer();
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      syncBodyLock();
+    };
+
+    const openEventModal = (button) => {
+      const modal = button?.dataset.eventModalTarget
+        ? document.getElementById(button.dataset.eventModalTarget)
+        : defaultEventModal;
+      if (!modal) return;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      syncBodyLock();
+    };
+
+    eventOpeners.forEach((button) => {
+      button.addEventListener('click', () => openEventModal(button));
+    });
+
+    eventClosers.forEach((button) => {
+      button.addEventListener('click', () => closeEventModal());
+    });
+
+    posterTriggers.forEach((button) => {
+      button.addEventListener('click', () => openPosterViewer(button));
+    });
+
+    posterViewerClosers.forEach((button) => {
+      button.addEventListener('click', closePosterViewer);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (posterViewer?.classList.contains('is-open')) {
+          closePosterViewer();
+          return;
+        }
+        closeEventModal();
+      }
+    });
+  </script>
+</body>
+</html>

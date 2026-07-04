@@ -299,6 +299,8 @@ export const messages = {
         phone: '電話',
         organization: '所属（任意）',
         inquiryType: 'お問い合わせ種別',
+        inquiryTypeHelp: '内容に近いものを選んでください。迷う場合は「その他の問い合わせ」で大丈夫です。',
+        inquiryTypeHelpLines: ['内容に近いものを選んでください。', '迷う場合は「その他」で大丈夫です。'],
         message: 'メッセージ',
         submit: '送信する',
         success: 'お問い合わせありがとうございました。（本フォームはデモのため送信されません。）',
@@ -307,7 +309,14 @@ export const messages = {
           email: '正しいメールアドレスを入力してください'
         }
       },
-      inquiryOptions: ['コミュニティ運営支援について', '企業・自治体との協業', '多文化プロジェクト', 'その他'],
+      inquiryOptions: [
+        { value: 'partnership', label: '連携について' },
+        { value: 'community-support', label: 'コミュニティ活動について' },
+        { value: 'event', label: 'イベントについて' },
+        { value: 'service', label: 'SOCIALMOREのサービスについて' },
+        { value: 'media', label: '取材・掲載について' },
+        { value: 'other', label: 'その他' }
+      ],
       info: {
         company: 'SOCIALMORE（株式会社創翔モア）',
         location: '東京都三鷹市',
@@ -774,6 +783,8 @@ export const messages = {
         phone: 'Phone',
         organization: 'Organization (optional)',
         inquiryType: 'Inquiry type',
+        inquiryTypeHelp: 'Choose the closest option. If you are unsure, select “Other inquiry.”',
+        inquiryTypeHelpLines: ['Choose the closest option.', 'If you are unsure, select “Other.”'],
         message: 'Message',
         submit: 'Send message',
         success: 'Thank you for your note. (This form is a demo and will not actually send an email.)',
@@ -782,7 +793,14 @@ export const messages = {
           email: 'Please enter a valid email address'
         }
       },
-      inquiryOptions: ['Community operations', 'Corporate / public partnerships', 'Multicultural programs', 'Other'],
+      inquiryOptions: [
+        { value: 'partnership', label: 'Partnership' },
+        { value: 'community-support', label: 'Community activities' },
+        { value: 'event', label: 'Events' },
+        { value: 'service', label: 'SOCIALMORE services' },
+        { value: 'media', label: 'Media or listing' },
+        { value: 'other', label: 'Other' }
+      ],
       info: {
         company: 'SOCIALMORE Inc.',
         location: 'Mitaka, Tokyo',
@@ -1222,6 +1240,8 @@ export const messages = {
         phone: '电话',
         organization: '组织 / 团体（选填）',
         inquiryType: '咨询类型',
+        inquiryTypeHelp: '请选择最接近的内容。不确定时选“其他咨询”也可以。',
+        inquiryTypeHelpLines: ['请选择最接近的内容。', '不确定时选“其他”也可以。'],
         message: '留言',
         submit: '提交',
         success: '感谢您的联系。（本表单仅为示范，并不会真正发送邮件。）',
@@ -1230,7 +1250,14 @@ export const messages = {
           email: '请输入有效的邮箱地址'
         }
       },
-      inquiryOptions: ['社群运营支援', '企业 / 机构合作', '多文化项目', '其他'],
+      inquiryOptions: [
+        { value: 'partnership', label: '合作咨询' },
+        { value: 'community-support', label: '社群活动' },
+        { value: 'event', label: '活动咨询' },
+        { value: 'service', label: 'SOCIALMORE 服务' },
+        { value: 'media', label: '采访或刊登' },
+        { value: 'other', label: '其他' }
+      ],
       info: {
         company: 'SOCIALMORE（创翔莫尔株式会社）',
         location: '日本东京三鹰',

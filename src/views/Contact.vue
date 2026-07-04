@@ -37,8 +37,13 @@
         <label>
           {{ t('contact.form.inquiryType') }}
           <select v-model="form.inquiryType">
-            <option v-for="option in inquiryOptions" :key="option">{{ option }}</option>
+            <option v-for="option in inquiryOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
+            </option>
           </select>
+          <span v-if="inquiryTypeHelpLines.length" class="field-help">
+            <span v-for="line in inquiryTypeHelpLines" :key="line">{{ line }}</span>
+          </span>
         </label>
         <label>
           <span class="label-row">
@@ -48,7 +53,10 @@
           <textarea rows="5" v-model="form.message" required></textarea>
           <span v-if="errors.message" class="error">{{ errors.message }}</span>
         </label>
-        <button type="submit" class="btn btn-primary">{{ t('contact.form.submit') }}</button>
+        <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
+          {{ isSubmitting ? submittingText : t('contact.form.submit') }}
+        </button>
+        <p v-if="submitError" class="error">{{ submitError }}</p>
         <p v-if="successMessage" class="success">{{ successMessage }}</p>
       </form>
     </div>
@@ -57,45 +65,99 @@
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
+import { submitContactInquiry } from '../services/contactRepository';
 
-const { t, dictionary } = useI18n();
+const { t, dictionary, currentLocale } = useI18n();
+const route = useRoute();
 const contact = computed(() => dictionary.value.contact);
 const contactInfo = computed(() => contact.value.info);
-const inquiryOptions = computed(() => contact.value.inquiryOptions);
+const inquiryOptions = computed(() =>
+  contact.value.inquiryOptions.map((option) =>
+    typeof option === 'string'
+      ? { value: option, label: option }
+      : option
+  )
+);
 const validationMessages = computed(() => contact.value.form.validation);
+const submittingText = computed(() => (currentLocale.value === 'ja' ? '送信中...' : 'Sending...'));
+const toLines = (value, fallback) => {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return value || fallback ? [value || fallback] : [];
+};
+const inquiryTypeHelpLines = computed(() =>
+  toLines(contact.value.form.inquiryTypeHelpLines, contact.value.form.inquiryTypeHelp)
+);
+const queryInquiryType = computed(() => {
+  const type = route.query.type;
+  return Array.isArray(type) ? type[0] || '' : type || '';
+});
+const defaultInquiryType = computed(() => inquiryOptions.value[0]?.value ?? '');
 
 const form = reactive({
   name: '',
   email: '',
   phone: '',
   organization: '',
-  inquiryType: inquiryOptions.value[0],
+  inquiryType: defaultInquiryType.value,
   message: ''
 });
 
 const errors = reactive({ email: '', message: '' });
 const successMessage = ref('');
+const submitError = ref('');
+const isSubmitting = ref(false);
+const selectedInquiryOption = computed(() =>
+  inquiryOptions.value.find((option) => option.value === form.inquiryType)
+);
 
-watch(inquiryOptions, (options) => {
-  if (!options.includes(form.inquiryType)) {
-    form.inquiryType = options[0];
+watch([inquiryOptions, queryInquiryType], ([options, queryType]) => {
+  if (!options.length) {
+    form.inquiryType = '';
+    return;
   }
-});
 
-const submitForm = () => {
+  if (queryType && options.some((option) => option.value === queryType)) {
+    form.inquiryType = queryType;
+    return;
+  }
+
+  if (!options.some((option) => option.value === form.inquiryType)) {
+    form.inquiryType = options[0].value;
+  }
+}, { immediate: true });
+
+const submitForm = async () => {
   const validation = validationMessages.value;
+  successMessage.value = '';
+  submitError.value = '';
   errors.email = validateEmail(form.email) ? '' : validation.email;
   errors.message = form.message ? '' : validation.required;
 
   if (!errors.email && !errors.message) {
-    successMessage.value = contact.value.form.success;
-    form.name = '';
-    form.email = '';
-    form.phone = '';
-    form.organization = '';
-    form.inquiryType = inquiryOptions.value[0];
-    form.message = '';
+    isSubmitting.value = true;
+    try {
+      const inquiryOption = selectedInquiryOption.value;
+      await submitContactInquiry({
+        ...form,
+        inquiryType: inquiryOption?.label ?? form.inquiryType,
+        inquiryTypeKey: form.inquiryType
+      });
+      successMessage.value = contact.value.form.success;
+      form.name = '';
+      form.email = '';
+      form.phone = '';
+      form.organization = '';
+      form.inquiryType = defaultInquiryType.value;
+      form.message = '';
+    } catch (error) {
+      submitError.value = currentLocale.value === 'ja'
+        ? '送信できませんでした。時間をおいて再度お試しください。'
+        : 'Could not send your message. Please try again later.';
+    } finally {
+      isSubmitting.value = false;
+    }
   }
 };
 
@@ -159,6 +221,15 @@ label {
   letter-spacing: 0.04em;
 }
 
+.field-help {
+  display: grid;
+  gap: 0.1rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
 input,
 textarea,
 select {
@@ -181,5 +252,10 @@ textarea {
 .success {
   color: #1fa57a;
   font-weight: 600;
+}
+
+button[disabled] {
+  cursor: progress;
+  opacity: 0.72;
 }
 </style>

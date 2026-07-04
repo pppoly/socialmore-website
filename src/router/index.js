@@ -21,6 +21,13 @@ const router = createRouter({
     { path: '/services', name: 'services', component: () => import('../views/Services.vue') },
     { path: '/news', name: 'news', component: () => import('../views/News.vue') },
     { path: '/news/:id', name: 'news-detail', component: () => import('../views/NewsDetail.vue') },
+    { path: '/partners', name: 'partners', component: () => import('../views/Partners.vue') },
+    {
+      path: '/partners/companies',
+      name: 'partner-companies',
+      component: () => import('../views/PartnerCompanies.vue')
+    },
+    { path: '/partners/:slug', name: 'partner-detail', component: () => import('../views/PartnerDetail.vue') },
     { path: '/planner/start', name: 'planner-start', component: () => import('../views/PlannerFlowPlaceholder.vue') },
     {
       path: '/planner/organize',

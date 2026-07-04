@@ -17,6 +17,22 @@ npm run dev
 
 Open the dev server URL (usually <http://localhost:5173>) to view the site.
 
+For local preview, copy the environment template first:
+
+```bash
+cp .env.example .env.local
+```
+
+The default preview uses local content and mock contact submission. To connect a backend later, set:
+
+```bash
+VITE_CONTENT_MODE=api
+VITE_API_BASE_URL=https://api.socialmore.co.jp
+VITE_CONTACT_MODE=api
+```
+
+See `ARCHITECTURE.md` for the expected API contract.
+
 ### Build for production
 
 ```bash
@@ -47,9 +63,11 @@ This project is configured to build into the `docs` folder for GitHub Pages.
 src/
   assets/        # global styles
   components/    # shared UI components (header, footer)
+  config/        # runtime environment config
   composables/   # custom i18n store
   data/          # mock news data
   router/        # Vue Router setup
+  services/      # API/local repositories and HTTP adapters
   views/         # page-level components
 ```
 

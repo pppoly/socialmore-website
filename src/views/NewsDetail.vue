@@ -1,9 +1,18 @@
 <template>
   <section class="section news-detail">
-    <div class="container" v-if="article">
+    <div class="container" v-if="isLoading">
+      <RouterLink to="/news" class="back-link">← {{ t('news.detail.back') }}</RouterLink>
+      <p>{{ loadingText }}</p>
+    </div>
+    <div class="container" v-else-if="loadError">
+      <RouterLink to="/news" class="back-link">← {{ t('news.detail.back') }}</RouterLink>
+      <h1 class="section-title">{{ loadError }}</h1>
+      <RouterLink to="/news" class="btn btn-secondary">{{ t('news.detail.back') }}</RouterLink>
+    </div>
+    <div class="container" v-else-if="article">
       <RouterLink to="/news" class="back-link">← {{ t('news.detail.back') }}</RouterLink>
       <p class="eyebrow">{{ t('news.eyebrow') }}</p>
-      <h1 class="section-title">{{ article.title[currentLocale] }}</h1>
+      <h1 class="section-title">{{ localized(article.title) }}</h1>
       <p class="news-date">{{ formatDate(article.date) }}</p>
       <div class="detail-content">
         <p v-for="(paragraph, index) in articleBody" :key="`paragraph-${index}`">
@@ -21,18 +30,36 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
-import { newsItems } from '../data/news';
+import { fetchNewsItem } from '../services/newsRepository';
 
 const route = useRoute();
 const { t, currentLocale } = useI18n();
+const article = ref(null);
+const isLoading = ref(true);
+const loadError = ref('');
 
-const article = computed(() => {
-  const id = Number(route.params.id);
-  return newsItems.find((item) => item.id === id);
-});
+const loadingText = computed(() => (currentLocale.value === 'ja' ? '読み込み中です。' : 'Loading article.'));
+
+const loadArticle = async () => {
+  isLoading.value = true;
+  loadError.value = '';
+  try {
+    article.value = await fetchNewsItem(route.params.id);
+  } catch (error) {
+    article.value = null;
+    loadError.value = currentLocale.value === 'ja'
+      ? 'ニュースを読み込めませんでした。'
+      : 'Could not load this article.';
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+onMounted(loadArticle);
+watch(() => route.params.id, loadArticle);
 
 const articleBody = computed(() => {
   if (!article.value) {
@@ -41,6 +68,13 @@ const articleBody = computed(() => {
   const locale = currentLocale.value;
   return article.value.content?.[locale] ?? article.value.content?.ja ?? [];
 });
+
+const localized = (value) => {
+  if (!value || typeof value !== 'object') {
+    return value ?? '';
+  }
+  return value[currentLocale.value] ?? value.ja ?? value.en ?? value.zh ?? '';
+};
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
