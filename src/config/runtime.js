@@ -6,6 +6,7 @@ const numberFromEnv = (value, fallback) => {
 };
 
 export const runtimeConfig = {
+  siteUrl: (env.VITE_SITE_URL || 'https://www.socialmore.co.jp').replace(/\/+$/, ''),
   contentMode: env.VITE_CONTENT_MODE || 'local',
   apiBaseUrl: env.VITE_API_BASE_URL || '',
   apiTimeoutMs: numberFromEnv(env.VITE_API_TIMEOUT_MS, 8000),

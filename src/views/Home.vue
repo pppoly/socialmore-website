@@ -768,9 +768,6 @@ const heroSectionClass = computed(() => ({
   'is-partner-slide': activeHeroMessageIndex.value === 0,
   'is-product-slide': activeHeroMessageIndex.value === 1
 }));
-const siteUrl = computed(() =>
-  (import.meta.env.VITE_SITE_URL || 'https://www.socialmore.co.jp').replace(/\/+$/, '')
-);
 const pricedPlans = computed(() =>
   basePlans.map((plan) => ({
     ...plan,
@@ -942,33 +939,6 @@ const closeCalcModal = () => {
   isCalcModalOpen.value = false;
 };
 
-const upsertMeta = (attr, key, content) => {
-  if (typeof document === 'undefined') return;
-  const selector = `meta[${attr}="${key}"]`;
-  let tag = document.querySelector(selector);
-  if (!tag) {
-    tag = document.createElement('meta');
-    tag.setAttribute(attr, key);
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute('content', content);
-};
-
-const applySeo = () => {
-  if (typeof document === 'undefined') return;
-  const title = 'SOCIALMORE - コミュニティーを続けるための仕組みを、LINEの中に。';
-  const description =
-    'メンバー募集、申込受付、参加者管理、売上確認まで。コミュニティ運営に必要な流れをLINEの中にまとめたMOREの紹介ページです。';
-  const pageUrl = `${siteUrl.value}/`;
-  document.title = title;
-  upsertMeta('name', 'description', description);
-  upsertMeta('property', 'og:title', title);
-  upsertMeta('property', 'og:description', description);
-  upsertMeta('property', 'og:type', 'website');
-  upsertMeta('property', 'og:url', pageUrl);
-  upsertMeta('property', 'og:image', `${siteUrl.value}/socialmore-assets/hero/home-hero-app.png`);
-};
-
 const handleWindowResize = () => {
   syncPainWrapHeight();
 };
@@ -988,8 +958,6 @@ watch(isCalcModalOpen, (isOpen) => {
   if (typeof document === 'undefined') return;
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
-
-watch(siteUrl, applySeo, { immediate: true });
 
 onMounted(async () => {
   supportsHover.value = window.matchMedia('(hover: hover) and (pointer: fine)').matches;

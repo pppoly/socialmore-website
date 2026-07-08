@@ -17,8 +17,9 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from '../composables/useI18n';
+import { useSeo } from '../composables/useSeo';
 
 const { dictionary } = useI18n();
 const about = computed(() => dictionary.value.about ?? {});
@@ -26,32 +27,12 @@ const sections = computed(() => (Array.isArray(about.value.sections) ? about.val
 
 const seoTitle = computed(() => about.value.title || 'SocialMore');
 const seoDescription = computed(() => about.value.definition || '');
-const siteUrl = computed(() => (import.meta.env.VITE_SITE_URL || 'https://example.com').replace(/\/+$/, ''));
-const pageUrl = computed(() => `${siteUrl.value}/about`);
 
-const upsertMeta = (attr, key, content) => {
-  if (typeof document === 'undefined') return;
-  const selector = `meta[${attr}="${key}"]`;
-  let tag = document.querySelector(selector);
-  if (!tag) {
-    tag = document.createElement('meta');
-    tag.setAttribute(attr, key);
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute('content', content);
-};
-
-const applySeo = () => {
-  if (typeof document === 'undefined') return;
-  document.title = seoTitle.value;
-  upsertMeta('name', 'description', seoDescription.value);
-  upsertMeta('property', 'og:title', seoTitle.value);
-  upsertMeta('property', 'og:description', seoDescription.value);
-  upsertMeta('property', 'og:type', 'website');
-  upsertMeta('property', 'og:url', pageUrl.value);
-};
-
-watch([seoTitle, seoDescription, pageUrl], applySeo, { immediate: true });
+useSeo(computed(() => ({
+  title: seoTitle.value,
+  description: seoDescription.value || 'SOCIALMOREが大切にしている考え方と、コミュニティの活動を支える姿勢を紹介します。',
+  path: '/about'
+})));
 </script>
 
 <style scoped>

@@ -33,6 +33,7 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from '../composables/useI18n';
+import { useSeo } from '../composables/useSeo';
 import { fetchNewsItem } from '../services/newsRepository';
 
 const route = useRoute();
@@ -75,6 +76,36 @@ const localized = (value) => {
   }
   return value[currentLocale.value] ?? value.ja ?? value.en ?? value.zh ?? '';
 };
+
+const seoTitle = computed(() =>
+  article.value ? localized(article.value.title) : t('news.detail.notFoundTitle')
+);
+const seoDescription = computed(() =>
+  article.value
+    ? localized(article.value.summary)
+    : t('news.detail.notFoundCopy')
+);
+const seoImage = computed(() => article.value?.cover || '/socialmore-assets/hero/home-hero-app.png');
+
+useSeo(computed(() => ({
+  title: seoTitle.value,
+  description: seoDescription.value,
+  path: `/news/${route.params.id}`,
+  image: seoImage.value,
+  type: article.value ? 'article' : 'website',
+  robots: article.value ? 'index,follow' : 'noindex,follow',
+  jsonLd: article.value
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'NewsArticle',
+        headline: seoTitle.value,
+        description: seoDescription.value,
+        datePublished: article.value.date,
+        dateModified: article.value.date,
+        image: seoImage.value
+      }
+    : null
+})));
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);

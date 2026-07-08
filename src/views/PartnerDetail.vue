@@ -230,6 +230,7 @@
 import { computed, onBeforeUnmount, ref, watch } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { findPartnerBySlug } from '../data/partners';
+import { useSeo } from '../composables/useSeo';
 
 const route = useRoute();
 const partner = computed(() => findPartnerBySlug(route.params.slug));
@@ -328,10 +329,30 @@ const appealPoints = computed(() =>
   }))
 );
 
-const applySeo = () => {
-  if (typeof document === 'undefined' || !partner.value) return;
-  document.title = `${partner.value.name} - 共創・連携パートナー | SOCIALMORE`;
-};
+useSeo(computed(() => {
+  if (!partner.value) {
+    return {
+      title: 'パートナー情報が見つかりませんでした',
+      description: '指定されたパートナー情報は見つかりませんでした。',
+      path: `/partners/${route.params.slug}`,
+      robots: 'noindex,follow'
+    };
+  }
+
+  return {
+    title: `${partner.value.name} - 共創・連携パートナー`,
+    description: partner.value.relationshipNote || partner.value.body,
+    path: partner.value.detailPath || `/partners/${route.params.slug}`,
+    image: partner.value.backgroundImage || '/socialmore-assets/hero/partner-connection-hero.png',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: partner.value.name,
+      url: partner.value.websiteUrl,
+      description: partner.value.body
+    }
+  };
+}));
 
 const openEventModal = () => {
   isEventModalOpen.value = true;
@@ -365,7 +386,6 @@ watch(
   partner,
   () => {
     closeEventModal();
-    applySeo();
   },
   { immediate: true }
 );
