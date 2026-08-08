@@ -44,6 +44,10 @@
       return { label: '実施中', tone: 'active' };
     }
 
+    if (!applicationStart && !applicationEnd && eventStart && today < eventStart) {
+      return { label: '開催予定', tone: 'upcoming' };
+    }
+
     if (eventStart && today < eventStart) {
       return { label: '募集終了', tone: 'closed' };
     }

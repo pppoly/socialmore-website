@@ -379,6 +379,41 @@
       </div>
     </section>
 
+    <section id="activities" class="landing-sec landing-sec--wide landing-activities">
+      <div class="landing-activity-head">
+        <div>
+          <h2 class="landing-h2">地域とつながる活動</h2>
+          <p class="landing-lead">
+            地域・企業・クリエイターとともに、場が続いていくための企画を少しずつ形にしています。
+          </p>
+        </div>
+        <a class="landing-activity-directory-link" href="/event.html">活動を見る</a>
+      </div>
+
+      <div class="landing-activity-rail" aria-label="地域とつながる活動">
+        <a
+          v-for="activity in communityActivities"
+          :key="activity.title"
+          class="landing-activity-card"
+          :href="activity.href"
+        >
+          <span class="landing-activity-visual">
+            <img class="landing-activity-image" :src="activity.image" :alt="activity.imageAlt" />
+          </span>
+          <span class="landing-activity-body">
+            <span class="landing-activity-meta">
+              <span class="landing-activity-status" :class="`is-${activity.statusTone}`">
+                {{ activity.status }}
+              </span>
+              <span class="landing-activity-date">{{ activity.date }}</span>
+            </span>
+            <span class="landing-activity-title">{{ activity.title }}</span>
+            <span class="landing-activity-copy">{{ activity.copy }}</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
     <section id="pricing" class="landing-sec landing-sec--pricing">
       <h2 class="landing-h2">料金プラン</h2>
       <p class="landing-lead">まず無料で始められます。</p>
@@ -686,6 +721,39 @@ const targetCards = [
     alt: '定期開催する主催者のイメージ',
     placeholder: '',
     placeholderClass: 'organizer'
+  }
+];
+
+const communityActivities = [
+  {
+    status: '募集中',
+    statusTone: 'open',
+    date: '2026年8月1日 - 8月31日',
+    title: 'Viivii コミュニティPR動画制作キャンペーン 第2期',
+    copy: '活動や作品の魅力を、AI動画でより多くの人へ届ける制作支援キャンペーンです。',
+    image: '/socialmore-assets/partners/viivii-campaign-02-poster.png',
+    imageAlt: 'Viivii コミュニティPR動画制作キャンペーン第2期の告知ポスター',
+    href: '/event.html'
+  },
+  {
+    status: '募集中',
+    statusTone: 'open',
+    date: '2026年8月16日（日）',
+    title: '『魔法使いちゃんは素直になれやしない』第1回試写会',
+    copy: '漫画家とAIのコラボから生まれる映画を、地域のみなさんと一緒に育てるための試写会です。',
+    image: '/socialmore-assets/events/mahotsuka-screening-01.png',
+    imageAlt: '映画『魔法使いちゃんは素直になれやしない』第1回試写会のチラシ',
+    href: '/event.html'
+  },
+  {
+    status: '実施済み',
+    statusTone: 'past',
+    date: '2026年5月30日（土）',
+    title: 'くもりときどきミートボール 野外上映会',
+    copy: '三鷹を拠点に活動する地域コミュニティとともに、ご家族やご友人と楽しめる野外上映会を開催しました。',
+    image: '/socialmore-assets/events/kumori-meatballs-poster.jpg',
+    imageAlt: 'くもりときどきミートボール 野外上映会ポスター',
+    href: '/event.html'
   }
 ];
 
@@ -2665,6 +2733,201 @@ onBeforeUnmount(() => {
   transform: rotate(45deg);
 }
 
+.landing-activities {
+  padding-top: 34px;
+  padding-bottom: 34px;
+  border-top: 1px solid var(--landing-border);
+  border-bottom: 1px solid var(--landing-border);
+}
+
+.landing-activity-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.landing-activity-head .landing-lead {
+  max-width: 610px;
+  margin-bottom: 0;
+}
+
+.landing-activity-directory-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 38px;
+  margin-top: 2px;
+  padding: 0 14px;
+  border: 1px solid var(--landing-border);
+  border-radius: 999px;
+  background: var(--landing-bg);
+  color: var(--landing-text);
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.landing-activity-directory-link:hover,
+.landing-activity-directory-link:focus-visible {
+  border-color: var(--landing-border-strong);
+  background: var(--landing-bg2);
+  outline: none;
+}
+
+.landing-activity-directory-link::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.landing-activity-rail {
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 16px;
+  margin: -2px -2px -14px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 95, 168, 0.24) transparent;
+}
+
+.landing-activity-rail::-webkit-scrollbar {
+  height: 6px;
+}
+
+.landing-activity-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.landing-activity-rail::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(26, 95, 168, 0.22);
+}
+
+.landing-activity-card {
+  display: grid;
+  flex: 0 0 min(352px, calc(100vw - 56px));
+  grid-template-columns: 118px minmax(0, 1fr);
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid var(--landing-border);
+  border-radius: var(--landing-radius-md);
+  background: #fff;
+  color: var(--landing-text);
+  scroll-snap-align: start;
+  box-shadow: 0 12px 28px rgba(17, 31, 46, 0.055);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.landing-activity-card:hover,
+.landing-activity-card:focus-visible {
+  border-color: var(--landing-border-strong);
+  box-shadow: 0 14px 30px rgba(17, 31, 46, 0.08);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.landing-activity-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 100%;
+  padding: 0;
+  border-right: 1px solid var(--landing-border);
+  background: #fff;
+}
+
+.landing-activity-image {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.landing-activity-body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  padding: 16px 16px 15px;
+}
+
+.landing-activity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+
+.landing-activity-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--landing-info-bg);
+  color: var(--landing-info-text);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.landing-activity-status.is-open {
+  background: var(--landing-success-bg);
+  color: var(--landing-success-text);
+}
+
+.landing-activity-status.is-past {
+  background: rgba(0, 0, 0, 0.06);
+  color: #555;
+}
+
+.landing-activity-date {
+  color: var(--landing-muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.landing-activity-title {
+  display: block;
+  color: var(--landing-text);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.landing-activity-copy {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--landing-muted);
+  font-size: 12px;
+  line-height: 1.75;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 .landing-tick,
 .landing-cross {
   width: 17px;
@@ -3527,6 +3790,46 @@ onBeforeUnmount(() => {
 
   .landing-partner-directory-link {
     width: 100%;
+  }
+
+  .landing-activity-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .landing-activity-head .landing-lead {
+    max-width: none;
+  }
+
+  .landing-activity-directory-link {
+    width: 100%;
+  }
+
+  .landing-activity-card {
+    flex-basis: min(342px, calc(100vw - 42px));
+    grid-template-columns: 96px minmax(0, 1fr);
+    min-height: 196px;
+  }
+
+  .landing-activity-image {
+    min-height: 196px;
+  }
+
+  .landing-activity-body {
+    gap: 7px;
+    padding: 13px 13px 12px;
+  }
+
+  .landing-activity-title {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .landing-activity-date,
+  .landing-activity-copy {
+    font-size: 11px;
   }
 
   .landing-partner-rail.is-static .landing-partner-card {

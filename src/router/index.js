@@ -6,7 +6,7 @@ const pageSeo = {
   home: {
     title: 'SOCIALMORE - コミュニティーを続けるための仕組みを、LINEの中に。',
     description:
-      'メンバー募集、申込受付、参加者管理、売上確認まで。コミュニティ運営に必要な流れをLINEの中にまとめたMOREの紹介ページです。',
+      'メンバー募集、申込受付、参加者管理、売上確認まで。コミュニティ運営に必要な流れをLINEの中にまとめ、地域や企業との共創活動も紹介しています。',
     path: '/',
     image: '/socialmore-assets/hero/home-hero-app.png',
     jsonLd: socialmoreWebsiteSchema
