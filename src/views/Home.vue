@@ -2613,10 +2613,8 @@ onBeforeUnmount(() => {
   border: 1px solid var(--landing-border);
   border-radius: var(--landing-radius-md);
   background: #fff;
-  box-shadow: 0 12px 28px rgba(17, 31, 46, 0.08);
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -2632,7 +2630,6 @@ onBeforeUnmount(() => {
 
 .landing-partner-card:hover {
   border-color: var(--landing-border-strong);
-  box-shadow: 0 14px 30px rgba(17, 31, 46, 0.08);
   transform: translateY(-2px);
 }
 
@@ -2736,8 +2733,6 @@ onBeforeUnmount(() => {
 .landing-activities {
   padding-top: 34px;
   padding-bottom: 34px;
-  border-top: 1px solid var(--landing-border);
-  border-bottom: 1px solid var(--landing-border);
 }
 
 .landing-activity-head {
@@ -2828,17 +2823,14 @@ onBeforeUnmount(() => {
   background: #fff;
   color: var(--landing-text);
   scroll-snap-align: start;
-  box-shadow: 0 12px 28px rgba(17, 31, 46, 0.055);
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
 .landing-activity-card:hover,
 .landing-activity-card:focus-visible {
   border-color: var(--landing-border-strong);
-  box-shadow: 0 14px 30px rgba(17, 31, 46, 0.08);
   outline: none;
   transform: translateY(-2px);
 }
@@ -3848,7 +3840,6 @@ onBeforeUnmount(() => {
     width: 260px;
     min-height: 250px;
     padding: 0;
-    box-shadow: 0 8px 20px rgba(17, 31, 46, 0.045);
   }
 
   .landing-partner-card-head {
