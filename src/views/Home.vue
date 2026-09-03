@@ -382,15 +382,15 @@
     <section id="activities" class="landing-sec landing-sec--wide landing-activities">
       <div class="landing-activity-head">
         <div>
-          <h2 class="landing-h2">地域とつながる活動</h2>
+          <h2 class="landing-h2">地域とつながるイベント</h2>
           <p class="landing-lead">
-            地域・企業・クリエイターとともに、場が続いていくための企画を少しずつ形にしています。
+            地域・企業・クリエイターとともに、場が続いていくためのイベントを少しずつ形にしています。
           </p>
         </div>
-        <a class="landing-activity-directory-link" href="/event.html">活動を見る</a>
+        <a class="landing-activity-directory-link" href="/event.html">イベントを見る</a>
       </div>
 
-      <div class="landing-activity-rail" aria-label="地域とつながる活動">
+      <div class="landing-activity-rail" aria-label="地域とつながるイベント">
         <a
           v-for="activity in communityActivities"
           :key="activity.title"
@@ -726,9 +726,9 @@ const targetCards = [
 
 const communityActivities = [
   {
-    status: '募集中',
-    statusTone: 'open',
-    date: '2026年8月1日 - 8月31日',
+    status: '実施中',
+    statusTone: 'active',
+    date: '実施期間：2026年9月1日 - 9月15日',
     title: 'Viivii コミュニティPR動画制作キャンペーン 第2期',
     copy: '活動や作品の魅力を、AI動画でより多くの人へ届ける制作支援キャンペーンです。',
     image: '/socialmore-assets/partners/viivii-campaign-02-poster.png',
@@ -736,19 +736,19 @@ const communityActivities = [
     href: '/event.html'
   },
   {
-    status: '募集中',
-    statusTone: 'open',
-    date: '2026年8月16日（日）',
-    title: '『魔法使いちゃんは素直になれやしない』第1回試写会',
-    copy: '漫画家とAIのコラボから生まれる映画を、地域のみなさんと一緒に育てるための試写会です。',
-    image: '/socialmore-assets/events/mahotsuka-screening-01.png',
-    imageAlt: '映画『魔法使いちゃんは素直になれやしない』第1回試写会のチラシ',
+    status: '開催予定',
+    statusTone: 'upcoming',
+    date: '開催日時：2026年9月13日（日）15:00 - 16:00',
+    title: '『魔法使いちゃんは素直になれやしない』第2回試写会',
+    copy: '第1回の感想も踏まえながら、地域の声とともに作品を磨いていく試写会です。',
+    image: '/socialmore-assets/events/mahotsuka-screening-02.png',
+    imageAlt: '映画『魔法使いちゃんは素直になれやしない』第2回試写会のチラシ',
     href: '/event.html'
   },
   {
     status: '実施済み',
     statusTone: 'past',
-    date: '2026年5月30日（土）',
+    date: '開催日：2026年5月30日（土）',
     title: 'くもりときどきミートボール 野外上映会',
     copy: '三鷹を拠点に活動する地域コミュニティとともに、ご家族やご友人と楽しめる野外上映会を開催しました。',
     image: '/socialmore-assets/events/kumori-meatballs-poster.jpg',
@@ -2886,6 +2886,16 @@ onBeforeUnmount(() => {
 .landing-activity-status.is-open {
   background: var(--landing-success-bg);
   color: var(--landing-success-text);
+}
+
+.landing-activity-status.is-active {
+  background: var(--landing-info-bg);
+  color: var(--landing-info-text);
+}
+
+.landing-activity-status.is-upcoming {
+  background: #fff3d8;
+  color: #825900;
 }
 
 .landing-activity-status.is-past {

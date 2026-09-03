@@ -12,12 +12,12 @@
   <meta property="og:description" content="SOCIALMOREで近日開催予定のイベント情報を掲載しています。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.socialmore.co.jp/event-upcoming.html">
-  <meta property="og:image" content="https://www.socialmore.co.jp/socialmore-assets/hero/home-hero-app.png">
+  <meta property="og:image" content="https://www.socialmore.co.jp/socialmore-assets/events/mahotsuka-screening-02.png">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="近日開催 | SOCIALMORE">
   <meta name="twitter:description" content="SOCIALMOREで近日開催予定のイベント情報を掲載しています。">
-  <meta name="twitter:image" content="https://www.socialmore.co.jp/socialmore-assets/hero/home-hero-app.png">
+  <meta name="twitter:image" content="https://www.socialmore.co.jp/socialmore-assets/events/mahotsuka-screening-02.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -580,6 +580,58 @@
       color: var(--c-text);
     }
 
+    .event-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .event-modal-link {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid rgba(26,95,168,0.22);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--c-info-text);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .event-modal-link::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .event-modal-link:hover {
+      background: rgba(26,95,168,0.07);
+      border-color: rgba(26,95,168,0.35);
+      transform: translateX(2px);
+    }
+
+    .event-modal-link--primary {
+      border-color: var(--c-info-text);
+      background: var(--c-info-text);
+      color: #fff;
+    }
+
+    .event-modal-link--primary:hover {
+      border-color: #174d88;
+      background: #174d88;
+    }
+
     .poster-viewer {
       position: fixed;
       inset: 0;
@@ -998,41 +1050,18 @@
           <button
             type="button"
             class="event-card event-modal-trigger"
-            data-event-modal-target="eventModal"
-            data-event-card
-            data-event-id="mahotsuka-screening-01"
-            data-event-start="2026-08-16"
-            data-event-end="2026-08-16"
-          >
-            <div class="event-card-poster" style="--event-poster-image: url('socialmore-assets/events/mahotsuka-screening-01.png')" role="img" aria-label="映画『魔法使いちゃんは素直になれやしない』第1回試写会のチラシ"></div>
-            <div class="event-card-body">
-              <div class="event-card-tags">
-                <span class="event-card-tag event-card-tag--status" data-status="open">募集中</span>
-                <span class="event-card-tag">試写会</span>
-                <span class="event-card-tag">地域共創</span>
-              </div>
-              <h3 class="event-card-title">『魔法使いちゃんは素直になれやしない』第1回試写会</h3>
-              <div class="event-card-time">2026年8月16日（日）15:00 - 16:00</div>
-              <div class="event-card-location">会場：アジア・アフリカ語学院</div>
-              <p class="event-card-summary">漫画家とAIのコラボから生まれる映画を、地域のみなさんと一緒に育てるための試写会です。</p>
-            </div>
-          </button>
-          <button
-            type="button"
-            class="event-card event-modal-trigger"
             data-event-modal-target="movieScreeningModalSecond"
             data-event-card
             data-event-id="mahotsuka-screening-02"
             data-event-start="2026-09-13"
             data-event-end="2026-09-13"
           >
-            <div class="event-card-poster event-card-poster--coming-soon" data-visual-label="09.13 PREVIEW" role="img" aria-label="映画『魔法使いちゃんは素直になれやしない』第2回試写会のビジュアル準備中">
-              <span class="event-coming-soon-mark"><span class="event-coming-soon-kicker">KEY VISUAL</span><strong>準備中</strong></span>
-            </div>
+            <div class="event-card-poster" style="--event-poster-image: url('socialmore-assets/events/mahotsuka-screening-02.png')" role="img" aria-label="映画『魔法使いちゃんは素直になれやしない』第2回試写会のチラシ"></div>
             <div class="event-card-body">
               <div class="event-card-tags">
                 <span class="event-card-tag event-card-tag--status" data-status="upcoming">開催予定</span>
                 <span class="event-card-tag">試写会</span>
+                <span class="event-card-tag">入場無料</span>
                 <span class="event-card-tag">地域共創</span>
               </div>
               <h3 class="event-card-title">『魔法使いちゃんは素直になれやしない』第2回試写会</h3>
@@ -1070,50 +1099,20 @@
     </section>
   </div>
 
-  <div class="event-modal" id="eventModal" aria-hidden="true">
-    <div class="event-modal-backdrop" data-close-modal></div>
-    <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
-      <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
-      <div class="event-modal-body">
-        <div class="event-modal-content">
-          <div class="event-modal-time">第1回試写会：2026年8月16日（日）15:00 - 16:00</div>
-          <div class="event-modal-tags">
-            <span class="event-modal-tag">試写会</span>
-            <span class="event-modal-tag">入場無料</span>
-            <span class="event-modal-tag">地域共創</span>
-          </div>
-          <div class="event-modal-title-row">
-            <h2 class="event-modal-title" id="eventModalTitle">映画『魔法使いちゃんは素直になれやしない』第1回試写会</h2>
-          </div>
-          <section class="event-modal-block">
-            <div class="event-modal-label">内容</div>
-            <div class="event-modal-text">「漫画家とAIのコラボ」をテーマに、地域に暮らす人たちと一緒に育てるオリジナル映画の試写会です。ご覧いただいた感想や意見を、今後の映画づくりに活かしていきます。</div>
-          </section>
-          <section class="event-modal-block">
-            <div class="event-modal-label">開催日時・会場</div>
-            <div class="event-modal-text">2026年8月16日（日）15:00 - 16:00<br>アジア・アフリカ語学院</div>
-          </section>
-          <section class="event-modal-block">
-            <div class="event-modal-label">作品</div>
-            <div class="event-modal-text">魔法使いちゃんは素直になれやしない</div>
-          </section>
-          <section class="event-modal-block">
-            <div class="event-modal-label">原案</div>
-            <div class="event-modal-text">久森麻乃助（X: @Asanosuke95）</div>
-          </section>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="event-modal" id="movieScreeningModalSecond" aria-hidden="true">
     <div class="event-modal-backdrop" data-close-modal></div>
     <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="movieScreeningModalSecondTitle">
       <button type="button" class="event-modal-close" data-close-modal aria-label="閉じる">×</button>
       <div class="event-modal-body">
+        <button type="button" class="event-modal-poster event-poster-trigger" aria-label="ポスターを拡大表示">
+          <img src="socialmore-assets/events/mahotsuka-screening-02.png" alt="映画『魔法使いちゃんは素直になれやしない』第2回試写会のチラシ">
+        </button>
         <div class="event-modal-content">
           <div class="event-modal-time">第2回試写会：2026年9月13日（日）15:00 - 16:00</div>
           <div class="event-modal-tags">
+            <span class="event-modal-tag">開催予定</span>
+            <span class="event-modal-tag">入場無料</span>
+            <span class="event-modal-tag">事前申込</span>
             <span class="event-modal-tag">試写会</span>
             <span class="event-modal-tag">地域共創</span>
           </div>
@@ -1136,6 +1135,15 @@
             <div class="event-modal-label">原案</div>
             <div class="event-modal-text">久森麻乃助（X: @Asanosuke95）</div>
           </section>
+          <section class="event-modal-block">
+            <div class="event-modal-label">申込</div>
+            <div class="event-modal-text">第2回試写会は入場無料です。申込フォームから事前申込できます。</div>
+          </section>
+          <div class="event-modal-actions">
+            <a class="event-modal-link event-modal-link--primary" href="https://miniapp.line.me/2008913926-NZviSOvW/events/cmt894ysz01x7o601lj5rn5it?_r=mtkxnlul" target="_blank" rel="noopener">申込フォームへ</a>
+            <a class="event-modal-link" href="https://www.viivii.co.jp/movie/" target="_blank" rel="noopener">作品ページを見る</a>
+            <a class="event-modal-link" href="/partners/viivii">Viivii連携ページを見る</a>
+          </div>
         </div>
       </div>
     </div>
