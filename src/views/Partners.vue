@@ -1875,9 +1875,9 @@ onMounted(() => {
   border-radius: 0;
   left: auto;
   top: clamp(18px, 3vw, 34px);
-  right: clamp(-82px, -4.5vw, -44px);
+  right: clamp(8px, 1.8vw, 28px);
   bottom: clamp(18px, 3vw, 34px);
-  width: min(56%, 640px);
+  width: min(54%, 620px);
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.76) 34%, rgba(255, 255, 255, 0.14) 68%, rgba(255, 255, 255, 0) 100%),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, 0.84) 100%),

@@ -1242,7 +1242,7 @@ onBeforeUnmount(() => {
   position: absolute;
   z-index: 0;
   top: 57%;
-  right: clamp(-130px, -6vw, -64px);
+  right: clamp(-78px, -3vw, -34px);
   width: min(82%, 1060px);
   height: 124%;
   object-fit: contain;
@@ -1271,14 +1271,14 @@ onBeforeUnmount(() => {
 
 .landing-hero-slide--partner .landing-hero-backdrop {
   top: 58%;
-  right: clamp(-150px, -7vw, -78px);
+  right: clamp(4px, 1.2vw, 24px);
   width: min(80%, 1040px);
   transform: translate3d(0, -50%, 0);
 }
 
 .landing-hero-slide--product .landing-hero-backdrop {
   top: 57%;
-  right: clamp(-142px, -6.4vw, -72px);
+  right: clamp(-58px, -2.2vw, -20px);
   width: min(84%, 1080px);
   transform: translate3d(0, -50%, 0);
 }
